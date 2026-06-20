@@ -8,13 +8,13 @@
     },
     {
       "path": ".pre-commit-config.yaml",
-      "sha256": "8fc9771113a59330de6db7dec6a2a0fd969d4fe9cc826f273284374533a64cdc",
-      "size_bytes": 285
+      "sha256": "209c520362f74ef762188f4a57c871da72080bac57458f4c36b787a492cc2127",
+      "size_bytes": 305
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "b5bc48964a94b941b94798473bd3a1190cc296c97f8d72e54a5b9e08f4630bac",
-      "size_bytes": 4598
+      "sha256": "30c710053fdd44f91f614ff7e53fab93c18a04f514680c59404c209e5ba970af",
+      "size_bytes": 4872
     },
     {
       "path": "README.md",
@@ -68,8 +68,8 @@
     },
     {
       "path": "docs/G4_READINESS_REPORT.md",
-      "sha256": "48bbe619bc21b03b619f4b893075e1aa8d9c21b60f8a2f37b4cf3ee695f6c9a0",
-      "size_bytes": 1612
+      "sha256": "6cd50f871f0ba592e8fc5b852b41b1f9c27c8c1cb9be94dd1b83f655a2cbd1e9",
+      "size_bytes": 1755
     },
     {
       "path": "docs/PREREGISTRATION.md",
@@ -128,8 +128,8 @@
     },
     {
       "path": "reports/experiment_report.tex",
-      "sha256": "4b428311db7587fca6af0107bdb7c17826d2dfef5474ab2ef64f5046d34b600d",
-      "size_bytes": 8698
+      "sha256": "30f28cd34ab6d92a10ccbc75b12e3eeab11e0c7482cccf74471ad56ca66d0e9f",
+      "size_bytes": 8726
     },
     {
       "path": "requirements.lock",
@@ -293,8 +293,8 @@
     },
     {
       "path": "src/objective_clocks/readiness.py",
-      "sha256": "70a1ac2da6eb306e845ac15e7333a3d29d6ab630283b35eeca1b41688e74a38a",
-      "size_bytes": 6423
+      "sha256": "05e1cd40c1f0420c6b03baf70e80fbc64ecc073b69e120b639419350739e7435",
+      "size_bytes": 7145
     },
     {
       "path": "src/objective_clocks/states.py",
@@ -363,8 +363,8 @@
     },
     {
       "path": "tests/test_readiness.py",
-      "sha256": "8bc9cec7cf90de389fc4b9d8e92568b1153181f4eba2fe6662b068b6a108dcec",
-      "size_bytes": 1631
+      "sha256": "eaf744bf9e419ebf2dfe132de77e275f5b16803dfb545c7e7ae70ea9d0f9d4a3",
+      "size_bytes": 1610
     },
     {
       "path": "tests/test_states.py",

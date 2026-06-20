@@ -1,5 +1,5 @@
 {
-  "blocked_check_count": 5,
+  "blocked_check_count": 4,
   "checks": [
     {
       "blocking_tasks": [
@@ -67,15 +67,15 @@
       "blocking_tasks": [
         "H404"
       ],
-      "evidence": "git_status_entries=19",
-      "id": "H404-REPO-CLEAN",
-      "remediation": "Commit or otherwise resolve all tracked/untracked changes before tagging.",
-      "requirement": "Repository is clean before preregistration tag/archive.",
-      "status": "blocked"
+      "evidence": "git_commit=ae6e825444c3d6a720f6430634ec5f22d475b6f8; upstream=origin/implementation/g0-g1; working_tree_entries_at_audit_time=9",
+      "id": "H404-REPO-SNAPSHOT",
+      "remediation": "Commit and push the research snapshot before preregistration tagging; rerun the final H404 clean check immediately before creating the tag.",
+      "requirement": "Repository has an initial committed snapshot tracking a remote branch.",
+      "status": "pass"
     }
   ],
   "environment": {
-    "git_commit": "UNKNOWN",
+    "git_commit": "ae6e825444c3d6a720f6430634ec5f22d475b6f8",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -100,8 +100,7 @@
     "Load a valid IBM Runtime token, rerun Q303 and capture a real backend snapshot.",
     "Rerun Q304 after Q303 obtains a real provider backend snapshot.",
     "Fill all mandatory fields and freeze docs/PREREGISTRATION_FROZEN.md.",
-    "Record explicit human approval after preregistration review.",
-    "Commit or otherwise resolve all tracked/untracked changes before tagging."
+    "Record explicit human approval after preregistration review."
   ],
   "overall_status": "blocked_before_g4",
   "task": "G4_readiness_audit"

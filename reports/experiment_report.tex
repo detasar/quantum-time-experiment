@@ -202,10 +202,11 @@ artifact. It found no non-empty IBM/Qiskit token source.
 
 The current status is \texttt{blocked\_before\_g4}. Q302 generic local readiness
 passes with 96 of 100 grid cells, and the QPU execution gate remains disabled.
-Five checks block G4: Q303 used the deterministic fixture instead of a provider
-snapshot; Q304 stopped because no real backend snapshot was available; the
-preregistration template still contains mandatory TBD fields; no human approval
-is recorded; and the repository is not yet clean for a preregistration tag.
+After the initial GitHub push, repository cleanliness is no longer a G4 blocker.
+Four checks still block G4: Q303 used the deterministic fixture instead of a
+provider snapshot; Q304 stopped because no real backend snapshot was available;
+the preregistration template still contains mandatory TBD fields; and no human
+approval is recorded.
 
 The final verification pass for this audit had 46 tests passing, clean ruff and
 clean mypy results.

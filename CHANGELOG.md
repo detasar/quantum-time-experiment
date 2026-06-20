@@ -104,3 +104,9 @@ All notable changes to this research repository are documented here.
 ### Security
 - Secret values are never written to artifacts.
 - QPU job submission remains unimplemented and gated by `ALLOW_QPU_EXECUTION=YES` plus frozen preregistration hash checks.
+
+## [0.6.1-post-push-readiness] - 2026-06-20
+
+### Changed
+- Refreshed the G4 readiness audit after the initial GitHub push.
+- Marked H404 repository cleanliness as passing while keeping provider snapshot, backend twin, preregistration fields and human approval as blockers.

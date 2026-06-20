@@ -1,6 +1,6 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T17:45:06.339981+00:00",
+  "created_utc": "2026-06-20T17:55:08.306571+00:00",
   "files": [
     {
       "path": "docs/ARCHITECTURE.md",
@@ -24,8 +24,8 @@
     },
     {
       "path": "reports/experiment_report.tex",
-      "sha256": "4b428311db7587fca6af0107bdb7c17826d2dfef5474ab2ef64f5046d34b600d",
-      "size_bytes": 8698
+      "sha256": "30f28cd34ab6d92a10ccbc75b12e3eeab11e0c7482cccf74471ad56ca66d0e9f",
+      "size_bytes": 8726
     },
     {
       "path": "results/processed/T101_chain_verification.json",

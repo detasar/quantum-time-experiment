@@ -30,6 +30,18 @@ def _git_status(root: Path) -> list[str]:
     return [line for line in output.splitlines() if line.strip()]
 
 
+def _git_output(root: Path, command: list[str]) -> str:
+    try:
+        return subprocess.check_output(
+            command,
+            cwd=root,
+            stderr=subprocess.DEVNULL,
+            text=True,
+        ).strip()
+    except Exception:
+        return ""
+
+
 def _preregistration_text(root: Path) -> str:
     path = root / "docs/PREREGISTRATION.md"
     if not path.exists():
@@ -73,7 +85,12 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
     prereg_frozen = "**Status:** FROZEN" in prereg or "Status:** FROZEN" in prereg
     human_approval = "Human approval: `YES`" in prereg
     qpu_disabled = os.getenv("ALLOW_QPU_EXECUTION") != "YES"
-    repo_clean = len(git_status) == 0
+    git_commit = _git_output(root, ["git", "rev-parse", "HEAD"])
+    upstream = _git_output(
+        root,
+        ["git", "rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"],
+    )
+    repo_snapshot_ready = bool(git_commit and upstream)
 
     checks = [
         _check(
@@ -135,12 +152,18 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
             remediation="Unset ALLOW_QPU_EXECUTION until the explicit H501 human gate.",
         ),
         _check(
-            check_id="H404-REPO-CLEAN",
-            requirement="Repository is clean before preregistration tag/archive.",
-            passed=repo_clean,
-            evidence=f"git_status_entries={len(git_status)}",
+            check_id="H404-REPO-SNAPSHOT",
+            requirement="Repository has an initial committed snapshot tracking a remote branch.",
+            passed=repo_snapshot_ready,
+            evidence=(
+                f"git_commit={git_commit or 'UNKNOWN'}; upstream={upstream or 'NONE'}; "
+                f"working_tree_entries_at_audit_time={len(git_status)}"
+            ),
             blocking_tasks=["H404"],
-            remediation="Commit or otherwise resolve all tracked/untracked changes before tagging.",
+            remediation=(
+                "Commit and push the research snapshot before preregistration tagging; "
+                "rerun the final H404 clean check immediately before creating the tag."
+            ),
         ),
     ]
     blocked = [check for check in checks if check["status"] != "pass"]

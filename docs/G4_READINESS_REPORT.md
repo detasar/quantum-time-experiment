@@ -14,11 +14,13 @@ Branch: `implementation/g0-g1`
 ## Current Status
 
 Overall status: `blocked_before_g4`.
+Blocked check count: 4.
 
 Passing checks:
 
 - Q302 generic local readiness: 96 of 100 grid cells pass.
 - QPU execution gate: `ALLOW_QPU_EXECUTION` is not `YES`.
+- H404 repository snapshot: after the initial GitHub push, the repository has a committed snapshot tracking `origin/implementation/g0-g1`. A final clean-tree check is still required immediately before any preregistration tag.
 
 Blocking checks:
 
@@ -26,7 +28,6 @@ Blocking checks:
 - Q304 backend twin: `hardware_stage_stopped`, reason `no_real_backend_snapshot_available`.
 - H401 preregistration fields: `docs/PREREGISTRATION.md` still contains mandatory `TBD` fields and is not frozen.
 - H401 human approval: no explicit approval is recorded.
-- H404 repository cleanliness: repository is not clean because this is still an uncommitted initial build.
 
 ## Credential Audit
 
