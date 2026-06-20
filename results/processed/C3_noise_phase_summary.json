@@ -1,9 +1,9 @@
 {
   "bound_violation_count": 0,
   "config_hash": "b086114bfec9fe61043c9bf62187cee670215d0fe758096d67ff065563143652",
-  "duration_seconds": 2.017161,
+  "duration_seconds": 2.105458,
   "environment": {
-    "git_commit": "4f1354999939747843b4c6e7b6355fe6147c709c",
+    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -16,15 +16,15 @@
     "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
     "python": "3.13.11",
     "qpu_execution_enabled": false,
-    "timestamp_utc": "2026-06-20T19:05:47.127922+00:00"
+    "timestamp_utc": "2026-06-20T23:24:54.943600+00:00"
   },
   "experiment_id": "C3",
   "grid_cells_complete": true,
   "outputs": [
     {
       "path": "figures/fig_04_noise_phase.pdf",
-      "sha256": "af2d8c24cff343b69fd17cd6dd4850d35c40a004037649effce470ae52c846e8",
-      "size_bytes": 19620
+      "sha256": "4956ef713489700299f6341f9f2acdb882fa5069d825ed583cc43e29f17aa867",
+      "size_bytes": 20608
     },
     {
       "path": "results/processed/C3_noise_phase_diagram.parquet",

@@ -57,7 +57,7 @@
     }
   ],
   "environment": {
-    "git_commit": "4f1354999939747843b4c6e7b6355fe6147c709c",
+    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -70,7 +70,7 @@
     "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
     "python": "3.13.11",
     "qpu_execution_enabled": false,
-    "timestamp_utc": "2026-06-20T19:05:47.707228+00:00"
+    "timestamp_utc": "2026-06-20T23:24:55.536443+00:00"
   },
   "experiment_id": "C4"
 }

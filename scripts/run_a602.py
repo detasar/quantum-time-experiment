@@ -9,7 +9,7 @@ def main() -> None:
         {
             "task": decision["task"],
             "status": decision["status"],
-            "selected_path": decision["selected_path"],
+            "artifact_route": decision["artifact_route"],
             "hardware_interpretation": decision["hardware_interpretation"],
         }
     )

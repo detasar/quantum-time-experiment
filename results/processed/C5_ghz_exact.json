@@ -5,7 +5,7 @@
     "ghz_xxxx": 0.9999999999999998
   },
   "environment": {
-    "git_commit": "4f1354999939747843b4c6e7b6355fe6147c709c",
+    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -18,7 +18,7 @@
     "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
     "python": "3.13.11",
     "qpu_execution_enabled": false,
-    "timestamp_utc": "2026-06-20T19:05:48.562775+00:00"
+    "timestamp_utc": "2026-06-20T23:24:56.034940+00:00"
   },
   "expectations": {
     "XXXX": {
@@ -43,13 +43,10 @@
     }
   },
   "experiment_id": "C5",
-  "figure": {
-    "path": "figures/fig_05_ghz_exact.pdf",
-    "sha256": "634ca3d9d68853fbf5463daf156c897e0e5952c4fbda24b62438ccfe5ad4219c"
-  },
   "objectivity": {
     "x_basis_local_fragment_score": 0.0,
     "z_basis_dephased": 1.0,
     "z_basis_ghz": 1.0
-  }
+  },
+  "visualization_policy": "Exact C5 values are binary sanity checks and are reported as JSON/table evidence, not as a standalone publication figure."
 }

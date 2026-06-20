@@ -231,7 +231,7 @@ A rerun is permitted only for provider-declared failed/cancelled jobs, missing p
 
 ## 11. Positive and Null Interpretations
 
-- Objectivity + coherence pass: include main-text quantum illustration.
+- Objectivity + coherence pass: include the bounded quantum illustration.
 - Objectivity passes, coherence fails: classical-record illustration only; quantum coherence claim omitted.
 - Both fail: hardware null; theory remains evaluated independently.
 

@@ -49,7 +49,7 @@
         "H401",
         "H404"
       ],
-      "evidence": "archive_sha256_present=True; archived_file_count=149",
+      "evidence": "archive_sha256_present=True; archived_file_count=171",
       "id": "H401-ENV-ARCHIVE",
       "remediation": "Run H401 archive generation before preregistration review.",
       "requirement": "Environment archive exists and has a recorded SHA-256.",
@@ -110,7 +110,7 @@
       "blocking_tasks": [
         "H404"
       ],
-      "evidence": "git_commit=bd8ee36d1fd58ced4e9200543ff36968af38a328; upstream=origin/implementation/g0-g1; working_tree_entries_at_audit_time=39",
+      "evidence": "git_commit=54877212485df4ab57b723b5b3706a6c75dbd52f; upstream=origin/implementation/g0-g1; source_archive_without_git=False; working_tree_entries_at_audit_time=81",
       "id": "H404-REPO-SNAPSHOT",
       "remediation": "Commit and push the research snapshot before preregistration tagging; rerun the final H404 clean check immediately before creating the tag.",
       "requirement": "Repository has an initial committed snapshot tracking a remote branch.",
@@ -118,7 +118,7 @@
     }
   ],
   "environment": {
-    "git_commit": "bd8ee36d1fd58ced4e9200543ff36968af38a328",
+    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",

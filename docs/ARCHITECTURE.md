@@ -51,7 +51,6 @@ flowchart TD
     C4Runner --> C4Json["C4_assumption_failures.json"]
     C5Exact["GHZ/dephased exact states"] --> C5Runner["scripts/run_c206.py"]
     C5Runner --> C5Json["C5_ghz_exact.json"]
-    C5Runner --> Fig05["fig_05_ghz_exact.pdf"]
     Q301Runner["scripts/run_q301.py"] --> Q301Manifest["Q301_circuit_manifest.json"]
     Q301Runner --> QPY["Q301_untranspiled_circuits.qpy"]
     Q302Runner["scripts/run_q302.py"] --> Q1Sweep["Q1_noise_sweep.parquet"]
@@ -90,6 +89,9 @@ flowchart TD
     H501Runner["scripts/run_h501_execute.py --execute"] --> H501Raw["results/raw/H501_provider_payload_*.json"]
     H501Runner --> H501Receipt["results/raw/H501_submission_receipt_*.json"]
     H502Runner["scripts/run_h502_raw_analysis.py"] --> H502Raw["Q3_hardware_raw.json"]
+    H502Raw --> Q3FigureRunner["scripts/run_q3_hardware_figure.py"]
+    Q3FigureRunner --> Q3Figure["fig_q3_hardware_summary.pdf"]
+    Q3FigureRunner --> Q3FigureManifest["Q3_hardware_summary_figure.json"]
     H503Runner["scripts/run_h503_mitigated_analysis.py"] --> H503Mitigated["Q3_hardware_mitigated.json"]
     Q303Json --> H401Runner
     Q2Summary --> H401Runner
@@ -266,7 +268,7 @@ flowchart TD
     C2Rows["c2_catalog_rows()"] --> C2Out["C2 parquet + GraphML"]
     C3Rows["c3_noise_rows(config, seed)"] --> C3Out["C3 parquet + phase figure"]
     C4Rows["c4_assumption_stress_matrix()"] --> C4Out["C4 JSON"]
-    C5Rows["c5_ghz_exact_rows()"] --> C5Out["C5 JSON + GHZ figure"]
+    C5Rows["c5_ghz_exact_rows()"] --> C5Out["C5 JSON exact sanity table"]
     QBitParser["parse_qiskit_bitstring(key)"] --> Q301Out["Q301 manifest"]
     CircuitFamily["named_science_circuits()"] --> Q301Out
     QNoiseRows["q302_noise_rows(config, seed)"] --> Q302Out["Q1 noise sweep + readiness figure"]
@@ -294,6 +296,7 @@ flowchart TD
     H501SubmitOut --> RawAnalysis["analyze_hardware_raw_payload()"]
     H501SubmitOut --> MitigatedAnalysis["analyze_readout_mitigated_payload()"]
     RawAnalysis --> Q3RawOut["Q3_hardware_raw.json"]
+    Q3RawOut --> Q3FigOut["fig_q3_hardware_summary.pdf + manifest"]
     MitigatedAnalysis --> Q3MitigatedOut["Q3_hardware_mitigated.json"]
     Q3RawOut --> ClaimsRows
     Q3MitigatedOut --> ClaimsRows

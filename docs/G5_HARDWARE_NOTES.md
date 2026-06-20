@@ -69,7 +69,7 @@ It uses the H501A1-regenerated H401/H402 packet and the Open instance
 - No-single-block-dominance check: `true`
 
 The primary result remains the raw, unmitigated H502 decision. This is the value
-used for main-text inclusion decisions.
+used for bounded artifact-inclusion decisions.
 
 ## H503 Secondary Readout Mitigation
 

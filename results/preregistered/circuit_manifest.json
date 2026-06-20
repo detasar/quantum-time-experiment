@@ -1,11 +1,11 @@
 {
   "backend": "ibm_kingston",
   "backend_version": "1.0.0",
-  "calibration_timestamp": "2026-06-20T22:25:00+03:00",
+  "calibration_timestamp": "2026-06-21T01:15:10+03:00",
   "circuit_metrics": [
     {
       "depth": 9,
-      "estimated_error": 0.03764395477695907,
+      "estimated_error": 0.029834132118798054,
       "name": "ghz_plus_x__block_3",
       "operation_counts": {
         "cz": 3,
@@ -13,12 +13,12 @@
         "rz": 9,
         "sx": 5
       },
-      "qpy_sha256": "f2f86d93f59615c10fa4f34f1f70f682d3d0dd1bdf6d0f6117c751da5795f3bc",
+      "qpy_sha256": "7cfbd2d1a1e8fd6b3f40ac580b7d49d19a39505185f09b8bc1087a404d5bd6a7",
       "two_qubit_count": 3
     },
     {
       "depth": 9,
-      "estimated_error": 0.03815882474987192,
+      "estimated_error": 0.03100978443026661,
       "name": "ghz_plus_z__block_1",
       "operation_counts": {
         "cz": 3,
@@ -26,34 +26,34 @@
         "rz": 11,
         "sx": 7
       },
-      "qpy_sha256": "b856a76b4f752b02572ca8c2ad1327e99ec7e0d5890e46f43b529b3f49495457",
+      "qpy_sha256": "fc4029ce8568a9a99a5fba905619cac0d2e08dc6b6a7341192fb15ca6c605037",
       "two_qubit_count": 3
     },
     {
       "depth": 2,
-      "estimated_error": 0.032147795856212746,
+      "estimated_error": 0.02381838109274998,
       "name": "ro_q3_1",
       "operation_counts": {
         "measure": 4,
         "x": 1
       },
-      "qpy_sha256": "f35db53c006881db9452070b42551c558408a7e5ffc92cdd1cf5d311af58b6f1",
+      "qpy_sha256": "9ebd8d2cfa69f85797a9fe5e45a98d4cedf4390ca3703d9082a2060a32c29e00",
       "two_qubit_count": 0
     },
     {
       "depth": 2,
-      "estimated_error": 0.03242474963357399,
+      "estimated_error": 0.02387982775857398,
       "name": "ro_q1_1",
       "operation_counts": {
         "measure": 4,
         "x": 1
       },
-      "qpy_sha256": "295088995a280f66028c9fe83e93e2a55f8b2ec485fa962ab22a2012eede6820",
+      "qpy_sha256": "1c5326f7dd340e680cd694afe4404670ab35732cd9ae91f9651ec9097b02df97",
       "two_qubit_count": 0
     },
     {
       "depth": 9,
-      "estimated_error": 0.03815882474987192,
+      "estimated_error": 0.03100978443026661,
       "name": "ghz_minus_z__block_2",
       "operation_counts": {
         "cz": 3,
@@ -61,23 +61,23 @@
         "rz": 11,
         "sx": 7
       },
-      "qpy_sha256": "6ac260c2951e8e5392d6dd9c4238b97b490de348164870674b709758b1f6b7bc",
+      "qpy_sha256": "17ce08d93038b1c3690932a40030bf4d643fdd3ea194625125b5bd10dd50cc07",
       "two_qubit_count": 3
     },
     {
       "depth": 2,
-      "estimated_error": 0.03236342677655069,
+      "estimated_error": 0.023740605604738063,
       "name": "ro_q0_1",
       "operation_counts": {
         "measure": 4,
         "x": 1
       },
-      "qpy_sha256": "692bf0c79843716dc01e1c05a84add02b3330dd562b49f782fc609466814cdc5",
+      "qpy_sha256": "d3d05ab8d20eaa0a7677f1ac6ef99343ad447dd5dbc4542b42dfcaa05410fdef",
       "two_qubit_count": 0
     },
     {
       "depth": 9,
-      "estimated_error": 0.03815882474987192,
+      "estimated_error": 0.03100978443026661,
       "name": "ghz_plus_z__block_3",
       "operation_counts": {
         "cz": 3,
@@ -85,12 +85,12 @@
         "rz": 11,
         "sx": 7
       },
-      "qpy_sha256": "f5a77733399ee4514c66ef8fc9e45314a66d2045cbd937c25df95f1087699892",
+      "qpy_sha256": "31fa7063d946af5083fc7e027520a104bdb7dffad3cbd120fc34079a4c2f9188",
       "two_qubit_count": 3
     },
     {
       "depth": 9,
-      "estimated_error": 0.03764395477695907,
+      "estimated_error": 0.029834132118798054,
       "name": "ghz_minus_x__block_3",
       "operation_counts": {
         "cz": 3,
@@ -98,33 +98,33 @@
         "rz": 8,
         "sx": 5
       },
-      "qpy_sha256": "5624a6535cd5fa6aa42f411b3790c824ee511f79e0d21f2130cd1ae0eb0c342a",
+      "qpy_sha256": "b18230da52e6ea8a1a512bd8c86d8207561642e0bcacb77f02163ed79d57c8e4",
       "two_qubit_count": 3
     },
     {
       "depth": 2,
-      "estimated_error": 0.032270595009676814,
+      "estimated_error": 0.024093049064882653,
       "name": "ro_q2_1",
       "operation_counts": {
         "measure": 4,
         "x": 1
       },
-      "qpy_sha256": "279d1d93cdfa6c23a4f624a73e139d2d50408c040bf2b988fd1cda42ee54627d",
+      "qpy_sha256": "d3bcf0071a318c61790314a7406bfca33a205e8d645053c03242052151f6efd6",
       "two_qubit_count": 0
     },
     {
       "depth": 1,
-      "estimated_error": 0.031982421875,
+      "estimated_error": 0.0234375,
       "name": "ro_q3_0",
       "operation_counts": {
         "measure": 4
       },
-      "qpy_sha256": "7e5ceba9afdb82bd63ec026fb66997b1e24355fff6355cdfed8e169204ea258e",
+      "qpy_sha256": "d7710e459bb10c6e218e3516ef86577908b387a9037e89cd0a034f80ab302103",
       "two_qubit_count": 0
     },
     {
       "depth": 9,
-      "estimated_error": 0.03815882474987192,
+      "estimated_error": 0.03100978443026661,
       "name": "ghz_plus_z__block_0",
       "operation_counts": {
         "cz": 3,
@@ -132,12 +132,12 @@
         "rz": 11,
         "sx": 7
       },
-      "qpy_sha256": "3980fa4fc41a4d7c2b8a501f476e84c020f2e203e142d92da10ce0b54a7e1284",
+      "qpy_sha256": "53e07a563dc4a5f9c577dfd062d3bc2298fc67604a90c68addc74d7f344fbdce",
       "two_qubit_count": 3
     },
     {
       "depth": 9,
-      "estimated_error": 0.03764395477695907,
+      "estimated_error": 0.029834132118798054,
       "name": "ghz_minus_x__block_2",
       "operation_counts": {
         "cz": 3,
@@ -145,12 +145,12 @@
         "rz": 8,
         "sx": 5
       },
-      "qpy_sha256": "8f7eaa43ef152601fbc10950208d05abcaa43431d4ee9cdc89f1fda40e9cc791",
+      "qpy_sha256": "b867fe21fdf894d6fb6a3c5b288a0c919c9d8bcf17a6d020af2c8440d78779af",
       "two_qubit_count": 3
     },
     {
       "depth": 9,
-      "estimated_error": 0.03815882474987192,
+      "estimated_error": 0.03100978443026661,
       "name": "ghz_minus_z__block_3",
       "operation_counts": {
         "cz": 3,
@@ -158,12 +158,12 @@
         "rz": 11,
         "sx": 7
       },
-      "qpy_sha256": "3cde3f615e48ce5a9f7d10004580c4d4d6969f22e1b0dba1c031bb5cfa114713",
+      "qpy_sha256": "080d84409b7807a77a5d057e920938f293c136ee5e677faf925e1171d9493279",
       "two_qubit_count": 3
     },
     {
       "depth": 9,
-      "estimated_error": 0.03764395477695907,
+      "estimated_error": 0.029834132118798054,
       "name": "ghz_minus_x__block_1",
       "operation_counts": {
         "cz": 3,
@@ -171,12 +171,12 @@
         "rz": 8,
         "sx": 5
       },
-      "qpy_sha256": "2e6cc71a6b1c3354aa1967c7f80e587b79d55ae47d3168c0e5115b05b8045046",
+      "qpy_sha256": "e619d078a5376f5b071b434c8057e84a4079f80c428148047eba83ee98dcc52c",
       "two_qubit_count": 3
     },
     {
       "depth": 9,
-      "estimated_error": 0.03764395477695907,
+      "estimated_error": 0.029834132118798054,
       "name": "ghz_plus_x__block_0",
       "operation_counts": {
         "cz": 3,
@@ -184,32 +184,32 @@
         "rz": 9,
         "sx": 5
       },
-      "qpy_sha256": "48d2918af8efd46a5840d1f964d9c5f0ad07a79aacea1cb9ec32965bf37f9296",
+      "qpy_sha256": "57dba08e01f7bcc75f26b74a22292279446fd817559b410c20ed9a5cf570e068",
       "two_qubit_count": 3
     },
     {
       "depth": 1,
-      "estimated_error": 0.031982421875,
+      "estimated_error": 0.0234375,
       "name": "ro_q1_0",
       "operation_counts": {
         "measure": 4
       },
-      "qpy_sha256": "817ff7aeff3a5c8d41d739b4c0f1e8e703b3f4b8935bbc73ff03f587cafd255c",
+      "qpy_sha256": "4e8e0f18c399b513c5e0c3f1df1a4f9925fe072118139b0a914bf0f0aac30833",
       "two_qubit_count": 0
     },
     {
       "depth": 1,
-      "estimated_error": 0.031982421875,
+      "estimated_error": 0.0234375,
       "name": "ro_q0_0",
       "operation_counts": {
         "measure": 4
       },
-      "qpy_sha256": "2669161ed7c3bd23a153aa6e33a840c7e72589574ca890ce3c4ead23572f9c7f",
+      "qpy_sha256": "e2f79a3d8b9d7e56447beaaedc2bf2c4062164b8219ec53420249301d0e567f4",
       "two_qubit_count": 0
     },
     {
       "depth": 9,
-      "estimated_error": 0.03764395477695907,
+      "estimated_error": 0.029834132118798054,
       "name": "ghz_plus_x__block_1",
       "operation_counts": {
         "cz": 3,
@@ -217,22 +217,22 @@
         "rz": 9,
         "sx": 5
       },
-      "qpy_sha256": "278bdf8131073d0e4b8a1a94f325434af4ee854acc869bc8428682cf6dd03371",
+      "qpy_sha256": "c14244dd6d8e421436f6f86583837df0eabacdf1a1d4552a9be23285ecf9e8ef",
       "two_qubit_count": 3
     },
     {
       "depth": 1,
-      "estimated_error": 0.031982421875,
+      "estimated_error": 0.0234375,
       "name": "ro_q2_0",
       "operation_counts": {
         "measure": 4
       },
-      "qpy_sha256": "1211d8f5f423d642cf713e37c175ee57ca8257b5d9bf33cf0267f6092f77b7e7",
+      "qpy_sha256": "17e3b7fca2689855dadcbea45c625f7968ca2c48a71e1b5e96d907ffe590fe06",
       "two_qubit_count": 0
     },
     {
       "depth": 9,
-      "estimated_error": 0.03815882474987192,
+      "estimated_error": 0.03100978443026661,
       "name": "ghz_minus_z__block_1",
       "operation_counts": {
         "cz": 3,
@@ -240,12 +240,12 @@
         "rz": 11,
         "sx": 7
       },
-      "qpy_sha256": "00ca8a5bfbdd827d7b0923c5d98c812bc54ff1de256fcc2b4c7ceb66c5326cc3",
+      "qpy_sha256": "338695300efa8fd091c24ed937fcaa6099a10c8350489df0461c0b78c5006c05",
       "two_qubit_count": 3
     },
     {
       "depth": 9,
-      "estimated_error": 0.03815882474987192,
+      "estimated_error": 0.03100978443026661,
       "name": "ghz_minus_z__block_0",
       "operation_counts": {
         "cz": 3,
@@ -253,12 +253,12 @@
         "rz": 11,
         "sx": 7
       },
-      "qpy_sha256": "2531f70c13abcc06cd1982ab2eb6e579e174cef97357b4c7527cfab6ca3b87e9",
+      "qpy_sha256": "39c7a2adfe6dfca2d4c5dd3f29bdc37a604ff4aea9931e9806644d115177c9f9",
       "two_qubit_count": 3
     },
     {
       "depth": 9,
-      "estimated_error": 0.03764395477695907,
+      "estimated_error": 0.029834132118798054,
       "name": "ghz_minus_x__block_0",
       "operation_counts": {
         "cz": 3,
@@ -266,12 +266,12 @@
         "rz": 8,
         "sx": 5
       },
-      "qpy_sha256": "7e12660828df42d9088863d5abc22e6f6916f416e6d8cb0a6af2b9875d70a3e0",
+      "qpy_sha256": "9b1799d0b2b48acb3dc65f47911b1fa7ffc672ea4099ea6f9a4300eec5baba7e",
       "two_qubit_count": 3
     },
     {
       "depth": 9,
-      "estimated_error": 0.03764395477695907,
+      "estimated_error": 0.029834132118798054,
       "name": "ghz_plus_x__block_2",
       "operation_counts": {
         "cz": 3,
@@ -279,12 +279,12 @@
         "rz": 9,
         "sx": 5
       },
-      "qpy_sha256": "3fb5c1b0dea62277ee89c58c9da77e4c656f976db5ea9f7337e39832bdd692b4",
+      "qpy_sha256": "1e852429b45a2980399953483b289981fa281333d8007dfd82e0b784b4d2ba12",
       "two_qubit_count": 3
     },
     {
       "depth": 9,
-      "estimated_error": 0.03815882474987192,
+      "estimated_error": 0.03100978443026661,
       "name": "ghz_plus_z__block_2",
       "operation_counts": {
         "cz": 3,
@@ -292,12 +292,12 @@
         "rz": 11,
         "sx": 7
       },
-      "qpy_sha256": "5c843231dfaf7474ccde2e0215a030b8afd77e8e94f20edcfb5968873de14e00",
+      "qpy_sha256": "1fde6a3569cf906c67d029c4220dcd0f38c3195c2cc3e84607b3a26f53017739",
       "two_qubit_count": 3
     }
   ],
   "environment": {
-    "git_commit": "bd8ee36d1fd58ced4e9200543ff36968af38a328",
+    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -511,158 +511,158 @@
   "outputs": [
     {
       "path": "results/preregistered/circuits.qpy",
-      "sha256": "6cc768cbaf831bbbe5c3f0dffde8f8fb8c32b78a345e5c838f4871e57879cdce",
+      "sha256": "2e9af2eb37bb555e2c7ec0c85dd1a8729307a37dd93839bc80595067f6188768",
       "size_bytes": 155948
     }
   ],
   "physical_layout": [
-    125,
+    105,
     117,
-    126,
-    124
+    104,
+    106
   ],
   "qpu_execution_allowed": false,
   "qpy_path": "results/preregistered/circuits.qpy",
-  "qpy_sha256": "6cc768cbaf831bbbe5c3f0dffde8f8fb8c32b78a345e5c838f4871e57879cdce",
+  "qpy_sha256": "2e9af2eb37bb555e2c7ec0c85dd1a8729307a37dd93839bc80595067f6188768",
   "seed_candidates": [
     {
       "max_depth": 9,
       "seed": 0,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 1,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 2,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 3,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 4,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 5,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 6,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 7,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 8,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 9,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 10,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 11,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 12,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 13,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 14,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 15,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 16,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 17,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 18,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     },
     {
       "max_depth": 9,
       "seed": 19,
       "total_depth": 156,
-      "total_estimated_error": 0.8635584909906622,
+      "total_estimated_error": 0.676033195913462,
       "total_two_qubit_count": 48
     }
   ],

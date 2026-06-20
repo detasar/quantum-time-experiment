@@ -1,8 +1,8 @@
 {
   "config_hash": "f31b3de7104bd1f567904cf05bcf8aa5d1edc2e50ecbb0e84cc92f8f58939f21",
-  "duration_seconds": 16.465112,
+  "duration_seconds": 16.969936,
   "environment": {
-    "git_commit": "bd8ee36d1fd58ced4e9200543ff36968af38a328",
+    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -15,15 +15,15 @@
     "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
     "python": "3.13.11",
     "qpu_execution_enabled": false,
-    "timestamp_utc": "2026-06-20T20:13:59.817603+00:00"
+    "timestamp_utc": "2026-06-20T23:21:14.869211+00:00"
   },
   "experiment_id": "Q302",
   "grid_cells_complete": true,
   "outputs": [
     {
       "path": "figures/fig_q302_noise_readiness.pdf",
-      "sha256": "c028381b810971e903610cd9afb40b1f415d5533d62d09c55c87ebc5cef2ce06",
-      "size_bytes": 17295
+      "sha256": "fb743a6e63073be0ce6382c81436543f0f6b137eafc9026963a04280634970f9",
+      "size_bytes": 22860
     },
     {
       "path": "results/processed/Q1_noise_sweep.parquet",

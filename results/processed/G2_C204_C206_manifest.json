@@ -1,16 +1,11 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T19:05:48.676985+00:00",
+  "created_utc": "2026-06-20T23:24:56.094845+00:00",
   "files": [
     {
       "path": "figures/fig_04_noise_phase.pdf",
-      "sha256": "af2d8c24cff343b69fd17cd6dd4850d35c40a004037649effce470ae52c846e8",
-      "size_bytes": 19620
-    },
-    {
-      "path": "figures/fig_05_ghz_exact.pdf",
-      "sha256": "634ca3d9d68853fbf5463daf156c897e0e5952c4fbda24b62438ccfe5ad4219c",
-      "size_bytes": 13520
+      "sha256": "4956ef713489700299f6341f9f2acdb882fa5069d825ed583cc43e29f17aa867",
+      "size_bytes": 20608
     },
     {
       "path": "results/processed/C3_noise_phase_diagram.parquet",
@@ -19,18 +14,18 @@
     },
     {
       "path": "results/processed/C3_noise_phase_summary.json",
-      "sha256": "24bac6fafee44309765f561db64baab531cf10b2c3bac5fc5e095926fc30603f",
+      "sha256": "73c30e4fdec07bd01babe5db26d6d0331fc4a63730bcb2ffce3710e328e03fdf",
       "size_bytes": 1170
     },
     {
       "path": "results/processed/C4_assumption_failures.json",
-      "sha256": "6a8ed3cf00f3a4bd9743f8c692dd16309e32026623f23bef523d9e1c16c05f1c",
+      "sha256": "41d85072c60a4aac9186425f037ef6c6866de223a6718ce5a2cafc13d17d9975",
       "size_bytes": 2331
     },
     {
       "path": "results/processed/C5_ghz_exact.json",
-      "sha256": "ce903f3e6025d12886f6050599f246a3086abedf8ca1f6e28978903d8470e1ae",
-      "size_bytes": 1299
+      "sha256": "81b289bc30832ffae99834f9474659843fd52fa77de80dbea93539b509cc0aa0",
+      "size_bytes": 1306
     }
   ]
 }

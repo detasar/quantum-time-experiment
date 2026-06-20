@@ -1,0 +1,13 @@
+{
+  "figure": {
+    "path": "figures/fig_q3_hardware_summary.pdf",
+    "sha256": "efe3e9f0578c69e8c12aedcab3af11d23de006a866ff5262e927244947d5bfc1"
+  },
+  "inputs": [
+    "results/processed/Q3_hardware_raw.json",
+    "configs/quantum_local.yaml"
+  ],
+  "secret_values_recorded": false,
+  "status": "complete",
+  "task": "Q3_hardware_summary_figure"
+}

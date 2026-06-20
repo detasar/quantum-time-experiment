@@ -2,9 +2,9 @@
   "bell_max": 1.0,
   "bell_min": 1.0,
   "config_hash": "b086114bfec9fe61043c9bf62187cee670215d0fe758096d67ff065563143652",
-  "duration_seconds": 3.063414,
+  "duration_seconds": 2.848511,
   "environment": {
-    "git_commit": "4f1354999939747843b4c6e7b6355fe6147c709c",
+    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -17,7 +17,7 @@
     "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
     "python": "3.13.11",
     "qpu_execution_enabled": false,
-    "timestamp_utc": "2026-06-20T19:05:43.421183+00:00"
+    "timestamp_utc": "2026-06-20T23:24:50.258131+00:00"
   },
   "experiment_id": "C1",
   "ghz_x_score": 0.0,
@@ -91,8 +91,8 @@
   "outputs": [
     {
       "path": "figures/fig_02_basis_landscape.pdf",
-      "sha256": "d1c4b048a69f63e8ed684e616325aa6ae749cf62e446af831cc4b6cdeb6a8e98",
-      "size_bytes": 18641
+      "sha256": "0e98d9d6df97981399aa22ac171db4c640d157d196c9d16217124fd73846e98c",
+      "size_bytes": 23149
     },
     {
       "path": "results/processed/C1_basis_landscape.nc",

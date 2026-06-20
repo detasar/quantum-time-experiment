@@ -1,0 +1,9 @@
+{
+  "figure": {
+    "path": "figures/fig_01_order_chains.pdf",
+    "sha256": "efb8ca34b4244922c4d1c385f84442623809f45d61177e3bbd18d8b33155f438"
+  },
+  "secret_values_recorded": false,
+  "status": "complete",
+  "task": "C2_order_figure"
+}

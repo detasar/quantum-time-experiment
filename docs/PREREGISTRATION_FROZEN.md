@@ -7,10 +7,10 @@
 
 ## 1. Mandatory Identifiers
 
-- Git commit: `bd8ee36d1fd58ced4e9200543ff36968af38a328`
-- Environment manifest SHA-256: `238e5e51b683bd0a8700f40f9c075a5215b543ff6296fb58278fb88df30ad709`
-- Environment archive SHA-256: `f62cbe0bc5a1a81effbf832f1ec62de66a6e160e5d0a4a6c7b6a5f17d5aec476`
-- Circuit manifest SHA-256: `43c387ed1c3fdc41fdf219e99e17112438e29924a13d3a11688ef6476ac3cb86`
+- Git commit: `54877212485df4ab57b723b5b3706a6c75dbd52f`
+- Environment manifest SHA-256: `796c7f5150c81015837d7808f1ec2cb19188ded12c51d96c04072b82508e26f2`
+- Environment archive SHA-256: `c74d263331cbb85e0f1216b0393b795ec291433ee852ef391963d53eb482933b`
+- Circuit manifest SHA-256: `a85b10ffe83a40d7656875fe3f3227ac10af280661eb82c97dfc97973770f893`
 - Qiskit version: `2.4.2`
 - qiskit-ibm-runtime version: `0.47.0`
 - Open Plan instance identifier/name: `open-instance`
@@ -44,12 +44,12 @@ Use the deterministic algorithm in `docs/RESEARCH_SPEC_TR.md`. No manual backend
 
 - Candidate source: `provider`
 - Selected backend: `ibm_kingston`
-- Selected physical layout: `[125, 117, 126, 124]`
+- Selected physical layout: `[105, 117, 104, 106]`
 - Backend twin status: `backend_snapshot_ready`
 - Backend twin reason: `backend_derived_aggregate_noise_passed`
-- Calibration snapshot timestamp: `2026-06-20T22:25:00+03:00`
+- Calibration snapshot timestamp: `2026-06-21T01:15:10+03:00`
 - Selected transpiler seed: `0`
-- ISA circuit QPY SHA-256: `6cc768cbaf831bbbe5c3f0dffde8f8fb8c32b78a345e5c838f4871e57879cdce`
+- ISA circuit QPY SHA-256: `2e9af2eb37bb555e2c7ec0c85dd1a8729307a37dd93839bc80595067f6188768`
 - Exact execution-order seed: `20260621`
 - Exact circuit instances: `24`
 
@@ -104,7 +104,7 @@ A rerun is permitted only for provider-declared failed/cancelled jobs, missing p
 
 ## 11. Positive and Null Interpretations
 
-- Objectivity + coherence pass: include main-text quantum illustration.
+- Objectivity + coherence pass: include the bounded quantum illustration.
 - Objectivity passes, coherence fails: classical-record illustration only; quantum coherence claim omitted.
 - Both fail: hardware null; theory remains evaluated independently.
 
@@ -116,6 +116,6 @@ Status is `FROZEN`; QPU execution still requires the explicit H501 gate.
 
 ## 13. Human Approval Record
 
-- Approval timestamp UTC: `2026-06-20T20:15:40.911188+00:00`
+- Approval timestamp UTC: `2026-06-20T23:22:44.509796+00:00`
 - Approval source: `explicit human approval recorded during the execution session`
 - QPU execution allowed now: `NO`

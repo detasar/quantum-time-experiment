@@ -1,4 +1,4 @@
-.PHONY: test theorem c0 c1 c2 g2-batch1 c3 c4 c5 g2-batch2 g2 q301 q302 q303 q304 q305 g3 g4-readiness h401-archive h401-draft h401-freeze h402-isa h403-dry-run h501-dry-run h501-execute h501-retrieve h502 h503 a601 a602 a603 ghz reproduce qpu-dry
+.PHONY: test theorem c0 c1 c2 c2-figure g2-batch1 c3 c4 c5 g2-batch2 g2 q301 q302 q303 q304 q305 g3 g4-readiness h401-archive h401-draft h401-freeze h402-isa h403-dry-run h501-dry-run h501-execute h501-retrieve h502 h503 q3-figure a601 a602 a603 ghz reproduce qpu-dry
 
 test:
 	PYTHONPATH=src pytest -q
@@ -14,6 +14,9 @@ c1:
 
 c2:
 	PYTHONPATH=src python scripts/run_c203.py
+
+c2-figure:
+	PYTHONPATH=src python scripts/run_c2_order_figure.py
 
 g2-batch1:
 	PYTHONPATH=src python scripts/run_g2_batch1.py
@@ -83,6 +86,9 @@ h502:
 
 h503:
 	PYTHONPATH=src python scripts/run_h503_mitigated_analysis.py
+
+q3-figure:
+	PYTHONPATH=src python scripts/run_q3_hardware_figure.py
 
 a601:
 	PYTHONPATH=src python scripts/run_a601.py

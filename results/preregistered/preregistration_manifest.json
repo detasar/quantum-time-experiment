@@ -1,6 +1,6 @@
 {
-  "approval_source": "Codex user message: onay veriyorum plana gore gidelim",
-  "approval_timestamp_utc": "2026-06-20T20:15:40.911188+00:00",
+  "approval_source": "explicit human approval recorded during the execution session",
+  "approval_timestamp_utc": "2026-06-20T23:22:44.509796+00:00",
   "backend_amendment": {
     "amendment_id": "H501A1-kingston-pre-result",
     "candidate_backends": [
@@ -39,9 +39,9 @@
     }
   },
   "circuit_manifest_path": "results/preregistered/circuit_manifest.json",
-  "circuit_manifest_sha256": "43c387ed1c3fdc41fdf219e99e17112438e29924a13d3a11688ef6476ac3cb86",
+  "circuit_manifest_sha256": "a85b10ffe83a40d7656875fe3f3227ac10af280661eb82c97dfc97973770f893",
   "environment": {
-    "git_commit": "bd8ee36d1fd58ced4e9200543ff36968af38a328",
+    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -56,24 +56,24 @@
     "qpu_execution_enabled": false
   },
   "environment_archive_manifest_path": "results/preregistered/environment_archive_manifest.json",
-  "environment_archive_manifest_sha256": "ee8066925f6479a673902831bb30e64ce051eeac92856c7b7b1314263e43db7a",
+  "environment_archive_manifest_sha256": "49cb9195e27f2a96819d958052ee474ba2fc1e55035706d721d6b3894f200eb8",
   "frozen_markdown_path": "docs/PREREGISTRATION_FROZEN.md",
-  "frozen_markdown_sha256": "58bbb13f0440845a5a43a42185b81c1025d135326e27d273c7cf477319d8ef01",
+  "frozen_markdown_sha256": "7d66eed9cbd52ff08bcbc9d3e973174af8eef3ca157b4c8a71334c92d1aa0c0b",
   "human_approval": true,
   "outputs": [
     {
       "path": "docs/PREREGISTRATION_FROZEN.md",
-      "sha256": "58bbb13f0440845a5a43a42185b81c1025d135326e27d273c7cf477319d8ef01",
-      "size_bytes": 4266
+      "sha256": "7d66eed9cbd52ff08bcbc9d3e973174af8eef3ca157b4c8a71334c92d1aa0c0b",
+      "size_bytes": 4276
     },
     {
       "path": "results/preregistered/circuit_manifest.json",
-      "sha256": "43c387ed1c3fdc41fdf219e99e17112438e29924a13d3a11688ef6476ac3cb86",
-      "size_bytes": 16823
+      "sha256": "a85b10ffe83a40d7656875fe3f3227ac10af280661eb82c97dfc97973770f893",
+      "size_bytes": 16791
     },
     {
       "path": "results/preregistered/circuits.qpy",
-      "sha256": "6cc768cbaf831bbbe5c3f0dffde8f8fb8c32b78a345e5c838f4871e57879cdce",
+      "sha256": "2e9af2eb37bb555e2c7ec0c85dd1a8729307a37dd93839bc80595067f6188768",
       "size_bytes": 155948
     }
   ],
@@ -81,7 +81,7 @@
   "qpu_execution_allowed": false,
   "qpu_execution_allowed_requires": "H501 explicit gate and ALLOW_QPU_EXECUTION=YES",
   "qpy_path": "results/preregistered/circuits.qpy",
-  "qpy_sha256": "6cc768cbaf831bbbe5c3f0dffde8f8fb8c32b78a345e5c838f4871e57879cdce",
+  "qpy_sha256": "2e9af2eb37bb555e2c7ec0c85dd1a8729307a37dd93839bc80595067f6188768",
   "status": "FROZEN",
   "task": "H401_preregistration_freeze"
 }

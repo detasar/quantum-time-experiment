@@ -4,28 +4,28 @@
     {
       "backend": "ibm_kingston",
       "backend_version": "1.0.0",
-      "calibration_timestamp": "2026-06-20T22:25:00+03:00",
-      "delta_coh_lcb": 0.9151617332606208,
-      "delta_obj_lcb": 0.9049273254154142,
+      "calibration_timestamp": "2026-06-21T01:15:10+03:00",
+      "delta_coh_lcb": 0.9333064139317118,
+      "delta_obj_lcb": 0.9091497350552418,
       "eligible": true,
-      "layout_score": 3.223410995500638,
-      "min_z_correlation_lcb": 0.9504213805341328,
-      "one_qubit_depolarizing": 0.0003192199440035589,
+      "layout_score": 3.2023158497705104,
+      "min_z_correlation_lcb": 0.9585452667858911,
+      "one_qubit_depolarizing": 0.00044546588023617077,
       "passes_local_twin": true,
-      "pending_jobs": 1,
-      "readout_flip": 0.00799560546875,
+      "pending_jobs": 0,
+      "readout_flip": 0.005859375,
       "selected_layout": [
-        125,
+        105,
         117,
-        126,
-        124
+        104,
+        106
       ],
-      "two_qubit_depolarizing": 0.0013345494081313802
+      "two_qubit_depolarizing": 0.001437220997705102
     },
     {
       "backend": "ibm_marrakesh",
       "backend_version": "1.0.21",
-      "calibration_timestamp": "2026-06-20T22:16:15+03:00",
+      "calibration_timestamp": "2026-06-21T01:16:39+03:00",
       "delta_coh_lcb": 0.9202975586497365,
       "delta_obj_lcb": 0.9050823924373768,
       "eligible": true,
@@ -46,23 +46,23 @@
     {
       "backend": "ibm_fez",
       "backend_version": "1.3.37",
-      "calibration_timestamp": "2026-06-20T22:50:29+03:00",
-      "delta_coh_lcb": 0.8998049477740437,
-      "delta_obj_lcb": 0.8925645203856458,
+      "calibration_timestamp": "2026-06-21T01:29:00+03:00",
+      "delta_coh_lcb": 0.9378372533662469,
+      "delta_obj_lcb": 0.9074625252291297,
       "eligible": true,
-      "layout_score": 3.296795390220535,
-      "min_z_correlation_lcb": 0.9375708580788293,
-      "one_qubit_depolarizing": 0.00031779377548755495,
+      "layout_score": 3.270810932887258,
+      "min_z_correlation_lcb": 0.9563703979342009,
+      "one_qubit_depolarizing": 0.00030268005449454125,
       "passes_local_twin": true,
       "pending_jobs": 0,
-      "readout_flip": 0.00933837890625,
+      "readout_flip": 0.00518798828125,
       "selected_layout": [
-        91,
-        90,
-        98,
-        92
+        143,
+        136,
+        144,
+        142
       ],
-      "two_qubit_depolarizing": 0.0020341160115803503
+      "two_qubit_depolarizing": 0.002189310500747582
     }
   ],
   "experiment_id": "Q305",

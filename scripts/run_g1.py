@@ -214,16 +214,40 @@ def write_capacity_figure(path: Path) -> None:
     records = np.arange(0, 9)
     capacity = np.asarray([binary_chain_capacity(int(value)) for value in records])
     path.parent.mkdir(parents=True, exist_ok=True)
-    fig, ax = plt.subplots(figsize=(5.5, 3.4))
-    ax.plot(records, capacity, marker="o", color="#1f77b4", label="binary capacity")
-    ax.plot(records, records + 1, linestyle="--", color="#555555", label="E + 1")
+    fig, ax = plt.subplots(figsize=(6.6, 4.1), constrained_layout=True)
+    upper = capacity.max() + 1
+    ax.fill_between(
+        records,
+        capacity,
+        upper,
+        color="#d95f02",
+        alpha=0.14,
+        label="not scalar-encodable",
+    )
+    ax.fill_between(
+        records,
+        1,
+        capacity,
+        color="#1b9e77",
+        alpha=0.16,
+        label="chain-encodable",
+    )
+    ax.plot(records, capacity, marker="o", color="#1f77b4", linewidth=2.0, label=r"$N_{max}=E+1$")
     ax.set_xlabel("binary persistent record coordinates E")
-    ax.set_ylabel("maximum strict-chain clock states N")
-    ax.set_title("Persistent Record Capacity")
+    ax.set_ylabel("strict-chain clock states N")
+    ax.set_title("T103: persistent-record capacity bound")
+    ax.set_xlim(records.min(), records.max())
+    ax.set_ylim(1, upper)
+    ax.set_xticks(records)
+    ax.set_yticks(np.arange(1, upper + 1))
     ax.grid(True, alpha=0.3)
-    ax.legend()
-    fig.tight_layout()
-    fig.savefig(path, metadata={"CreationDate": None, "ModDate": None})
+    ax.legend(loc="upper left", frameon=True)
+    fig.savefig(
+        path,
+        bbox_inches="tight",
+        pad_inches=0.08,
+        metadata={"CreationDate": None, "ModDate": None},
+    )
     plt.close(fig)
 
 

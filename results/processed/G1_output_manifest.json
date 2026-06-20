@@ -1,11 +1,11 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T22:11:32.482621+00:00",
+  "created_utc": "2026-06-20T23:19:46.162659+00:00",
   "files": [
     {
       "path": "docs/ARCHITECTURE.md",
-      "sha256": "8ad0b2e748b975c5addf50ed7d6a839fe27cca4a9d652fbf990a94b033985e7e",
-      "size_bytes": 14955
+      "sha256": "b5bc64d61ced89e5644b2c44163f710a448f846eafabe51ff8e43ff045dadc24",
+      "size_bytes": 15188
     },
     {
       "path": "docs/proofs/B0_imported_basis_uniqueness.md",
@@ -19,13 +19,13 @@
     },
     {
       "path": "figures/fig_03_capacity.pdf",
-      "sha256": "61afdc1605bf1daffedcc8bfec75e7f68d629ff93022d1aad107f404ea7304a9",
-      "size_bytes": 15212
+      "sha256": "7eee8136a89d9a33c3f914e9460c3a305f952c98c2cefa082310f264fd2d6b35",
+      "size_bytes": 17996
     },
     {
       "path": "reports/experiment_report.tex",
-      "sha256": "81ae7ecd346b7f8590a3a4c17cca538c305fb34c67edfa70ed30d30560fed8cc",
-      "size_bytes": 13843
+      "sha256": "71e397db0621e79d86491a3cdcf679b6d979466afe9749d9257a866b31c1f26a",
+      "size_bytes": 13892
     },
     {
       "path": "results/processed/T101_chain_verification.json",

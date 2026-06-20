@@ -31,16 +31,26 @@ def _write_noise_figure(path: Path, frame: pd.DataFrame) -> None:
         for j, p in enumerate(p_values):
             value = subset[(subset["q"] == q) & (subset["p"] == p)]["full_table_recovery"].iloc[0]
             matrix[i, j] = float(value)
-    fig, ax = plt.subplots(figsize=(7.2, 4.2))
-    image = ax.imshow(matrix, origin="lower", aspect="auto", vmin=0.0, vmax=1.0, cmap="viridis")
+    fig, ax = plt.subplots(figsize=(7.8, 4.5), constrained_layout=True)
+    image = ax.imshow(matrix, origin="lower", aspect="auto", vmin=0.0, vmax=1.0, cmap="Blues")
     ax.set_xticks(range(len(p_values)), [f"{value:.2f}" for value in p_values])
     ax.set_yticks(range(len(q_values)), [str(value) for value in q_values])
     ax.set_xlabel("bit-flip probability p")
     ax.set_ylabel("redundant copies q")
-    ax.set_title(f"C3 Noise Sweep: full-table recovery for N={n_states}")
-    fig.colorbar(image, ax=ax, label="empirical full-table recovery")
-    fig.tight_layout()
-    fig.savefig(path, metadata={"CreationDate": None, "ModDate": None})
+    ax.set_title(f"C3: full-table recovery probability for N={n_states}")
+    ax.set_xticks(np.arange(-0.5, len(p_values), 1), minor=True)
+    ax.set_yticks(np.arange(-0.5, len(q_values), 1), minor=True)
+    ax.grid(which="minor", color="white", alpha=0.28, linewidth=0.8)
+    contour = ax.contour(matrix, levels=[0.5], colors="white", linewidths=1.6)
+    if contour.allsegs[0]:
+        ax.clabel(contour, fmt={0.5: "50% recovery"}, inline=True, fontsize=8)
+    fig.colorbar(image, ax=ax, label="empirical recovery probability")
+    fig.savefig(
+        path,
+        bbox_inches="tight",
+        pad_inches=0.08,
+        metadata={"CreationDate": None, "ModDate": None},
+    )
     plt.close(fig)
 
 

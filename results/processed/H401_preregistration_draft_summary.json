@@ -6,7 +6,7 @@
   "known_field_count": 12,
   "mandatory_fields_complete": true,
   "open_instance_confirmed": true,
-  "output": "docs/PREREGISTRATION_DRAFT.md",
+  "output": "results/processed/H401_preregistration_draft.md",
   "provider_source": "provider",
   "qpu_execution_allowed": false,
   "status": "draft_blocked",

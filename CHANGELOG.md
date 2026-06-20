@@ -1,234 +1,116 @@
 # Changelog
 
-All notable changes to this research repository are documented here.
+This changelog records the scientific evolution of the artifact. It intentionally
+omits operational details that do not help a reader understand the research
+process, evidence chain, or claim boundaries.
 
-## [0.1.0-g0-g1] - 2026-06-20
+## 2026-06-21 - Public Research Artifact Narrative
+
+### Changed
+- Reframed the repository as a quantum systems experiment and reproducibility
+  package rather than an internal execution log.
+- Clarified that `clock` means a candidate quantum subsystem whose basis labels
+  are interpreted as possible time labels, not a literal timing device.
+- Rewrote the README entry path around motivation, basic concepts, experimental
+  system, result boundaries, figure interpretation, and reproducibility.
+- Replaced weak or misleading visual summaries with claim-carrying figures:
+  order chains, basis ambiguity diagnostics, capacity bounds, noise recovery,
+  local readiness, and raw IBM hardware evidence.
+- Added a full narrative LaTeX report for the artifact with literature
+  positioning, concept definitions, figures, tables, claim boundaries, and
+  reproducibility metadata.
+
+### Scientific Rationale
+- Public readers should understand why quantum Darwinism, redundant records,
+  objective-past work, and fixed-partition uniqueness results motivate the
+  basis-order-orientation question before seeing implementation details.
+- Figures are retained only when they explain a claim; binary exact sanity checks
+  are reported as tables/data rather than low-information plots.
+
+## 2026-06-20 - Final Scientific Interpretation and Reproducibility Freeze
 
 ### Added
-- Bootstrapped the repository from `objective_clocks_codex_bundle_v1.zip`.
-- Added G0/G1 verification branch `implementation/g0-g1`.
-- Added immutable artifact helpers for canonical config hashing, SHA-256 file manifests, atomic JSON writes and write-once raw JSON writes.
-- Added G1 theorem regression tests for O1 chain characterization, scalar-time identifiability, capacity bounds, noisy redundancy and no-go counterexamples.
-- Added reproducible G1 artifact generator `scripts/run_g1.py`.
-- Generated G0/G1 manifests and outputs under `results/processed/`.
-- Generated capacity figure `figures/fig_03_capacity.pdf`.
-- Added architecture, data-flow, control-flow, dependency and connectivity diagrams.
-- Started the LaTeX experiment report journal in `reports/experiment_report.tex`.
+- Final claim-evidence matrix: 10 claims, 0 unsupported claims, 2 bounded
+  hardware-illustration claims.
+- Final decision artifact stating that the theory/no-go package is supported
+  independently of the IBM observation.
+- Reproducibility archive
+  `objective-clocks-reproducibility.tar.gz`, SHA-256
+  `1ad798aea881e7c189d01907d73b9b5eb60366df33af0cfe0e60ab2b56437dea`.
 
-### Changed
-- Cleaned lint and type-check baseline without changing scientific semantics.
-- Clarified that `scalar_time_identifiable` requires a total quotient poset and nonduplicate signatures.
+### Scientific Rationale
+- The accepted artifact route is a foundations artifact with a bounded quantum
+  illustration.
+- The IBM result may illustrate the four-qubit protocol, but it does not carry
+  the theorem-level contribution.
 
-### Security
-- Kept QPU execution disabled by default.
-- Kept raw artifacts write-once and outside normal overwrite paths.
-
-## [0.2.0-g2-batch1] - 2026-06-20
+## 2026-06-20 - IBM Quantum Hardware Observation
 
 ### Added
-- Added `objective_clocks.classical` for C0-C2 pure experiment primitives.
-- Added C201, C202 and C203 reproducible runners.
-- Added parquet output support through `pyarrow`.
-- Added C0 theorem verification parquet and runtime report.
-- Added C1 basis landscape NetCDF, summary and figure.
-- Added C2 order catalog parquet and GraphML Hasse diagrams.
-- Added G2 batch-1 review report.
-
-### Changed
-- Replaced path enumeration for maximal-chain counts with an exact DAG dynamic program.
-- Replaced NetworkX VF2 automorphism counting with exact color-class enumeration for small DAGs.
-- Vectorized dominance-matrix construction.
-
-### Security
-- QPU execution remains disabled; this batch performs classical/exact computation only.
-
-## [0.3.0-g2-complete] - 2026-06-20
-
-### Added
-- Added C204 noise sweep runner with parquet, summary and phase-diagram figure.
-- Added C205 assumption stress-test matrix.
-- Added C206 exact GHZ/dephased analysis with JSON and figure.
-- Added G2 batch-2 runner, complete G2 runner and manifests.
-- Added complete G2 review report.
-
-### Changed
-- Extended `objective_clocks.classical` with C3-C5 pure experiment functions.
-- Updated `reproduce_all.py` to run the complete G2 pipeline.
-
-### Security
-- QPU execution remains gated; G2 introduces no provider calls.
-
-## [0.4.0-g3-local-quantum] - 2026-06-20
-
-### Added
-- Added Q301 circuit manifest and QPY serialization for the science and readout-calibration circuits.
-- Added Qiskit bitstring parser and endianness tests.
-- Added Q302 generic Aer noise sweep with readiness metrics and figure.
-- Added Q303 deterministic backend/layout selection with provider-safe metadata collection.
-- Added Q304 backend-twin stop report for missing real backend snapshots.
-- Added complete G3 review report.
-
-### Changed
-- Extended `reproduce_all.py` to include G3.
-- Added Qiskit/Aer/Runtime mypy overrides.
-
-### Security
-- No provider job is submitted in G3.
-- IBM/Qiskit credential discovery reports only key presence, never secret values.
-
-## [0.5.0-a601-claims] - 2026-06-20
-
-### Added
-- Added reproducible A601 claim-evidence matrix generation.
-- Added machine checks that every planned claim has evidence artifacts, evidence checks and caveats.
-- Added A601 output manifest and summary artifacts.
-
-### Changed
-- Updated `reproduce_all.py` and `Makefile` to include A601.
-- Updated claims documentation from planned status to evidence-graded status.
-
-### Security
-- Hardware claims remain explicitly absent while Q304 is stopped before preregistration.
-
-## [0.6.0-g4-readiness-audit] - 2026-06-20
-
-### Added
-- Added secret-safe IBM/Qiskit `.env*` credential discovery that records key names and token-source metadata without secret values.
-- Added G4 readiness audit covering provider snapshot, backend twin, preregistration TBD fields, human approval, QPU gate state and repository cleanliness.
-- Added G4 readiness manifest and review report.
-
-### Changed
-- Extended Q303 backend discovery to use a non-empty IBM/Qiskit token found in process environment or `.env*` files for provider listing only.
-- Added `g4-readiness` to the Makefile and reproduction chain.
-
-### Security
-- Secret values are never written to artifacts.
-- QPU job submission remains unimplemented and gated by `ALLOW_QPU_EXECUTION=YES` plus frozen preregistration hash checks.
-
-## [0.6.1-post-push-readiness] - 2026-06-20
-
-### Changed
-- Refreshed the G4 readiness audit after the initial GitHub push.
-- Marked H404 repository cleanliness as passing while keeping provider snapshot, backend twin, preregistration fields and human approval as blockers.
-
-## [0.6.2-credential-discovery] - 2026-06-20
-
-### Changed
-- Broadened secret-safe IBM/Qiskit credential discovery to env-like files, shell config files and known Qiskit account-file names.
-- Tightened discovery to avoid treating Qiskit documentation examples as real token sources.
-
-## [0.6.3-open-instance-preflight] - 2026-06-20
-
-### Added
-- Added Open Plan runtime-account metadata checks for `open-instance`.
-- Added native IBM `cz` entangling-gate eligibility in Q303 backend ranking.
-- Added backend calibration timestamp/version capture in the Q303 snapshot.
-- Added Q304 selected-layout backend-derived aggregate local twin.
-- Added H401 preregistration draft generation and manifests.
-
-### Changed
-- Updated G4 readiness to pass Q303/Q304 only when provider metadata and the
-  local twin are available, while keeping H401/H402/human approval as blockers.
-- Updated A601 caveats to preserve zero Q-grade hardware claims after Q304 local
-  twin readiness passes.
-- Added H401 draft generation to Makefile and the reproduction chain.
-
-### Security
-- Saved the IBM API key only in the local Qiskit account store outside the repo.
-- Recorded no token values in repository artifacts; runtime CRN is represented
-  by a SHA-256 hash in generated metadata.
-- QPU job submission remains unimplemented and gated.
-
-## [0.7.0-g4-freeze-h501-path] - 2026-06-20
-
-### Added
-- Added deterministic H401 environment archive generation.
-- Added H402 ISA circuit packet generation with frozen execution order,
-  selected transpiler seed and QPY manifest.
-- Added H401 preregistration freeze generation from explicit human approval.
-- Added H403 no-submission dry-run report.
-- Added H501 SamplerV2 dry-run/execute entry point with frozen hash checks,
-  Open instance checks, clean-repo/tag checks and single-payload guard.
-- Added H502 locked raw hardware analysis and H503 secondary independent
-  readout-assignment correction.
-- Added provider-free tests for Sampler result extraction and hardware analysis
-  fixtures.
-
-### Changed
-- Updated G4 readiness status to `ready_for_h501` after freeze and dry-run pass.
-- Updated architecture and reproducibility docs for preregistered and raw
-  hardware flows.
-
-### Security
-- H501 refuses to run unless `ALLOW_QPU_EXECUTION=YES`, the preregistration
-  manifest is frozen, the circuit-manifest hash matches, no previous H501 raw
-  payload exists, the repository is clean and the frozen preregistration tag
-  points at `HEAD`.
-- H501 writes only secret-free receipt/result payloads under `results/raw/`
-  using write-once artifact guards.
-
-## [0.7.1-h501a1-kingston-amendment] - 2026-06-20
-
-### Added
-- Added `configs/backend_amendment.yaml` for the H501A1 pre-result backend
-  amendment.
-- Added Q305 backend-amendment diagnostics comparing `ibm_kingston`, `ibm_fez`
-  and `ibm_marrakesh` with the same backend-derived local twin gate.
-- Added raw cancellation provenance for the original queued `ibm_marrakesh`
-  H501 job.
-- Added H501 retrieval script for accepted Runtime jobs.
-- Added G5 hardware notes for queue, maintenance and layered-error context.
-
-### Changed
-- Regenerated Q303/Q304/H402/H401/H403/G4 artifacts for amended backend
-  `ibm_kingston`.
-- Updated the frozen preregistration manifest to require tag
-  `v0.4-qpu-preregistered-kingston`.
-- H501 preconditions now block only prior H501 provider payloads; pre-result
-  receipts and cancellations remain provenance, not hardware results.
-
-### Security
-- The cancelled job reports no running timestamp, no raw result download and
-  zero quantum seconds.
-- Backend amendment does not record secret values and still requires
-  `ALLOW_QPU_EXECUTION=YES` before amended H501 execution.
-
-## [0.8.0-g5-hardware-result] - 2026-06-20
-
-### Added
-- Added the completed amended H501 `ibm_kingston` provider payload for job
+- One completed amended IBM Quantum observation on `ibm_kingston`, job
   `d8rfasuab0ds73drkaig`.
-- Added H502 locked raw hardware analysis artifact
-  `results/processed/Q3_hardware_raw.json`.
-- Added H503 secondary readout-mitigated analysis artifact
-  `results/processed/Q3_hardware_mitigated.json`.
-- Added post-execution G5 result notes with job timing, usage, raw metrics and
-  mitigation agreement.
+- Locked raw H502 analysis and secondary H503 readout-assignment correction.
+- Hardware notes documenting queue context, backend amendment provenance, job
+  timing, usage, and raw/mitigated interpretation.
 
-### Changed
-- Updated A601 claim grading so Q1 and Q2 receive Q-grade evidence only when the
-  preregistered raw hardware inclusion check passes and H503 qualitatively agrees.
-- Updated documentation to distinguish the cancelled pre-result `ibm_marrakesh`
-  job from the completed amended `ibm_kingston` observation.
+### Evidence
+- 24 circuit instances, 24,576 observed shots, 9 quantum seconds.
+- Raw primary inclusion passed without mitigation.
+- Raw lower confidence bounds:
+  `delta_obj_lcb=0.8876953125`,
+  `min_z_correlation_lcb=0.9169542107266444`,
+  `delta_coh_lcb=0.877685546875`.
+- H503 qualitatively agreed with the raw H502 decision and did not replace it.
 
-### Security
-- Provider payload and derived artifacts record `secret_values_recorded=false`.
-- IBM credentials remain only in the local Qiskit account file outside the
-  repository.
+### Scientific Rationale
+- The original `ibm_marrakesh` job was cancelled while still queued and is
+  retained only as pre-result provenance.
+- The completed `ibm_kingston` run is interpreted as a bounded GHZ/dephased
+  workflow illustration.
 
-## [0.9.0-g6-final-interpretation] - 2026-06-20
+## 2026-06-20 - Preregistration and Quantum Readiness
 
 ### Added
-- Added A602 final scientific decision generation from the claim matrix and
-  H502/H503 hardware analyses.
-- Added A603 reproducibility packaging with a clean temporary worktree
-  `reproduce_all.py` run.
-- Added tests for the final decision tree and archive path exclusions.
+- Frozen preregistration packet for the one-shot QPU workflow.
+- ISA circuit packet, execution order, backend-derived local twin, dry-run
+  report, and backend-amendment diagnostics.
+- Local quantum noise-readiness sweep before hardware execution.
 
-### Changed
-- Extended the reproduction chain to regenerate A602 after A601.
-- Updated architecture diagrams to include the final-decision and archive flow.
+### Scientific Rationale
+- Hardware execution was downstream of theory, classical checks, local
+  simulation, preregistration, and explicit human approval.
+- The preregistered rule separated raw inclusion from secondary mitigation.
 
-### Security
-- The reproducibility archive excludes circular final-output files and records
-  `secret_values_recorded=false`.
+## 2026-06-20 - Classical Experiment Backbone
+
+### Added
+- C0 exhaustive/seeded theorem verification.
+- C1 basis ambiguity and two-record diagnostic.
+- C2 order catalog with thermometer, diamond, duplicate, disconnected,
+  orientation-free, and erasure fixtures.
+- C3 noise-recovery phase diagram.
+- C4 assumption stress tests.
+- C5 exact GHZ/dephased-control sanity table.
+
+### Scientific Rationale
+- The core contribution is not fixed-partition basis uniqueness itself.
+- The artifact tests what remains after basis objectivity: order, orientation,
+  record capacity, and no-go boundaries.
+- C5 exact values are table evidence; they are not used as a standalone
+  publication figure because a 0/1 exact sanity check is visually
+  low-information.
+
+## 2026-06-20 - Theory and Claim Boundary
+
+### Added
+- Formal proof notes for imported basis uniqueness, chain characterization,
+  scalar-time identifiability, capacity bounds, noisy redundancy, and no-go
+  examples.
+- Counterexample catalog for label permutation, orientation swap, unrestricted
+  partition, single-fragment Bell ambiguity, and diamond branching.
+
+### Scientific Rationale
+- Persistent physical trajectories are chains in the record-dominance poset.
+- Branching linear extensions are scheduler totalizations, not physical
+  histories.
+- Temporal orientation requires an anchor beyond redundant records alone.

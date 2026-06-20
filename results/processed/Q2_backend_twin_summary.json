@@ -1,14 +1,14 @@
 {
   "backend": "ibm_kingston",
   "backend_version": "1.0.0",
-  "calibration_timestamp": "2026-06-20T22:25:00+03:00",
+  "calibration_timestamp": "2026-06-21T01:15:10+03:00",
   "candidate_source": "provider",
   "experiment_id": "Q304",
   "model_class": "selected_layout_aggregate_depolarizing_proxy",
   "outputs": [
     {
       "path": "results/processed/Q2_backend_twin.parquet",
-      "sha256": "e44cdabed550ebcc27d69f32e8053bac7ff5985344c7ed409bd498f1e9e93b5f",
+      "sha256": "bb41ffeccb14cac596dd0417b231345e07a4394a9e20b0b6c2eb6fa91a11eb1c",
       "size_bytes": 20748
     }
   ],

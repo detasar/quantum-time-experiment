@@ -10,6 +10,7 @@ COMMANDS = [
     [sys.executable, "scripts/run_c201.py"],
     [sys.executable, "scripts/run_c202.py"],
     [sys.executable, "scripts/run_c203.py"],
+    [sys.executable, "scripts/run_c2_order_figure.py"],
 ]
 
 
@@ -27,6 +28,8 @@ def main() -> None:
         Path("figures/fig_02_basis_landscape.pdf"),
         processed / "C2_order_catalog.parquet",
         processed / "C2_order_catalog_summary.json",
+        processed / "C2_order_figure_manifest.json",
+        Path("figures/fig_01_order_chains.pdf"),
         *sorted((processed / "C2_graphs").glob("*.graphml")),
     ]
     write_sha256_manifest(processed / "G2_C201_C203_manifest.json", outputs)

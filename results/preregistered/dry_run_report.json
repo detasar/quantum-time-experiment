@@ -23,7 +23,7 @@
     }
   ],
   "environment": {
-    "git_commit": "bd8ee36d1fd58ced4e9200543ff36968af38a328",
+    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -41,18 +41,18 @@
   "inputs": [
     {
       "path": "results/preregistered/circuit_manifest.json",
-      "sha256": "43c387ed1c3fdc41fdf219e99e17112438e29924a13d3a11688ef6476ac3cb86",
-      "size_bytes": 16823
+      "sha256": "a85b10ffe83a40d7656875fe3f3227ac10af280661eb82c97dfc97973770f893",
+      "size_bytes": 16791
     },
     {
       "path": "results/preregistered/preregistration_manifest.json",
-      "sha256": "a1da4bea69bb245a86c150f164b5b69bfca952388bcf7a8d969da6056a6055c2",
-      "size_bytes": 3546
+      "sha256": "142b6471135fa5c91239c321e2a1d1eed657fa8974996f0de9138ef80d1a48bc",
+      "size_bytes": 3554
     },
     {
       "path": "results/processed/Q303_backend_candidates.json",
-      "sha256": "5e8d72d111c1e8ef1f4268b5963f6f52da925d66f91e9ac5ca35701a6ad88e26",
-      "size_bytes": 259065
+      "sha256": "4990c5b7e1e0294e556b8066414fa4f69b8acabf34187b3053879667c4bbf849",
+      "size_bytes": 259009
     }
   ],
   "qpu_submission_allowed_now": false,

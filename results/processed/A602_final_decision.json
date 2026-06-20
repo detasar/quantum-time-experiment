@@ -1,20 +1,8 @@
 {
-  "archive": {
-    "archive_path": "objective-clocks-reproducibility.tar.gz",
-    "archive_sha256": "1ad798aea881e7c189d01907d73b9b5eb60366df33af0cfe0e60ab2b56437dea",
-    "archived_file_count": 170,
-    "reproduction": {
-      "command": "/home/emre/quantum-time-experiment/.venv/bin/python scripts/reproduce_all.py",
-      "passed": true,
-      "return_code": 0
-    },
-    "secret_values_recorded": false,
-    "source_git_commit": "cd1fdfeb310ab86ba621e2d4f90277ee99829162",
-    "status": "complete",
-    "task": "A603"
-  },
+  "archive": null,
+  "artifact_route": "foundations_artifact_with_bounded_quantum_illustration",
   "environment": {
-    "git_commit": "cd1fdfeb310ab86ba621e2d4f90277ee99829162",
+    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -36,7 +24,7 @@
     "docs/CLAIMS_REGISTER.md",
     "docs/G5_HARDWARE_NOTES.md"
   ],
-  "hardware_interpretation": "main_text_quantum_illustration",
+  "hardware_interpretation": "bounded_quantum_illustration",
   "key_evidence": {
     "mitigation_agrees": true,
     "q_grade_claim_count": 2,
@@ -55,11 +43,10 @@
   "positive_interpretations": [
     "The basis-order-orientation separation is supported by proofs and exact checks.",
     "Record-capacity and no-go claims are supported independently of QPU data.",
-    "The IBM result supports including the four-qubit GHZ illustration in the main text."
+    "The IBM result supports retaining the four-qubit GHZ illustration in this artifact."
   ],
-  "preregistered_decision_rule": "Objectivity plus coherence pass includes the quantum illustration; hardware null cannot kill a valid theory result.",
+  "preregistered_decision_rule": "Objectivity plus coherence pass includes the bounded quantum illustration; hardware null cannot kill a valid theory result.",
   "secret_values_recorded": false,
-  "selected_path": "full_foundations_paper",
   "status": "final_interpretation_frozen",
   "task": "A602",
   "theory_decision": "supported"

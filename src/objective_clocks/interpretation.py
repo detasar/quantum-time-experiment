@@ -54,7 +54,7 @@ def _hardware_interpretation(raw: dict[str, Any], mitigated: dict[str, Any]) -> 
         is True
     )
     if raw_pass and mitigation_agrees:
-        return "main_text_quantum_illustration"
+        return "bounded_quantum_illustration"
     if objectivity_pass and not coherence_pass:
         return "classical_record_illustration_only"
     if raw_pass and not mitigation_agrees:
@@ -62,12 +62,12 @@ def _hardware_interpretation(raw: dict[str, Any], mitigated: dict[str, Any]) -> 
     return "hardware_null_theory_independent"
 
 
-def _paper_path(*, theory_supported: bool, hardware_interpretation: str) -> str:
-    if theory_supported and hardware_interpretation == "main_text_quantum_illustration":
-        return "full_foundations_paper"
+def _artifact_route(*, theory_supported: bool, hardware_interpretation: str) -> str:
+    if theory_supported and hardware_interpretation == "bounded_quantum_illustration":
+        return "foundations_artifact_with_bounded_quantum_illustration"
     if theory_supported:
-        return "short_theory_no_go_note"
-    return "abandon_or_pivot"
+        return "theory_no_go_artifact_without_hardware_support"
+    return "revise_or_pivot"
 
 
 def build_final_decision(
@@ -86,7 +86,7 @@ def build_final_decision(
         row["evidence_status"] != "unsupported" for row in theory_claims
     )
     hardware_status = _hardware_interpretation(raw, mitigated)
-    selected_path = _paper_path(
+    artifact_route = _artifact_route(
         theory_supported=theory_supported,
         hardware_interpretation=hardware_status,
     )
@@ -95,17 +95,17 @@ def build_final_decision(
     payload: dict[str, Any] = {
         "task": "A602",
         "status": "final_interpretation_frozen",
-        "selected_path": selected_path,
+        "artifact_route": artifact_route,
         "theory_decision": "supported" if theory_supported else "modified_or_falsified",
         "hardware_interpretation": hardware_status,
         "preregistered_decision_rule": (
-            "Objectivity plus coherence pass includes the quantum illustration; "
+            "Objectivity plus coherence pass includes the bounded quantum illustration; "
             "hardware null cannot kill a valid theory result."
         ),
         "positive_interpretations": [
             "The basis-order-orientation separation is supported by proofs and exact checks.",
             "Record-capacity and no-go claims are supported independently of QPU data.",
-            "The IBM result supports including the four-qubit GHZ illustration in the main text.",
+            "The IBM result supports retaining the four-qubit GHZ illustration in this artifact.",
         ],
         "negative_interpretations": [
             "Do not claim fixed-partition basis uniqueness as the main novelty.",
@@ -164,12 +164,12 @@ Status: `FROZEN`
 
 ## Decision
 
-- Selected path: `{payload["selected_path"]}`
+- Artifact route: `{payload["artifact_route"]}`
 - Theory decision: `{payload["theory_decision"]}`
 - Hardware interpretation: `{payload["hardware_interpretation"]}`
 
 The decision follows the preregistered rule: objectivity plus coherence pass
-allows the IBM run to appear as a main-text quantum illustration, while a
+allows the IBM run to remain as a bounded quantum illustration, while a
 hardware null result cannot invalidate the independently supported theory
 package.
 
@@ -196,9 +196,10 @@ package.
 {archive_section}
 ## Scope Boundary
 
-The paper should be written as a theory/no-go contribution with a bounded IBM
-illustration. It should not present basis uniqueness as new, and it should not
-let the quantum hardware result carry the theorem-level contribution.
+The artifact should be presented as a theory/no-go and reproducibility package
+with a bounded IBM illustration. It should not present basis uniqueness as new,
+and it should not let the quantum hardware result carry the theorem-level
+contribution.
 """
 
 
@@ -207,18 +208,18 @@ def validate_final_decision(payload: dict[str, Any]) -> None:
         raise ValueError("Final decision must be frozen")
     if payload["theory_decision"] != "supported":
         raise ValueError("Theory package is not supported")
-    if payload["selected_path"] not in {
-        "full_foundations_paper",
-        "short_theory_no_go_note",
-        "abandon_or_pivot",
+    if payload["artifact_route"] not in {
+        "foundations_artifact_with_bounded_quantum_illustration",
+        "theory_no_go_artifact_without_hardware_support",
+        "revise_or_pivot",
     }:
-        raise ValueError(f"Unexpected selected path: {payload['selected_path']}")
+        raise ValueError(f"Unexpected artifact route: {payload['artifact_route']}")
     evidence = cast(dict[str, Any], payload["key_evidence"])
     if int(evidence["unsupported_claim_count"]) != 0:
         raise ValueError("Unsupported claims remain")
-    if payload["hardware_interpretation"] == "main_text_quantum_illustration":
+    if payload["hardware_interpretation"] == "bounded_quantum_illustration":
         if evidence["raw_primary_pass"] is not True or evidence["mitigation_agrees"] is not True:
-            raise ValueError("Main-text quantum illustration requires raw pass and H503 agreement")
+            raise ValueError("Bounded quantum illustration requires raw pass and H503 agreement")
 
 
 def compact_archive_manifest(manifest: dict[str, Any]) -> dict[str, Any]:

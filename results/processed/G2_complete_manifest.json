@@ -1,21 +1,21 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T19:05:48.685139+00:00",
+  "created_utc": "2026-06-20T23:24:56.103160+00:00",
   "files": [
     {
+      "path": "figures/fig_01_order_chains.pdf",
+      "sha256": "efb8ca34b4244922c4d1c385f84442623809f45d61177e3bbd18d8b33155f438",
+      "size_bytes": 20950
+    },
+    {
       "path": "figures/fig_02_basis_landscape.pdf",
-      "sha256": "d1c4b048a69f63e8ed684e616325aa6ae749cf62e446af831cc4b6cdeb6a8e98",
-      "size_bytes": 18641
+      "sha256": "0e98d9d6df97981399aa22ac171db4c640d157d196c9d16217124fd73846e98c",
+      "size_bytes": 23149
     },
     {
       "path": "figures/fig_04_noise_phase.pdf",
-      "sha256": "af2d8c24cff343b69fd17cd6dd4850d35c40a004037649effce470ae52c846e8",
-      "size_bytes": 19620
-    },
-    {
-      "path": "figures/fig_05_ghz_exact.pdf",
-      "sha256": "634ca3d9d68853fbf5463daf156c897e0e5952c4fbda24b62438ccfe5ad4219c",
-      "size_bytes": 13520
+      "sha256": "4956ef713489700299f6341f9f2acdb882fa5069d825ed583cc43e29f17aa867",
+      "size_bytes": 20608
     },
     {
       "path": "results/processed/C0_theorem_verification.parquet",
@@ -33,19 +33,24 @@
       "size_bytes": 9535
     },
     {
+      "path": "results/processed/C2_order_figure_manifest.json",
+      "sha256": "2f91f77b55d8102cef5a9ab078fdaf68762fcddd351a87f33721d6389a7fbbfd",
+      "size_bytes": 238
+    },
+    {
       "path": "results/processed/C3_noise_phase_diagram.parquet",
       "sha256": "8b682f1356d9afed88d785bdc0b2f75ae3579b55693c0f89873944719b41d1ee",
       "size_bytes": 13903
     },
     {
       "path": "results/processed/C4_assumption_failures.json",
-      "sha256": "6a8ed3cf00f3a4bd9743f8c692dd16309e32026623f23bef523d9e1c16c05f1c",
+      "sha256": "41d85072c60a4aac9186425f037ef6c6866de223a6718ce5a2cafc13d17d9975",
       "size_bytes": 2331
     },
     {
       "path": "results/processed/C5_ghz_exact.json",
-      "sha256": "ce903f3e6025d12886f6050599f246a3086abedf8ca1f6e28978903d8470e1ae",
-      "size_bytes": 1299
+      "sha256": "81b289bc30832ffae99834f9474659843fd52fa77de80dbea93539b509cc0aa0",
+      "size_bytes": 1306
     }
   ]
 }

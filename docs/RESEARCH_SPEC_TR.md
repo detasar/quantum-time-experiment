@@ -558,7 +558,7 @@ tek fragment ile herhangi bir conjugate basis’te perfect correlation taşır. 
 
 ## Genel ilke
 
-Klasik deneyler paper’ın bilimsel omurgasıdır. QPU sonucu olmadan çalışmalıdırlar.
+Klasik deneyler artifact’ın bilimsel omurgasıdır. QPU sonucu olmadan çalışmalıdırlar.
 
 ## C0 — Theorem property verification
 
@@ -1033,7 +1033,7 @@ Main-text quantum figure için bütün koşullar:
 5. no single block, total effect’in %50’den fazlasını taşımıyor
 6. raw ve mitigated sonuçlar qualitatively aynı conclusion’a sahip.
 
-Koşul 1–2 geçer, 3 geçmezse sonuç yalnız classical record objectivity illustration olarak supplement’e gider. Hiçbiri geçmezse hardware sonucu null olarak raporlanır veya paper’dan çıkarılır; teori etkilenmez.
+Koşul 1–2 geçer, 3 geçmezse sonuç yalnız classical record objectivity illustration olarak ek materyalde kalır. Hiçbiri geçmezse hardware sonucu null olarak raporlanır veya artifact anlatısından çıkarılır; teori etkilenmez.
 
 ---
 
@@ -1081,7 +1081,7 @@ Downloaded provider payload SHA-256 ile hash’lenir ve `results/raw/` altında 
 
 - Basis-vs-order theorem’leri doğrulanır.
 - GHZ objectivity ve coherence contrasts geçer.
-- Paper ana metinde küçük quantum illustration içerir.
+- Artifact küçük ve sınırlı quantum illustration içerir.
 
 Yorum:
 
@@ -1089,8 +1089,8 @@ Yorum:
 
 ## Outcome B — Theory positive, coherence hardware null
 
-- Main paper theory/classical olur.
-- IBM result supplement veya null report.
+- Ana artifact theory/classical omurgayla kalır.
+- IBM result ek materyal veya null report olur.
 - Quantum-specific iddia yapılmaz.
 
 ## Outcome C — Basis selection classical mixture’da aynı
@@ -1104,21 +1104,21 @@ Bu negatif değil, ana sınır sonucudur.
 ## Outcome D — Order cannot be uniquely recovered
 
 - Eğer induced poset non-total ise scalar time reddedilir.
-- Partial order result paper’ın doğruluğunu güçlendirir.
+- Partial order result artifact’ın doğruluğunu güçlendirir.
 
 ## Outcome E — Robust bound loose but exact theorem survives
 
-- T3/robust section paper’dan çıkarılabilir.
+- T3/robust section artifact’tan çıkarılabilir.
 - Exact/order-capacity results korunur.
 
 ## Outcome F — Basis theorem tamamen Fu corollary’sine çöker
 
 - Basis theorem “background proposition” yapılır.
-- Paper ancak O1–O4 + no-go + experiment package yeterince ayrı bir contribution oluşturuyorsa devam eder.
+- Artifact ancak O1–O4 + no-go + experiment package yeterince ayrı bir contribution oluşturuyorsa devam eder.
 
 ## Outcome G — Order theorem too elementary and no stronger result emerges
 
-Go/no-go committee paper’ı durdurur. Quantum experiment tek başına publication gerekçesi değildir.
+Go/no-go committee artifact’ı durdurur. Quantum experiment tek başına publication gerekçesi değildir.
 
 ---
 
@@ -1237,9 +1237,9 @@ Only if hardware inclusion thresholds pass.
 
 ---
 
-# 12. Paper go/no-go after experiments
+# 12. Artifact go/no-go after experiments
 
-## Full paper GO
+## Full artifact GO
 
 Aşağıdakilerin tamamı:
 
@@ -1248,7 +1248,7 @@ Aşağıdakilerin tamamı:
 3. fixed-partition basis/objectivity computation;
 4. partition/orientation no-go;
 5. GHZ ideal/noisy illustration;
-6. delete-the-quantum-section test: paper hâlâ meaningful.
+6. delete-the-quantum-section test: artifact hâlâ meaningful.
 
 ## Short theory note GO
 

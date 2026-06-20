@@ -67,28 +67,64 @@ def _write_netcdf(
 def _write_figure(path: Path, landscape: dict[str, np.ndarray]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     theta = landscape["theta"]
-    phi = landscape["phi"]
-    fig, axes = plt.subplots(1, 2, figsize=(9.0, 3.6), sharex=True, sharey=True)
-    for ax, key, title in (
-        (axes[0], "bell_one_record", "Bell one-record ambiguity"),
-        (axes[1], "ghz_two_records", "GHZ two-record objectivity"),
-    ):
-        image = ax.imshow(
-            landscape[key],
-            origin="lower",
-            aspect="auto",
-            extent=[float(phi[0]), float(phi[-1]), float(theta[0]), float(theta[-1])],
-            vmin=0.0,
-            vmax=1.0,
-            cmap="viridis",
-        )
+    z_index = 0
+    x_index = int(np.argmin(np.abs(theta - np.pi / 2.0)))
+    bell_z = float(landscape["bell_one_record"][z_index, 0])
+    bell_x = float(landscape["bell_one_record"][x_index, 0])
+    ghz_z = float(landscape["ghz_two_records"][z_index, 0])
+    ghz_x = float(landscape["ghz_two_records"][x_index, 0])
+
+    fig, axes = plt.subplots(1, 2, figsize=(9.8, 3.8), sharex=True)
+    panels = [
+        (
+            axes[0],
+            [bell_z, bell_x],
+            "Single-record Bell control",
+            "both bases score high -> ambiguous",
+            "#c44569",
+        ),
+        (
+            axes[1],
+            [ghz_z, ghz_x],
+            "Two-record GHZ diagnostic",
+            "Z high and X low -> Z record selected",
+            "#2a9d8f",
+        ),
+    ]
+    for ax, values, title, note, color in panels:
+        y = np.arange(2)
+        ax.barh(y, values, color=[color, "#7a8fa3"], height=0.50)
+        ax.set_yticks(y, ["Z basis", "X basis"])
+        ax.set_xlim(0.0, 1.05)
+        ax.set_xlabel("record-basis score")
         ax.set_title(title)
-        ax.set_xlabel("phi")
-        ax.set_ylabel("theta")
-    fig.colorbar(image, ax=axes.ravel().tolist(), label="O_min")
+        ax.grid(axis="x", alpha=0.25)
+        for index, value in enumerate(values):
+            ax.text(
+                min(value + 0.03, 1.0),
+                index,
+                f"{value:.1f}",
+                ha="left" if value < 0.93 else "right",
+                va="center",
+                color="#102a43" if value < 0.93 else "white",
+                fontweight="bold",
+            )
+        ax.text(
+            0.5,
+            -0.62,
+            note,
+            ha="center",
+            va="center",
+            color="#52616f",
+            fontsize=9,
+        )
+        ax.invert_yaxis()
+    fig.suptitle("C1 basis diagnostic: redundancy helps remove basis ambiguity", fontweight="bold")
+    fig.subplots_adjust(left=0.11, right=0.98, top=0.78, bottom=0.23, wspace=0.24)
     fig.savefig(
         path,
         bbox_inches="tight",
+        pad_inches=0.08,
         metadata={"CreationDate": None, "ModDate": None},
     )
     plt.close(fig)

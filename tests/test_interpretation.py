@@ -13,9 +13,12 @@ def test_a602_final_decision_applies_preregistered_tree() -> None:
     decision = build_final_decision(Path("."))
     validate_final_decision(decision.payload)
 
-    assert decision.payload["selected_path"] == "full_foundations_paper"
+    assert (
+        decision.payload["artifact_route"]
+        == "foundations_artifact_with_bounded_quantum_illustration"
+    )
     assert decision.payload["theory_decision"] == "supported"
-    assert decision.payload["hardware_interpretation"] == "main_text_quantum_illustration"
+    assert decision.payload["hardware_interpretation"] == "bounded_quantum_illustration"
     assert "hardware null cannot kill" in decision.payload["preregistered_decision_rule"]
     assert "Do not claim that the IBM hardware observation proves" in decision.markdown
 

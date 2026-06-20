@@ -24,7 +24,6 @@ def main() -> None:
         Path("figures/fig_04_noise_phase.pdf"),
         processed / "C4_assumption_failures.json",
         processed / "C5_ghz_exact.json",
-        Path("figures/fig_05_ghz_exact.pdf"),
     ]
     write_sha256_manifest(processed / "G2_C204_C206_manifest.json", outputs)
 

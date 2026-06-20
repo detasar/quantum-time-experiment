@@ -54,9 +54,9 @@
 
   <g transform="translate(76 254)">
     <rect class="panel" width="340" height="132" rx="18"/>
-    <text class="muted tiny" x="24" y="39">Final decision</text>
-    <text class="text medium" x="24" y="76">Full foundations</text>
-    <text class="text medium" x="24" y="108">paper</text>
+    <text class="muted tiny" x="24" y="39">Artifact route</text>
+    <text class="text medium" x="24" y="76">Foundations</text>
+    <text class="text medium" x="24" y="108">artifact</text>
     <text class="muted tiny" x="24" y="126">Theory supported; QPU illustration.</text>
   </g>
 
