@@ -7,7 +7,7 @@ from pathlib import Path
 from objective_clocks.artifacts import write_raw_json_once
 from objective_clocks.hardware import H501Inputs, build_h501_payload, h501_raw_paths
 
-H501_APPROVAL_SOURCE = "Codex user message: quantum deneylerini yapalim"
+H501_APPROVAL_SOURCE = "explicit human approval recorded during the execution session"
 
 
 def _parser() -> argparse.ArgumentParser:

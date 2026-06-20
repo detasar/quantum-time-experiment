@@ -64,7 +64,7 @@ def ghz_exact() -> None:
 
 @app.command("ibm-submit")
 def ibm_submit() -> None:
-    typer.echo("Hardware submission remains intentionally gated; see AGENTS.md", err=True)
+    typer.echo("Hardware submission remains intentionally gated; see README.md", err=True)
     raise typer.Exit(1)
 
 

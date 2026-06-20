@@ -262,6 +262,6 @@ Status may become `FROZEN` only after all G4 tasks pass.
         "open_instance_confirmed": open_instance_confirmed,
         "backend_twin_status": q304.get("status"),
         "g4_status": g4.get("overall_status"),
-        "output": "docs/PREREGISTRATION_DRAFT.md",
+        "output": "results/processed/H401_preregistration_draft.md",
     }
     return PreregistrationDraft(markdown=markdown, summary=summary)

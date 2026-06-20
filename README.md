@@ -1,8 +1,14 @@
-# Objective Clock Bases from Redundant Records
+# Research Artifact and Reproducibility Package: Objective Clock Bases from Redundant Records
 
 ![Objective Clock Bases research status overview](assets/readme/overview.svg)
 
-A theorem-first research repository for the question:
+**Author:** Davut Emre Taşar
+
+This repository is a self-contained research artifact and reproducibility
+package. It is formatted as a public-facing artifact, not as an internal
+execution log or manuscript submission.
+
+The artifact studies the question:
 
 > When redundant records make a clock basis objective, what extra structure is
 > still required to recover event order and temporal orientation?
@@ -16,6 +22,8 @@ orientation needs an anchor beyond redundancy alone.
 
 | Field | Value |
 | --- | --- |
+| Artifact title | Research Artifact and Reproducibility Package: Objective Clock Bases from Redundant Records |
+| Author | Davut Emre Taşar |
 | Scientific freeze | `v0.9.0-g6-final-interpretation` |
 | Final path | full foundations paper |
 | Hardware status | one bounded IBM QPU illustration completed on `ibm_kingston` |
@@ -25,13 +33,18 @@ This README is a navigation and presentation layer for the frozen scientific
 package. The reproducibility archive records the exact G6 package and source
 commit used for the final decision.
 
+The public source tree has been cleaned after the G6 freeze to remove internal
+execution-planning notes. The archive remains the immutable scientific freeze
+and can contain historical planning files that are intentionally no longer part
+of the public-facing repository surface.
+
 ## Result At A Glance
 
 | Question | Answer | Primary evidence |
 | --- | --- | --- |
 | Which basis is objectively recorded? | Fixed-partition redundant records identify a record basis, but this is not claimed as the new contribution. | [B0 proof note](docs/proofs/B0_imported_basis_uniqueness.md), [C1 landscape](results/processed/C1_basis_landscape_summary.json) |
 | Do records define a scalar time? | Only when the relevant snapshots form a single chain. | [O1 chain proof](docs/proofs/O1_chain_characterization.md), [T101 checks](results/processed/T101_chain_verification.json) |
-| What is the main contribution? | The basis-order-orientation separation, record-capacity results, and partition/orientation no-go package. | [Research spec](docs/RESEARCH_SPEC_TR.md), [proofs](docs/proofs), [counterexamples](results/processed/counterexample_catalog.json) |
+| What is the main contribution? | The basis-order-orientation separation, record-capacity results, and partition/orientation no-go package. | [research notes](docs/RESEARCH_SPEC_TR.md), [proofs](docs/proofs), [counterexamples](results/processed/counterexample_catalog.json) |
 | Did the QPU run finish? | Yes. `ibm_kingston`, job `d8rfasuab0ds73drkaig`, status `DONE`, 24 circuit instances, 24,576 shots, 9 quantum seconds. | [provider payload](results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json), [hardware notes](docs/G5_HARDWARE_NOTES.md) |
 | What did the QPU result support? | It passed the locked raw inclusion rule and is included only as a four-qubit illustration. | [raw analysis](results/processed/Q3_hardware_raw.json), [final decision](docs/FINAL_DECISION.md) |
 | Are unsupported claims left? | No. A601 records 10 claims, 0 unsupported, 2 Q-grade hardware illustration claims. | [claim matrix](results/claim_evidence_matrix.csv), [claims register](docs/CLAIMS_REGISTER.md) |
@@ -40,7 +53,7 @@ commit used for the final decision.
 
 | Area | Contents |
 | --- | --- |
-| Theory and proofs | [docs/RESEARCH_SPEC_TR.md](docs/RESEARCH_SPEC_TR.md), [docs/proofs](docs/proofs), [docs/adr/000-semantic-freeze.md](docs/adr/000-semantic-freeze.md) |
+| Theory and proofs | [docs/RESEARCH_SPEC_TR.md](docs/RESEARCH_SPEC_TR.md), [docs/proofs](docs/proofs) |
 | Implementation | [src/objective_clocks](src/objective_clocks), [scripts](scripts), [configs](configs), [tests](tests) |
 | Raw hardware records | [results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json](results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json), submission receipts, and the cancelled pre-result Marrakesh receipt |
 | Processed results | [results/processed](results/processed), including G0-G6 manifests, theorem outputs, classical experiments, quantum local checks, raw QPU analysis, mitigated secondary analysis, and final decision data |
@@ -58,12 +71,12 @@ artifacts, manifests, reports, SHA-256 records, and the final archive.
 | Need | File |
 | --- | --- |
 | Fast scientific conclusion | [docs/FINAL_DECISION.md](docs/FINAL_DECISION.md) |
-| Full task protocol | [TASKS.yaml](TASKS.yaml) |
-| Implementation contract | [docs/CODEX_IMPLEMENTATION.md](docs/CODEX_IMPLEMENTATION.md) |
+| Detailed research notes | [docs/RESEARCH_SPEC_TR.md](docs/RESEARCH_SPEC_TR.md) |
 | Architecture and dependency diagrams | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | Frozen preregistration | [docs/PREREGISTRATION_FROZEN.md](docs/PREREGISTRATION_FROZEN.md) |
 | Hardware execution notes | [docs/G5_HARDWARE_NOTES.md](docs/G5_HARDWARE_NOTES.md) |
 | Claim grades | [docs/CLAIMS_REGISTER.md](docs/CLAIMS_REGISTER.md) and [results/claim_evidence_matrix.csv](results/claim_evidence_matrix.csv) |
+| Citation metadata | [CITATION.cff](CITATION.cff) |
 | Changelog | [CHANGELOG.md](CHANGELOG.md) |
 
 ## Data Flow
@@ -253,7 +266,7 @@ Negative claims:
 |-- scripts/                 # reproducible task runners
 |-- src/objective_clocks/    # typed Python package
 |-- tests/                   # theorem, property, regression, and gate tests
-|-- TASKS.yaml               # Definition of Ready / Definition of Done per task
+|-- CITATION.cff             # citation metadata for the artifact
 `-- objective-clocks-reproducibility.tar.gz
 ```
 
@@ -267,11 +280,12 @@ workflow, not the foundation of the theory.
 
 ## Use, Citation, And License
 
-Until a preprint is released, cite the repository by tag
+Until a preprint is released, cite the repository as a research artifact using
+[CITATION.cff](CITATION.cff), the tag
 `v0.9.0-g6-final-interpretation` and archive SHA-256
 `1ad798aea881e7c189d01907d73b9b5eb60366df33af0cfe0e60ab2b56437dea`.
 
 No standalone license file is currently committed. Treat this as a research
 artifact rather than an open-source release until a license is added.
 
-Maintainer: Davut Emre Tasar.
+Author and maintainer: Davut Emre Taşar.

@@ -13,7 +13,7 @@ from objective_clocks.artifacts import (
     write_json_atomic,
 )
 
-APPROVAL_SOURCE = "Codex user message: onay veriyorum plana gore gidelim"
+APPROVAL_SOURCE = "explicit human approval recorded during the execution session"
 
 
 def _backend_amendment() -> dict[str, object] | None:
@@ -44,7 +44,7 @@ def _freeze_markdown(draft: str, *, approval_timestamp: str) -> str:
 
 
 def main() -> None:
-    draft_path = Path("docs/PREREGISTRATION_DRAFT.md")
+    draft_path = Path("results/processed/H401_preregistration_draft.md")
     circuit_manifest_path = Path("results/preregistered/circuit_manifest.json")
     qpy_path = Path("results/preregistered/circuits.qpy")
     archive_manifest_path = Path("results/preregistered/environment_archive_manifest.json")

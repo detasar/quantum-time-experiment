@@ -243,17 +243,17 @@ def main() -> None:
         *Path("scripts").rglob("*.py"),
         *Path("docs").rglob("*.md"),
         *Path("reports").rglob("*.tex"),
+        Path("CITATION.cff"),
         Path(".gitignore"),
         Path(".pre-commit-config.yaml"),
         Path("pyproject.toml"),
         Path("requirements.lock"),
         Path("README.md"),
         Path("CHANGELOG.md"),
-        Path("TASKS.yaml"),
     ]
     write_json_atomic(
         processed / "G0_file_manifest.json",
-        {"algorithm": "sha256", "files": file_manifest(files)},
+        {"algorithm": "sha256", "files": file_manifest([path for path in files if path.exists()])},
     )
     write_sha256_manifest(
         processed / "G1_output_manifest.json",

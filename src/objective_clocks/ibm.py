@@ -34,7 +34,7 @@ def assert_qpu_gate(preregistration_manifest: Path, circuit_manifest: Path) -> d
 def submit_sampler_job(*_: Any, **__: Any) -> None:
     """Deliberately unimplemented until preregistration is frozen.
 
-    Codex must implement this only after all qpu_gate tests and the scientific review pass.
+    Hardware submission must remain gated until all qpu_gate tests and the scientific review pass.
     """
     raise NotImplementedError("Hardware submission is intentionally gated")
 

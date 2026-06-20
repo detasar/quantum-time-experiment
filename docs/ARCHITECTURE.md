@@ -82,7 +82,7 @@ flowchart TD
     H401ArchiveRunner --> H401ArchiveManifest["environment_archive_manifest.json"]
     H402Runner["scripts/run_h402_isa.py"] --> H402QPY["results/preregistered/circuits.qpy"]
     H402Runner --> H402Manifest["results/preregistered/circuit_manifest.json"]
-    H401Runner["scripts/run_h401_draft.py"] --> H401Draft["docs/PREREGISTRATION_DRAFT.md"]
+    H401Runner["scripts/run_h401_draft.py"] --> H401Draft["generated H401 draft packet"]
     H401Runner --> H401Summary["H401_preregistration_draft_summary.json"]
     H401FreezeRunner["scripts/run_h401_freeze.py"] --> H401Frozen["docs/PREREGISTRATION_FROZEN.md"]
     H401FreezeRunner --> H401FrozenManifest["preregistration_manifest.json"]
@@ -141,7 +141,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    Start["Start G0/G1"] --> ReadSpec["Read AGENTS, spec, implementation contract, tasks, ADR"]
+    Start["Start G0/G1"] --> ReadSpec["Read research notes and public artifact docs"]
     ReadSpec --> R001["R001: install and verify environment"]
     R001 --> R002["R002: manifests and write-once artifacts"]
     R002 --> R003["R003: semantic freeze"]
@@ -283,7 +283,7 @@ flowchart TD
     G4Readiness --> G4Out["G4 readiness audit + manifest"]
     ArchiveWriter["write_environment_archive()"] --> H401ArchiveOut["environment archive + manifest"]
     H402Packet["write_h402_isa_packet()"] --> H402Out["ISA QPY + circuit manifest"]
-    PreregDraft["build_h401_preregistration_draft(root)"] --> H401Out["PREREGISTRATION_DRAFT.md + summary"]
+    PreregDraft["build_h401_preregistration_draft(root)"] --> H401Out["generated draft markdown + summary"]
     Q303Out --> PreregDraft
     Q304Out --> PreregDraft
     H401ArchiveOut --> PreregDraft

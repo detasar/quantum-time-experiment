@@ -14,7 +14,7 @@ from objective_clocks.hardware import (
     write_h501_receipt,
 )
 
-H501_APPROVAL_SOURCE = "Codex user message: quantum deneylerini yapalim"
+H501_APPROVAL_SOURCE = "explicit human approval recorded during the execution session"
 
 
 def _parser() -> argparse.ArgumentParser:

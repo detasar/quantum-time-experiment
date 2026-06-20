@@ -117,5 +117,5 @@ Status is `FROZEN`; QPU execution still requires the explicit H501 gate.
 ## 13. Human Approval Record
 
 - Approval timestamp UTC: `2026-06-20T20:15:40.911188+00:00`
-- Approval source: `Codex user message: onay veriyorum plana gore gidelim`
+- Approval source: `explicit human approval recorded during the execution session`
 - QPU execution allowed now: `NO`

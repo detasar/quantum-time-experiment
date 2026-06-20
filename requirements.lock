@@ -30,8 +30,6 @@ mypy_extensions==1.1.0
 networkx==3.6.1
 nodeenv==1.10.0
 numpy==2.4.6
-# Editable Git install with no remote (objective-clocks==0.1.0)
--e /home/emre/quantum-time-experiment
 orjson==3.11.9
 packaging==26.2
 pandas==3.0.3

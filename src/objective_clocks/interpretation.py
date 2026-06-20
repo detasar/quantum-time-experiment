@@ -257,8 +257,38 @@ def _git_status_clean(root: Path) -> bool:
 
 
 def _tracked_files(root: Path) -> list[Path]:
-    output = subprocess.check_output(["git", "ls-files", "-z"], cwd=root)
-    return [Path(item.decode("utf-8")) for item in output.split(b"\0") if item]
+    try:
+        output = subprocess.check_output(
+            ["git", "ls-files", "-z"],
+            cwd=root,
+            stderr=subprocess.DEVNULL,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return _source_archive_files(root)
+    tracked = [Path(item.decode("utf-8")) for item in output.split(b"\0") if item]
+    return tracked if tracked else _source_archive_files(root)
+
+
+def _source_archive_files(root: Path) -> list[Path]:
+    excluded_parts = {
+        ".git",
+        ".mypy_cache",
+        ".pytest_cache",
+        ".ruff_cache",
+        ".venv",
+        "__pycache__",
+    }
+    paths: list[Path] = []
+    for path in root.rglob("*"):
+        if not path.is_file():
+            continue
+        relative = path.relative_to(root)
+        if any(part in excluded_parts for part in relative.parts):
+            continue
+        if path.suffix == ".pyc":
+            continue
+        paths.append(relative)
+    return sorted(paths, key=lambda item: item.as_posix())
 
 
 def reproducibility_archive_paths(root: Path = Path(".")) -> list[Path]:

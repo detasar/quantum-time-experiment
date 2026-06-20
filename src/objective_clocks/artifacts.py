@@ -166,8 +166,8 @@ def repository_archive_paths(root: Path = Path(".")) -> list[Path]:
         "results/preregistered/",
     )
     excluded_paths = {
-        "docs/PREREGISTRATION_DRAFT.md",
         "docs/PREREGISTRATION_FROZEN.md",
+        "results/processed/H401_preregistration_draft.md",
         "results/processed/G4_readiness_audit.json",
         "results/processed/G4_readiness_manifest.json",
         "results/processed/H401_preregistration_draft_manifest.json",
@@ -234,8 +234,8 @@ def write_environment_archive(
             "results/preregistered/",
         ],
         "excluded_paths": [
-            "docs/PREREGISTRATION_DRAFT.md",
             "docs/PREREGISTRATION_FROZEN.md",
+            "results/processed/H401_preregistration_draft.md",
             "results/processed/G4_readiness_audit.json",
             "results/processed/G4_readiness_manifest.json",
             "results/processed/H401_preregistration_draft_manifest.json",

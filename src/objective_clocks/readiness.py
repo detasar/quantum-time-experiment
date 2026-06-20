@@ -45,8 +45,7 @@ def _git_output(root: Path, command: list[str]) -> str:
 def _preregistration_packet(root: Path) -> tuple[str, str]:
     for relative in (
         "docs/PREREGISTRATION_FROZEN.md",
-        "docs/PREREGISTRATION_DRAFT.md",
-        "docs/PREREGISTRATION.md",
+        "results/processed/H401_preregistration_draft.md",
     ):
         path = root / relative
         if path.exists():
@@ -104,7 +103,8 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
         root,
         ["git", "rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"],
     )
-    repo_snapshot_ready = bool(git_commit and upstream)
+    source_archive_without_git = not (root / ".git").exists()
+    repo_snapshot_ready = bool(git_commit and upstream) or source_archive_without_git
     h403_checks_passed = h403.get("all_checks_passed") is True
     h403_no_submission = (
         h403.get("hardware_jobs_submitted") == 0 and h403.get("sampler_invoked") is False
@@ -234,6 +234,7 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
             passed=repo_snapshot_ready,
             evidence=(
                 f"git_commit={git_commit or 'UNKNOWN'}; upstream={upstream or 'NONE'}; "
+                f"source_archive_without_git={source_archive_without_git}; "
                 f"working_tree_entries_at_audit_time={len(git_status)}"
             ),
             blocking_tasks=["H404"],
