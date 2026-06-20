@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="650" viewBox="0 0 1280 650" role="img" aria-labelledby="title desc">
+  <title id="title">Objective Clock Bases research status overview</title>
+  <desc id="desc">A visual summary of the completed G6 research package, IBM Kingston QPU run, evidence boundaries, and reproducibility archive.</desc>
+  <defs>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102a43"/>
+      <stop offset="0.55" stop-color="#1b4965"/>
+      <stop offset="1" stop-color="#2a9d8f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#0b1f33" flood-opacity="0.14"/>
+    </filter>
+    <style>
+      .bg { fill: #f7f9fb; }
+      .panel { fill: #ffffff; stroke: #d8e2ea; stroke-width: 1.4; }
+      .header-text { fill: #ffffff; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .text { fill: #102a43; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .muted { fill: #52616f; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .tiny { font-size: 18px; }
+      .small { font-size: 23px; }
+      .medium { font-size: 31px; font-weight: 700; }
+      .large { font-size: 50px; font-weight: 800; letter-spacing: 0; }
+      .subtitle { font-size: 34px; font-weight: 700; letter-spacing: 0; }
+      .pill { fill: #e8f6f3; stroke: #7bc6bb; stroke-width: 1; }
+      .pill2 { fill: #fff3df; stroke: #f4a261; stroke-width: 1; }
+      .pill3 { fill: #eef2ff; stroke: #9aa7ff; stroke-width: 1; }
+      .line { stroke: #7a8fa3; stroke-width: 3; fill: none; stroke-linecap: round; }
+      .teal { fill: #2a9d8f; }
+      .amber { fill: #f4a261; }
+      .rose { fill: #c44569; }
+      .green { fill: #2f855a; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="650"/>
+  <rect x="36" y="30" width="1208" height="590" rx="26" fill="#ffffff" filter="url(#shadow)"/>
+  <rect x="36" y="30" width="1208" height="194" rx="26" fill="url(#header)"/>
+  <rect x="36" y="186" width="1208" height="38" fill="#2a9d8f" opacity="0.22"/>
+
+  <text class="header-text large" x="76" y="92">Objective Clock Bases</text>
+  <text class="header-text subtitle" x="78" y="136">from Redundant Records</text>
+  <text class="header-text small" x="78" y="176">Basis objectivity is separated from event order and temporal orientation.</text>
+
+  <g transform="translate(930 60)">
+    <rect width="246" height="48" rx="24" fill="#ffffff" opacity="0.95"/>
+    <circle cx="29" cy="24" r="10" class="green"/>
+    <text class="text small" x="52" y="32" font-weight="700">G6 complete</text>
+  </g>
+  <g transform="translate(930 122)">
+    <rect width="246" height="48" rx="24" fill="#ffffff" opacity="0.90"/>
+    <circle cx="29" cy="24" r="10" class="amber"/>
+    <text class="text small" x="52" y="32" font-weight="700">QPU bounded</text>
+  </g>
+
+  <g transform="translate(76 254)">
+    <rect class="panel" width="340" height="132" rx="18"/>
+    <text class="muted tiny" x="24" y="39">Final decision</text>
+    <text class="text medium" x="24" y="76">Full foundations</text>
+    <text class="text medium" x="24" y="108">paper</text>
+    <text class="muted tiny" x="24" y="126">Theory supported; QPU illustration.</text>
+  </g>
+
+  <g transform="translate(470 254)">
+    <rect class="panel" width="340" height="132" rx="18"/>
+    <text class="muted tiny" x="24" y="39">IBM hardware run</text>
+    <text class="text medium" x="24" y="80">ibm_kingston DONE</text>
+    <text class="muted tiny" x="24" y="108">24,576 shots; 9 quantum seconds.</text>
+  </g>
+
+  <g transform="translate(864 254)">
+    <rect class="panel" width="340" height="132" rx="18"/>
+    <text class="muted tiny" x="24" y="39">Reproducibility archive</text>
+    <text class="text medium" x="24" y="80">170 files locked</text>
+    <text class="muted tiny" x="24" y="108">SHA-256 starts 1ad798ae...</text>
+  </g>
+
+  <g transform="translate(86 432)">
+    <rect class="pill" width="154" height="56" rx="28"/>
+    <text class="text tiny" x="28" y="36" font-weight="700">Proofs</text>
+    <path class="line" d="M166 28 H236"/>
+
+    <rect x="236" class="pill3" width="178" height="56" rx="28"/>
+    <text class="text tiny" x="259" y="36" font-weight="700">Classical checks</text>
+    <path class="line" d="M424 28 H494"/>
+
+    <rect x="494" class="pill2" width="154" height="56" rx="28"/>
+    <text class="text tiny" x="520" y="36" font-weight="700">Local twin</text>
+    <path class="line" d="M658 28 H728"/>
+
+    <rect x="728" class="pill" width="138" height="56" rx="28"/>
+    <text class="text tiny" x="758" y="36" font-weight="700">IBM QPU</text>
+    <path class="line" d="M876 28 H946"/>
+
+    <rect x="946" class="pill3" width="166" height="56" rx="28"/>
+    <text class="text tiny" x="970" y="36" font-weight="700">Claim matrix</text>
+  </g>
+
+  <g transform="translate(86 536)">
+    <circle cx="9" cy="8" r="7" class="teal"/>
+    <text class="muted tiny" x="28" y="15">Raw primary passes inclusion: delta_obj LCB 0.8877, min Z LCB 0.9170, delta_coh LCB 0.8777.</text>
+    <circle cx="9" cy="42" r="7" class="rose"/>
+    <text class="muted tiny" x="28" y="49">Not claimed: basis uniqueness as novelty, temporal orientation from redundancy alone,</text>
+    <text class="muted tiny" x="28" y="76">or hardware proof of the theorem package.</text>
+  </g>
+</svg>

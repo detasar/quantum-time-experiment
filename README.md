@@ -1,29 +1,106 @@
 # Objective Clock Bases from Redundant Records
 
-Research implementation bundle for the project:
+![Objective Clock Bases research status overview](assets/readme/overview.svg)
 
-> **Objective Clock Bases from Redundant Records: Why Temporal Order Requires More**
+A theorem-first research repository for the question:
 
-This repository is a theorem-first, falsification-first research program. It separates four questions that must never be conflated:
+> When redundant records make a clock basis objective, what extra structure is
+> still required to recover event order and temporal orientation?
 
-1. **Clock-basis objectivity:** which projective basis of an internal subsystem is redundantly recorded in independently accessible fragments?
-2. **Event-label identification:** which record signature belongs to which clock label?
-3. **Temporal order:** which labels can be ordered by persistent record accumulation?
-4. **Temporal orientation:** which end of that order is operationally earlier, and what assumptions anchor the arrow?
+The completed package supports a narrow answer: redundant records can identify
+an objective basis under the fixed-partition assumptions already known in the
+literature, but they do not by themselves provide a physical timeline. Persistent
+trajectories are chains inside the record-dominance poset; branching linear
+extensions are scheduler totalizations, not physical histories. Temporal
+orientation needs an anchor beyond redundancy alone.
 
-The main novelty target is not the known fact that redundant records can select an objective observable. The target is the precise boundary between basis objectivity and temporal order/orientation, including exact no-go results and record-capacity bounds.
+| Field | Value |
+| --- | --- |
+| Scientific freeze | `v0.9.0-g6-final-interpretation` |
+| Final path | full foundations paper |
+| Hardware status | one bounded IBM QPU illustration completed on `ibm_kingston` |
+| Archive | `objective-clocks-reproducibility.tar.gz`, SHA-256 `1ad798aea881e7c189d01907d73b9b5eb60366df33af0cfe0e60ab2b56437dea` |
 
-## Hard research rules
+This README is a navigation and presentation layer for the frozen scientific
+package. The reproducibility archive records the exact G6 package and source
+commit used for the final decision.
 
-- No claim of retrocausality, cosmological time emergence, or quantum advantage.
-- No IBM hardware execution before the preregistration gate passes.
-- No LLM output is a primary experimental measurement.
-- The four-qubit GHZ experiment is an illustration, not the proof of the theory.
-- The exact classical/symbolic results must survive without the quantum experiment.
-- Every random computation has a recorded seed.
-- Every produced artifact has a SHA-256 manifest.
+## Result At A Glance
 
-## Quick start
+| Question | Answer | Primary evidence |
+| --- | --- | --- |
+| Which basis is objectively recorded? | Fixed-partition redundant records identify a record basis, but this is not claimed as the new contribution. | [B0 proof note](docs/proofs/B0_imported_basis_uniqueness.md), [C1 landscape](results/processed/C1_basis_landscape_summary.json) |
+| Do records define a scalar time? | Only when the relevant snapshots form a single chain. | [O1 chain proof](docs/proofs/O1_chain_characterization.md), [T101 checks](results/processed/T101_chain_verification.json) |
+| What is the main contribution? | The basis-order-orientation separation, record-capacity results, and partition/orientation no-go package. | [Research spec](docs/RESEARCH_SPEC_TR.md), [proofs](docs/proofs), [counterexamples](results/processed/counterexample_catalog.json) |
+| Did the QPU run finish? | Yes. `ibm_kingston`, job `d8rfasuab0ds73drkaig`, status `DONE`, 24 circuit instances, 24,576 shots, 9 quantum seconds. | [provider payload](results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json), [hardware notes](docs/G5_HARDWARE_NOTES.md) |
+| What did the QPU result support? | It passed the locked raw inclusion rule and is included only as a four-qubit illustration. | [raw analysis](results/processed/Q3_hardware_raw.json), [final decision](docs/FINAL_DECISION.md) |
+| Are unsupported claims left? | No. A601 records 10 claims, 0 unsupported, 2 Q-grade hardware illustration claims. | [claim matrix](results/claim_evidence_matrix.csv), [claims register](docs/CLAIMS_REGISTER.md) |
+
+## What Is In The Repository
+
+| Area | Contents |
+| --- | --- |
+| Theory and proofs | [docs/RESEARCH_SPEC_TR.md](docs/RESEARCH_SPEC_TR.md), [docs/proofs](docs/proofs), [docs/adr/000-semantic-freeze.md](docs/adr/000-semantic-freeze.md) |
+| Implementation | [src/objective_clocks](src/objective_clocks), [scripts](scripts), [configs](configs), [tests](tests) |
+| Raw hardware records | [results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json](results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json), submission receipts, and the cancelled pre-result Marrakesh receipt |
+| Processed results | [results/processed](results/processed), including G0-G6 manifests, theorem outputs, classical experiments, quantum local checks, raw QPU analysis, mitigated secondary analysis, and final decision data |
+| Figures | Publication PDFs in [figures](figures) and README preview images in [assets/readme](assets/readme) |
+| Paper log | [reports/experiment_report.tex](reports/experiment_report.tex) |
+| Reproducibility archive | [objective-clocks-reproducibility.tar.gz](objective-clocks-reproducibility.tar.gz) plus [A603 manifest](results/processed/A603_reproducibility_manifest.json) |
+
+Not included: IBM tokens, local `.env` files, virtual environments, cache
+directories, or complete terminal session transcripts. The scientific evidence
+that matters for reproduction is tracked through raw payloads, processed
+artifacts, manifests, reports, SHA-256 records, and the final archive.
+
+## Start Here
+
+| Need | File |
+| --- | --- |
+| Fast scientific conclusion | [docs/FINAL_DECISION.md](docs/FINAL_DECISION.md) |
+| Full task protocol | [TASKS.yaml](TASKS.yaml) |
+| Implementation contract | [docs/CODEX_IMPLEMENTATION.md](docs/CODEX_IMPLEMENTATION.md) |
+| Architecture and dependency diagrams | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
+| Frozen preregistration | [docs/PREREGISTRATION_FROZEN.md](docs/PREREGISTRATION_FROZEN.md) |
+| Hardware execution notes | [docs/G5_HARDWARE_NOTES.md](docs/G5_HARDWARE_NOTES.md) |
+| Claim grades | [docs/CLAIMS_REGISTER.md](docs/CLAIMS_REGISTER.md) and [results/claim_evidence_matrix.csv](results/claim_evidence_matrix.csv) |
+| Changelog | [CHANGELOG.md](CHANGELOG.md) |
+
+## Data Flow
+
+```mermaid
+flowchart LR
+  Spec["Theory specification"] --> G1["G1 proofs and exact primitives"]
+  G1 --> G2["G2 classical C0-C5 experiments"]
+  G2 --> G3["G3 local quantum readiness"]
+  G3 --> G4["G4 frozen preregistration"]
+  G4 --> H501["H501 one gated IBM run"]
+  H501 --> H502["H502 raw primary analysis"]
+  H502 --> H503["H503 secondary readout correction"]
+  H502 --> A601["A601 claim evidence matrix"]
+  H503 --> A601
+  A601 --> A602["A602 final decision"]
+  A602 --> A603["A603 reproducibility archive"]
+```
+
+The hardware path is deliberately downstream of the theory and classical checks.
+The theorem-level and no-go claims survive without the IBM observation.
+
+## Reproduce
+
+### 1. Inspect the frozen result
+
+```bash
+git clone <repo-url>
+cd quantum-time-experiment
+git checkout v0.9.0-g6-final-interpretation
+echo "1ad798aea881e7c189d01907d73b9b5eb60366df33af0cfe0e60ab2b56437dea  objective-clocks-reproducibility.tar.gz" | sha256sum -c -
+tar -tzf objective-clocks-reproducibility.tar.gz | sed -n '1,30p'
+```
+
+This verifies the published archive without contacting IBM.
+
+### 2. Install and run local checks
 
 ```bash
 python -m venv .venv
@@ -34,155 +111,167 @@ python -m objective_clocks.cli theorem-check --config configs/classical.yaml
 python -m objective_clocks.cli ghz-exact
 ```
 
-## Repository map
+Expected local test state at G6: 55 passing tests.
 
-- `docs/RESEARCH_SPEC_TR.md`: complete theory and experiment specification.
-- `docs/CODEX_IMPLEMENTATION.md`: Codex execution contract and task order.
-- `docs/PREREGISTRATION.md`: frozen QPU protocol template.
-- `docs/PREREGISTRATION_FROZEN.md`: frozen H401 preregistration packet.
-- `TASKS.yaml`: machine-readable work breakdown with Definition of Ready and Definition of Done.
-- `src/objective_clocks/`: reusable implementation.
-- `tests/`: theorem/property/regression tests.
-- `configs/`: immutable experiment configurations.
-- `results/raw/`: write-once raw outputs.
-- `results/processed/`: derived outputs.
-- `figures/`: reproducible figures only.
+### 3. Re-run the non-submitting pipeline
 
-## Project gates
+```bash
+make reproduce
+```
 
-- **G0 — Repository ready:** environment, manifests, semantic ADR and QPU gate baseline.
-- **G1 — Theory and exact primitives frozen:** O1--O4, imported B0 and no-go package.
-- **G2 — Classical experiments complete:** C0--C5.
-- **G3 — Local quantum readiness:** local circuit and noise readiness.
-- **G4 — Hardware preregistration frozen:** no QPU submission yet.
-- **G5 — One IBM execution and locked analysis:** one preregistered batch only after explicit gate.
-- **G6 — Scientific interpretation complete:** evidence-grade claims and reproducibility archive.
+`make reproduce` replays the scripted non-QPU pipeline and ends with `pytest`.
+It never submits a new QPU job. Some provider-metadata stages, such as Q303/Q305,
+expect a locally saved IBM Runtime account if you want to refresh current backend
+metadata; no token is stored in this repository.
 
-## Current G0/G1 artifacts
+## QPU Safety Boundary
 
-- `results/processed/T101_chain_verification.json`
-- `results/processed/T103_capacity.json`
-- `results/processed/T104_noise_bound_grid.json`
-- `results/processed/counterexample_catalog.json`
-- `figures/fig_03_capacity.pdf`
-- `docs/ARCHITECTURE.md`
-- `reports/experiment_report.tex`
+New hardware execution is blocked by design. The execution script refuses to run
+unless all of the following are true:
 
-## Current G2 Batch 1 artifacts
+- The preregistration and circuit manifests are frozen and hash-matched.
+- The selected Open instance metadata is present.
+- There is no prior H501 provider payload for the target run.
+- The worktree is clean and at the required preregistration tag.
+- The command is explicitly invoked with `ALLOW_QPU_EXECUTION=YES`.
 
-- `results/processed/C0_theorem_verification.parquet`
-- `results/processed/C1_basis_landscape.nc`
-- `results/processed/C2_order_catalog.parquet`
-- `results/processed/C2_graphs/*.graphml`
-- `figures/fig_02_basis_landscape.pdf`
-- `docs/G2_BATCH1_REVIEW_REPORT.md`
+The completed hardware job is already committed as data:
 
-## Current G2 Complete Artifacts
+| Field | Value |
+| --- | --- |
+| Backend | `ibm_kingston` |
+| Job id | `d8rfasuab0ds73drkaig` |
+| Status | `DONE` |
+| Circuit instances | 24 |
+| Shots | 24,576 |
+| Quantum usage | 9 seconds |
+| Raw inclusion rule | Passed without mitigation |
 
-- `results/processed/C3_noise_phase_diagram.parquet`
-- `results/processed/C4_assumption_failures.json`
-- `results/processed/C5_ghz_exact.json`
-- `figures/fig_04_noise_phase.pdf`
-- `figures/fig_05_ghz_exact.pdf`
-- `docs/G2_REVIEW_REPORT.md`
+The earlier `ibm_marrakesh` job `d8reasegbcrc73f4f4pg` was cancelled while
+queued, before any running timestamp, raw result, or QPU usage. That amendment is
+recorded in [configs/backend_amendment.yaml](configs/backend_amendment.yaml) and
+[results/raw/H501_cancellation_d8reasegbcrc73f4f4pg.json](results/raw/H501_cancellation_d8reasegbcrc73f4f4pg.json).
 
-## Current G3 Artifacts
+## Hardware Result
 
-- `results/processed/Q301_circuit_manifest.json`
-- `results/processed/Q301_untranspiled_circuits.qpy`
-- `results/processed/Q1_noise_sweep.parquet`
-- `results/processed/Q1_noise_sweep_summary.json`
-- `figures/fig_q302_noise_readiness.pdf`
-- `results/processed/Q303_backend_candidates.json`
-- `results/processed/Q2_backend_twin.parquet`
-- `results/processed/Q2_backend_twin_summary.json`
-- `results/processed/G3_manifest.json`
-- `docs/G3_REVIEW_REPORT.md`
+Raw H502 is the primary analysis; H503 mitigation is secondary only and cannot
+rescue or replace the raw result.
 
-G3 completed the local circuit, generic-noise readiness path and provider
-metadata preflight without any provider job submission. Q303 currently uses the
-saved IBM Open Plan account, selects an Open backend and records only
-secret-safe account metadata. Q304 runs a backend-derived local twin from the
-selected layout's calibration snapshot; it is not a hardware observation.
+| Metric | Raw locked value |
+| --- | ---: |
+| `passes_main_text_inclusion_without_mitigation` | `true` |
+| `delta_obj_lcb` | `0.8876953125` |
+| `min_z_correlation_lcb` | `0.9169542107266444` |
+| `delta_coh_lcb` | `0.877685546875` |
+| `w_plus_xxxx` | `0.8955078125` |
+| `w_minus_xxxx` | `-0.87744140625` |
+| `w_mix_xxxx` | `0.009033203125` |
+| Bootstrap seed | `20260621` |
+| Bootstrap replicates | `10000` |
 
-## Current G4 Readiness Audit
+The secondary readout-assignment correction agrees qualitatively with the raw
+decision, with assignment condition number `1.1172921620957568`.
 
-- `results/processed/G4_readiness_audit.json`
-- `results/processed/G4_readiness_manifest.json`
-- `results/preregistered/environment_archive.tar.gz`
-- `results/preregistered/environment_archive_manifest.json`
-- `results/preregistered/circuits.qpy`
-- `results/preregistered/circuit_manifest.json`
-- `results/preregistered/preregistration_manifest.json`
-- `results/preregistered/dry_run_report.json`
-- `results/processed/Q305_backend_amendment_diagnostics.json`
-- `results/raw/H501_submission_receipt_d8reasegbcrc73f4f4pg.json`
-- `results/raw/H501_cancellation_d8reasegbcrc73f4f4pg.json`
-- `results/processed/H401_preregistration_draft_summary.json`
-- `docs/PREREGISTRATION_DRAFT.md`
-- `docs/PREREGISTRATION_FROZEN.md`
-- `docs/G4_READINESS_REPORT.md`
+## Figure Gallery
 
-Current status is `ready_for_h501`. The audit scans local env-like files, shell
-config files and known Qiskit account-file names without recording secret
-values. It confirms the saved account is bound to `open-instance` on the Open
-plan, freezes the H401 preregistration packet, freezes the H402 ISA circuit
-packet and passes the H403 no-submission dry-run. A pre-result backend amendment
-cancelled the original queued `ibm_marrakesh` job before any raw result or QPU
-usage, compared `ibm_kingston`, `ibm_fez` and `ibm_marrakesh`, and regenerated
-Q303/Q304/H402/H401/H403 for `ibm_kingston`. At the frozen G4 boundary, QPU
-execution remained disabled unless H501 was invoked with
-`ALLOW_QPU_EXECUTION=YES` after the repository was clean and tagged.
+These previews are generated from the tracked publication PDFs so the GitHub
+front page is inspectable without opening each PDF manually.
 
-## Current G5 Locked Hardware Path
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <a href="figures/fig_02_basis_landscape.pdf"><img src="assets/readme/fig_02_basis_landscape.png" alt="Basis landscape figure" width="300"></a>
+      <br><sub>Basis landscape: ambiguity versus two-record objectivity.</sub>
+    </td>
+    <td align="center" width="33%">
+      <a href="figures/fig_03_capacity.pdf"><img src="assets/readme/fig_03_capacity.png" alt="Record capacity figure" width="300"></a>
+      <br><sub>Record-capacity behavior.</sub>
+    </td>
+    <td align="center" width="33%">
+      <a href="figures/fig_04_noise_phase.pdf"><img src="assets/readme/fig_04_noise_phase.png" alt="Noise phase diagram figure" width="300"></a>
+      <br><sub>Noise and inclusion phase diagram.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <a href="figures/fig_05_ghz_exact.pdf"><img src="assets/readme/fig_05_ghz_exact.png" alt="Exact GHZ figure" width="300"></a>
+      <br><sub>Exact GHZ sanity check.</sub>
+    </td>
+    <td align="center" width="33%">
+      <a href="figures/fig_q302_noise_readiness.pdf"><img src="assets/readme/fig_q302_noise_readiness.png" alt="Local quantum readiness figure" width="300"></a>
+      <br><sub>Local quantum readiness before QPU execution.</sub>
+    </td>
+    <td align="center" width="33%">
+      <a href="docs/ARCHITECTURE.md"><strong>Architecture diagrams</strong></a>
+      <br><sub>Data flow, control flow, dependency graph, and connectivity documentation.</sub>
+    </td>
+  </tr>
+</table>
 
-- `scripts/run_h501_execute.py`: gated SamplerV2 dry-run/execute path.
-- `scripts/run_h502_raw_analysis.py`: locked raw primary analysis.
-- `scripts/run_h503_mitigated_analysis.py`: secondary readout-mitigated analysis.
-- `src/objective_clocks/hardware.py`: raw payload extraction, integrity checks,
-  raw inclusion decision and independent readout assignment correction.
-- `results/raw/H501_submission_receipt_d8rfasuab0ds73drkaig.json`
-- `results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json`
-- `results/processed/Q3_hardware_raw.json`
-- `results/processed/Q3_hardware_mitigated.json`
+## Artifact Index
 
-The amended H501 target was `ibm_kingston`. The execution path refused to run
-without a frozen preregistration manifest, matching circuit-manifest hash, Open
-instance metadata, no prior H501 provider payload, a clean repository, tag
-`v0.4-qpu-preregistered-kingston` at `HEAD` and `ALLOW_QPU_EXECUTION=YES`.
+| Gate | Status | Key artifacts |
+| --- | --- | --- |
+| G0 | Repository ready | [G0 environment](results/processed/G0_environment_manifest.json), [file manifest](results/processed/G0_file_manifest.json) |
+| G1 | Theory primitives frozen | [T101](results/processed/T101_chain_verification.json), [T103](results/processed/T103_capacity.json), [T104](results/processed/T104_noise_bound_grid.json), [counterexamples](results/processed/counterexample_catalog.json) |
+| G2 | Classical experiments complete | [C0](results/processed/C0_theorem_verification.parquet), [C1](results/processed/C1_basis_landscape.nc), [C2](results/processed/C2_order_catalog.parquet), [C3](results/processed/C3_noise_phase_diagram.parquet), [C4](results/processed/C4_assumption_failures.json), [C5](results/processed/C5_ghz_exact.json) |
+| G3 | Local quantum readiness complete | [Q301 circuits](results/processed/Q301_circuit_manifest.json), [Q302 sweep](results/processed/Q1_noise_sweep_summary.json), [Q303 candidates](results/processed/Q303_backend_candidates.json), [Q304 twin](results/processed/Q2_backend_twin_summary.json), [Q305 amendment](results/processed/Q305_backend_amendment_diagnostics.json) |
+| G4 | Preregistration frozen | [frozen preregistration](docs/PREREGISTRATION_FROZEN.md), [circuits.qpy](results/preregistered/circuits.qpy), [dry run](results/preregistered/dry_run_report.json) |
+| G5 | Hardware result recorded | [provider payload](results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json), [raw analysis](results/processed/Q3_hardware_raw.json), [mitigated analysis](results/processed/Q3_hardware_mitigated.json) |
+| G6 | Interpretation complete | [claims](results/claim_evidence_matrix.csv), [final decision](docs/FINAL_DECISION.md), [archive manifest](results/processed/A603_reproducibility_manifest.json) |
 
-The amended H501 execution completed on job `d8rfasuab0ds73drkaig`: 24 circuit
-instances, 24,576 observed shots and 9 quantum seconds. H502 passed the locked
-raw inclusion rule without mitigation
-(`passes_main_text_inclusion_without_mitigation=true`), with
-`delta_obj_lcb=0.8876953125`, `min_z_correlation_lcb=0.9169542107266444` and
-`delta_coh_lcb=0.877685546875` under the preregistered bootstrap seed
-`20260621`. H503 readout correction is secondary only; it agrees qualitatively
-with the raw result.
+## Claim Discipline
 
-## Current A601 Artifacts
+Positive claims:
 
-- `results/claim_evidence_matrix.csv`
-- `results/processed/A601_claim_evidence_summary.json`
-- `results/processed/A601_manifest.json`
-- `docs/CLAIMS_REGISTER.md`
+- The basis-order-orientation separation is supported by proofs and exact
+  checks.
+- Record-capacity and no-go claims are supported independently of QPU data.
+- The IBM result supports including the four-qubit GHZ illustration in the main
+  text.
 
-A601 evidence-grades every planned claim as `P`, `E`, `S`, `Q`, `I` or `N`.
-The current matrix has two Q-grade rows, Q1 and Q2, both limited to the
-four-qubit IBM illustration. The theorem-level and no-go claims remain
-classical/symbolic and do not depend on the hardware observation.
+Negative claims:
 
-## Current G6 Interpretation Path
+- Do not claim fixed-partition basis uniqueness as the main novelty.
+- Do not claim that the IBM hardware observation proves the theorem package.
+- Do not infer temporal orientation from redundant records without an anchor.
+- Do not use H503 mitigation to replace or rescue the raw H502 result.
 
-- `scripts/run_a602.py`: applies the preregistered scientific decision tree.
-- `scripts/run_a603_reproducibility.py`: runs a clean-worktree reproduction and
-  writes the final reproducibility archive.
-- `docs/FINAL_DECISION.md`
-- `results/processed/A602_final_decision.json`
-- `results/processed/A603_reproducibility_manifest.json`
-- `objective-clocks-reproducibility.tar.gz`
+## Repository Layout
 
-A602 selects `full_foundations_paper`: the theory/no-go contribution is
-supported independently, and the IBM result is included only as a bounded
-four-qubit main-text illustration. A603 publishes the archive SHA-256 in the
-final decision document.
+```text
+.
+|-- configs/                 # immutable experiment configuration
+|-- docs/                    # specification, proofs, reports, architecture
+|-- figures/                 # tracked publication figures as PDFs
+|-- assets/readme/           # README visual assets and figure previews
+|-- reports/                 # LaTeX experiment log for paper development
+|-- results/
+|   |-- raw/                 # write-once provider receipts and raw payloads
+|   |-- processed/           # derived outputs and manifests
+|   `-- preregistered/       # frozen QPU preregistration packet
+|-- scripts/                 # reproducible task runners
+|-- src/objective_clocks/    # typed Python package
+|-- tests/                   # theorem, property, regression, and gate tests
+|-- TASKS.yaml               # Definition of Ready / Definition of Done per task
+`-- objective-clocks-reproducibility.tar.gz
+```
+
+## Scientific Positioning
+
+The repository intentionally does not rebrand established results as new. It
+treats fixed-partition redundant-record basis uniqueness as imported context and
+focuses on what remains: ordering, orientation, capacity, and no-go boundaries.
+The hardware observation is a preregistered illustration of the four-qubit GHZ
+workflow, not the foundation of the theory.
+
+## Use, Citation, And License
+
+Until a preprint is released, cite the repository by tag
+`v0.9.0-g6-final-interpretation` and archive SHA-256
+`1ad798aea881e7c189d01907d73b9b5eb60366df33af0cfe0e60ab2b56437dea`.
+
+No standalone license file is currently committed. Treat this as a research
+artifact rather than an open-source release until a license is added.
+
+Maintainer: Davut Emre Tasar.
