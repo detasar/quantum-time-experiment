@@ -1,8 +1,21 @@
 {
-  "archive": null,
+  "archive": {
+    "archive_path": "objective-clocks-reproducibility.tar.gz",
+    "archive_sha256": "317a24695978641961e201da0c5f6ec869e69f9959dc22da1bb5be22e8653fcd",
+    "archived_file_count": 172,
+    "reproduction": {
+      "command": "/home/emre/quantum-time-experiment/.venv/bin/python scripts/reproduce_all.py",
+      "passed": true,
+      "return_code": 0
+    },
+    "secret_values_recorded": false,
+    "source_git_commit": "04373843ef1b80f9b2f3ab513b3d16e27fc7b7a1",
+    "status": "complete",
+    "task": "A603"
+  },
   "artifact_route": "foundations_artifact_with_bounded_quantum_illustration",
   "environment": {
-    "git_commit": "54877212485df4ab57b723b5b3706a6c75dbd52f",
+    "git_commit": "04373843ef1b80f9b2f3ab513b3d16e27fc7b7a1",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
