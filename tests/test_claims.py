@@ -15,4 +15,5 @@ def test_a601_claim_matrix_has_evidence_and_caveats() -> None:
     assert by_id["N1"].evidence_status == "supported_no_go"
     assert by_id["Q1"].evidence_status == "supported_without_hardware"
     assert "Q" not in by_id["Q1"].evidence_grade.split(";")
-    assert "Q304 stopped" in by_id["Q1"].caveat
+    assert "backend-derived local twin" in by_id["Q1"].caveat
+    assert "not a hardware observation" in by_id["Q1"].caveat

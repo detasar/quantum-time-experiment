@@ -1,0 +1,37 @@
+{
+  "backend_twin_status": "backend_snapshot_ready",
+  "frozen": false,
+  "g4_status": "blocked_before_g4",
+  "known_field_count": 8,
+  "open_instance_confirmed": true,
+  "output": "docs/PREREGISTRATION_DRAFT.md",
+  "provider_source": "provider",
+  "qpu_execution_allowed": false,
+  "status": "draft_blocked",
+  "task": "H401_preregistration_draft",
+  "unresolved_field_count": 3,
+  "unresolved_fields": [
+    {
+      "blocking_tasks": [
+        "H401",
+        "H404"
+      ],
+      "field": "environment_archive_sha256",
+      "reason": "environment archive is not frozen yet"
+    },
+    {
+      "blocking_tasks": [
+        "H402"
+      ],
+      "field": "selected_transpiler_seed",
+      "reason": "ISA transpilation is not frozen yet"
+    },
+    {
+      "blocking_tasks": [
+        "H401"
+      ],
+      "field": "human_approval",
+      "reason": "explicit human approval is not recorded"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from dataclasses import dataclass
 from itertools import combinations
 from typing import Any
@@ -7,10 +8,12 @@ from typing import Any
 import numpy as np
 from numpy.typing import NDArray
 
-from .circuits import named_science_circuits
+from .circuits import independent_readout_calibration_circuits, named_science_circuits
 from .statistics import clopper_pearson_expectation_interval
 
 IntArray = NDArray[np.int_]
+SUPPORTED_ENTANGLING_BASIS_GATES = frozenset({"cx", "cz", "ecr"})
+MAX_LAYOUT_TARGETS_PER_CONTROL = 12
 
 
 def parse_qiskit_bitstring(bitstring: str, *, width: int = 4) -> tuple[int, ...]:
@@ -269,6 +272,11 @@ class BackendCandidate:
     one_qubit_error: float
     two_qubit_error: float
     readout_error: float
+    one_qubit_gate_errors: tuple[tuple[int, float], ...] = ()
+    two_qubit_edge_errors: tuple[tuple[int, int, float], ...] = ()
+    readout_errors: tuple[tuple[int, float], ...] = ()
+    calibration_timestamp: str | None = None
+    backend_version: str | None = None
 
 
 def fixture_backend_candidates() -> list[BackendCandidate]:
@@ -331,55 +339,251 @@ def _undirected_distances(candidate: BackendCandidate) -> dict[tuple[int, int], 
     return distances
 
 
+def _undirected_adjacency(candidate: BackendCandidate) -> dict[int, set[int]]:
+    adjacency: dict[int, set[int]] = {node: set() for node in range(candidate.n_qubits)}
+    for a, b in candidate.coupling_edges:
+        adjacency[a].add(b)
+        adjacency[b].add(a)
+    return adjacency
+
+
+def _shortest_path(candidate: BackendCandidate, source: int, target: int) -> tuple[int, ...]:
+    if source == target:
+        return (source,)
+    adjacency = _undirected_adjacency(candidate)
+    frontier: list[tuple[int, ...]] = [(source,)]
+    seen = {source}
+    for path in frontier:
+        node = path[-1]
+        for nxt in sorted(adjacency[node]):
+            if nxt in seen:
+                continue
+            next_path = (*path, nxt)
+            if nxt == target:
+                return next_path
+            seen.add(nxt)
+            frontier.append(next_path)
+    return ()
+
+
+def _edge_error_map(candidate: BackendCandidate) -> dict[tuple[int, int], float]:
+    errors: dict[tuple[int, int], float] = {}
+    for a, b, error in candidate.two_qubit_edge_errors:
+        current = errors.get((a, b), float("inf"))
+        errors[(a, b)] = min(current, float(error))
+        reverse_current = errors.get((b, a), float("inf"))
+        errors[(b, a)] = min(reverse_current, float(error))
+    return errors
+
+
+def _readout_error_map(candidate: BackendCandidate) -> dict[int, float]:
+    return {int(qubit): float(error) for qubit, error in candidate.readout_errors}
+
+
+def _one_qubit_error_map(candidate: BackendCandidate) -> dict[int, float]:
+    return {int(qubit): float(error) for qubit, error in candidate.one_qubit_gate_errors}
+
+
+def _mean_or_default(values: list[float], default: float) -> float:
+    return float(np.mean(values)) if values else float(default)
+
+
+def backend_derived_noise_parameters(
+    candidate: BackendCandidate,
+    layout: tuple[int, int, int, int],
+) -> dict[str, Any]:
+    edge_errors = _edge_error_map(candidate)
+    readout_errors = _readout_error_map(candidate)
+    one_qubit_errors = _one_qubit_error_map(candidate)
+    paths = [_shortest_path(candidate, layout[0], target) for target in layout[1:]]
+    path_edge_errors: list[float] = []
+    for path in paths:
+        for a, b in zip(path, path[1:], strict=False):
+            path_edge_errors.append(edge_errors.get((a, b), candidate.two_qubit_error))
+    return {
+        "layout": list(layout),
+        "paths": [list(path) for path in paths],
+        "one_qubit_depolarizing": _mean_or_default(
+            [one_qubit_errors[qubit] for qubit in layout if qubit in one_qubit_errors],
+            candidate.one_qubit_error,
+        ),
+        "two_qubit_depolarizing": _mean_or_default(path_edge_errors, candidate.two_qubit_error),
+        "readout_flip": _mean_or_default(
+            [readout_errors[qubit] for qubit in layout if qubit in readout_errors],
+            candidate.readout_error,
+        ),
+        "path_edge_error_count": len(path_edge_errors),
+    }
+
+
+def _layout_score(
+    candidate: BackendCandidate,
+    layout: tuple[int, int, int, int],
+    distances: dict[tuple[int, int], int],
+) -> float:
+    c, s, r1, r2 = layout
+    star_distance = sum(distances.get((c, target), 99) for target in (s, r1, r2))
+    noise = backend_derived_noise_parameters(candidate, layout)
+    return float(
+        star_distance
+        + candidate.pending_jobs / 100.0
+        + 100.0 * float(noise["two_qubit_depolarizing"])
+        + 10.0 * float(noise["readout_flip"])
+    )
+
+
 def best_layout_for_candidate(
     candidate: BackendCandidate,
 ) -> tuple[tuple[int, int, int, int], float]:
     distances = _undirected_distances(candidate)
     best_layout: tuple[int, int, int, int] | None = None
     best_score = float("inf")
-    for layout in combinations(range(candidate.n_qubits), 4):
-        c, s, r1, r2 = layout
-        star_distance = sum(distances.get((c, target), 99) for target in (s, r1, r2))
-        score = (
-            star_distance
-            + candidate.pending_jobs / 100.0
-            + 100.0 * candidate.two_qubit_error
-            + 10.0 * candidate.readout_error
-        )
-        if score < best_score:
-            best_score = score
-            best_layout = layout
+    readout_errors = _readout_error_map(candidate)
+    for control in range(candidate.n_qubits):
+        reachable = [
+            target
+            for target in range(candidate.n_qubits)
+            if target != control and (control, target) in distances
+        ]
+        nearest = sorted(
+            reachable,
+            key=lambda target: (
+                distances[(control, target)],
+                readout_errors.get(target, candidate.readout_error),
+                target,
+            ),
+        )[:MAX_LAYOUT_TARGETS_PER_CONTROL]
+        for targets in combinations(nearest, 3):
+            layout = (control, *targets)
+            score = _layout_score(candidate, layout, distances)
+            if (score, layout) < (best_score, best_layout or layout):
+                best_score = score
+                best_layout = layout
     if best_layout is None:
-        raise ValueError("candidate has fewer than four qubits")
+        raise ValueError("candidate does not contain four connected qubits")
     return best_layout, float(best_score)
+
+
+def run_backend_derived_twin(
+    candidate: BackendCandidate,
+    layout: tuple[int, int, int, int],
+    config: dict[str, Any],
+    *,
+    seed: int,
+) -> dict[str, Any]:
+    noise = backend_derived_noise_parameters(candidate, layout)
+    noise_model = build_generic_noise_model(
+        one_qubit=float(noise["one_qubit_depolarizing"]),
+        two_qubit=float(noise["two_qubit_depolarizing"]),
+        readout=float(noise["readout_flip"]),
+    )
+    science = named_science_circuits(measure=True)
+    blocks = int(config["science"]["blocks"])
+    shots_per_block = int(config["science"]["shots_per_block"])
+    counts: dict[str, Counter[str]] = {name: Counter() for name in science}
+    run_index = 0
+    for block in range(blocks):
+        for name, circuit in science.items():
+            counts[name].update(
+                simulate_counts(
+                    circuit,
+                    shots=shots_per_block,
+                    seed=seed + 1000 * block + run_index,
+                    noise_model=noise_model,
+                )
+            )
+            run_index += 1
+    calibration_counts = 0
+    for index, circuit in enumerate(independent_readout_calibration_circuits()):
+        simulate_counts(
+            circuit,
+            shots=int(config["readout_calibration"]["shots_per_circuit"]),
+            seed=seed + 100_000 + index,
+            noise_model=noise_model,
+        )
+        calibration_counts += 1
+    metrics = quantum_metrics_from_counts(
+        {name: dict(counter) for name, counter in counts.items()},
+        alpha=float(config["statistics"]["alpha"]),
+    )
+    thresholds = config["inclusion_thresholds"]
+    passes = bool(
+        metrics["delta_obj_lcb"] >= thresholds["delta_obj_lcb"]
+        and metrics["min_z_correlation_lcb"] >= thresholds["min_z_correlation_lcb"]
+        and metrics["delta_coh_lcb"] >= thresholds["delta_coh_lcb"]
+    )
+    return {
+        "experiment_id": "Q304",
+        "backend": candidate.name,
+        "backend_version": candidate.backend_version,
+        "calibration_timestamp": candidate.calibration_timestamp,
+        "candidate_source": "provider",
+        "layout": list(layout),
+        "science_circuit_runs": blocks * len(science),
+        "science_shots_per_circuit": blocks * shots_per_block,
+        "readout_calibration_circuits": calibration_counts,
+        "readout_calibration_shots_per_circuit": int(
+            config["readout_calibration"]["shots_per_circuit"]
+        ),
+        "seed": seed,
+        **noise,
+        **metrics,
+        "passes_preregistered_local_readiness": passes,
+    }
+
+
+def supported_entangling_gates(candidate: BackendCandidate) -> tuple[str, ...]:
+    return tuple(
+        sorted(gate for gate in candidate.basis_gates if gate in SUPPORTED_ENTANGLING_BASIS_GATES)
+    )
 
 
 def rank_backend_candidates(candidates: list[BackendCandidate]) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for candidate in candidates:
+        entangling_gates = supported_entangling_gates(candidate)
         eligible = (
             candidate.operational
             and not candidate.simulator
             and candidate.n_qubits >= 4
-            and "cx" in candidate.basis_gates
+            and len(entangling_gates) > 0
         )
         layout: tuple[int, ...]
+        eligibility_reason = "eligible"
         if eligible:
-            layout, score = best_layout_for_candidate(candidate)
+            try:
+                layout, score = best_layout_for_candidate(candidate)
+            except ValueError:
+                eligible = False
+                eligibility_reason = "no_connected_four_qubit_layout"
+                layout = ()
+                score = float("inf")
         else:
+            eligibility_reason = "failed_static_filter"
             layout = ()
             score = float("inf")
         rows.append(
             {
                 "name": candidate.name,
                 "eligible": eligible,
+                "eligibility_reason": eligibility_reason,
                 "n_qubits": candidate.n_qubits,
                 "pending_jobs": candidate.pending_jobs,
                 "basis_gates": list(candidate.basis_gates),
+                "supported_entangling_gates": list(entangling_gates),
                 "coupling_edges": [list(edge) for edge in candidate.coupling_edges],
                 "one_qubit_error": candidate.one_qubit_error,
                 "two_qubit_error": candidate.two_qubit_error,
                 "readout_error": candidate.readout_error,
+                "calibration_timestamp": candidate.calibration_timestamp,
+                "backend_version": candidate.backend_version,
+                "one_qubit_gate_errors": [
+                    [qubit, error] for qubit, error in candidate.one_qubit_gate_errors
+                ],
+                "two_qubit_edge_errors": [
+                    [a, b, error] for a, b, error in candidate.two_qubit_edge_errors
+                ],
+                "readout_errors": [[qubit, error] for qubit, error in candidate.readout_errors],
                 "selected_layout": list(layout),
                 "layout_score": score,
             }

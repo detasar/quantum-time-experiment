@@ -1,5 +1,5 @@
 {
-  "blocked_check_count": 4,
+  "blocked_check_count": 2,
   "checks": [
     {
       "blocking_tasks": [
@@ -16,22 +16,33 @@
         "H401",
         "H402"
       ],
-      "evidence": "candidate_source=deterministic_fixture; provider_call_attempted=False",
+      "evidence": "candidate_source=provider; provider_call_attempted=True",
       "id": "G3-Q303-PROVIDER",
       "remediation": "Load a valid IBM Runtime token, rerun Q303 and capture a real backend snapshot.",
       "requirement": "Backend selection uses a real provider calibration snapshot.",
-      "status": "blocked"
+      "status": "pass"
+    },
+    {
+      "blocking_tasks": [
+        "H401",
+        "H403"
+      ],
+      "evidence": "instance_name=open-instance; plan=open; pricing_type=free; region=us-east",
+      "id": "H403-OPEN-INSTANCE",
+      "remediation": "Save the Qiskit account with the open-instance CRN before dry-run or QPU gates.",
+      "requirement": "Provider account is bound to the intended IBM Open Plan instance.",
+      "status": "pass"
     },
     {
       "blocking_tasks": [
         "H401",
         "H402"
       ],
-      "evidence": "status=hardware_stage_stopped; reason=no_real_backend_snapshot_available",
+      "evidence": "status=backend_snapshot_ready; reason=backend_derived_aggregate_noise_passed",
       "id": "G3-Q304-TWIN",
       "remediation": "Rerun Q304 after Q303 obtains a real provider backend snapshot.",
       "requirement": "Backend-derived digital twin passes the preregistered local readiness gate.",
-      "status": "blocked"
+      "status": "pass"
     },
     {
       "blocking_tasks": [
@@ -67,7 +78,7 @@
       "blocking_tasks": [
         "H404"
       ],
-      "evidence": "git_commit=9b7201532df92260fe3837c38b1a172aa02ee3ac; upstream=origin/implementation/g0-g1; working_tree_entries_at_audit_time=11",
+      "evidence": "git_commit=ff64028ae83dcccfa5ce68970a3b4a1f77061b1f; upstream=origin/implementation/g0-g1; working_tree_entries_at_audit_time=48",
       "id": "H404-REPO-SNAPSHOT",
       "remediation": "Commit and push the research snapshot before preregistration tagging; rerun the final H404 clean check immediately before creating the tag.",
       "requirement": "Repository has an initial committed snapshot tracking a remote branch.",
@@ -75,7 +86,7 @@
     }
   ],
   "environment": {
-    "git_commit": "9b7201532df92260fe3837c38b1a172aa02ee3ac",
+    "git_commit": "ff64028ae83dcccfa5ce68970a3b4a1f77061b1f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -90,15 +101,23 @@
     "qpu_execution_enabled": false
   },
   "ibm_credential_audit": {
-    "env_files_scanned": 52,
-    "key_presence": {},
+    "env_files_scanned": 53,
+    "key_presence": {
+      "/home/emre/.qiskit/qiskit-ibm.json": [
+        "default-ibm-quantum-platform.token"
+      ]
+    },
     "secret_values_recorded": false,
-    "token_source_count": 0,
-    "token_sources": []
+    "token_source_count": 1,
+    "token_sources": [
+      {
+        "key": "default-ibm-quantum-platform.token",
+        "path": "/home/emre/.qiskit/qiskit-ibm.json",
+        "source": "qiskit_account_file"
+      }
+    ]
   },
   "next_required_actions": [
-    "Load a valid IBM Runtime token, rerun Q303 and capture a real backend snapshot.",
-    "Rerun Q304 after Q303 obtains a real provider backend snapshot.",
     "Fill all mandatory fields and freeze docs/PREREGISTRATION_FROZEN.md.",
     "Record explicit human approval after preregistration review."
   ],

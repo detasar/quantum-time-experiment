@@ -920,6 +920,9 @@ Tolerances:
 ### Stage Q2 — Backend-derived digital twin
 
 Backend properties snapshot ile Aer noise model kurulur. En az 20 transpiler seed’i değerlendirilir; selection rule hardware sonuçlarını görmeden uygulanır.
+G4 preflight aşamasındaki mevcut Q304 uygulaması, seçili layout üzerindeki
+1Q/2Q/readout hata oranlarından türetilmiş aggregate local proxy modelidir.
+Tam ISA-circuit/hash freeze ve transpiler-seed seçimi H402'de ayrıca yapılır.
 
 ## 6.5 IBM backend-selection rule
 
@@ -930,7 +933,9 @@ Eligible backends:
 - operational;
 - Open Plan instance üzerinden accessible;
 - dört connected qubit içeren;
-- dynamic circuit gerektirmeyen standard gates destekleyen.
+- dynamic circuit gerektirmeyen standard gates destekleyen;
+- GHZ entangling workload'u için `cx`, `cz` veya `ecr` gibi native iki-qubit
+  entangling gate expose eden.
 
 Her candidate layout için deterministic score:
 
@@ -1278,4 +1283,3 @@ Bu protokolün teorik sınırlarını belirleyen ana kaynaklar:
 Bu deney programının başarılı sayılması için “zamanın ne olduğunu” çözmesi gerekmez. Aşağıdaki daha dar ve test edilebilir ayrımı kurması yeterlidir:
 
 > **Redundant records, bir history state içinde hangi clock basis’in çoklu yerel gözlemciler için objektif olduğunu seçebilir; fakat zaman sırası ve yönü, ancak persistent records’ın ek yönlü yapısı tarafından tanımlanır.**
-

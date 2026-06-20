@@ -9,6 +9,7 @@ COMMANDS = [
     [sys.executable, "scripts/run_g2_all.py"],
     [sys.executable, "scripts/run_g3.py"],
     [sys.executable, "scripts/run_g4_readiness.py"],
+    [sys.executable, "scripts/run_h401_draft.py"],
     [sys.executable, "scripts/run_a601.py"],
     [sys.executable, "-m", "objective_clocks.cli", "ghz-exact"],
 ]

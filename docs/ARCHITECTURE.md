@@ -53,7 +53,9 @@ flowchart TD
     Q302Runner["scripts/run_q302.py"] --> Q1Sweep["Q1_noise_sweep.parquet"]
     Q302Runner --> Q1Summary["Q1_noise_sweep_summary.json"]
     Q302Runner --> Q302Fig["fig_q302_noise_readiness.pdf"]
-    Q303Runner["scripts/run_q303.py"] --> Q303Json["Q303_backend_candidates.json"]
+    QiskitAccount["~/.qiskit/qiskit-ibm.json (repo external)"] --> Q303Runner["scripts/run_q303.py"]
+    OpenInstance["IBM open-instance metadata"] --> Q303Runner
+    Q303Runner --> Q303Json["Q303_backend_candidates.json"]
     Q304Runner["scripts/run_q304.py"] --> Q2Twin["Q2_backend_twin.parquet"]
     Q304Runner --> Q2Summary["Q2_backend_twin_summary.json"]
     G3Runner["scripts/run_g3.py"] --> G3Manifest["G3_manifest.json"]
@@ -70,6 +72,11 @@ flowchart TD
     Q303Json --> G4AuditRunner
     Q2Summary --> G4AuditRunner
     Q1Summary --> G4AuditRunner
+    H401Runner["scripts/run_h401_draft.py"] --> H401Draft["docs/PREREGISTRATION_DRAFT.md"]
+    H401Runner --> H401Summary["H401_preregistration_draft_summary.json"]
+    Q303Json --> H401Runner
+    Q2Summary --> H401Runner
+    G4Audit --> H401Runner
     A601Runner["scripts/run_a601.py"] --> ClaimCSV["results/claim_evidence_matrix.csv"]
     A601Runner --> A601Summary["A601_claim_evidence_summary.json"]
     ClaimCSV --> A601Manifest["A601_manifest.json"]
@@ -110,10 +117,11 @@ flowchart TD
     C206 --> Q301["Q301: freeze circuits and endianness"]
     Q301 --> Q302["Q302: generic Aer noise sweep"]
     Q301 --> Q303["Q303: deterministic backend and layout selection"]
-    Q302 --> Q304["Q304: backend-derived twin or stop row"]
+    Q302 --> Q304["Q304: backend-derived aggregate local twin or stop row"]
     Q303 --> Q304
-    Q304 --> G3Stop["Stop before G4 when no real backend snapshot exists"]
-    G3Stop --> G4Audit["G4 readiness audit: document blockers without submission"]
+    Q304 --> G4Audit["G4 readiness audit: document blockers without submission"]
+    G4Audit --> H401Draft["H401 draft packet: not frozen, no QPU permission"]
+    H401Draft --> G4Blocked["Blocked until environment archive, ISA seed and human approval"]
     G4Audit --> A601["A601: evidence-grade claims without hardware claim inflation"]
 ```
 
@@ -150,6 +158,7 @@ flowchart LR
     quantum --> run_q303["scripts/run_q303.py"]
     ibm["ibm.py"] --> run_q303
     run_q303 --> run_q304["scripts/run_q304.py"]
+    quantum --> run_q304
     run_q301 --> run_g3["scripts/run_g3.py"]
     run_q302 --> run_g3
     run_q303 --> run_g3
@@ -157,6 +166,9 @@ flowchart LR
     ibm --> readiness["readiness.py"]
     artifacts --> readiness
     readiness --> run_g4_readiness["scripts/run_g4_readiness.py"]
+    preregistration["preregistration.py"] --> run_h401_draft["scripts/run_h401_draft.py"]
+    artifacts --> preregistration
+    run_g4_readiness --> run_h401_draft
     claims["claims.py"] --> run_a601["scripts/run_a601.py"]
     artifacts --> run_a601
     run_g1 --> run_a601
@@ -190,11 +202,18 @@ flowchart TD
     QBitParser["parse_qiskit_bitstring(key)"] --> Q301Out["Q301 manifest"]
     CircuitFamily["named_science_circuits()"] --> Q301Out
     QNoiseRows["q302_noise_rows(config, seed)"] --> Q302Out["Q1 noise sweep + readiness figure"]
+    RuntimeAccount["Qiskit saved account + open-instance"] --> EnvPresence["discover_ibm_env_keys()"]
     BackendRank["rank_backend_candidates(candidates)"] --> Q303Out["Q303 backend candidates"]
     EnvPresence["discover_ibm_env_keys()"] --> Q303Out
-    Q304Stop["no real backend snapshot"] --> Q304Out["Q2 stop parquet + summary"]
+    BackendTwin["run_backend_derived_twin(candidate, layout, config)"] --> Q304Out["Q2 backend-twin parquet + summary"]
+    Q303Out --> BackendTwin
+    Q302Out --> BackendTwin
     TokenSources["discover_ibm_token_sources(paths)"] --> G4Readiness["build_g4_readiness_audit(root)"]
     G4Readiness --> G4Out["G4 readiness audit + manifest"]
+    PreregDraft["build_h401_preregistration_draft(root)"] --> H401Out["PREREGISTRATION_DRAFT.md + summary"]
+    Q303Out --> PreregDraft
+    Q304Out --> PreregDraft
+    G4Out --> PreregDraft
     ClaimsRows["build_claim_evidence_matrix(root)"] --> ClaimsCSV["claim_evidence_matrix.csv"]
     ClaimsRows --> ClaimsValidation["validate_claim_evidence_matrix(rows)"]
     ClaimsValidation --> A601Out["A601 summary + manifest"]

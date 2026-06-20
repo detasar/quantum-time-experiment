@@ -1,6 +1,6 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T17:44:15.995299+00:00",
+  "created_utc": "2026-06-20T18:29:13.989630+00:00",
   "files": [
     {
       "path": "figures/fig_02_basis_landscape.pdf",
@@ -39,13 +39,13 @@
     },
     {
       "path": "results/processed/C4_assumption_failures.json",
-      "sha256": "306805ab806e15c1a8ce245a5b1012e9103f6272d29727594fcd0af45e51e2c4",
-      "size_bytes": 2298
+      "sha256": "ef69d34fedfb111ee0577a0e3118f3682115e2eaa9b4d49b575c5fe672a698c7",
+      "size_bytes": 2331
     },
     {
       "path": "results/processed/C5_ghz_exact.json",
-      "sha256": "caecca4a5fe4600b92e646c2692eb37ffdb324d03099a38cca8cb7044157b7e1",
-      "size_bytes": 1266
+      "sha256": "0252e57958f8d5ec9b71a0e49bf5c4c8f2152b347916c1b7c9d250abb71fc5f2",
+      "size_bytes": 1299
     }
   ]
 }

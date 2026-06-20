@@ -98,20 +98,26 @@ python -m objective_clocks.cli ghz-exact
 - `results/processed/G3_manifest.json`
 - `docs/G3_REVIEW_REPORT.md`
 
-G3 completed the local circuit and generic-noise readiness path without any
-provider job submission. G4 is intentionally blocked until a real IBM backend
-snapshot is available for the backend-derived digital twin.
+G3 completed the local circuit, generic-noise readiness path and provider
+metadata preflight without any provider job submission. Q303 currently uses the
+saved IBM Open Plan account, selects an Open backend and records only
+secret-safe account metadata. Q304 runs a backend-derived local twin from the
+selected layout's calibration snapshot; it is not a hardware observation.
 
 ## Current G4 Readiness Audit
 
 - `results/processed/G4_readiness_audit.json`
 - `results/processed/G4_readiness_manifest.json`
+- `results/processed/H401_preregistration_draft_summary.json`
+- `docs/PREREGISTRATION_DRAFT.md`
 - `docs/G4_READINESS_REPORT.md`
 
 Current status is `blocked_before_g4`. The audit scans local env-like files,
 shell config files and known Qiskit account-file names without recording secret
-values. It currently finds no non-empty IBM/Qiskit token source and keeps QPU
-execution disabled.
+values. It confirms the saved account is bound to `open-instance` on the Open
+plan, keeps QPU execution disabled and blocks freeze on the remaining H401/H402
+items: environment archive, ISA transpiler seed/circuit freeze and explicit
+human approval.
 
 ## Current A601 Artifacts
 
@@ -122,4 +128,5 @@ execution disabled.
 
 A601 evidence-grades every planned claim as `P`, `E`, `S`, `Q`, `I` or `N`.
 Current hardware observation count is zero, so Q1/Q2 remain exact/simulator
-illustrations without Q-grade evidence.
+illustrations without Q-grade evidence even though the Q304 backend-derived
+local twin now passes.

@@ -1,6 +1,6 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T17:44:11.570376+00:00",
+  "created_utc": "2026-06-20T18:29:09.568431+00:00",
   "files": [
     {
       "path": "figures/fig_02_basis_landscape.pdf",
@@ -9,8 +9,8 @@
     },
     {
       "path": "results/processed/C0_runtime_report.json",
-      "sha256": "a8f2355832d7cc5897466fbf42abbe861cae3d5dadd44d7c33b352401cdb3151",
-      "size_bytes": 2590
+      "sha256": "bf228a4119038111e4de7761d4c5fc869d5db27837445b68ee47b37707e300c7",
+      "size_bytes": 2623
     },
     {
       "path": "results/processed/C0_theorem_fixtures.json",
@@ -29,8 +29,8 @@
     },
     {
       "path": "results/processed/C1_basis_landscape_summary.json",
-      "sha256": "4e4e6d7a1a9f6d81c2ad569a6c178ad0c7b5be9f569f2ed64f151a44ca559359",
-      "size_bytes": 2707
+      "sha256": "0d863e7404ff8d51b27b96829e468a8d54764ce522ab89bc22b5894e1fb0321e",
+      "size_bytes": 2741
     },
     {
       "path": "results/processed/C2_graphs/diamond.graphml",
@@ -69,8 +69,8 @@
     },
     {
       "path": "results/processed/C2_order_catalog_summary.json",
-      "sha256": "043a37c82ec4dc230cb9e5de1d272301630aa06525647392d60b0cd0f8fa4757",
-      "size_bytes": 2285
+      "sha256": "86d7911bcdeb80d98d795db69a0df7f3c861d0044e6a0bbc921f25d6ed5099fa",
+      "size_bytes": 2318
     }
   ]
 }

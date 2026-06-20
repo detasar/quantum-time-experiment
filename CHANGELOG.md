@@ -116,3 +116,25 @@ All notable changes to this research repository are documented here.
 ### Changed
 - Broadened secret-safe IBM/Qiskit credential discovery to env-like files, shell config files and known Qiskit account-file names.
 - Tightened discovery to avoid treating Qiskit documentation examples as real token sources.
+
+## [0.6.3-open-instance-preflight] - 2026-06-20
+
+### Added
+- Added Open Plan runtime-account metadata checks for `open-instance`.
+- Added native IBM `cz` entangling-gate eligibility in Q303 backend ranking.
+- Added backend calibration timestamp/version capture in the Q303 snapshot.
+- Added Q304 selected-layout backend-derived aggregate local twin.
+- Added H401 preregistration draft generation and manifests.
+
+### Changed
+- Updated G4 readiness to pass Q303/Q304 only when provider metadata and the
+  local twin are available, while keeping H401/H402/human approval as blockers.
+- Updated A601 caveats to preserve zero Q-grade hardware claims after Q304 local
+  twin readiness passes.
+- Added H401 draft generation to Makefile and the reproduction chain.
+
+### Security
+- Saved the IBM API key only in the local Qiskit account store outside the repo.
+- Recorded no token values in repository artifacts; runtime CRN is represented
+  by a SHA-256 hash in generated metadata.
+- QPU job submission remains unimplemented and gated.

@@ -1,12 +1,14 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 from pathlib import Path
+from statistics import fmean
 from typing import Any, cast
 
 from .artifacts import sha256_file
-from .quantum import BackendCandidate, fixture_backend_candidates
+from .quantum import SUPPORTED_ENTANGLING_BASIS_GATES, BackendCandidate, fixture_backend_candidates
 
 IBM_TOKEN_KEYS = ("QISKIT_IBM_TOKEN", "IBM_QUANTUM_TOKEN", "QISKIT_TOKEN", "IBM_TOKEN")
 IBM_INTERESTING_MARKERS = ("IBM", "QISKIT")
@@ -179,10 +181,81 @@ def env_file_candidates(home: Path | None = None, *, limit: int = 1000) -> list[
     return sorted(all_candidates)[:limit]
 
 
-def _runtime_service_from_token(token: str | None) -> Any:
+def _sha256_text(value: str) -> str:
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def _safe_runtime_account_metadata(service: Any) -> dict[str, Any]:
+    metadata: dict[str, Any] = {"secret_values_recorded": False}
+    try:
+        active = service.active_account()
+    except Exception as exc:
+        metadata["active_account_error"] = f"{type(exc).__name__}: {exc}"
+        return metadata
+    if not isinstance(active, dict):
+        return metadata
+    instance = str(active.get("instance") or "")
+    metadata.update(
+        {
+            "channel": active.get("channel"),
+            "url": active.get("url"),
+            "private_endpoint": active.get("private_endpoint"),
+            "instance_configured": bool(instance),
+            "instance_crn_sha256": _sha256_text(instance) if instance else None,
+            "region": instance.split(":")[5] if instance.startswith("crn:") else None,
+        }
+    )
+    try:
+        instances = service.instances()
+    except Exception as exc:
+        metadata["instances_error"] = f"{type(exc).__name__}: {exc}"
+        return metadata
+    for item in instances:
+        if item.get("crn") == instance:
+            metadata.update(
+                {
+                    "instance_name": item.get("name"),
+                    "plan": item.get("plan"),
+                    "pricing_type": item.get("pricing_type"),
+                }
+            )
+            break
+    return metadata
+
+
+def _mean_or_default(values: list[float], default: float) -> float:
+    return float(fmean(values)) if values else default
+
+
+def _safe_gate_error(properties: Any, gate: str, qubits: tuple[int, ...]) -> float | None:
+    candidates: tuple[Any, ...] = (list(qubits), qubits, qubits[0] if len(qubits) == 1 else qubits)
+    for candidate in candidates:
+        try:
+            return float(properties.gate_error(gate, candidate))
+        except Exception:
+            continue
+    return None
+
+
+def _safe_readout_error(properties: Any, qubit: int) -> float | None:
+    try:
+        return float(properties.readout_error(qubit))
+    except Exception:
+        return None
+
+
+def _safe_datetime_text(value: Any) -> str | None:
+    if value is None:
+        return None
+    if hasattr(value, "isoformat"):
+        return str(value.isoformat())
+    return str(value)
+
+
+def _runtime_service_from_token(token: str | None, token_source: dict[str, Any] | None) -> Any:
     from qiskit_ibm_runtime import QiskitRuntimeService
 
-    if token is None:
+    if token is None or (token_source or {}).get("source") == "qiskit_account_file":
         return QiskitRuntimeService()
     try:
         return QiskitRuntimeService(token=token)
@@ -205,6 +278,33 @@ def _candidate_from_backend(backend: Any) -> BackendCandidate:
     pending_jobs = int(getattr(status, "pending_jobs", 999) if status is not None else 999)
     operational = bool(getattr(status, "operational", True) if status is not None else True)
     simulator = bool(getattr(backend, "simulator", False))
+    properties = backend.properties() if callable(getattr(backend, "properties", None)) else None
+    one_qubit_entries: list[tuple[int, float]] = []
+    readout_entries: list[tuple[int, float]] = []
+    edge_entries: list[tuple[int, int, float]] = []
+    if properties is not None:
+        for qubit in range(n_qubits):
+            one_qubit_values = [
+                error
+                for gate in ("sx", "x")
+                if (error := _safe_gate_error(properties, gate, (qubit,))) is not None
+            ]
+            if one_qubit_values:
+                one_qubit_entries.append((qubit, _mean_or_default(one_qubit_values, 0.001)))
+            readout_error = _safe_readout_error(properties, qubit)
+            if readout_error is not None:
+                readout_entries.append((qubit, readout_error))
+        entangling_gates = sorted(
+            gate for gate in basis_gates if gate in SUPPORTED_ENTANGLING_BASIS_GATES
+        )
+        for a, b in edges:
+            edge_values = [
+                error
+                for gate in entangling_gates
+                if (error := _safe_gate_error(properties, gate, (a, b))) is not None
+            ]
+            if edge_values:
+                edge_entries.append((a, b, min(edge_values)))
     return BackendCandidate(
         name=name,
         n_qubits=n_qubits,
@@ -213,9 +313,20 @@ def _candidate_from_backend(backend: Any) -> BackendCandidate:
         pending_jobs=pending_jobs,
         basis_gates=basis_gates or ("cx",),
         coupling_edges=edges,
-        one_qubit_error=0.001,
-        two_qubit_error=0.01,
-        readout_error=0.02,
+        one_qubit_error=_mean_or_default([entry[1] for entry in one_qubit_entries], 0.001),
+        two_qubit_error=_mean_or_default([entry[2] for entry in edge_entries], 0.01),
+        readout_error=_mean_or_default([entry[1] for entry in readout_entries], 0.02),
+        one_qubit_gate_errors=tuple(one_qubit_entries),
+        two_qubit_edge_errors=tuple(edge_entries),
+        readout_errors=tuple(readout_entries),
+        calibration_timestamp=_safe_datetime_text(
+            getattr(properties, "last_update_date", None) if properties is not None else None
+        ),
+        backend_version=(
+            str(getattr(properties, "backend_version", ""))
+            if properties is not None and getattr(properties, "backend_version", None)
+            else None
+        ),
     )
 
 
@@ -237,7 +348,8 @@ def list_backend_candidates_without_submission() -> tuple[
     if token or token_source is not None:
         try:
             metadata["provider_call_attempted"] = True
-            service = _runtime_service_from_token(token)
+            service = _runtime_service_from_token(token, token_source)
+            metadata["runtime_account"] = _safe_runtime_account_metadata(service)
             backends = service.backends()
             return "provider", [_candidate_from_backend(backend) for backend in backends], metadata
         except Exception as exc:
@@ -246,7 +358,8 @@ def list_backend_candidates_without_submission() -> tuple[
         try:
             metadata["provider_call_attempted"] = True
             metadata["token_source"] = {"source": "qiskit_saved_account_probe"}
-            service = _runtime_service_from_token(None)
+            service = _runtime_service_from_token(None, None)
+            metadata["runtime_account"] = _safe_runtime_account_metadata(service)
             backends = service.backends()
             return "provider", [_candidate_from_backend(backend) for backend in backends], metadata
         except Exception as exc:

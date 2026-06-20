@@ -23,7 +23,7 @@ def main() -> None:
         "q_grade_claim_count": sum("Q" in row.evidence_grade.split(";") for row in rows),
         "hardware_observation_claimed": any("Q" in row.evidence_grade.split(";") for row in rows),
         "unsupported_claim_count": sum(row.evidence_status == "unsupported" for row in rows),
-        "hardware_stage_status": "stopped_before_preregistration",
+        "hardware_stage_status": "no_hardware_observation_before_preregistration",
     }
     write_json_atomic(Path("results/processed/A601_claim_evidence_summary.json"), summary)
     write_sha256_manifest(

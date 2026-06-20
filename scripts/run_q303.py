@@ -25,7 +25,20 @@ def main() -> None:
     write_json_atomic(output, payload)
     if selected is None:
         raise SystemExit("Q303 found no eligible backend candidate")
-    print(payload)
+    runtime_account = metadata.get("runtime_account", {})
+    print(
+        {
+            "experiment_id": payload["experiment_id"],
+            "candidate_source": source,
+            "status": payload["status"],
+            "selected_backend": selected["name"],
+            "selected_layout": selected["selected_layout"],
+            "instance_name": runtime_account.get("instance_name"),
+            "plan": runtime_account.get("plan"),
+            "pricing_type": runtime_account.get("pricing_type"),
+            "secret_values_recorded": runtime_account.get("secret_values_recorded"),
+        }
+    )
 
 
 if __name__ == "__main__":

@@ -14,7 +14,7 @@ Branch: `implementation/g0-g1`
 
 - `scripts/run_g3.py`: passed.
 - `ruff check .`: passed.
-- `pytest -q`: 43 passed.
+- `pytest -q`: 49 passed.
 - `mypy src/objective_clocks`: passed.
 
 ## Generated Artifacts
@@ -45,17 +45,28 @@ Branch: `implementation/g0-g1`
 
 ## Q303 Evidence
 
-- No IBM/Qiskit runtime token was found in discovered environment files.
 - No provider job was submitted.
-- Deterministic fixture backend selection chose `fixture_heavy_hex7` with layout `[1,2,3,4]`.
+- The saved Qiskit account is bound to `open-instance` on the IBM Open plan.
+- Deterministic provider-backed selection currently chooses `ibm_kingston`
+  with layout `[125, 117, 126, 124]`.
+- The selected backend supports native `cz` entangling gates, which the ranking
+  code treats as valid for the GHZ workload.
 - Selection is deterministic and does not use hardware science results.
+- Secret values are not written to the Q303 artifact.
 
 ## Q304 Evidence
 
-- Because no real backend snapshot was available, Q304 writes a formal stop row:
-  `hardware_stage_stopped`, reason `no_real_backend_snapshot_available`.
-- This satisfies the Q304 stop path: hardware preregistration should not proceed until a real backend snapshot is available.
+- Q304 runs a local backend-derived aggregate noise twin from the selected
+  layout's calibration snapshot.
+- Current status: `backend_snapshot_ready`, reason
+  `backend_derived_aggregate_noise_passed`.
+- Backend version: `1.0.0`; calibration timestamp:
+  `2026-06-20T20:55:08+03:00`.
+- This is still a local simulation proxy, not a QPU hardware observation.
 
 ## Stop Boundary
 
-G3 local circuits and generic noise readiness are complete. G4 preregistration is not ready because Q304 did not obtain a real backend-derived digital twin.
+G3 local circuits, generic noise readiness, provider backend selection and the
+backend-derived local twin are complete. G4 preregistration is still not frozen:
+H401/H402 must archive the environment, freeze ISA circuits/transpiler seed and
+record explicit human approval before any QPU submission path exists.

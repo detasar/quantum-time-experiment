@@ -272,7 +272,10 @@ def build_claim_evidence_matrix(root: Path = Path(".")) -> list[ClaimEvidence]:
                 f"ghz_x_score={c1['ghz_x_score']}",
                 f"q302_passing_cells={q1['passing_cells']}/{q1['row_count']}",
             ],
-            caveat="No Q-grade evidence is claimed; Q304 stopped before hardware preregistration.",
+            caveat=(
+                "No Q-grade evidence is claimed; Q304 is a backend-derived local twin, "
+                "not a hardware observation."
+            ),
         ),
         _claim(
             claim_id="Q2",
@@ -299,8 +302,8 @@ def build_claim_evidence_matrix(root: Path = Path(".")) -> list[ClaimEvidence]:
                 f"q304_reason={q2['reason']}",
             ],
             caveat=(
-                "No hardware observation is available because the backend-derived "
-                "twin gate stopped."
+                "No hardware observation is available; the backend-derived twin is "
+                "a preregistration readiness simulation only."
             ),
         ),
     ]

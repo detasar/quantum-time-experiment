@@ -81,6 +81,12 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
     q303_provider = q303.get("candidate_source") == "provider"
     q304_ready = q304.get("status") == "backend_snapshot_ready"
     provider_metadata = cast(dict[str, Any], q303.get("provider_metadata", {}))
+    runtime_account = cast(dict[str, Any], provider_metadata.get("runtime_account", {}))
+    open_instance = (
+        runtime_account.get("instance_name") == "open-instance"
+        and runtime_account.get("plan") == "open"
+        and runtime_account.get("pricing_type") == "free"
+    )
     tbd_count = prereg.count("TBD")
     prereg_frozen = "**Status:** FROZEN" in prereg or "Status:** FROZEN" in prereg
     human_approval = "Human approval: `YES`" in prereg
@@ -115,6 +121,21 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
             blocking_tasks=["H401", "H402"],
             remediation=(
                 "Load a valid IBM Runtime token, rerun Q303 and capture a real backend snapshot."
+            ),
+        ),
+        _check(
+            check_id="H403-OPEN-INSTANCE",
+            requirement="Provider account is bound to the intended IBM Open Plan instance.",
+            passed=open_instance,
+            evidence=(
+                f"instance_name={runtime_account.get('instance_name')}; "
+                f"plan={runtime_account.get('plan')}; "
+                f"pricing_type={runtime_account.get('pricing_type')}; "
+                f"region={runtime_account.get('region')}"
+            ),
+            blocking_tasks=["H401", "H403"],
+            remediation=(
+                "Save the Qiskit account with the open-instance CRN before dry-run or QPU gates."
             ),
         ),
         _check(

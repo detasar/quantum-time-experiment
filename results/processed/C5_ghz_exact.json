@@ -5,7 +5,7 @@
     "ghz_xxxx": 0.9999999999999998
   },
   "environment": {
-    "git_commit": "UNKNOWN",
+    "git_commit": "ff64028ae83dcccfa5ce68970a3b4a1f77061b1f",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -18,7 +18,7 @@
     "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
     "python": "3.13.11",
     "qpu_execution_enabled": false,
-    "timestamp_utc": "2026-06-20T17:44:15.875680+00:00"
+    "timestamp_utc": "2026-06-20T18:29:13.869823+00:00"
   },
   "expectations": {
     "XXXX": {

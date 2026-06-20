@@ -1,4 +1,4 @@
-.PHONY: test theorem c0 c1 c2 g2-batch1 c3 c4 c5 g2-batch2 g2 q301 q302 q303 q304 g3 g4-readiness a601 ghz reproduce qpu-dry
+.PHONY: test theorem c0 c1 c2 g2-batch1 c3 c4 c5 g2-batch2 g2 q301 q302 q303 q304 g3 g4-readiness h401-draft a601 ghz reproduce qpu-dry
 
 test:
 	PYTHONPATH=src pytest -q
@@ -50,6 +50,9 @@ g3:
 
 g4-readiness:
 	PYTHONPATH=src python scripts/run_g4_readiness.py
+
+h401-draft:
+	PYTHONPATH=src python scripts/run_h401_draft.py
 
 a601:
 	PYTHONPATH=src python scripts/run_a601.py

@@ -64,12 +64,13 @@ def test_ibm_env_candidates_include_shell_run_env_and_qiskit_json(tmp_path: Path
     assert "qiskit_account_file" in serialized
 
 
-def test_g4_readiness_audit_blocks_without_provider_snapshot() -> None:
+def test_g4_readiness_audit_blocks_without_frozen_preregistration() -> None:
     report = build_g4_readiness_audit(Path("."))
     checks = {check["id"]: check for check in report["checks"]}
 
     assert report["overall_status"] == "blocked_before_g4"
     assert checks["G3-Q302"]["status"] == "pass"
-    assert checks["G3-Q304-TWIN"]["status"] == "blocked"
+    assert checks["H401-PREREG-FIELDS"]["status"] == "blocked"
+    assert checks["H401-HUMAN-APPROVAL"]["status"] == "blocked"
     assert checks["H403-QPU-GATE"]["status"] == "pass"
     assert not report["ibm_credential_audit"]["secret_values_recorded"]

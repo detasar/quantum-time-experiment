@@ -4,6 +4,8 @@ import numpy as np
 
 from objective_clocks.circuits import named_science_circuits
 from objective_clocks.quantum import (
+    BackendCandidate,
+    backend_derived_noise_parameters,
     best_layout_for_candidate,
     exact_science_expectations,
     fixture_backend_candidates,
@@ -73,3 +75,28 @@ def test_q303_backend_selection_is_deterministic() -> None:
     layout, score = best_layout_for_candidate(fixture_backend_candidates()[1])
     assert len(layout) == 4
     assert score >= 0.0
+
+
+def test_q303_accepts_native_cz_backend_candidates() -> None:
+    candidate = BackendCandidate(
+        name="native_cz_backend",
+        n_qubits=5,
+        operational=True,
+        simulator=False,
+        pending_jobs=0,
+        basis_gates=("rz", "sx", "x", "cz", "measure"),
+        coupling_edges=((0, 1), (1, 2), (2, 3), (3, 4)),
+        one_qubit_error=0.001,
+        two_qubit_error=0.012,
+        readout_error=0.02,
+        two_qubit_edge_errors=((0, 1, 0.01), (1, 2, 0.012), (2, 3, 0.014)),
+        readout_errors=((0, 0.01), (1, 0.02), (2, 0.015), (3, 0.017)),
+    )
+
+    ranked = rank_backend_candidates([candidate])
+    noise = backend_derived_noise_parameters(candidate, tuple(ranked[0]["selected_layout"]))
+
+    assert ranked[0]["eligible"]
+    assert ranked[0]["supported_entangling_gates"] == ["cz"]
+    assert len(ranked[0]["selected_layout"]) == 4
+    assert noise["path_edge_error_count"] > 0

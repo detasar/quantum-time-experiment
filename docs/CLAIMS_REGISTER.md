@@ -13,7 +13,7 @@ Evidence grades:
 
 Current A601 status: every planned claim has at least one evidence artifact, one
 explicit evidence check and one caveat. There is no `Q`-grade claim because Q304
-stopped before hardware preregistration.
+is a backend-derived local twin, not a hardware observation.
 
 | ID | Evidence grade | Current status | Novelty status | Caveat |
 |---|---:|---|---|---|
@@ -25,5 +25,5 @@ stopped before hardware preregistration.
 | N1 | N;E | supported_no_go | Boundary result | External label anchoring can add order information; redundancy alone cannot. |
 | N2 | N;E | supported_no_go | Boundary result | The no-go excludes orientation from basis objectivity alone. |
 | N3 | N;P;E | supported_no_go | Known-adjacent no-go | This is a boundary condition on admissible physical partitions. |
-| Q1 | P;E;S | supported_without_hardware | Illustration only | No Q-grade evidence is claimed; Q304 stopped before hardware preregistration. |
-| Q2 | P;E;S | supported_without_hardware | Boundary illustration | No hardware observation is available because the backend-derived twin gate stopped. |
+| Q1 | P;E;S | supported_without_hardware | Illustration only | No Q-grade evidence is claimed; Q304 is a backend-derived local twin, not a hardware observation. |
+| Q2 | P;E;S | supported_without_hardware | Boundary illustration | No hardware observation is available; the backend-derived twin is a preregistration readiness simulation only. |

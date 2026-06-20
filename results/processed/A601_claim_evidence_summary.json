@@ -13,7 +13,7 @@
     "Q2"
   ],
   "hardware_observation_claimed": false,
-  "hardware_stage_status": "stopped_before_preregistration",
+  "hardware_stage_status": "no_hardware_observation_before_preregistration",
   "q_grade_claim_count": 0,
   "task": "A601",
   "unsupported_claim_count": 0

@@ -1,12 +1,18 @@
 {
+  "backend": "ibm_kingston",
+  "backend_version": "1.0.0",
+  "calibration_timestamp": "2026-06-20T20:55:08+03:00",
+  "candidate_source": "provider",
   "experiment_id": "Q304",
+  "model_class": "selected_layout_aggregate_depolarizing_proxy",
   "outputs": [
     {
       "path": "results/processed/Q2_backend_twin.parquet",
-      "sha256": "9b4670ee2d98b11e571acfd6538064dc050fa7260c09e9568c7915a2608092c1",
-      "size_bytes": 4299
+      "sha256": "6cb70bb3c72d0558b3a8e542d04782e790124f7c6812eeaed1499b02e9ee4884",
+      "size_bytes": 20748
     }
   ],
-  "reason": "no_real_backend_snapshot_available",
-  "status": "hardware_stage_stopped"
+  "passes_preregistered_local_readiness": true,
+  "reason": "backend_derived_aggregate_noise_passed",
+  "status": "backend_snapshot_ready"
 }
