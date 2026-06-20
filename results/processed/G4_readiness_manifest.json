@@ -1,11 +1,11 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T17:55:08.811495+00:00",
+  "created_utc": "2026-06-20T18:01:14.116900+00:00",
   "files": [
     {
       "path": "results/processed/G4_readiness_audit.json",
-      "sha256": "0d4b8f590525d1f737be9156d4688fb6211534378a63f851d359f8c543f7e361",
-      "size_bytes": 3805
+      "sha256": "625aaab5087277896a138be5fe20a48ec932cefc976800ed88b80f9e2fb28854",
+      "size_bytes": 3806
     }
   ]
 }

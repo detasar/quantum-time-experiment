@@ -197,8 +197,9 @@ the exact GHZ CLI all reran without failure.
 
 The G4 readiness audit is intentionally not a preregistration freeze. It records
 which preconditions are currently satisfied and which block H401--H404. The
-audit scanned local \texttt{.env*} files without writing secret values to any
-artifact. It found no non-empty IBM/Qiskit token source.
+audit scanned local env-like files, shell config files and known Qiskit account
+file names without writing secret values to any artifact. It found no non-empty
+IBM/Qiskit token source.
 
 The current status is \texttt{blocked\_before\_g4}. Q302 generic local readiness
 passes with 96 of 100 grid cells, and the QPU execution gate remains disabled.

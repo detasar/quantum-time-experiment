@@ -1,7 +1,7 @@
 {
   "candidate_source": "deterministic_fixture",
   "environment": {
-    "git_commit": "UNKNOWN",
+    "git_commit": "9b7201532df92260fe3837c38b1a172aa02ee3ac",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -14,7 +14,7 @@
     "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
     "python": "3.13.11",
     "qpu_execution_enabled": false,
-    "timestamp_utc": "2026-06-20T17:44:38.948212+00:00"
+    "timestamp_utc": "2026-06-20T18:01:11.608161+00:00"
   },
   "experiment_id": "Q303",
   "provider_metadata": {

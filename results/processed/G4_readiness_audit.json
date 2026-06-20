@@ -67,7 +67,7 @@
       "blocking_tasks": [
         "H404"
       ],
-      "evidence": "git_commit=ae6e825444c3d6a720f6430634ec5f22d475b6f8; upstream=origin/implementation/g0-g1; working_tree_entries_at_audit_time=9",
+      "evidence": "git_commit=9b7201532df92260fe3837c38b1a172aa02ee3ac; upstream=origin/implementation/g0-g1; working_tree_entries_at_audit_time=11",
       "id": "H404-REPO-SNAPSHOT",
       "remediation": "Commit and push the research snapshot before preregistration tagging; rerun the final H404 clean check immediately before creating the tag.",
       "requirement": "Repository has an initial committed snapshot tracking a remote branch.",
@@ -75,7 +75,7 @@
     }
   ],
   "environment": {
-    "git_commit": "ae6e825444c3d6a720f6430634ec5f22d475b6f8",
+    "git_commit": "9b7201532df92260fe3837c38b1a172aa02ee3ac",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -90,7 +90,7 @@
     "qpu_execution_enabled": false
   },
   "ibm_credential_audit": {
-    "env_files_scanned": 44,
+    "env_files_scanned": 52,
     "key_presence": {},
     "secret_values_recorded": false,
     "token_source_count": 0,

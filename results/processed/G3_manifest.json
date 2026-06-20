@@ -1,6 +1,6 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T17:44:39.330396+00:00",
+  "created_utc": "2026-06-20T18:01:11.990924+00:00",
   "files": [
     {
       "path": "figures/fig_q302_noise_readiness.pdf",
@@ -14,8 +14,8 @@
     },
     {
       "path": "results/processed/Q1_noise_sweep_summary.json",
-      "sha256": "a76c2f2829ee4451fdadd03d91609314ea0ccb20e7513a60dafc1c24c40810a2",
-      "size_bytes": 1160
+      "sha256": "6a80d82ae9d5d0f2f238cf86fb7b81ece9e2519a03ac962bce961a8ebafc859a",
+      "size_bytes": 1193
     },
     {
       "path": "results/processed/Q2_backend_twin.parquet",
@@ -39,8 +39,8 @@
     },
     {
       "path": "results/processed/Q303_backend_candidates.json",
-      "sha256": "74e93ef91a29bb060430b84aaf0b90888f4bdf5c81e95d26332b9edd00775112",
-      "size_bytes": 3612
+      "sha256": "e1db875c42c4d8ca6208839b514107fc3369cf16d6a42b060f6af9a9cee54e43",
+      "size_bytes": 3645
     }
   ]
 }

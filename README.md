@@ -108,9 +108,10 @@ snapshot is available for the backend-derived digital twin.
 - `results/processed/G4_readiness_manifest.json`
 - `docs/G4_READINESS_REPORT.md`
 
-Current status is `blocked_before_g4`. The audit scanned local `.env*` files
-without recording secret values, found no non-empty IBM/Qiskit token source, and
-keeps QPU execution disabled.
+Current status is `blocked_before_g4`. The audit scans local env-like files,
+shell config files and known Qiskit account-file names without recording secret
+values. It currently finds no non-empty IBM/Qiskit token source and keeps QPU
+execution disabled.
 
 ## Current A601 Artifacts
 

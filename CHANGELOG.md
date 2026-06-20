@@ -110,3 +110,9 @@ All notable changes to this research repository are documented here.
 ### Changed
 - Refreshed the G4 readiness audit after the initial GitHub push.
 - Marked H404 repository cleanliness as passing while keeping provider snapshot, backend twin, preregistration fields and human approval as blockers.
+
+## [0.6.2-credential-discovery] - 2026-06-20
+
+### Changed
+- Broadened secret-safe IBM/Qiskit credential discovery to env-like files, shell config files and known Qiskit account-file names.
+- Tightened discovery to avoid treating Qiskit documentation examples as real token sources.

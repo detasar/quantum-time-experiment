@@ -31,7 +31,7 @@ Blocking checks:
 
 ## Credential Audit
 
-- `.env*` files scanned: 44.
+- Env-like, shell config and Qiskit account-file candidates scanned: 52.
 - Non-empty IBM/Qiskit token sources found: 0.
 - Secret values recorded: `false`.
 

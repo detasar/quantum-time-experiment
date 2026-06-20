@@ -13,13 +13,13 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "30c710053fdd44f91f614ff7e53fab93c18a04f514680c59404c209e5ba970af",
-      "size_bytes": 4872
+      "sha256": "97871422b3f811dc5c4ec21114890ffee0161c509b6c0ce197fd9fe775b73081",
+      "size_bytes": 5155
     },
     {
       "path": "README.md",
-      "sha256": "adff9d2dff5258a05627b06aa6e948b07f5cda1f26cbd23185bee54316de2119",
-      "size_bytes": 5240
+      "sha256": "4b322b8b1cb205b7b19acb5b1ae53f6d0d30466b538487eb71594fff37c008de",
+      "size_bytes": 5307
     },
     {
       "path": "TASKS.yaml",
@@ -68,8 +68,8 @@
     },
     {
       "path": "docs/G4_READINESS_REPORT.md",
-      "sha256": "6cd50f871f0ba592e8fc5b852b41b1f9c27c8c1cb9be94dd1b83f655a2cbd1e9",
-      "size_bytes": 1755
+      "sha256": "ce4094ddc6177073bfacb45d54ba0e28711055e811841c66336521e42e3baa84",
+      "size_bytes": 1799
     },
     {
       "path": "docs/PREREGISTRATION.md",
@@ -128,8 +128,8 @@
     },
     {
       "path": "reports/experiment_report.tex",
-      "sha256": "30f28cd34ab6d92a10ccbc75b12e3eeab11e0c7482cccf74471ad56ca66d0e9f",
-      "size_bytes": 8726
+      "sha256": "89f8c927e0926e5934098a173e1de8788313565d8d9ee92f850ec79a6c750dff",
+      "size_bytes": 8776
     },
     {
       "path": "requirements.lock",
@@ -268,8 +268,8 @@
     },
     {
       "path": "src/objective_clocks/ibm.py",
-      "sha256": "0d410e950d736a04eb94d19ff4f089e05f15d5451d0caa5a4b1a8748d4910a38",
-      "size_bytes": 6637
+      "sha256": "06de04535e4e19b5ccac2d5fb8c90df468deba97aa50df3a1413fdb5b53e8bcb",
+      "size_bytes": 10268
     },
     {
       "path": "src/objective_clocks/information.py",
@@ -363,8 +363,8 @@
     },
     {
       "path": "tests/test_readiness.py",
-      "sha256": "eaf744bf9e419ebf2dfe132de77e275f5b16803dfb545c7e7ae70ea9d0f9d4a3",
-      "size_bytes": 1610
+      "sha256": "11a3985b86adb6fa87f412cb22e971745706ee9146811edec3472eb0fdbf6d6c",
+      "size_bytes": 2896
     },
     {
       "path": "tests/test_states.py",
