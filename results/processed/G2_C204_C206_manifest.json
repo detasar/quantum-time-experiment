@@ -1,6 +1,6 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T18:29:13.981750+00:00",
+  "created_utc": "2026-06-20T19:05:48.676985+00:00",
   "files": [
     {
       "path": "figures/fig_04_noise_phase.pdf",
@@ -19,17 +19,17 @@
     },
     {
       "path": "results/processed/C3_noise_phase_summary.json",
-      "sha256": "267fc23d366f9cc710b824fb1f71d5ceeedf4a68e87da41804e9fcfe869ada1d",
+      "sha256": "24bac6fafee44309765f561db64baab531cf10b2c3bac5fc5e095926fc30603f",
       "size_bytes": 1170
     },
     {
       "path": "results/processed/C4_assumption_failures.json",
-      "sha256": "ef69d34fedfb111ee0577a0e3118f3682115e2eaa9b4d49b575c5fe672a698c7",
+      "sha256": "6a8ed3cf00f3a4bd9743f8c692dd16309e32026623f23bef523d9e1c16c05f1c",
       "size_bytes": 2331
     },
     {
       "path": "results/processed/C5_ghz_exact.json",
-      "sha256": "0252e57958f8d5ec9b71a0e49bf5c4c8f2152b347916c1b7c9d250abb71fc5f2",
+      "sha256": "ce903f3e6025d12886f6050599f246a3086abedf8ca1f6e28978903d8470e1ae",
       "size_bytes": 1299
     }
   ]

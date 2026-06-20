@@ -1,5 +1,5 @@
 {
-  "blocked_check_count": 2,
+  "blocked_check_count": 0,
   "checks": [
     {
       "blocking_tasks": [
@@ -46,23 +46,45 @@
     },
     {
       "blocking_tasks": [
-        "H401"
+        "H401",
+        "H404"
       ],
-      "evidence": "tbd_count=11; prereg_frozen=False",
-      "id": "H401-PREREG-FIELDS",
-      "remediation": "Fill all mandatory fields and freeze docs/PREREGISTRATION_FROZEN.md.",
-      "requirement": "Preregistration has no mandatory TBD fields and is marked FROZEN.",
-      "status": "blocked"
+      "evidence": "archive_sha256_present=True; archived_file_count=142",
+      "id": "H401-ENV-ARCHIVE",
+      "remediation": "Run H401 archive generation before preregistration review.",
+      "requirement": "Environment archive exists and has a recorded SHA-256.",
+      "status": "pass"
+    },
+    {
+      "blocking_tasks": [
+        "H401",
+        "H402"
+      ],
+      "evidence": "selected_transpiler_seed=0; total_circuit_instances=24; qpy_sha256_present=True",
+      "id": "H402-ISA-PACKET",
+      "remediation": "Run H402 ISA packet generation after Q303 backend selection.",
+      "requirement": "ISA circuits, execution order and selected transpiler seed are frozen.",
+      "status": "pass"
     },
     {
       "blocking_tasks": [
         "H401"
       ],
-      "evidence": "human_approval=False",
+      "evidence": "packet=docs/PREREGISTRATION_FROZEN.md; tbd_count=0; prereg_frozen=True",
+      "id": "H401-PREREG-FIELDS",
+      "remediation": "Fill all mandatory fields and freeze docs/PREREGISTRATION_FROZEN.md.",
+      "requirement": "Preregistration review packet has no mandatory TBD fields.",
+      "status": "pass"
+    },
+    {
+      "blocking_tasks": [
+        "H401"
+      ],
+      "evidence": "human_approval=True",
       "id": "H401-HUMAN-APPROVAL",
       "remediation": "Record explicit human approval after preregistration review.",
       "requirement": "Human review approves the frozen preregistration.",
-      "status": "blocked"
+      "status": "pass"
     },
     {
       "blocking_tasks": [
@@ -76,9 +98,19 @@
     },
     {
       "blocking_tasks": [
+        "H403"
+      ],
+      "evidence": "all_checks_passed=True; hardware_jobs_submitted=0; sampler_invoked=False; qpu_submission_allowed_now=False",
+      "id": "H403-DRY-RUN",
+      "remediation": "Run H403 dry-run after H401 freeze and before any H501 QPU gate.",
+      "requirement": "Dry-run validates submission preconditions without invoking Sampler.",
+      "status": "pass"
+    },
+    {
+      "blocking_tasks": [
         "H404"
       ],
-      "evidence": "git_commit=ff64028ae83dcccfa5ce68970a3b4a1f77061b1f; upstream=origin/implementation/g0-g1; working_tree_entries_at_audit_time=48",
+      "evidence": "git_commit=4f1354999939747843b4c6e7b6355fe6147c709c; upstream=origin/implementation/g0-g1; working_tree_entries_at_audit_time=50",
       "id": "H404-REPO-SNAPSHOT",
       "remediation": "Commit and push the research snapshot before preregistration tagging; rerun the final H404 clean check immediately before creating the tag.",
       "requirement": "Repository has an initial committed snapshot tracking a remote branch.",
@@ -86,7 +118,7 @@
     }
   ],
   "environment": {
-    "git_commit": "ff64028ae83dcccfa5ce68970a3b4a1f77061b1f",
+    "git_commit": "4f1354999939747843b4c6e7b6355fe6147c709c",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -117,10 +149,7 @@
       }
     ]
   },
-  "next_required_actions": [
-    "Fill all mandatory fields and freeze docs/PREREGISTRATION_FROZEN.md.",
-    "Record explicit human approval after preregistration review."
-  ],
-  "overall_status": "blocked_before_g4",
+  "next_required_actions": [],
+  "overall_status": "ready_for_h501",
   "task": "G4_readiness_audit"
 }

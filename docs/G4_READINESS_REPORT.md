@@ -6,17 +6,17 @@ Branch: `implementation/g0-g1`
 ## Completed Audit
 
 - Added `scripts/run_g4_readiness.py`.
-- Added secret-safe IBM/Qiskit `.env*` discovery.
-- Wrote `results/processed/G4_readiness_audit.json`.
-- Wrote `results/processed/G4_readiness_manifest.json`.
-- Wrote `docs/PREREGISTRATION_DRAFT.md`.
-- Wrote `results/processed/H401_preregistration_draft_summary.json`.
-- Verified through `scripts/reproduce_all.py`.
+- Added secret-safe IBM/Qiskit credential discovery.
+- Added H401 environment archive generation.
+- Added H402 ISA circuit packet generation.
+- Added H401 preregistration freeze generation.
+- Added H403 no-submission dry-run.
+- Added H501-H503 locked hardware execution and analysis entry points.
 
 ## Current Status
 
-Overall status: `blocked_before_g4`.
-Blocked check count: 2.
+Overall status: `ready_for_h501`.
+Blocked check count: 0.
 
 Passing checks:
 
@@ -27,37 +27,40 @@ Passing checks:
   type `free`, region `us-east`.
 - Q304 backend-derived local twin: `backend_snapshot_ready`, reason
   `backend_derived_aggregate_noise_passed`.
-- Selected backend/layout at this snapshot: `ibm_kingston`,
-  `[125, 117, 126, 124]`.
-- QPU execution gate: `ALLOW_QPU_EXECUTION` is not `YES`.
-- H404 repository snapshot: after the initial GitHub push, the repository has a committed snapshot tracking `origin/implementation/g0-g1`. A final clean-tree check is still required immediately before any preregistration tag.
-
-Blocking checks:
-
-- H401 preregistration fields: `docs/PREREGISTRATION.md` still contains
-  mandatory `TBD` fields and is not frozen. The draft packet narrows the
-  remaining blockers to environment archive SHA-256, selected transpiler seed
-  and human approval.
-- H401 human approval: no explicit approval is recorded.
+- H401 environment archive: present, hashed and secret-free.
+- H402 ISA packet: 24 circuit instances, 24,576 total shots, selected
+  transpiler seed 0.
+- H401 preregistration packet: frozen with explicit human approval.
+- H403 QPU gate: `ALLOW_QPU_EXECUTION` is not `YES`; Sampler was not invoked.
+- H404 repository snapshot: remote tracking branch exists. The final tag
+  `v0.3-qpu-preregistered` must point to the clean commit immediately before
+  H501 execution.
 
 ## Credential Audit
 
-- Env-like, shell config and Qiskit account-file candidates scanned: 53.
-- Non-empty IBM/Qiskit token sources found: 1.
+- Env-like, shell config and Qiskit account-file candidates are scanned.
+- Non-empty IBM/Qiskit token source count: 1.
 - Runtime account metadata records only non-secret fields and an instance CRN
   SHA-256 hash.
 - Secret values recorded: `false`.
 
-## Verification Results
+## H501 Boundary
 
-- `pytest -q`: 49 passed.
-- `ruff check .`: passed.
-- `mypy src/objective_clocks`: passed.
-- `scripts/reproduce_all.py`: passed with G4 readiness in the chain.
+`scripts/run_h501_execute.py --execute` is the only hardware submission entry
+point. It refuses to submit unless all of the following hold:
+
+- frozen preregistration manifest exists;
+- circuit-manifest SHA-256 matches the frozen preregistration manifest;
+- ISA QPY SHA-256 matches the circuit manifest;
+- G4 readiness audit is `ready_for_h501`;
+- runtime metadata identifies `open-instance` on the Open plan;
+- no previous H501 raw provider payload exists;
+- repository is clean;
+- tag `v0.3-qpu-preregistered` points at `HEAD`;
+- `ALLOW_QPU_EXECUTION=YES`.
 
 ## Stop Boundary
 
-G4 must not freeze preregistration or ISA circuits until the H401/H402
-remaining blockers are closed and explicit human approval is recorded. H501
-remains unreachable because QPU job submission is still intentionally
-unimplemented.
+G4 is complete, but no hardware observation exists yet. H501 may submit exactly
+one locked IBM SamplerV2 workload only after the clean preregistration tag is
+created and the execution environment gate is explicitly enabled.

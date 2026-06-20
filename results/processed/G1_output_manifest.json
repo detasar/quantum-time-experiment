@@ -1,11 +1,11 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T18:28:04.996907+00:00",
+  "created_utc": "2026-06-20T19:04:38.924352+00:00",
   "files": [
     {
       "path": "docs/ARCHITECTURE.md",
-      "sha256": "b6c305c147a9257c9ea17f116f241923c35c553c3d3826606d8d8a06b23f8f60",
-      "size_bytes": 9976
+      "sha256": "a8b8e2b17d7d3eb731ffef96f3e3a10ea1c11d2feb65130b1b8c71abe8db2aae",
+      "size_bytes": 13226
     },
     {
       "path": "docs/proofs/B0_imported_basis_uniqueness.md",
@@ -24,8 +24,8 @@
     },
     {
       "path": "reports/experiment_report.tex",
-      "sha256": "7e7439fde1c56832a1ddf20d655e6ebda24cc18ea2aa88f6481d63215db2198b",
-      "size_bytes": 9265
+      "sha256": "0fb35ae4cd9d2d1f234efe1b36181a57c3b752de4dcc1e7a3a75db687fe9ffad",
+      "size_bytes": 9956
     },
     {
       "path": "results/processed/T101_chain_verification.json",

@@ -34,6 +34,9 @@ def build_h401_preregistration_draft(root: Path = Path(".")) -> PreregistrationD
     q303 = _read_json(processed / "Q303_backend_candidates.json")
     q304 = _read_json(processed / "Q2_backend_twin_summary.json")
     g4 = _read_json(processed / "G4_readiness_audit.json")
+    preregistered = root / "results" / "preregistered"
+    archive_manifest = _read_json(preregistered / "environment_archive_manifest.json")
+    h402_manifest = _read_json(preregistered / "circuit_manifest.json")
 
     current_environment = freeze_manifest()
     packages = cast(dict[str, str], current_environment.get("packages", {}))
@@ -45,6 +48,9 @@ def build_h401_preregistration_draft(root: Path = Path(".")) -> PreregistrationD
     calibration_timestamp = selected_backend.get("calibration_timestamp") or q304.get(
         "calibration_timestamp"
     )
+    environment_archive_sha = archive_manifest.get("archive_sha256")
+    selected_transpiler_seed = h402_manifest.get("selected_transpiler_seed")
+    h402_manifest_path = preregistered / "circuit_manifest.json"
     open_instance_confirmed = (
         runtime_account.get("instance_name") == "open-instance"
         and runtime_account.get("plan") == "open"
@@ -93,9 +99,17 @@ def build_h401_preregistration_draft(root: Path = Path(".")) -> PreregistrationD
         unresolved = [
             item for item in unresolved if item["field"] != "open_plan_instance_identifier"
         ]
+    if environment_archive_sha:
+        unresolved = [item for item in unresolved if item["field"] != "environment_archive_sha256"]
+    if selected_transpiler_seed is not None:
+        unresolved = [item for item in unresolved if item["field"] != "selected_transpiler_seed"]
+    mandatory_fields_complete = not any(item["field"] != "human_approval" for item in unresolved)
 
     circuit_manifest = root / "results" / "processed" / "Q301_circuit_manifest.json"
     environment_manifest = root / "results" / "processed" / "G0_environment_manifest.json"
+    selected_circuit_manifest = (
+        h402_manifest_path if h402_manifest_path.exists() else circuit_manifest
+    )
     logical_qubits = cast(dict[str, int], q301.get("logical_qubits", {}))
     science_circuits = cast(list[dict[str, Any]], q301.get("science_circuits", []))
 
@@ -111,8 +125,8 @@ def build_h401_preregistration_draft(root: Path = Path(".")) -> PreregistrationD
 
 - Git commit: `{_required(current_environment.get("git_commit"))}`
 - Environment manifest SHA-256: `{sha256_file(environment_manifest) if environment_manifest.exists() else "TBD_BLOCKED"}`
-- Environment archive SHA-256: `TBD_BLOCKED`
-- Circuit manifest SHA-256: `{sha256_file(circuit_manifest) if circuit_manifest.exists() else "TBD_BLOCKED"}`
+- Environment archive SHA-256: `{environment_archive_sha or "TBD_BLOCKED"}`
+- Circuit manifest SHA-256: `{sha256_file(selected_circuit_manifest) if selected_circuit_manifest.exists() else "TBD_BLOCKED"}`
 - Qiskit version: `{_required(packages.get("qiskit"))}`
 - qiskit-ibm-runtime version: `{_required(packages.get("qiskit-ibm-runtime"))}`
 - Open Plan instance identifier/name: `{runtime_account.get("instance_name", "TBD_BLOCKED")}`
@@ -153,7 +167,10 @@ Use the deterministic algorithm in `docs/RESEARCH_SPEC_TR.md`. No manual backend
 - Backend twin status: `{q304.get("status", "missing")}`
 - Backend twin reason: `{q304.get("reason", "missing")}`
 - Calibration snapshot timestamp: `{calibration_timestamp or "TBD_BLOCKED"}`
-- Selected transpiler seed: `TBD_BLOCKED`
+- Selected transpiler seed: `{selected_transpiler_seed if selected_transpiler_seed is not None else "TBD_BLOCKED"}`
+- ISA circuit QPY SHA-256: `{h402_manifest.get("qpy_sha256", "TBD_BLOCKED")}`
+- Exact execution-order seed: `{h402_manifest.get("execution_order_seed", "TBD_BLOCKED")}`
+- Exact circuit instances: `{h402_manifest.get("total_circuit_instances", "TBD_BLOCKED")}`
 
 ## 6. Primary Endpoints
 
@@ -201,7 +218,7 @@ A rerun is permitted only for provider-declared failed/cancelled jobs, missing p
 
 ## 12. Freeze Declaration
 
-Mandatory fields contain no `TBD`: `NO`
+Mandatory fields contain no `TBD`: `{"YES" if mandatory_fields_complete else "NO"}`
 Human approval: `NO`
 Status may become `FROZEN` only after all G4 tasks pass.
 
@@ -217,9 +234,10 @@ Status may become `FROZEN` only after all G4 tasks pass.
         "status": "draft_blocked",
         "frozen": False,
         "qpu_execution_allowed": False,
-        "known_field_count": 8,
+        "known_field_count": 12,
         "unresolved_field_count": len(unresolved),
         "unresolved_fields": unresolved,
+        "mandatory_fields_complete": mandatory_fields_complete,
         "provider_source": provider_source,
         "open_instance_confirmed": open_instance_confirmed,
         "backend_twin_status": q304.get("status"),

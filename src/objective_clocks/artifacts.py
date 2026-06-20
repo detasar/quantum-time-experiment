@@ -1,10 +1,13 @@
 from __future__ import annotations
 
+import gzip
 import hashlib
+import io
 import json
 import os
 import platform
 import subprocess
+import tarfile
 from datetime import UTC, datetime
 from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
@@ -147,3 +150,107 @@ def write_sha256_manifest(
         "files": file_manifest(files, root=root),
     }
     write_json_atomic(path, payload)
+
+
+def repository_archive_paths(root: Path = Path(".")) -> list[Path]:
+    output = subprocess.check_output(
+        ["git", "ls-files", "-z", "--cached", "--others", "--exclude-standard"],
+        cwd=root,
+    )
+    excluded_prefixes = (
+        ".git/",
+        ".mypy_cache/",
+        ".pytest_cache/",
+        ".ruff_cache/",
+        ".venv/",
+        "results/preregistered/",
+    )
+    excluded_paths = {
+        "docs/PREREGISTRATION_DRAFT.md",
+        "docs/PREREGISTRATION_FROZEN.md",
+        "results/processed/G4_readiness_audit.json",
+        "results/processed/G4_readiness_manifest.json",
+        "results/processed/H401_preregistration_draft_manifest.json",
+        "results/processed/H401_preregistration_draft_summary.json",
+    }
+    paths: list[Path] = []
+    for raw in output.split(b"\0"):
+        if not raw:
+            continue
+        relative = raw.decode("utf-8")
+        path = root / relative
+        if any(relative.startswith(prefix) for prefix in excluded_prefixes):
+            continue
+        if relative in excluded_paths:
+            continue
+        if path.is_file():
+            paths.append(Path(relative))
+    return sorted(paths, key=lambda item: item.as_posix())
+
+
+def deterministic_tar_gz_bytes(paths: list[Path], *, root: Path = Path(".")) -> bytes:
+    tar_buffer = io.BytesIO()
+    with tarfile.open(fileobj=tar_buffer, mode="w", format=tarfile.PAX_FORMAT) as archive:
+        for relative in paths:
+            source = root / relative
+            payload = source.read_bytes()
+            info = tarfile.TarInfo(relative.as_posix())
+            info.size = len(payload)
+            info.mode = 0o644
+            info.mtime = 0
+            info.uid = 0
+            info.gid = 0
+            info.uname = ""
+            info.gname = ""
+            archive.addfile(info, io.BytesIO(payload))
+    gzip_buffer = io.BytesIO()
+    with gzip.GzipFile(filename="", mode="wb", fileobj=gzip_buffer, mtime=0) as compressed:
+        compressed.write(tar_buffer.getvalue())
+    return gzip_buffer.getvalue()
+
+
+def write_environment_archive(
+    archive_path: Path,
+    manifest_path: Path,
+    *,
+    root: Path = Path("."),
+) -> dict[str, Any]:
+    paths = repository_archive_paths(root)
+    archive_path.parent.mkdir(parents=True, exist_ok=True)
+    payload = deterministic_tar_gz_bytes(paths, root=root)
+    archive_path.write_bytes(payload)
+    manifest = {
+        "task": "H401_environment_archive",
+        "algorithm": "sha256",
+        "archive_path": archive_path.as_posix(),
+        "archive_sha256": sha256_bytes(payload),
+        "archived_file_count": len(paths),
+        "excluded_prefixes": [
+            ".git/",
+            ".mypy_cache/",
+            ".pytest_cache/",
+            ".ruff_cache/",
+            ".venv/",
+            "results/preregistered/",
+        ],
+        "excluded_paths": [
+            "docs/PREREGISTRATION_DRAFT.md",
+            "docs/PREREGISTRATION_FROZEN.md",
+            "results/processed/G4_readiness_audit.json",
+            "results/processed/G4_readiness_manifest.json",
+            "results/processed/H401_preregistration_draft_manifest.json",
+            "results/processed/H401_preregistration_draft_summary.json",
+        ],
+        "environment": freeze_manifest(),
+        "files": [
+            {
+                "path": relative.as_posix(),
+                "sha256": sha256_file(root / relative),
+                "size_bytes": (root / relative).stat().st_size,
+            }
+            for relative in paths
+        ],
+        "secret_values_recorded": False,
+    }
+    write_json_atomic(manifest_path, manifest)
+    return manifest

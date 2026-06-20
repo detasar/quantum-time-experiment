@@ -138,3 +138,31 @@ All notable changes to this research repository are documented here.
 - Recorded no token values in repository artifacts; runtime CRN is represented
   by a SHA-256 hash in generated metadata.
 - QPU job submission remains unimplemented and gated.
+
+## [0.7.0-g4-freeze-h501-path] - 2026-06-20
+
+### Added
+- Added deterministic H401 environment archive generation.
+- Added H402 ISA circuit packet generation with frozen execution order,
+  selected transpiler seed and QPY manifest.
+- Added H401 preregistration freeze generation from explicit human approval.
+- Added H403 no-submission dry-run report.
+- Added H501 SamplerV2 dry-run/execute entry point with frozen hash checks,
+  Open instance checks, clean-repo/tag checks and single-payload guard.
+- Added H502 locked raw hardware analysis and H503 secondary independent
+  readout-assignment correction.
+- Added provider-free tests for Sampler result extraction and hardware analysis
+  fixtures.
+
+### Changed
+- Updated G4 readiness status to `ready_for_h501` after freeze and dry-run pass.
+- Updated architecture and reproducibility docs for preregistered and raw
+  hardware flows.
+
+### Security
+- H501 refuses to run unless `ALLOW_QPU_EXECUTION=YES`, the preregistration
+  manifest is frozen, the circuit-manifest hash matches, no previous H501 raw
+  payload exists, the repository is clean and tag `v0.3-qpu-preregistered`
+  points at `HEAD`.
+- H501 writes only secret-free receipt/result payloads under `results/raw/`
+  using write-once artifact guards.

@@ -1,6 +1,6 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T18:30:14.547177+00:00",
+  "created_utc": "2026-06-20T19:06:49.659640+00:00",
   "files": [
     {
       "path": "figures/fig_q302_noise_readiness.pdf",
@@ -14,18 +14,18 @@
     },
     {
       "path": "results/processed/Q1_noise_sweep_summary.json",
-      "sha256": "c5c4b96968354b52dea011a01340e9532718a5fd7935d927a059395eb33db93f",
+      "sha256": "643e13d4825fee165e3d5bdde8901993fad6eb1249e675cb1d11685d5cc6d8c6",
       "size_bytes": 1193
     },
     {
       "path": "results/processed/Q2_backend_twin.parquet",
-      "sha256": "6cb70bb3c72d0558b3a8e542d04782e790124f7c6812eeaed1499b02e9ee4884",
-      "size_bytes": 20748
+      "sha256": "5f7874b2581d6a9ad2d3a40698e552e51111d00744c870e3540d3d54c3b2b3c9",
+      "size_bytes": 20758
     },
     {
       "path": "results/processed/Q2_backend_twin_summary.json",
-      "sha256": "f56be5766fb3b04ee788b82a8226bdab0abdf398f9a09080e4e86cc05945cb83",
-      "size_bytes": 585
+      "sha256": "bed4157a61ebe008cf51cbca98d1564d25fae708522b01d613db22eb4cf337f8",
+      "size_bytes": 587
     },
     {
       "path": "results/processed/Q301_circuit_manifest.json",
@@ -39,8 +39,8 @@
     },
     {
       "path": "results/processed/Q303_backend_candidates.json",
-      "sha256": "c95dcac4e73b25622d00dc59bc8851e95794c51b1c9c9df857f9a1d4baa9c1ae",
-      "size_bytes": 257522
+      "sha256": "f5f4aa2a5f790feedf8633d02bfce78b8694742ede425c0814aa1d2c1c24f36d",
+      "size_bytes": 257440
     }
   ]
 }

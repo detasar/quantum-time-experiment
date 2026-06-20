@@ -8,9 +8,9 @@
     "thermometer": "scalar_time"
   },
   "config_hash": "b086114bfec9fe61043c9bf62187cee670215d0fe758096d67ff065563143652",
-  "duration_seconds": 0.023979,
+  "duration_seconds": 0.024577,
   "environment": {
-    "git_commit": "ff64028ae83dcccfa5ce68970a3b4a1f77061b1f",
+    "git_commit": "4f1354999939747843b4c6e7b6355fe6147c709c",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -23,7 +23,7 @@
     "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
     "python": "3.13.11",
     "qpu_execution_enabled": false,
-    "timestamp_utc": "2026-06-20T18:29:09.476128+00:00"
+    "timestamp_utc": "2026-06-20T19:05:44.157581+00:00"
   },
   "experiment_id": "C2",
   "linear_extensions_are_physical": false,

@@ -42,11 +42,16 @@ def _git_output(root: Path, command: list[str]) -> str:
         return ""
 
 
-def _preregistration_text(root: Path) -> str:
-    path = root / "docs/PREREGISTRATION.md"
-    if not path.exists():
-        return ""
-    return path.read_text(encoding="utf-8")
+def _preregistration_packet(root: Path) -> tuple[str, str]:
+    for relative in (
+        "docs/PREREGISTRATION_FROZEN.md",
+        "docs/PREREGISTRATION_DRAFT.md",
+        "docs/PREREGISTRATION.md",
+    ):
+        path = root / relative
+        if path.exists():
+            return relative, path.read_text(encoding="utf-8")
+    return "missing", ""
 
 
 def _check(
@@ -72,7 +77,10 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
     q303 = _read_json(root, "results/processed/Q303_backend_candidates.json")
     q304 = _read_json(root, "results/processed/Q2_backend_twin_summary.json")
     q302 = _read_json(root, "results/processed/Q1_noise_sweep_summary.json")
-    prereg = _preregistration_text(root)
+    archive = _read_json(root, "results/preregistered/environment_archive_manifest.json")
+    h402 = _read_json(root, "results/preregistered/circuit_manifest.json")
+    h403 = _read_json(root, "results/preregistered/dry_run_report.json")
+    prereg_path, prereg = _preregistration_packet(root)
     env_paths = env_file_candidates()
     token_sources = discover_ibm_token_sources(env_paths)
     git_status = _git_status(root)
@@ -87,7 +95,7 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
         and runtime_account.get("plan") == "open"
         and runtime_account.get("pricing_type") == "free"
     )
-    tbd_count = prereg.count("TBD")
+    tbd_count = prereg.count("TBD_BLOCKED")
     prereg_frozen = "**Status:** FROZEN" in prereg or "Status:** FROZEN" in prereg
     human_approval = "Human approval: `YES`" in prereg
     qpu_disabled = os.getenv("ALLOW_QPU_EXECUTION") != "YES"
@@ -97,6 +105,11 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
         ["git", "rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"],
     )
     repo_snapshot_ready = bool(git_commit and upstream)
+    h403_checks_passed = h403.get("all_checks_passed") is True
+    h403_no_submission = (
+        h403.get("hardware_jobs_submitted") == 0 and h403.get("sampler_invoked") is False
+    )
+    h403_qpu_still_locked = h403.get("qpu_submission_allowed_now") is False
 
     checks = [
         _check(
@@ -149,10 +162,40 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
             remediation="Rerun Q304 after Q303 obtains a real provider backend snapshot.",
         ),
         _check(
+            check_id="H401-ENV-ARCHIVE",
+            requirement="Environment archive exists and has a recorded SHA-256.",
+            passed=bool(archive.get("archive_sha256"))
+            and (root / "results/preregistered/environment_archive.tar.gz").exists(),
+            evidence=(
+                f"archive_sha256_present={bool(archive.get('archive_sha256'))}; "
+                f"archived_file_count={archive.get('archived_file_count')}"
+            ),
+            blocking_tasks=["H401", "H404"],
+            remediation="Run H401 archive generation before preregistration review.",
+        ),
+        _check(
+            check_id="H402-ISA-PACKET",
+            requirement="ISA circuits, execution order and selected transpiler seed are frozen.",
+            passed=(
+                h402.get("selected_transpiler_seed") is not None
+                and h402.get("total_circuit_instances") == 24
+                and bool(h402.get("qpy_sha256"))
+            ),
+            evidence=(
+                f"selected_transpiler_seed={h402.get('selected_transpiler_seed')}; "
+                f"total_circuit_instances={h402.get('total_circuit_instances')}; "
+                f"qpy_sha256_present={bool(h402.get('qpy_sha256'))}"
+            ),
+            blocking_tasks=["H401", "H402"],
+            remediation="Run H402 ISA packet generation after Q303 backend selection.",
+        ),
+        _check(
             check_id="H401-PREREG-FIELDS",
-            requirement="Preregistration has no mandatory TBD fields and is marked FROZEN.",
-            passed=tbd_count == 0 and prereg_frozen,
-            evidence=f"tbd_count={tbd_count}; prereg_frozen={prereg_frozen}",
+            requirement="Preregistration review packet has no mandatory TBD fields.",
+            passed=tbd_count == 0,
+            evidence=(
+                f"packet={prereg_path}; tbd_count={tbd_count}; prereg_frozen={prereg_frozen}"
+            ),
             blocking_tasks=["H401"],
             remediation="Fill all mandatory fields and freeze docs/PREREGISTRATION_FROZEN.md.",
         ),
@@ -173,6 +216,19 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
             remediation="Unset ALLOW_QPU_EXECUTION until the explicit H501 human gate.",
         ),
         _check(
+            check_id="H403-DRY-RUN",
+            requirement="Dry-run validates submission preconditions without invoking Sampler.",
+            passed=h403_checks_passed and h403_no_submission and h403_qpu_still_locked,
+            evidence=(
+                f"all_checks_passed={h403.get('all_checks_passed')}; "
+                f"hardware_jobs_submitted={h403.get('hardware_jobs_submitted')}; "
+                f"sampler_invoked={h403.get('sampler_invoked')}; "
+                f"qpu_submission_allowed_now={h403.get('qpu_submission_allowed_now')}"
+            ),
+            blocking_tasks=["H403"],
+            remediation="Run H403 dry-run after H401 freeze and before any H501 QPU gate.",
+        ),
+        _check(
             check_id="H404-REPO-SNAPSHOT",
             requirement="Repository has an initial committed snapshot tracking a remote branch.",
             passed=repo_snapshot_ready,
@@ -191,7 +247,7 @@ def build_g4_readiness_audit(root: Path = Path(".")) -> dict[str, Any]:
     token_key_presence = discover_ibm_env_keys(env_paths)
     return {
         "task": "G4_readiness_audit",
-        "overall_status": "ready_for_h401" if not blocked else "blocked_before_g4",
+        "overall_status": "ready_for_h501" if not blocked else "blocked_before_g4",
         "blocked_check_count": len(blocked),
         "checks": checks,
         "ibm_credential_audit": {

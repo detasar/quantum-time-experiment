@@ -1,16 +1,16 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T18:30:16.823726+00:00",
+  "created_utc": "2026-06-20T19:07:43.711379+00:00",
   "files": [
     {
       "path": "docs/PREREGISTRATION_DRAFT.md",
-      "sha256": "ed660f862b63282a27d864343981c1511e79b54b632375d57bfcdcddcec43ef7",
-      "size_bytes": 3714
+      "sha256": "8134f5409e547b49802f00399e5a42f82824b73858783ce446b19423980f0250",
+      "size_bytes": 3789
     },
     {
       "path": "results/processed/H401_preregistration_draft_summary.json",
-      "sha256": "445bd74e4d8ed807cec4f17637e2b2c14f5886c6f6dd7dfe5c337b6d6fb2e4b5",
-      "size_bytes": 905
+      "sha256": "01fb9dcf2c8a2a91f99e2eefe18fae004b6cf5ca3e7d10c22994e30121153ba8",
+      "size_bytes": 600
     }
   ]
 }

@@ -4,14 +4,18 @@ import subprocess
 import sys
 
 COMMANDS = [
-    [sys.executable, "-m", "pytest", "-q"],
     [sys.executable, "scripts/run_g1.py"],
     [sys.executable, "scripts/run_g2_all.py"],
     [sys.executable, "scripts/run_g3.py"],
-    [sys.executable, "scripts/run_g4_readiness.py"],
+    [sys.executable, "scripts/run_h401_archive.py"],
+    [sys.executable, "scripts/run_h402_isa.py"],
     [sys.executable, "scripts/run_h401_draft.py"],
+    [sys.executable, "scripts/run_h401_freeze.py"],
+    [sys.executable, "scripts/run_h403_dry_run.py"],
+    [sys.executable, "scripts/run_g4_readiness.py"],
     [sys.executable, "scripts/run_a601.py"],
     [sys.executable, "-m", "objective_clocks.cli", "ghz-exact"],
+    [sys.executable, "-m", "pytest", "-q"],
 ]
 
 

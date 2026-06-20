@@ -39,6 +39,7 @@ python -m objective_clocks.cli ghz-exact
 - `docs/RESEARCH_SPEC_TR.md`: complete theory and experiment specification.
 - `docs/CODEX_IMPLEMENTATION.md`: Codex execution contract and task order.
 - `docs/PREREGISTRATION.md`: frozen QPU protocol template.
+- `docs/PREREGISTRATION_FROZEN.md`: frozen H401 preregistration packet.
 - `TASKS.yaml`: machine-readable work breakdown with Definition of Ready and Definition of Done.
 - `src/objective_clocks/`: reusable implementation.
 - `tests/`: theorem/property/regression tests.
@@ -108,16 +109,38 @@ selected layout's calibration snapshot; it is not a hardware observation.
 
 - `results/processed/G4_readiness_audit.json`
 - `results/processed/G4_readiness_manifest.json`
+- `results/preregistered/environment_archive.tar.gz`
+- `results/preregistered/environment_archive_manifest.json`
+- `results/preregistered/circuits.qpy`
+- `results/preregistered/circuit_manifest.json`
+- `results/preregistered/preregistration_manifest.json`
+- `results/preregistered/dry_run_report.json`
 - `results/processed/H401_preregistration_draft_summary.json`
 - `docs/PREREGISTRATION_DRAFT.md`
+- `docs/PREREGISTRATION_FROZEN.md`
 - `docs/G4_READINESS_REPORT.md`
 
-Current status is `blocked_before_g4`. The audit scans local env-like files,
-shell config files and known Qiskit account-file names without recording secret
+Current status is `ready_for_h501`. The audit scans local env-like files, shell
+config files and known Qiskit account-file names without recording secret
 values. It confirms the saved account is bound to `open-instance` on the Open
-plan, keeps QPU execution disabled and blocks freeze on the remaining H401/H402
-items: environment archive, ISA transpiler seed/circuit freeze and explicit
-human approval.
+plan, freezes the H401 preregistration packet, freezes the H402 ISA circuit
+packet and passes the H403 no-submission dry-run. QPU execution remains disabled
+unless H501 is invoked with `ALLOW_QPU_EXECUTION=YES` after the repository is
+clean and tagged.
+
+## Current G5 Locked Hardware Path
+
+- `scripts/run_h501_execute.py`: gated SamplerV2 dry-run/execute path.
+- `scripts/run_h502_raw_analysis.py`: locked raw primary analysis.
+- `scripts/run_h503_mitigated_analysis.py`: secondary readout-mitigated analysis.
+- `src/objective_clocks/hardware.py`: raw payload extraction, integrity checks,
+  raw inclusion decision and independent readout assignment correction.
+
+H501 has not yet submitted a hardware job in the committed preregistration
+snapshot. The execution path refuses to run without a frozen preregistration
+manifest, matching circuit-manifest hash, Open instance metadata, no prior H501
+raw payload, a clean repository, tag `v0.3-qpu-preregistered` at `HEAD` and
+`ALLOW_QPU_EXECUTION=YES`.
 
 ## Current A601 Artifacts
 

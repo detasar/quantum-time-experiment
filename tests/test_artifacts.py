@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -8,6 +9,7 @@ import pytest
 from objective_clocks.artifacts import (
     config_hash,
     file_manifest,
+    write_environment_archive,
     write_json_atomic,
     write_raw_json_once,
     write_sha256_manifest,
@@ -79,3 +81,30 @@ def test_write_sha256_manifest(tmp_path: Path) -> None:
     manifest = json.loads(target.read_text(encoding="utf-8"))
     assert manifest["algorithm"] == "sha256"
     assert manifest["files"][0]["path"] == "result.json"
+
+
+def test_environment_archive_is_deterministic_and_excludes_preregistered(
+    tmp_path: Path,
+) -> None:
+    subprocess.run(["git", "init"], cwd=tmp_path, check=True, stdout=subprocess.DEVNULL)
+    (tmp_path / "src").mkdir()
+    (tmp_path / "src" / "module.py").write_text("VALUE = 1\n", encoding="utf-8")
+    preregistered = tmp_path / "results" / "preregistered"
+    preregistered.mkdir(parents=True)
+    (preregistered / "old.tar.gz").write_text("exclude me\n", encoding="utf-8")
+    subprocess.run(["git", "add", "src/module.py"], cwd=tmp_path, check=True)
+
+    first = write_environment_archive(
+        preregistered / "environment_archive.tar.gz",
+        preregistered / "environment_archive_manifest.json",
+        root=tmp_path,
+    )
+    second = write_environment_archive(
+        preregistered / "environment_archive.tar.gz",
+        preregistered / "environment_archive_manifest.json",
+        root=tmp_path,
+    )
+
+    assert first["archive_sha256"] == second["archive_sha256"]
+    assert first["secret_values_recorded"] is False
+    assert [item["path"] for item in first["files"]] == ["src/module.py"]

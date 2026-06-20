@@ -1,6 +1,6 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T18:29:09.568431+00:00",
+  "created_utc": "2026-06-20T19:05:44.254102+00:00",
   "files": [
     {
       "path": "figures/fig_02_basis_landscape.pdf",
@@ -9,7 +9,7 @@
     },
     {
       "path": "results/processed/C0_runtime_report.json",
-      "sha256": "bf228a4119038111e4de7761d4c5fc869d5db27837445b68ee47b37707e300c7",
+      "sha256": "9105286d53927bdb2c15e02a4122f83ea202e9ccec433a29f51750d3d50833cc",
       "size_bytes": 2623
     },
     {
@@ -29,7 +29,7 @@
     },
     {
       "path": "results/processed/C1_basis_landscape_summary.json",
-      "sha256": "0d863e7404ff8d51b27b96829e468a8d54764ce522ab89bc22b5894e1fb0321e",
+      "sha256": "ce20c1fa8ad83bf0118003300fa6721e817a184ea8ada01017700c2e87d734ee",
       "size_bytes": 2741
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "path": "results/processed/C2_order_catalog_summary.json",
-      "sha256": "86d7911bcdeb80d98d795db69a0df7f3c861d0044e6a0bbc921f25d6ed5099fa",
+      "sha256": "d64f73605191afb002b4e1212587f66d5cad18866ab53902a3067cfe026bfc94",
       "size_bytes": 2318
     }
   ]

@@ -1,6 +1,6 @@
 # Preregistration Draft Packet - IBM Four-Qubit Illustration
 
-**Status:** DRAFT - QPU execution prohibited
+**Status:** FROZEN
 **Generated from:** `scripts/run_h401_draft.py`
 **Project:** Objective Clock Bases from Redundant Records
 **Primary scientific role:** illustration of objective local basis versus global coherence; not a proof of the theory.
@@ -100,9 +100,11 @@ A rerun is permitted only for provider-declared failed/cancelled jobs, missing p
 ## 12. Freeze Declaration
 
 Mandatory fields contain no `TBD`: `YES`
-Human approval: `NO`
-Status may become `FROZEN` only after all G4 tasks pass.
+Human approval: `YES`
+Status is `FROZEN`; QPU execution still requires the explicit H501 gate.
 
-## 13. Current Blockers
+## 13. Human Approval Record
 
-- `human_approval`: explicit human approval is not recorded
+- Approval timestamp UTC: `2026-06-20T19:07:43.760220+00:00`
+- Approval source: `Codex user message: onay veriyorum plana gore gidelim`
+- QPU execution allowed now: `NO`

@@ -169,9 +169,9 @@ The IBM Runtime credential is stored outside the repository in the local Qiskit
 account file. The saved account is bound to the \texttt{open-instance} Open
 Plan instance. Q303 performs provider listing and backend-property reads only;
 it submits no workload. The current provider snapshot selects
-\texttt{ibm\_kingston} with physical layout \([125,117,126,124]\), native
+\texttt{ibm\_marrakesh} with physical layout \([111,98,112,110]\), native
 \texttt{cz} entangling gates and calibration timestamp
-\texttt{2026-06-20T20:55:08+03:00}.
+\texttt{2026-06-20T20:46:56+03:00}.
 
 Q304 builds a selected-layout aggregate depolarizing/readout proxy from that
 snapshot and runs the planned local Aer workload. The local twin passes the
@@ -202,24 +202,35 @@ After A601 was added to the reproduction chain, \texttt{scripts/reproduce\_all.p
 completed successfully: pytest, G1, G2, G3, the G4 readiness audit, A601 and
 the exact GHZ CLI all reran without failure.
 
-\section{G4 Readiness Audit}
+\section{G4 Preregistration Freeze}
 
-The G4 readiness audit is intentionally not a preregistration freeze. It records
-which preconditions are currently satisfied and which block H401--H404. The
-audit scanned local env-like files, shell config files and known Qiskit account
-file names without writing secret values to any artifact. It found one Qiskit
-account-file token source and records only key paths plus non-secret runtime
-metadata.
+The G4 readiness audit now reaches \texttt{ready\_for\_h501}. H401 generated a
+deterministic environment archive without recording secret values. H402 froze the
+ISA circuit packet for the selected \texttt{ibm\_kingston} backend: 24 circuit
+instances, 24,576 total shots, selected transpiler seed 0 and one QPY payload.
 
-The current status remains \texttt{blocked\_before\_g4}. Q302 generic local
-readiness, Q303 provider selection, the Open Plan instance check, Q304
-backend-derived local twin, the QPU-disabled gate and the pushed repository
-snapshot pass. Two checks still block G4: the frozen preregistration fields are
-not complete, and explicit human approval is not recorded. The H401 draft packet
-narrows the concrete unresolved fields to the environment archive hash, selected
-transpiler seed/ISA circuit freeze and human approval.
+The H401 preregistration packet is frozen after explicit human approval. This
+approval is only a preregistration freeze approval; it does not itself permit QPU
+execution. The H403 dry-run confirms that the Open Plan instance is
+\texttt{open-instance}, the ISA packet is present, human approval is recorded and
+\texttt{ALLOW\_QPU\_EXECUTION} is not enabled. No Sampler was invoked and no
+hardware job was submitted during G4.
 
-The final verification pass for this audit had 49 tests passing, clean ruff and
-clean mypy results.
+\section{G5 Locked Hardware Path Before Execution}
+
+Before any IBM execution, the repository now contains the complete H501--H503
+code path. H501 submits exactly the frozen QPY workload through SamplerV2 only
+when the frozen preregistration manifest, circuit-manifest hash, QPY hash, Open
+instance metadata, clean repository state, preregistration tag and explicit
+\texttt{ALLOW\_QPU\_EXECUTION=YES} gate all pass. It also refuses to run if a
+previous H501 raw provider payload exists.
+
+H502 computes the primary raw result from the downloaded provider bitstrings.
+The raw decision uses the preregistered Clopper--Pearson and stratified
+bootstrap rules, including the objectivity contrast, minimum Z correlation,
+coherence contrast, GHZ-minus X-parity sign and no-single-block-dominance check.
+H503 applies only the secondary independent tensor-product readout assignment
+correction. The corrected result is reported beside the raw result and cannot
+replace it.
 
 \end{document}

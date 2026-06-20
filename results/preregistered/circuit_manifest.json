@@ -1,0 +1,679 @@
+{
+  "backend": "ibm_marrakesh",
+  "backend_version": "1.0.21",
+  "calibration_timestamp": "2026-06-20T20:46:56+03:00",
+  "circuit_metrics": [
+    {
+      "depth": 9,
+      "estimated_error": 0.032250366728323585,
+      "name": "ghz_plus_x__block_3",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 9,
+        "sx": 5
+      },
+      "qpy_sha256": "030fa218c9e6e789e94c185621f7c2ea4a0fa34f1be5b96aacb97ceddae4f9d6",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.03275195050791875,
+      "name": "ghz_plus_z__block_1",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 11,
+        "sx": 7
+      },
+      "qpy_sha256": "0b4aaf95c51bf9364a19ec0dfe0951488808e184b24a8ee561221df7f901646d",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 2,
+      "estimated_error": 0.02658016388073269,
+      "name": "ro_q3_1",
+      "operation_counts": {
+        "measure": 4,
+        "x": 1
+      },
+      "qpy_sha256": "97019eaa3af90182a18fc1371669c9714fce3dd88ebd905d5238c40299f06a40",
+      "two_qubit_count": 0
+    },
+    {
+      "depth": 2,
+      "estimated_error": 0.026436207603508087,
+      "name": "ro_q1_1",
+      "operation_counts": {
+        "measure": 4,
+        "x": 1
+      },
+      "qpy_sha256": "ad2a4bb8698dea0645b258a596319d6621432460146e2868a431838ea8e1f73e",
+      "two_qubit_count": 0
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.03275195050791875,
+      "name": "ghz_minus_z__block_2",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 11,
+        "sx": 7
+      },
+      "qpy_sha256": "4b4600db37115c73a901e20975188b47c9fada133a9aa2f3e9680271fb4e5a32",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 2,
+      "estimated_error": 0.026518771074775335,
+      "name": "ro_q0_1",
+      "operation_counts": {
+        "measure": 4,
+        "x": 1
+      },
+      "qpy_sha256": "c411fa9e7340ea7d57b0d914ad4439b94c310632ee1b1ce183ebd34f86527ac9",
+      "two_qubit_count": 0
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.03275195050791875,
+      "name": "ghz_plus_z__block_3",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 11,
+        "sx": 7
+      },
+      "qpy_sha256": "1b8bcac9d1599bbff03f117e0274de6a7af693e0660d42989ba973ad5500845a",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.032250366728323585,
+      "name": "ghz_minus_x__block_3",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 8,
+        "sx": 5
+      },
+      "qpy_sha256": "4ca27df1a8fcc3387abd4101532a7264a57ac6631a33f586c2a82f9e391ab6d2",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 2,
+      "estimated_error": 0.026494217745129726,
+      "name": "ro_q2_1",
+      "operation_counts": {
+        "measure": 4,
+        "x": 1
+      },
+      "qpy_sha256": "2ccdedea2ebebc9d96f576aa16620a32b537132399d0fc8469a5a5a2b9e79e73",
+      "two_qubit_count": 0
+    },
+    {
+      "depth": 1,
+      "estimated_error": 0.0262451171875,
+      "name": "ro_q3_0",
+      "operation_counts": {
+        "measure": 4
+      },
+      "qpy_sha256": "e0dcdb5d5241d7f1d8c1ede9c15aa061b5d8d0536e95af665de648efb6942701",
+      "two_qubit_count": 0
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.03275195050791875,
+      "name": "ghz_plus_z__block_0",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 11,
+        "sx": 7
+      },
+      "qpy_sha256": "e0df16cc2728a238f27c048c07e2d96c08aa1866c89aa744584d18cbbd75671a",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.032250366728323585,
+      "name": "ghz_minus_x__block_2",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 8,
+        "sx": 5
+      },
+      "qpy_sha256": "9caa0ff60e58ed988034b07e3bf6eb55db55afeeffc9d755e4d69eb43303d846",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.03275195050791875,
+      "name": "ghz_minus_z__block_3",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 11,
+        "sx": 7
+      },
+      "qpy_sha256": "bd0bff0a2f2bdb413b67c5139b4bcb0004cf3f11f864c601e05962ad7e2b56fa",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.032250366728323585,
+      "name": "ghz_minus_x__block_1",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 8,
+        "sx": 5
+      },
+      "qpy_sha256": "6cb6f131e874ee39dbdaf5016ffdb2380a49ef11472d7122ce112ebf6a7b4987",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.032250366728323585,
+      "name": "ghz_plus_x__block_0",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 9,
+        "sx": 5
+      },
+      "qpy_sha256": "7b0d82593ceff6ea937d8f78794e3aaefbe531b359080a997762f350ba329999",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 1,
+      "estimated_error": 0.0262451171875,
+      "name": "ro_q1_0",
+      "operation_counts": {
+        "measure": 4
+      },
+      "qpy_sha256": "823fb5e8d356bff24e39c3d50d65514eb9f633a480594f2924d0eb944796b4fb",
+      "two_qubit_count": 0
+    },
+    {
+      "depth": 1,
+      "estimated_error": 0.0262451171875,
+      "name": "ro_q0_0",
+      "operation_counts": {
+        "measure": 4
+      },
+      "qpy_sha256": "60979959c5272d8aee8940c873b7ecf572a7b570d423b75719926dc50a8c8f9b",
+      "two_qubit_count": 0
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.032250366728323585,
+      "name": "ghz_plus_x__block_1",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 9,
+        "sx": 5
+      },
+      "qpy_sha256": "113b1e7cf29ea335fd3d332851284ca432b1cdd72e1d0f61d354e3b04bd03c05",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 1,
+      "estimated_error": 0.0262451171875,
+      "name": "ro_q2_0",
+      "operation_counts": {
+        "measure": 4
+      },
+      "qpy_sha256": "cf13d71f8c7c5641639f9434eca21b15329f1b27a50b211912f2dd696594b800",
+      "two_qubit_count": 0
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.03275195050791875,
+      "name": "ghz_minus_z__block_1",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 11,
+        "sx": 7
+      },
+      "qpy_sha256": "f374a1b96b7f6b1f1038af412e84164a9f1c35627533da214e6a516b0e5550b5",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.03275195050791875,
+      "name": "ghz_minus_z__block_0",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 11,
+        "sx": 7
+      },
+      "qpy_sha256": "329f73d7bc5c291c710fabf7522953f75b8446af504c8af654e9052efe8d4c59",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.032250366728323585,
+      "name": "ghz_minus_x__block_0",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 8,
+        "sx": 5
+      },
+      "qpy_sha256": "191ce9a27945ade75d7f213cf33a55228adafffaa08cd0be688b1f030dac61c7",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.032250366728323585,
+      "name": "ghz_plus_x__block_2",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 9,
+        "sx": 5
+      },
+      "qpy_sha256": "c8ac44a25ed44184ecf67081a545082582ccdd1301d0a59e11502e6c0df5c129",
+      "two_qubit_count": 3
+    },
+    {
+      "depth": 9,
+      "estimated_error": 0.03275195050791875,
+      "name": "ghz_plus_z__block_2",
+      "operation_counts": {
+        "cz": 3,
+        "measure": 4,
+        "rz": 11,
+        "sx": 7
+      },
+      "qpy_sha256": "311fb38d8fed3f8e0c4296b48cce46bfabece346e64a7f2f50497cef9d000add",
+      "two_qubit_count": 3
+    }
+  ],
+  "environment": {
+    "git_commit": "4f1354999939747843b4c6e7b6355fe6147c709c",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false
+  },
+  "execution_order": [
+    {
+      "block": 3,
+      "instance_id": "ghz_plus_x__block_3",
+      "prototype_name": "ghz_plus_x",
+      "qpy_index": 0,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": 1,
+      "instance_id": "ghz_plus_z__block_1",
+      "prototype_name": "ghz_plus_z",
+      "qpy_index": 1,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": null,
+      "instance_id": "ro_q3_1",
+      "prototype_name": "ro_q3_1",
+      "qpy_index": 2,
+      "role": "readout_calibration",
+      "shots": 1024
+    },
+    {
+      "block": null,
+      "instance_id": "ro_q1_1",
+      "prototype_name": "ro_q1_1",
+      "qpy_index": 3,
+      "role": "readout_calibration",
+      "shots": 1024
+    },
+    {
+      "block": 2,
+      "instance_id": "ghz_minus_z__block_2",
+      "prototype_name": "ghz_minus_z",
+      "qpy_index": 4,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": null,
+      "instance_id": "ro_q0_1",
+      "prototype_name": "ro_q0_1",
+      "qpy_index": 5,
+      "role": "readout_calibration",
+      "shots": 1024
+    },
+    {
+      "block": 3,
+      "instance_id": "ghz_plus_z__block_3",
+      "prototype_name": "ghz_plus_z",
+      "qpy_index": 6,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": 3,
+      "instance_id": "ghz_minus_x__block_3",
+      "prototype_name": "ghz_minus_x",
+      "qpy_index": 7,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": null,
+      "instance_id": "ro_q2_1",
+      "prototype_name": "ro_q2_1",
+      "qpy_index": 8,
+      "role": "readout_calibration",
+      "shots": 1024
+    },
+    {
+      "block": null,
+      "instance_id": "ro_q3_0",
+      "prototype_name": "ro_q3_0",
+      "qpy_index": 9,
+      "role": "readout_calibration",
+      "shots": 1024
+    },
+    {
+      "block": 0,
+      "instance_id": "ghz_plus_z__block_0",
+      "prototype_name": "ghz_plus_z",
+      "qpy_index": 10,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": 2,
+      "instance_id": "ghz_minus_x__block_2",
+      "prototype_name": "ghz_minus_x",
+      "qpy_index": 11,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": 3,
+      "instance_id": "ghz_minus_z__block_3",
+      "prototype_name": "ghz_minus_z",
+      "qpy_index": 12,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": 1,
+      "instance_id": "ghz_minus_x__block_1",
+      "prototype_name": "ghz_minus_x",
+      "qpy_index": 13,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": 0,
+      "instance_id": "ghz_plus_x__block_0",
+      "prototype_name": "ghz_plus_x",
+      "qpy_index": 14,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": null,
+      "instance_id": "ro_q1_0",
+      "prototype_name": "ro_q1_0",
+      "qpy_index": 15,
+      "role": "readout_calibration",
+      "shots": 1024
+    },
+    {
+      "block": null,
+      "instance_id": "ro_q0_0",
+      "prototype_name": "ro_q0_0",
+      "qpy_index": 16,
+      "role": "readout_calibration",
+      "shots": 1024
+    },
+    {
+      "block": 1,
+      "instance_id": "ghz_plus_x__block_1",
+      "prototype_name": "ghz_plus_x",
+      "qpy_index": 17,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": null,
+      "instance_id": "ro_q2_0",
+      "prototype_name": "ro_q2_0",
+      "qpy_index": 18,
+      "role": "readout_calibration",
+      "shots": 1024
+    },
+    {
+      "block": 1,
+      "instance_id": "ghz_minus_z__block_1",
+      "prototype_name": "ghz_minus_z",
+      "qpy_index": 19,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": 0,
+      "instance_id": "ghz_minus_z__block_0",
+      "prototype_name": "ghz_minus_z",
+      "qpy_index": 20,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": 0,
+      "instance_id": "ghz_minus_x__block_0",
+      "prototype_name": "ghz_minus_x",
+      "qpy_index": 21,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": 2,
+      "instance_id": "ghz_plus_x__block_2",
+      "prototype_name": "ghz_plus_x",
+      "qpy_index": 22,
+      "role": "science",
+      "shots": 1024
+    },
+    {
+      "block": 2,
+      "instance_id": "ghz_plus_z__block_2",
+      "prototype_name": "ghz_plus_z",
+      "qpy_index": 23,
+      "role": "science",
+      "shots": 1024
+    }
+  ],
+  "execution_order_seed": 20260621,
+  "hardware_jobs_submitted": 0,
+  "optimization_level": 3,
+  "outputs": [
+    {
+      "path": "results/preregistered/circuits.qpy",
+      "sha256": "de7ae498bdb43bd1d41cd27c8c98332cc39c757f6c790ca3f84ca3f3b48df4c9",
+      "size_bytes": 155948
+    }
+  ],
+  "physical_layout": [
+    111,
+    98,
+    112,
+    110
+  ],
+  "qpu_execution_allowed": false,
+  "qpy_path": "results/preregistered/circuits.qpy",
+  "qpy_sha256": "de7ae498bdb43bd1d41cd27c8c98332cc39c757f6c790ca3f84ca3f3b48df4c9",
+  "seed_candidates": [
+    {
+      "max_depth": 9,
+      "seed": 0,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 1,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 2,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 3,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 4,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 5,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 6,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 7,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 8,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 9,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 10,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 11,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 12,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 13,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 14,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 15,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 16,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 17,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 18,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    },
+    {
+      "max_depth": 9,
+      "seed": 19,
+      "total_depth": 156,
+      "total_estimated_error": 0.7310283669440845,
+      "total_two_qubit_count": 48
+    }
+  ],
+  "seed_selection_rule": "lexicographic_min(total_two_qubit_count,total_depth,total_estimated_error,seed)",
+  "selected_transpiler_seed": 0,
+  "selection_uses_hardware_science_results": false,
+  "status": "ready_for_human_preregistration",
+  "supported_entangling_gates": [
+    "cz"
+  ],
+  "task": "H402_isa_circuit_packet",
+  "total_circuit_instances": 24,
+  "total_shots": 24576
+}

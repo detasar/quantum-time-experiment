@@ -12,8 +12,8 @@ def test_h401_draft_is_not_frozen_and_preserves_blockers() -> None:
     assert summary["status"] == "draft_blocked"
     assert summary["frozen"] is False
     assert summary["qpu_execution_allowed"] is False
-    assert summary["unresolved_field_count"] >= 3
+    assert summary["unresolved_field_count"] >= 1
     assert any(item["field"] == "human_approval" for item in summary["unresolved_fields"])
     assert "Status:** FROZEN" not in draft.markdown
-    assert "TBD_BLOCKED" in draft.markdown
+    assert "TBD_BLOCKED" not in draft.markdown
     assert "Human approval: `NO`" in draft.markdown

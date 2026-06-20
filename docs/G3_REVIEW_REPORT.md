@@ -14,7 +14,7 @@ Branch: `implementation/g0-g1`
 
 - `scripts/run_g3.py`: passed.
 - `ruff check .`: passed.
-- `pytest -q`: 49 passed.
+- `pytest -q`: 53 passed.
 - `mypy src/objective_clocks`: passed.
 
 ## Generated Artifacts
@@ -47,8 +47,8 @@ Branch: `implementation/g0-g1`
 
 - No provider job was submitted.
 - The saved Qiskit account is bound to `open-instance` on the IBM Open plan.
-- Deterministic provider-backed selection currently chooses `ibm_kingston`
-  with layout `[125, 117, 126, 124]`.
+- Deterministic provider-backed selection currently chooses `ibm_marrakesh`
+  with layout `[111, 98, 112, 110]`.
 - The selected backend supports native `cz` entangling gates, which the ranking
   code treats as valid for the GHZ workload.
 - Selection is deterministic and does not use hardware science results.
@@ -60,13 +60,12 @@ Branch: `implementation/g0-g1`
   layout's calibration snapshot.
 - Current status: `backend_snapshot_ready`, reason
   `backend_derived_aggregate_noise_passed`.
-- Backend version: `1.0.0`; calibration timestamp:
-  `2026-06-20T20:55:08+03:00`.
+- Backend version: `1.0.21`; calibration timestamp:
+  `2026-06-20T20:46:56+03:00`.
 - This is still a local simulation proxy, not a QPU hardware observation.
 
 ## Stop Boundary
 
 G3 local circuits, generic noise readiness, provider backend selection and the
-backend-derived local twin are complete. G4 preregistration is still not frozen:
-H401/H402 must archive the environment, freeze ISA circuits/transpiler seed and
-record explicit human approval before any QPU submission path exists.
+backend-derived local twin are complete. G4 has since frozen preregistration and
+the H501 path remains the only allowed QPU execution entry point.

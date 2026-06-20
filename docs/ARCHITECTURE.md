@@ -11,8 +11,12 @@ flowchart LR
     Src["src/objective_clocks"] --> Scripts
     Tests["tests"] --> Src
     Scripts --> Processed["results/processed/*.json"]
+    Scripts --> Preregistered["results/preregistered/*"]
+    Scripts --> Raw["results/raw/H501_*.json"]
     Scripts --> Figures["figures/*.pdf"]
     Processed --> Report["reports/experiment_report.tex"]
+    Preregistered --> Report
+    Raw --> Processed
     Processed --> Proofs["docs/proofs"]
     Figures --> Report
 ```
@@ -72,11 +76,35 @@ flowchart TD
     Q303Json --> G4AuditRunner
     Q2Summary --> G4AuditRunner
     Q1Summary --> G4AuditRunner
+    H401ArchiveRunner["scripts/run_h401_archive.py"] --> H401Archive["environment_archive.tar.gz"]
+    H401ArchiveRunner --> H401ArchiveManifest["environment_archive_manifest.json"]
+    H402Runner["scripts/run_h402_isa.py"] --> H402QPY["results/preregistered/circuits.qpy"]
+    H402Runner --> H402Manifest["results/preregistered/circuit_manifest.json"]
     H401Runner["scripts/run_h401_draft.py"] --> H401Draft["docs/PREREGISTRATION_DRAFT.md"]
     H401Runner --> H401Summary["H401_preregistration_draft_summary.json"]
+    H401FreezeRunner["scripts/run_h401_freeze.py"] --> H401Frozen["docs/PREREGISTRATION_FROZEN.md"]
+    H401FreezeRunner --> H401FrozenManifest["preregistration_manifest.json"]
+    H403Runner["scripts/run_h403_dry_run.py"] --> H403Report["dry_run_report.json"]
+    H501Runner["scripts/run_h501_execute.py --execute"] --> H501Raw["results/raw/H501_provider_payload_*.json"]
+    H501Runner --> H501Receipt["results/raw/H501_submission_receipt_*.json"]
+    H502Runner["scripts/run_h502_raw_analysis.py"] --> H502Raw["Q3_hardware_raw.json"]
+    H503Runner["scripts/run_h503_mitigated_analysis.py"] --> H503Mitigated["Q3_hardware_mitigated.json"]
     Q303Json --> H401Runner
     Q2Summary --> H401Runner
+    H401ArchiveManifest --> H401Runner
+    H402Manifest --> H401Runner
     G4Audit --> H401Runner
+    H401Draft --> H401FreezeRunner
+    H402Manifest --> H401FreezeRunner
+    H402QPY --> H401FreezeRunner
+    H401FrozenManifest --> H403Runner
+    H402Manifest --> H403Runner
+    H401FrozenManifest --> H501Runner
+    H402Manifest --> H501Runner
+    H402QPY --> H501Runner
+    H501Raw --> H502Runner
+    H501Raw --> H503Runner
+    H502Raw --> H503Runner
     A601Runner["scripts/run_a601.py"] --> ClaimCSV["results/claim_evidence_matrix.csv"]
     A601Runner --> A601Summary["A601_claim_evidence_summary.json"]
     ClaimCSV --> A601Manifest["A601_manifest.json"]
@@ -120,8 +148,16 @@ flowchart TD
     Q302 --> Q304["Q304: backend-derived aggregate local twin or stop row"]
     Q303 --> Q304
     Q304 --> G4Audit["G4 readiness audit: document blockers without submission"]
-    G4Audit --> H401Draft["H401 draft packet: not frozen, no QPU permission"]
-    H401Draft --> G4Blocked["Blocked until environment archive, ISA seed and human approval"]
+    G4Audit --> H401Archive["H401 archive: freeze environment inputs"]
+    H401Archive --> H402ISA["H402 ISA packet: freeze transpiled circuits and execution order"]
+    H402ISA --> H401Draft["H401 draft packet: complete mandatory fields"]
+    H401Draft --> H401Freeze["H401 freeze: human approval recorded, QPU still disabled"]
+    H401Freeze --> H403Dry["H403 dry-run: no Sampler invocation"]
+    H403Dry --> H404Tag["H404 clean commit and v0.3-qpu-preregistered tag"]
+    H404Tag --> H501Gate["H501 explicit env gate: ALLOW_QPU_EXECUTION=YES"]
+    H501Gate --> H501Submit["H501 one SamplerV2 job"]
+    H501Submit --> H502Raw["H502 locked raw analysis"]
+    H502Raw --> H503Mitigated["H503 secondary readout mitigation"]
     G4Audit --> A601["A601: evidence-grade claims without hardware claim inflation"]
 ```
 
@@ -166,9 +202,18 @@ flowchart LR
     ibm --> readiness["readiness.py"]
     artifacts --> readiness
     readiness --> run_g4_readiness["scripts/run_g4_readiness.py"]
+    isa["isa.py"] --> run_h402_isa["scripts/run_h402_isa.py"]
+    circuits --> isa
+    artifacts --> isa
     preregistration["preregistration.py"] --> run_h401_draft["scripts/run_h401_draft.py"]
     artifacts --> preregistration
     run_g4_readiness --> run_h401_draft
+    hardware["hardware.py"] --> run_h501_execute["scripts/run_h501_execute.py"]
+    hardware --> run_h502_raw["scripts/run_h502_raw_analysis.py"]
+    hardware --> run_h503_mitigated["scripts/run_h503_mitigated_analysis.py"]
+    ibm --> hardware
+    quantum --> hardware
+    statistics["statistics.py"] --> hardware
     claims["claims.py"] --> run_a601["scripts/run_a601.py"]
     artifacts --> run_a601
     run_g1 --> run_a601
@@ -210,10 +255,20 @@ flowchart TD
     Q302Out --> BackendTwin
     TokenSources["discover_ibm_token_sources(paths)"] --> G4Readiness["build_g4_readiness_audit(root)"]
     G4Readiness --> G4Out["G4 readiness audit + manifest"]
+    ArchiveWriter["write_environment_archive()"] --> H401ArchiveOut["environment archive + manifest"]
+    H402Packet["write_h402_isa_packet()"] --> H402Out["ISA QPY + circuit manifest"]
     PreregDraft["build_h401_preregistration_draft(root)"] --> H401Out["PREREGISTRATION_DRAFT.md + summary"]
     Q303Out --> PreregDraft
     Q304Out --> PreregDraft
+    H401ArchiveOut --> PreregDraft
+    H402Out --> PreregDraft
     G4Out --> PreregDraft
+    H501GateCheck["validate_h501_preconditions()"] --> H501SubmitOut["H501 raw provider payload"]
+    SamplerCounts["sampler_result_counts(result, execution_order)"] --> H501SubmitOut
+    H501SubmitOut --> RawAnalysis["analyze_hardware_raw_payload()"]
+    H501SubmitOut --> MitigatedAnalysis["analyze_readout_mitigated_payload()"]
+    RawAnalysis --> Q3RawOut["Q3_hardware_raw.json"]
+    MitigatedAnalysis --> Q3MitigatedOut["Q3_hardware_mitigated.json"]
     ClaimsRows["build_claim_evidence_matrix(root)"] --> ClaimsCSV["claim_evidence_matrix.csv"]
     ClaimsRows --> ClaimsValidation["validate_claim_evidence_matrix(rows)"]
     ClaimsValidation --> A601Out["A601 summary + manifest"]

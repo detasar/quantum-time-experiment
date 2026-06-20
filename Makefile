@@ -1,4 +1,4 @@
-.PHONY: test theorem c0 c1 c2 g2-batch1 c3 c4 c5 g2-batch2 g2 q301 q302 q303 q304 g3 g4-readiness h401-draft a601 ghz reproduce qpu-dry
+.PHONY: test theorem c0 c1 c2 g2-batch1 c3 c4 c5 g2-batch2 g2 q301 q302 q303 q304 g3 g4-readiness h401-archive h401-draft h401-freeze h402-isa h403-dry-run h501-dry-run h501-execute h502 h503 a601 ghz reproduce qpu-dry
 
 test:
 	PYTHONPATH=src pytest -q
@@ -51,8 +51,32 @@ g3:
 g4-readiness:
 	PYTHONPATH=src python scripts/run_g4_readiness.py
 
+h401-archive:
+	PYTHONPATH=src python scripts/run_h401_archive.py
+
 h401-draft:
 	PYTHONPATH=src python scripts/run_h401_draft.py
+
+h401-freeze:
+	PYTHONPATH=src python scripts/run_h401_freeze.py
+
+h402-isa:
+	PYTHONPATH=src python scripts/run_h402_isa.py
+
+h403-dry-run:
+	PYTHONPATH=src python scripts/run_h403_dry_run.py
+
+h501-dry-run:
+	PYTHONPATH=src python scripts/run_h501_execute.py --dry-run
+
+h501-execute:
+	ALLOW_QPU_EXECUTION=YES PYTHONPATH=src python scripts/run_h501_execute.py --execute
+
+h502:
+	PYTHONPATH=src python scripts/run_h502_raw_analysis.py
+
+h503:
+	PYTHONPATH=src python scripts/run_h503_mitigated_analysis.py
 
 a601:
 	PYTHONPATH=src python scripts/run_a601.py

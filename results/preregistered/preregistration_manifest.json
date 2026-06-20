@@ -1,0 +1,49 @@
+{
+  "approval_source": "Codex user message: onay veriyorum plana gore gidelim",
+  "approval_timestamp_utc": "2026-06-20T19:07:43.760220+00:00",
+  "circuit_manifest_path": "results/preregistered/circuit_manifest.json",
+  "circuit_manifest_sha256": "4de3a887d268d68938b1a635926a582764e0598f68300d0753c8459686be1779",
+  "environment": {
+    "git_commit": "4f1354999939747843b4c6e7b6355fe6147c709c",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false
+  },
+  "environment_archive_manifest_path": "results/preregistered/environment_archive_manifest.json",
+  "environment_archive_manifest_sha256": "babf401853aaa574430d54fc3d59cdfc172185f084953085142268a0da6f5b36",
+  "frozen_markdown_path": "docs/PREREGISTRATION_FROZEN.md",
+  "frozen_markdown_sha256": "f1905587d27f0caa0b7ca79ba83ad2192588a824319bce19f70f1ece1d8f3059",
+  "human_approval": true,
+  "outputs": [
+    {
+      "path": "docs/PREREGISTRATION_FROZEN.md",
+      "sha256": "f1905587d27f0caa0b7ca79ba83ad2192588a824319bce19f70f1ece1d8f3059",
+      "size_bytes": 3895
+    },
+    {
+      "path": "results/preregistered/circuit_manifest.json",
+      "sha256": "4de3a887d268d68938b1a635926a582764e0598f68300d0753c8459686be1779",
+      "size_bytes": 16837
+    },
+    {
+      "path": "results/preregistered/circuits.qpy",
+      "sha256": "de7ae498bdb43bd1d41cd27c8c98332cc39c757f6c790ca3f84ca3f3b48df4c9",
+      "size_bytes": 155948
+    }
+  ],
+  "qpu_execution_allowed": false,
+  "qpu_execution_allowed_requires": "H501 explicit gate and ALLOW_QPU_EXECUTION=YES",
+  "qpy_path": "results/preregistered/circuits.qpy",
+  "qpy_sha256": "de7ae498bdb43bd1d41cd27c8c98332cc39c757f6c790ca3f84ca3f3b48df4c9",
+  "status": "FROZEN",
+  "task": "H401_preregistration_freeze"
+}

@@ -1,0 +1,62 @@
+{
+  "all_checks_passed": true,
+  "checks": [
+    {
+      "evidence": "ALLOW_QPU_EXECUTION_is_yes=False",
+      "id": "qpu_env_disabled",
+      "passed": true
+    },
+    {
+      "evidence": "instance_name=open-instance; plan=open",
+      "id": "open_instance",
+      "passed": true
+    },
+    {
+      "evidence": "total_circuit_instances=24; total_shots=24576; qpy_sha256_present=True",
+      "id": "isa_packet_present",
+      "passed": true
+    },
+    {
+      "evidence": "human_approval_recorded=True",
+      "id": "human_approval_recorded",
+      "passed": true
+    }
+  ],
+  "environment": {
+    "git_commit": "4f1354999939747843b4c6e7b6355fe6147c709c",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false
+  },
+  "hardware_jobs_submitted": 0,
+  "inputs": [
+    {
+      "path": "results/preregistered/circuit_manifest.json",
+      "sha256": "4de3a887d268d68938b1a635926a582764e0598f68300d0753c8459686be1779",
+      "size_bytes": 16837
+    },
+    {
+      "path": "results/preregistered/preregistration_manifest.json",
+      "sha256": "1160f532cf1dc7842548730ad7ecc046b49b9d96324b54547e387c33bfa2cb0d",
+      "size_bytes": 2002
+    },
+    {
+      "path": "results/processed/Q303_backend_candidates.json",
+      "sha256": "f5f4aa2a5f790feedf8633d02bfce78b8694742ede425c0814aa1d2c1c24f36d",
+      "size_bytes": 257440
+    }
+  ],
+  "qpu_submission_allowed_now": false,
+  "sampler_invoked": false,
+  "status": "passed_no_submission_qpu_env_disabled",
+  "task": "H403_qpu_submission_dry_run"
+}
