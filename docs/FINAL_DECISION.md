@@ -40,7 +40,11 @@ package.
 
 ## Reproducibility Archive
 
-Pending A603.
+- Archive path: `objective-clocks-reproducibility.tar.gz`
+- Archive SHA-256: `1ad798aea881e7c189d01907d73b9b5eb60366df33af0cfe0e60ab2b56437dea`
+- Archived file count: `170`
+- Clean reproduction command: `/home/emre/quantum-time-experiment/.venv/bin/python scripts/reproduce_all.py`
+- Clean reproduction passed: `True`
 
 ## Scope Boundary
 

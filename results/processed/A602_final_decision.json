@@ -1,7 +1,20 @@
 {
-  "archive": null,
+  "archive": {
+    "archive_path": "objective-clocks-reproducibility.tar.gz",
+    "archive_sha256": "1ad798aea881e7c189d01907d73b9b5eb60366df33af0cfe0e60ab2b56437dea",
+    "archived_file_count": 170,
+    "reproduction": {
+      "command": "/home/emre/quantum-time-experiment/.venv/bin/python scripts/reproduce_all.py",
+      "passed": true,
+      "return_code": 0
+    },
+    "secret_values_recorded": false,
+    "source_git_commit": "cd1fdfeb310ab86ba621e2d4f90277ee99829162",
+    "status": "complete",
+    "task": "A603"
+  },
   "environment": {
-    "git_commit": "51b40b45925f332c5a1bfdd02edbdd8c20e5e11e",
+    "git_commit": "cd1fdfeb310ab86ba621e2d4f90277ee99829162",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
