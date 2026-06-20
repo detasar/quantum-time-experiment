@@ -122,6 +122,9 @@ flowchart TD
     C5Json --> A601Runner
     Q1Sweep --> A601Runner
     Q2Twin --> A601Runner
+    H501Raw --> A601Runner
+    H502Raw --> A601Runner
+    H503Mitigated --> A601Runner
 ```
 
 ## Control Flow Graph
@@ -160,7 +163,8 @@ flowchart TD
     H501Gate --> H501Submit["H501 one SamplerV2 job"]
     H501Submit --> H502Raw["H502 locked raw analysis"]
     H502Raw --> H503Mitigated["H503 secondary readout mitigation"]
-    G4Audit --> A601["A601: evidence-grade claims without hardware claim inflation"]
+    H503Mitigated --> A601["A601: evidence-grade claims with bounded Q1/Q2 hardware illustration"]
+    G4Audit --> A601
 ```
 
 ## Dependency Graph
@@ -276,6 +280,8 @@ flowchart TD
     H501SubmitOut --> MitigatedAnalysis["analyze_readout_mitigated_payload()"]
     RawAnalysis --> Q3RawOut["Q3_hardware_raw.json"]
     MitigatedAnalysis --> Q3MitigatedOut["Q3_hardware_mitigated.json"]
+    Q3RawOut --> ClaimsRows
+    Q3MitigatedOut --> ClaimsRows
     ClaimsRows["build_claim_evidence_matrix(root)"] --> ClaimsCSV["claim_evidence_matrix.csv"]
     ClaimsRows --> ClaimsValidation["validate_claim_evidence_matrix(rows)"]
     ClaimsValidation --> A601Out["A601 summary + manifest"]

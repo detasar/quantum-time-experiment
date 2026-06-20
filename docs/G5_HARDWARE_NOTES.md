@@ -31,6 +31,60 @@ replacement H501 result was available. All candidates passed the backend-derived
 local twin gate; `ibm_kingston` was frozen as the replacement backend and all
 dependent Q303/Q304/H402/H401/H403/H404 artifacts were regenerated.
 
+## Amended H501 Execution
+
+- Job id: `d8rfasuab0ds73drkaig`
+- Backend: `ibm_kingston`
+- Physical layout: `[125, 117, 126, 124]`
+- Preregistration tag at execution: `v0.4-qpu-preregistered-kingston`
+- Submission receipt: `results/raw/H501_submission_receipt_d8rfasuab0ds73drkaig.json`
+- Downloaded provider payload: `results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json`
+- Status after result retrieval: `DONE`
+- Created: `2026-06-20T20:17:55.809388Z`
+- Running: `2026-06-20T20:17:57.209474Z`
+- Finished: `2026-06-20T20:18:10.354081Z`
+- Quantum usage: 9 seconds
+- Circuit instances: 24
+- Observed shots: 24,576
+- Secret values recorded: `false`
+
+The amended execution is the only completed QPU observation in the repository.
+It uses the H501A1-regenerated H401/H402 packet and the Open instance
+`open-instance`.
+
+## H502 Locked Raw Analysis
+
+- Artifact: `results/processed/Q3_hardware_raw.json`
+- Primary inclusion result:
+  `passes_main_text_inclusion_without_mitigation=true`
+- Interpretation: `hardware_positive_pending_mitigation_check`
+- Bootstrap seed: `20260621`
+- Bootstrap replicates: 10,000
+- `delta_obj_lcb`: 0.8876953125
+- `min_z_correlation_lcb`: 0.9169542107266444
+- `delta_coh_lcb`: 0.877685546875
+- `w_plus_xxxx`: 0.8955078125
+- `w_minus_xxxx`: -0.87744140625
+- `w_mix_xxxx`: 0.009033203125
+- No-single-block-dominance check: `true`
+
+The primary result remains the raw, unmitigated H502 decision. This is the value
+used for main-text inclusion decisions.
+
+## H503 Secondary Readout Mitigation
+
+- Artifact: `results/processed/Q3_hardware_mitigated.json`
+- Raw primary pass carried forward: `true`
+- Corrected point-threshold pass: `true`
+- Qualitative agreement with raw: `true`
+- Tensor assignment condition number: 1.1172921620957568
+- Corrected `delta_obj`: 0.9850328718815358
+- Corrected `delta_coh`: 0.9687926905262139
+
+H503 is a secondary robustness analysis. It cannot replace or rescue H502; it
+only records whether an independent tensor-product readout correction agrees
+with the raw conclusion.
+
 ## Maintenance Context
 
 Operator dashboard note supplied on 2026-06-20:

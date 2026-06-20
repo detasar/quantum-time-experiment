@@ -192,3 +192,26 @@ All notable changes to this research repository are documented here.
   zero quantum seconds.
 - Backend amendment does not record secret values and still requires
   `ALLOW_QPU_EXECUTION=YES` before amended H501 execution.
+
+## [0.8.0-g5-hardware-result] - 2026-06-20
+
+### Added
+- Added the completed amended H501 `ibm_kingston` provider payload for job
+  `d8rfasuab0ds73drkaig`.
+- Added H502 locked raw hardware analysis artifact
+  `results/processed/Q3_hardware_raw.json`.
+- Added H503 secondary readout-mitigated analysis artifact
+  `results/processed/Q3_hardware_mitigated.json`.
+- Added post-execution G5 result notes with job timing, usage, raw metrics and
+  mitigation agreement.
+
+### Changed
+- Updated A601 claim grading so Q1 and Q2 receive Q-grade evidence only when the
+  preregistered raw hardware inclusion check passes and H503 qualitatively agrees.
+- Updated documentation to distinguish the cancelled pre-result `ibm_marrakesh`
+  job from the completed amended `ibm_kingston` observation.
+
+### Security
+- Provider payload and derived artifacts record `secret_values_recorded=false`.
+- IBM credentials remain only in the local Qiskit account file outside the
+  repository.

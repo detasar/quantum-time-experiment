@@ -1,0 +1,43 @@
+{
+  "environment": {
+    "git_commit": "cbc1eead0d7d9d62f9b8bf53598692b84b994f9d",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": true
+  },
+  "h501_approval_source": "Codex user message: quantum deneylerini yapalim",
+  "job": {
+    "creation_date": "2026-06-20T23:17:55.809388+03:00",
+    "job_id": "d8rfasuab0ds73drkaig",
+    "metrics": {
+      "bss": {
+        "seconds": 0
+      },
+      "caller": "qiskit_ibm_runtime~sampler.py",
+      "qiskit_version": "qiskit_ibm_runtime-0.47.0,qiskit-2.4.2*,qiskit_aer-0.17.2",
+      "timestamps": {
+        "created": "2026-06-20T20:17:55.809388Z",
+        "finished": null,
+        "running": null
+      },
+      "usage": {
+        "quantum_seconds": 0,
+        "seconds": 0
+      }
+    },
+    "status": "QUEUED",
+    "usage": 0
+  },
+  "secret_values_recorded": false,
+  "status": "job_accepted",
+  "task": "H501_submission_receipt"
+}

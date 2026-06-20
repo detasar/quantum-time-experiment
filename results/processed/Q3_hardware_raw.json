@@ -1,0 +1,81 @@
+{
+  "backend": "ibm_kingston",
+  "block_dominance": {
+    "delta_coh_block_values": [
+      0.87890625,
+      0.8916015625,
+      0.8857421875,
+      0.8896484375
+    ],
+    "delta_coh_max_abs_share": 0.2514458826769485,
+    "delta_obj_block_values": [
+      0.8828125,
+      0.87109375,
+      0.916015625,
+      0.89453125
+    ],
+    "delta_obj_max_abs_share": 0.256986301369863
+  },
+  "bootstrap": {
+    "alpha": 0.05,
+    "delta_coh_lcb": 0.877685546875,
+    "delta_obj_lcb": 0.8876953125,
+    "replicates": 10000,
+    "seed": 20260621
+  },
+  "environment": {
+    "git_commit": "cbc1eead0d7d9d62f9b8bf53598692b84b994f9d",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false
+  },
+  "inclusion_checks": {
+    "delta_coh_lcb": true,
+    "delta_obj_lcb": true,
+    "ghz_minus_xxxx_negative": true,
+    "min_z_correlation_lcb": true,
+    "no_single_block_dominates": true
+  },
+  "inputs": [
+    {
+      "path": "configs/quantum_local.yaml",
+      "sha256": "a40a87d07353474a681486b5d2409a338acc6a410f5c925f9a2f0cd2a14f3055",
+      "size_bytes": 684
+    },
+    {
+      "path": "results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json",
+      "sha256": "26335ac0dbb6430e94eea17fab14f9945b48b94091280ccbb1dcf1e3e01895d2",
+      "size_bytes": 12509
+    }
+  ],
+  "job_id": "d8rfasuab0ds73drkaig",
+  "metrics": {
+    "delta_coh": 0.886474609375,
+    "delta_coh_lcb": 0.8575485639112612,
+    "delta_obj": 0.9208984375,
+    "delta_obj_lcb": 0.8778010514406775,
+    "min_z_correlation_lcb": 0.9169542107266444,
+    "w_minus_xxxx": -0.87744140625,
+    "w_mix_xxxx": 0.009033203125,
+    "w_plus_xxxx": 0.8955078125,
+    "x_c_r1": 0.00830078125,
+    "x_c_r2": -0.00634765625,
+    "z_c_r1": 0.931640625,
+    "z_c_r2": 0.92919921875
+  },
+  "passes_main_text_inclusion_without_mitigation": true,
+  "primary": "raw",
+  "result_interpretation": "hardware_positive_pending_mitigation_check",
+  "secret_values_recorded": false,
+  "status": "complete",
+  "task": "H502_locked_raw_analysis"
+}

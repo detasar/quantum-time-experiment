@@ -1,0 +1,101 @@
+{
+  "assignment_matrices": [
+    [
+      [
+        0.994140625,
+        0.0478515625
+      ],
+      [
+        0.005859375,
+        0.9521484375
+      ]
+    ],
+    [
+      [
+        1.0,
+        0.0048828125
+      ],
+      [
+        0.0,
+        0.9951171875
+      ]
+    ],
+    [
+      [
+        0.9990234375,
+        0.009765625
+      ],
+      [
+        0.0009765625,
+        0.990234375
+      ]
+    ],
+    [
+      [
+        0.994140625,
+        0.0126953125
+      ],
+      [
+        0.005859375,
+        0.9873046875
+      ]
+    ]
+  ],
+  "corrected_point_threshold_pass": true,
+  "environment": {
+    "git_commit": "cbc1eead0d7d9d62f9b8bf53598692b84b994f9d",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false
+  },
+  "inputs": [
+    {
+      "path": "configs/quantum_local.yaml",
+      "sha256": "a40a87d07353474a681486b5d2409a338acc6a410f5c925f9a2f0cd2a14f3055",
+      "size_bytes": 684
+    },
+    {
+      "path": "results/processed/Q3_hardware_raw.json",
+      "sha256": "07115fe7396aff386bf91942a54b89895cd29fbedc7794e0e411763b1ea6d279",
+      "size_bytes": 2265
+    },
+    {
+      "path": "results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json",
+      "sha256": "26335ac0dbb6430e94eea17fab14f9945b48b94091280ccbb1dcf1e3e01895d2",
+      "size_bytes": 12509
+    }
+  ],
+  "metrics": {
+    "delta_coh": 0.9687926905262139,
+    "delta_obj": 0.9850328718815358,
+    "w_minus_xxxx": -0.9604073485467804,
+    "w_mix_xxxx": 0.008385341979433414,
+    "w_plus_xxxx": 0.9771780325056473,
+    "x_c_r1": 0.0066549714393996234,
+    "x_c_r2": -0.00866719036396972,
+    "z_c_r1": 0.9937000622455054,
+    "z_c_r2": 0.999199564612438
+  },
+  "negative_quasiprobability_l1": {
+    "ghz_minus_x": 0.0008314118158085984,
+    "ghz_minus_z": 0.008788129475900868,
+    "ghz_plus_x": 0.0004572924660388028,
+    "ghz_plus_z": 0.007305245396201066
+  },
+  "primary_result_remains": "raw",
+  "qualitative_agreement_with_raw": true,
+  "raw_primary_pass": true,
+  "secret_values_recorded": false,
+  "status": "complete",
+  "task": "H503_readout_mitigated_analysis",
+  "tensor_assignment_condition_number": 1.1172921620957568
+}

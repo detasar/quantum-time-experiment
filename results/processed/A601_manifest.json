@@ -1,16 +1,16 @@
 {
   "algorithm": "sha256",
-  "created_utc": "2026-06-20T19:06:57.937756+00:00",
+  "created_utc": "2026-06-20T20:25:28.994539+00:00",
   "files": [
     {
       "path": "results/claim_evidence_matrix.csv",
-      "sha256": "c3164f1af995580dcb95a615fd22d3cb54c9c40073248ceba2e1605a061665b5",
-      "size_bytes": 4703
+      "sha256": "13547a11daf46f458479fb20a35a1c7a9aa5a7806092ff3d7f7cf7ace4dc05b8",
+      "size_bytes": 5433
     },
     {
       "path": "results/processed/A601_claim_evidence_summary.json",
-      "sha256": "ec4094cc24543fd0fcc5492239b26e253842bd926ad586725fe4a38e4f661fa4",
-      "size_bytes": 341
+      "sha256": "051282d2122c5f397472c00ea8e979c88fbd7df22000c10ee243f2e1589bc036",
+      "size_bytes": 323
     }
   ]
 }

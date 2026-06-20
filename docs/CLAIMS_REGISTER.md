@@ -12,8 +12,10 @@ Evidence grades:
 - `N`: negative/no-go result.
 
 Current A601 status: every planned claim has at least one evidence artifact, one
-explicit evidence check and one caveat. There is no `Q`-grade claim because Q304
-is a backend-derived local twin, not a hardware observation.
+explicit evidence check and one caveat. Q1 and Q2 now have Q-grade evidence from
+the completed preregistered H501/H502/H503 IBM observation. The Q-grade rows are
+four-qubit illustrations only; the theorem-level contribution remains the
+classical/symbolic basis--order--orientation package.
 
 | ID | Evidence grade | Current status | Novelty status | Caveat |
 |---|---:|---|---|---|
@@ -25,5 +27,5 @@ is a backend-derived local twin, not a hardware observation.
 | N1 | N;E | supported_no_go | Boundary result | External label anchoring can add order information; redundancy alone cannot. |
 | N2 | N;E | supported_no_go | Boundary result | The no-go excludes orientation from basis objectivity alone. |
 | N3 | N;P;E | supported_no_go | Known-adjacent no-go | This is a boundary condition on admissible physical partitions. |
-| Q1 | P;E;S | supported_without_hardware | Illustration only | No Q-grade evidence is claimed; Q304 is a backend-derived local twin, not a hardware observation. |
-| Q2 | P;E;S | supported_without_hardware | Boundary illustration | No hardware observation is available; the backend-derived twin is a preregistration readiness simulation only. |
+| Q1 | P;E;S;Q | supported_with_hardware | Illustration only | Q-grade evidence is a four-qubit IBM illustration only; the theorem-level contribution remains the classical/symbolic result. |
+| Q2 | P;E;S;Q | supported_with_hardware | Boundary illustration | The hardware contrast uses the preregistered GHZ+ and GHZ- parity mixture construction; it is an illustration, not an independent proof. |

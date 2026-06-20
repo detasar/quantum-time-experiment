@@ -30,6 +30,13 @@ def _read_json(root: Path, relative: str) -> dict[str, Any]:
     return cast(dict[str, Any], json.loads(path.read_text(encoding="utf-8")))
 
 
+def _read_json_optional(root: Path, relative: str) -> dict[str, Any] | None:
+    path = root / relative
+    if not path.exists():
+        return None
+    return cast(dict[str, Any], json.loads(path.read_text(encoding="utf-8")))
+
+
 def _require_file(root: Path, relative: str) -> str:
     path = root / relative
     if not path.exists():
@@ -75,6 +82,8 @@ def build_claim_evidence_matrix(root: Path = Path(".")) -> list[ClaimEvidence]:
     c5 = _read_json(root, "results/processed/C5_ghz_exact.json")
     q1 = _read_json(root, "results/processed/Q1_noise_sweep_summary.json")
     q2 = _read_json(root, "results/processed/Q2_backend_twin_summary.json")
+    q3_raw = _read_json_optional(root, "results/processed/Q3_hardware_raw.json")
+    q3_mitigated = _read_json_optional(root, "results/processed/Q3_hardware_mitigated.json")
 
     proofs = {
         "b0": _require_file(root, "docs/proofs/B0_imported_basis_uniqueness.md"),
@@ -104,6 +113,27 @@ def build_claim_evidence_matrix(root: Path = Path(".")) -> list[ClaimEvidence]:
     c5_expectations = cast(dict[str, dict[str, float]], c5["expectations"])
     c5_objectivity = cast(dict[str, float], c5["objectivity"])
     c5_coherence = cast(dict[str, float], c5["coherence_witness"])
+    raw_metrics = cast(dict[str, float], (q3_raw or {}).get("metrics", {}))
+    raw_bootstrap = cast(dict[str, float], (q3_raw or {}).get("bootstrap", {}))
+    raw_checks = cast(dict[str, bool], (q3_raw or {}).get("inclusion_checks", {}))
+    hardware_q_grade = bool(
+        q3_raw
+        and q3_mitigated
+        and q3_raw.get("passes_main_text_inclusion_without_mitigation") is True
+        and q3_mitigated.get("qualitative_agreement_with_raw") is True
+    )
+    mitigation_agrees = q3_mitigated.get("qualitative_agreement_with_raw") if q3_mitigated else None
+    q3_payloads = sorted(root.glob("results/raw/H501_provider_payload_*.json"))
+    q3_payload_artifact = q3_payloads[-1].as_posix() if q3_payloads else ""
+    q3_artifacts = (
+        [
+            q3_payload_artifact,
+            "results/processed/Q3_hardware_raw.json",
+            "results/processed/Q3_hardware_mitigated.json",
+        ]
+        if hardware_q_grade
+        else []
+    )
 
     return [
         _claim(
@@ -258,23 +288,44 @@ def build_claim_evidence_matrix(root: Path = Path(".")) -> list[ClaimEvidence]:
                 "In the four-qubit GHZ illustration, Z records are local/objective while "
                 "X-basis information is global."
             ),
-            evidence_grade="P;E;S",
-            evidence_status="supported_without_hardware",
+            evidence_grade="P;E;S;Q" if hardware_q_grade else "P;E;S",
+            evidence_status=(
+                "supported_with_hardware" if hardware_q_grade else "supported_without_hardware"
+            ),
             novelty_status="Illustration only",
-            evidence_required="Exact GHZ calculation, C1 landscape and local Q302 simulator sweep.",
+            evidence_required=(
+                "Exact GHZ calculation, C1 landscape, local Q302 simulator sweep and "
+                "preregistered H501/H502/H503 hardware analysis."
+            ),
             evidence_artifacts=[
                 "results/processed/C1_basis_landscape_summary.json",
                 "results/processed/C5_ghz_exact.json",
                 "results/processed/Q1_noise_sweep_summary.json",
+                *q3_artifacts,
             ],
             evidence_checks=[
                 f"ghz_z_score={c1['ghz_z_score']}",
                 f"ghz_x_score={c1['ghz_x_score']}",
                 f"q302_passing_cells={q1['passing_cells']}/{q1['row_count']}",
+                *(
+                    [
+                        f"raw_delta_obj_lcb={raw_bootstrap.get('delta_obj_lcb')}",
+                        f"raw_min_z_correlation_lcb={raw_metrics.get('min_z_correlation_lcb')}",
+                        f"raw_no_single_block_dominates={raw_checks.get('no_single_block_dominates')}",
+                        f"mitigated_agrees={mitigation_agrees}",
+                    ]
+                    if hardware_q_grade
+                    else []
+                ),
             ],
             caveat=(
-                "No Q-grade evidence is claimed; Q304 is a backend-derived local twin, "
-                "not a hardware observation."
+                "Q-grade evidence is a four-qubit IBM illustration only; the "
+                "theorem-level contribution remains the classical/symbolic result."
+                if hardware_q_grade
+                else (
+                    "No Q-grade evidence is claimed; Q304 is a backend-derived local twin, "
+                    "not a hardware observation."
+                )
             ),
         ),
         _claim(
@@ -283,14 +334,20 @@ def build_claim_evidence_matrix(root: Path = Path(".")) -> list[ClaimEvidence]:
                 "A dephased GHZ mixture preserves Z objectivity but removes the global "
                 "X-parity coherence witness."
             ),
-            evidence_grade="P;E;S",
-            evidence_status="supported_without_hardware",
+            evidence_grade="P;E;S;Q" if hardware_q_grade else "P;E;S",
+            evidence_status=(
+                "supported_with_hardware" if hardware_q_grade else "supported_without_hardware"
+            ),
             novelty_status="Boundary illustration",
-            evidence_required="Exact coherent/dephased comparison plus local simulator readiness.",
+            evidence_required=(
+                "Exact coherent/dephased comparison, local simulator readiness and "
+                "preregistered H501/H502/H503 hardware coherence contrast."
+            ),
             evidence_artifacts=[
                 "results/processed/C5_ghz_exact.json",
                 "results/processed/Q1_noise_sweep_summary.json",
                 "results/processed/Q2_backend_twin_summary.json",
+                *q3_artifacts,
             ],
             evidence_checks=[
                 f"z_basis_ghz={c5_objectivity['z_basis_ghz']}",
@@ -300,10 +357,26 @@ def build_claim_evidence_matrix(root: Path = Path(".")) -> list[ClaimEvidence]:
                 f"coherence_difference={c5_coherence['absolute_difference']}",
                 f"q304_status={q2['status']}",
                 f"q304_reason={q2['reason']}",
+                *(
+                    [
+                        f"raw_delta_coh_lcb={raw_bootstrap.get('delta_coh_lcb')}",
+                        f"raw_w_plus_xxxx={raw_metrics.get('w_plus_xxxx')}",
+                        f"raw_w_minus_xxxx={raw_metrics.get('w_minus_xxxx')}",
+                        f"raw_w_mix_xxxx={raw_metrics.get('w_mix_xxxx')}",
+                        f"mitigated_agrees={mitigation_agrees}",
+                    ]
+                    if hardware_q_grade
+                    else []
+                ),
             ],
             caveat=(
-                "No hardware observation is available; the backend-derived twin is "
-                "a preregistration readiness simulation only."
+                "The hardware contrast uses the preregistered GHZ+ and GHZ- parity "
+                "mixture construction; it is an illustration, not an independent proof."
+                if hardware_q_grade
+                else (
+                    "No hardware observation is available; the backend-derived twin is "
+                    "a preregistration readiness simulation only."
+                )
             ),
         ),
     ]
@@ -329,7 +402,7 @@ def validate_claim_evidence_matrix(rows: list[ClaimEvidence]) -> None:
 def write_claim_evidence_csv(path: Path, rows: list[ClaimEvidence]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=FIELDNAMES)
+        writer = csv.DictWriter(handle, fieldnames=FIELDNAMES, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             writer.writerow(asdict(row))

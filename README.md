@@ -130,9 +130,9 @@ plan, freezes the H401 preregistration packet, freezes the H402 ISA circuit
 packet and passes the H403 no-submission dry-run. A pre-result backend amendment
 cancelled the original queued `ibm_marrakesh` job before any raw result or QPU
 usage, compared `ibm_kingston`, `ibm_fez` and `ibm_marrakesh`, and regenerated
-Q303/Q304/H402/H401/H403 for `ibm_kingston`. QPU execution remains disabled
-unless H501 is invoked with `ALLOW_QPU_EXECUTION=YES` after the repository is
-clean and tagged.
+Q303/Q304/H402/H401/H403 for `ibm_kingston`. At the frozen G4 boundary, QPU
+execution remained disabled unless H501 was invoked with
+`ALLOW_QPU_EXECUTION=YES` after the repository was clean and tagged.
 
 ## Current G5 Locked Hardware Path
 
@@ -141,11 +141,24 @@ clean and tagged.
 - `scripts/run_h503_mitigated_analysis.py`: secondary readout-mitigated analysis.
 - `src/objective_clocks/hardware.py`: raw payload extraction, integrity checks,
   raw inclusion decision and independent readout assignment correction.
+- `results/raw/H501_submission_receipt_d8rfasuab0ds73drkaig.json`
+- `results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json`
+- `results/processed/Q3_hardware_raw.json`
+- `results/processed/Q3_hardware_mitigated.json`
 
-The current amended H501 target is `ibm_kingston`. The execution path refuses to
-run without a frozen preregistration manifest, matching circuit-manifest hash,
-Open instance metadata, no prior H501 provider payload, a clean repository, tag
+The amended H501 target was `ibm_kingston`. The execution path refused to run
+without a frozen preregistration manifest, matching circuit-manifest hash, Open
+instance metadata, no prior H501 provider payload, a clean repository, tag
 `v0.4-qpu-preregistered-kingston` at `HEAD` and `ALLOW_QPU_EXECUTION=YES`.
+
+The amended H501 execution completed on job `d8rfasuab0ds73drkaig`: 24 circuit
+instances, 24,576 observed shots and 9 quantum seconds. H502 passed the locked
+raw inclusion rule without mitigation
+(`passes_main_text_inclusion_without_mitigation=true`), with
+`delta_obj_lcb=0.8876953125`, `min_z_correlation_lcb=0.9169542107266444` and
+`delta_coh_lcb=0.877685546875` under the preregistered bootstrap seed
+`20260621`. H503 readout correction is secondary only; it agrees qualitatively
+with the raw result.
 
 ## Current A601 Artifacts
 
@@ -155,6 +168,6 @@ Open instance metadata, no prior H501 provider payload, a clean repository, tag
 - `docs/CLAIMS_REGISTER.md`
 
 A601 evidence-grades every planned claim as `P`, `E`, `S`, `Q`, `I` or `N`.
-Current hardware observation count is zero, so Q1/Q2 remain exact/simulator
-illustrations without Q-grade evidence even though the Q304 backend-derived
-local twin now passes.
+The current matrix has two Q-grade rows, Q1 and Q2, both limited to the
+four-qubit IBM illustration. The theorem-level and no-go claims remain
+classical/symbolic and do not depend on the hardware observation.

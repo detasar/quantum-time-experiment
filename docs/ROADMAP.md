@@ -71,10 +71,13 @@ No IBM submission.
 ## Sprint 5 — IBM and locked analysis
 
 - Check Open Plan remaining allocation.
-- Submit one batch.
-- Retrieve and hash raw data.
-- Run raw primary analysis.
-- Run secondary readout correction.
+- Submit one batch: completed on amended backend `ibm_kingston`, job
+  `d8rfasuab0ds73drkaig`.
+- Retrieve and hash raw data: completed under `results/raw/`.
+- Run raw primary analysis: completed in H502 with the preregistered raw
+  inclusion rule passing.
+- Run secondary readout correction: completed in H503 with qualitative agreement
+  to the raw result.
 
 **Exit gate:** G5.
 

@@ -3,6 +3,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage[strings]{underscore}
 
 \title{Objective Clock Bases from Redundant Records\\Experiment Journal}
 \author{Davut Emre Ta\c{s}ar}
@@ -170,8 +171,8 @@ account file. The saved account is bound to the \texttt{open-instance} Open
 Plan instance. Q303 performs provider listing and backend-property reads only;
 it submits no workload. After the pre-result backend amendment, the current
 provider snapshot selects
-\texttt{ibm\_kingston} with physical layout \([125,117,126,124]\), native
-\texttt{cz} entangling gates and calibration timestamp
+\texttt{ibm\_kingston}. The physical layout is \([125,117,126,124]\). The
+native entangling gate is \texttt{cz}. The calibration timestamp is
 \texttt{2026-06-20T22:25:00+03:00}.
 
 Q304 builds a selected-layout aggregate depolarizing/readout proxy from that
@@ -193,11 +194,12 @@ evidence grades P, E, S, Q, I and N to every planned claim and records an
 artifact-backed check plus a caveat for each row. The current matrix contains ten
 claims: B0, O1, O2, O3, O4, N1, N2, N3, Q1 and Q2.
 
-Unsupported claim count is zero. Hardware observation claim count is also zero:
-Q1 and Q2 remain exact/simulator illustrations only. Q304 is now a
-backend-derived local readiness simulation, not a QPU measurement. This
-preserves the paper boundary that the classical/symbolic contribution survives
-without IBM hardware.
+Unsupported claim count is zero. After H501/H502/H503, Q1 and Q2 receive
+Q-grade evidence from the completed IBM four-qubit illustration. The Q-grade
+rows are explicitly bounded: they do not promote the GHZ illustration into an
+independent proof of the theorem-level claims. The classical/symbolic
+contribution remains evaluated by proofs, exact checks and classical
+experiments.
 
 After A601 was added to the reproduction chain, \texttt{scripts/reproduce\_all.py}
 completed successfully: pytest, G1, G2, G3, the G4 readiness audit, A601 and
@@ -248,5 +250,44 @@ All candidates passed the local twin gate. The replacement backend is
 \texttt{ibm\_kingston}; Q303/Q304, H402 ISA generation, H401 preregistration
 freeze, H403 dry-run and H404 tagging are regenerated for the replacement before
 any amended H501 execution.
+
+\section{G5 Hardware Execution and Locked Analysis}
+
+The amended H501 job completed on \texttt{ibm\_kingston} with job id
+\texttt{d8rfasuab0ds73drkaig}. The job used the H501A1-regenerated
+preregistration packet.
+\begin{itemize}
+  \item Preregistration tag: \texttt{v0.4-qpu-preregistered-kingston}
+  \item Circuit instances: 24
+  \item Observed shots: 24,576
+\end{itemize}
+\begin{itemize}
+  \item Created: \texttt{2026-06-20T20:17:55.809388Z}
+  \item Running: \texttt{2026-06-20T20:17:57.209474Z}
+  \item Finished: \texttt{2026-06-20T20:18:10.354081Z}
+  \item Quantum usage: 9 seconds
+\end{itemize}
+The raw payload is stored in
+\path{results/raw/H501_provider_payload_d8rfasuab0ds73drkaig.json}.
+
+H502 is the primary result. It reads the downloaded provider bitstrings and
+applies the preregistered raw inclusion rule without mitigation. The raw result
+passes main-text inclusion:
+\texttt{passes\_main\_text\_inclusion\_without\_mitigation=true}. The
+bootstrap lower confidence bounds use seed \texttt{20260621} and 10,000
+replicates. The objectivity contrast lower bound is
+\(0.8876953125\), the minimum Z-correlation lower bound is
+\(0.9169542107266444\) and the coherence contrast lower bound is
+\(0.877685546875\). The GHZ-plus, GHZ-minus and mixture X-parity witnesses are
+\(0.8955078125\), \(-0.87744140625\) and \(0.009033203125\). No single
+randomized block dominates the objectivity or coherence contrast.
+
+H503 is secondary robustness evidence only. The independent tensor-product
+readout assignment correction has condition number \(1.1172921620957568\),
+passes the corrected point thresholds and agrees qualitatively with the raw
+result. The corrected point estimates are \(\Delta_{\mathrm{obj}} =
+0.9850328718815358\) and \(\Delta_{\mathrm{coh}} =
+0.9687926905262139\). H503 cannot replace the raw H502 decision; the primary
+inclusion result remains raw.
 
 \end{document}
