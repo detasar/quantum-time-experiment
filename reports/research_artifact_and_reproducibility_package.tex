@@ -4,7 +4,6 @@
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
-\usepackage{longtable}
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage{ragged2e}
@@ -530,63 +529,6 @@ demonstration of objective histories.  The theoretical claims depend on the
 specified record model and admissible partitions.  The report does not solve
 partition-independent Hilbert-space factorization or derive an orientation
 anchor from redundancy alone.  Those remain outside the claim boundary.
-
-\appendix
-\section{Three-Round Review Record}
-
-The final report and README were reviewed through four roles across three
-rounds.  The review was performed as an internal artifact audit rather than as
-peer review.
-
-\begin{longtable}{@{}P{0.13\textwidth}P{0.18\textwidth}P{0.31\textwidth}P{0.29\textwidth}@{}}
-\toprule
-Round & Reviewer role & Challenge & Resolution \\
-\midrule
-\endhead
-1 & Conceptual reviewer &
-The README and report could overstate basis uniqueness as novelty. &
-Moved fixed-partition basis uniqueness to related-work context and made the
-basis-order-orientation separation the central claim. \\
-1 & Mathematical reviewer &
-Linear extensions might be mistaken for physical histories. &
-Promoted the chain criterion and diamond counterexample to the core result. \\
-1 & Hardware reviewer &
-The IBM result could be read as proof of the theory. &
-Labeled H501 as a bounded illustration and kept raw H502 as primary. \\
-1 & Reproducibility reviewer &
-The artifact needed a direct archive/hash story. &
-Added the archive SHA-256, source commit, file count, and reproduction command. \\
-\midrule
-2 & Conceptual reviewer &
-Non-specialists need vocabulary before the tables. &
-Added a concept-primer table before technical evidence. \\
-2 & Mathematical reviewer &
-The orientation no-go boundary needed explicit wording. &
-Added orientation-anchor language to the abstract, primer, and limitations. \\
-2 & Hardware reviewer &
-Backend amendment provenance could look like post-result selection. &
-Documented the cancelled queued Marrakesh job as pre-result provenance and
-identified Kingston as the only completed observation. \\
-2 & Reproducibility reviewer &
-Operational details should not dominate the scientific changelog. &
-Moved changelog wording toward scientific chronology and left low-level details
-to manifests and docs. \\
-\midrule
-3 & Conceptual reviewer &
-The motivation should explain why clocks require more than objectivity. &
-Rewrote the opening around agreement on alternatives versus agreement on a
-physical history. \\
-3 & Mathematical reviewer &
-Capacity and no-go claims needed evidence-file pointers. &
-Added T101, T103, C2, C3, C4, and C5 references in the methods narrative. \\
-3 & Hardware reviewer &
-Mitigation status needed stronger guardrails. &
-Stated that H503 cannot rescue or replace H502. \\
-3 & Reproducibility reviewer &
-Figures needed visual-context justification. &
-Included the tracked publication figures and described what each one supports. \\
-\bottomrule
-\end{longtable}
 
 \bibliographystyle{plain}
 \bibliography{research_artifact_references}
