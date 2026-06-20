@@ -1,0 +1,108 @@
+{
+  "blocked_check_count": 5,
+  "checks": [
+    {
+      "blocking_tasks": [
+        "H401"
+      ],
+      "evidence": "grid_cells_complete=True; passing_cells=96/100",
+      "id": "G3-Q302",
+      "remediation": "Rerun Q302 or revise the local noise thresholds before preregistration.",
+      "requirement": "Generic local quantum readiness sweep has at least one passing cell.",
+      "status": "pass"
+    },
+    {
+      "blocking_tasks": [
+        "H401",
+        "H402"
+      ],
+      "evidence": "candidate_source=deterministic_fixture; provider_call_attempted=False",
+      "id": "G3-Q303-PROVIDER",
+      "remediation": "Load a valid IBM Runtime token, rerun Q303 and capture a real backend snapshot.",
+      "requirement": "Backend selection uses a real provider calibration snapshot.",
+      "status": "blocked"
+    },
+    {
+      "blocking_tasks": [
+        "H401",
+        "H402"
+      ],
+      "evidence": "status=hardware_stage_stopped; reason=no_real_backend_snapshot_available",
+      "id": "G3-Q304-TWIN",
+      "remediation": "Rerun Q304 after Q303 obtains a real provider backend snapshot.",
+      "requirement": "Backend-derived digital twin passes the preregistered local readiness gate.",
+      "status": "blocked"
+    },
+    {
+      "blocking_tasks": [
+        "H401"
+      ],
+      "evidence": "tbd_count=11; prereg_frozen=False",
+      "id": "H401-PREREG-FIELDS",
+      "remediation": "Fill all mandatory fields and freeze docs/PREREGISTRATION_FROZEN.md.",
+      "requirement": "Preregistration has no mandatory TBD fields and is marked FROZEN.",
+      "status": "blocked"
+    },
+    {
+      "blocking_tasks": [
+        "H401"
+      ],
+      "evidence": "human_approval=False",
+      "id": "H401-HUMAN-APPROVAL",
+      "remediation": "Record explicit human approval after preregistration review.",
+      "requirement": "Human review approves the frozen preregistration.",
+      "status": "blocked"
+    },
+    {
+      "blocking_tasks": [
+        "H403"
+      ],
+      "evidence": "ALLOW_QPU_EXECUTION_is_yes=False",
+      "id": "H403-QPU-GATE",
+      "remediation": "Unset ALLOW_QPU_EXECUTION until the explicit H501 human gate.",
+      "requirement": "QPU execution remains hard-disabled during dry run.",
+      "status": "pass"
+    },
+    {
+      "blocking_tasks": [
+        "H404"
+      ],
+      "evidence": "git_status_entries=19",
+      "id": "H404-REPO-CLEAN",
+      "remediation": "Commit or otherwise resolve all tracked/untracked changes before tagging.",
+      "requirement": "Repository is clean before preregistration tag/archive.",
+      "status": "blocked"
+    }
+  ],
+  "environment": {
+    "git_commit": "UNKNOWN",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false
+  },
+  "ibm_credential_audit": {
+    "env_files_scanned": 44,
+    "key_presence": {},
+    "secret_values_recorded": false,
+    "token_source_count": 0,
+    "token_sources": []
+  },
+  "next_required_actions": [
+    "Load a valid IBM Runtime token, rerun Q303 and capture a real backend snapshot.",
+    "Rerun Q304 after Q303 obtains a real provider backend snapshot.",
+    "Fill all mandatory fields and freeze docs/PREREGISTRATION_FROZEN.md.",
+    "Record explicit human approval after preregistration review.",
+    "Commit or otherwise resolve all tracked/untracked changes before tagging."
+  ],
+  "overall_status": "blocked_before_g4",
+  "task": "G4_readiness_audit"
+}

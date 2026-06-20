@@ -1,0 +1,103 @@
+{
+  "bell_max": 1.0,
+  "bell_min": 1.0,
+  "config_hash": "b086114bfec9fe61043c9bf62187cee670215d0fe758096d67ff065563143652",
+  "duration_seconds": 2.90543,
+  "environment": {
+    "git_commit": "UNKNOWN",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false,
+    "timestamp_utc": "2026-06-20T17:44:10.753464+00:00"
+  },
+  "experiment_id": "C1",
+  "ghz_x_score": 0.0,
+  "ghz_z_score": 1.0,
+  "haar_summary": [
+    {
+      "best_random_basis_distance": 0.0,
+      "best_random_score": 0.0,
+      "identity_score": 0.0,
+      "n_records": 0,
+      "n_values": 3,
+      "samples": 2000
+    },
+    {
+      "best_random_basis_distance": 0.040300647983056326,
+      "best_random_score": 0.8403229334902226,
+      "identity_score": 1.0,
+      "n_records": 1,
+      "n_values": 3,
+      "samples": 2000
+    },
+    {
+      "best_random_basis_distance": 0.022076975075685845,
+      "best_random_score": 0.890741691053229,
+      "identity_score": 1.0,
+      "n_records": 2,
+      "n_values": 3,
+      "samples": 2000
+    },
+    {
+      "best_random_basis_distance": 0.040475575570549815,
+      "best_random_score": 0.8384597115945024,
+      "identity_score": 1.0,
+      "n_records": 3,
+      "n_values": 3,
+      "samples": 2000
+    },
+    {
+      "best_random_basis_distance": 0.0,
+      "best_random_score": 0.0,
+      "identity_score": 0.0,
+      "n_records": 0,
+      "n_values": 4,
+      "samples": 2000
+    },
+    {
+      "best_random_basis_distance": 0.09746772067636511,
+      "best_random_score": 0.7153496640955717,
+      "identity_score": 1.0,
+      "n_records": 1,
+      "n_values": 4,
+      "samples": 2000
+    },
+    {
+      "best_random_basis_distance": 0.15248871621856552,
+      "best_random_score": 0.6121170412366411,
+      "identity_score": 1.0,
+      "n_records": 2,
+      "n_values": 4,
+      "samples": 2000
+    },
+    {
+      "best_random_basis_distance": 0.11212089356116794,
+      "best_random_score": 0.6849904278944721,
+      "identity_score": 1.0,
+      "n_records": 3,
+      "n_values": 4,
+      "samples": 2000
+    }
+  ],
+  "outputs": [
+    {
+      "path": "figures/fig_02_basis_landscape.pdf",
+      "sha256": "d1c4b048a69f63e8ed684e616325aa6ae749cf62e446af831cc4b6cdeb6a8e98",
+      "size_bytes": 18641
+    },
+    {
+      "path": "results/processed/C1_basis_landscape.nc",
+      "sha256": "46f154362365c16122ef90430c339a0b2a402800e9db868992f401f76c3d7edd",
+      "size_bytes": 1573460
+    }
+  ]
+}

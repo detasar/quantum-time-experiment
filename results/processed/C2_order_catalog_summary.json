@@ -1,0 +1,68 @@
+{
+  "classifications": {
+    "diamond": "branching_or_partial_order",
+    "disconnected": "branching_or_partial_order",
+    "duplicate": "non_identifiable_duplicate_labels",
+    "erasure": "persistence_violation_control",
+    "orientation_free": "orientation_not_identified",
+    "thermometer": "scalar_time"
+  },
+  "config_hash": "b086114bfec9fe61043c9bf62187cee670215d0fe758096d67ff065563143652",
+  "duration_seconds": 0.025509,
+  "environment": {
+    "git_commit": "UNKNOWN",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false,
+    "timestamp_utc": "2026-06-20T17:44:11.477515+00:00"
+  },
+  "experiment_id": "C2",
+  "linear_extensions_are_physical": false,
+  "outputs": [
+    {
+      "path": "results/processed/C2_graphs/diamond.graphml",
+      "sha256": "ee5dcea4bb15025e1417be46fe96c96a2b76cd89f6fbd8bfd98a0b1af8a9c7e3",
+      "size_bytes": 956
+    },
+    {
+      "path": "results/processed/C2_graphs/disconnected.graphml",
+      "sha256": "3e42892de9ea7da11721a3496aee2105249c89bc39ac387b3cd304ee8a1abd7d",
+      "size_bytes": 632
+    },
+    {
+      "path": "results/processed/C2_graphs/duplicate.graphml",
+      "sha256": "eb1cf0d119ade764e01a405f5e638636093f2f4c95311763837c537aff7c9e41",
+      "size_bytes": 670
+    },
+    {
+      "path": "results/processed/C2_graphs/erasure.graphml",
+      "sha256": "be1961f66d0be1f172883a09118c8173834b7e370baf95e40589c3f780d82175",
+      "size_bytes": 670
+    },
+    {
+      "path": "results/processed/C2_graphs/orientation_free.graphml",
+      "sha256": "724cbdc6690474b1e94c8258bb83a19f7e72836aa7031de842a072cc83938a7b",
+      "size_bytes": 665
+    },
+    {
+      "path": "results/processed/C2_graphs/thermometer.graphml",
+      "sha256": "7f209b1a83283c3bcf2de9db8a586846d79060ba1ed6f107c9ead371b622e46c",
+      "size_bytes": 1053
+    },
+    {
+      "path": "results/processed/C2_order_catalog.parquet",
+      "sha256": "17b88a9fcc63266f914bc43c581b46bde1ff4572c4036c0b6b3f96842fce2728",
+      "size_bytes": 9535
+    }
+  ],
+  "row_count": 6
+}

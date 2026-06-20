@@ -1,0 +1,76 @@
+{
+  "algorithm": "sha256",
+  "created_utc": "2026-06-20T17:44:11.570376+00:00",
+  "files": [
+    {
+      "path": "figures/fig_02_basis_landscape.pdf",
+      "sha256": "d1c4b048a69f63e8ed684e616325aa6ae749cf62e446af831cc4b6cdeb6a8e98",
+      "size_bytes": 18641
+    },
+    {
+      "path": "results/processed/C0_runtime_report.json",
+      "sha256": "a8f2355832d7cc5897466fbf42abbe861cae3d5dadd44d7c33b352401cdb3151",
+      "size_bytes": 2590
+    },
+    {
+      "path": "results/processed/C0_theorem_fixtures.json",
+      "sha256": "3cfb2e28e3b3157bdc175a726004b513d179e41128f1de9f1d6f561dec950c59",
+      "size_bytes": 2032
+    },
+    {
+      "path": "results/processed/C0_theorem_verification.parquet",
+      "sha256": "0c7d2732954c717ba1a37a86c1b595e035bc317dad2ee6ac200dbe813ffd5738",
+      "size_bytes": 832562
+    },
+    {
+      "path": "results/processed/C1_basis_landscape.nc",
+      "sha256": "46f154362365c16122ef90430c339a0b2a402800e9db868992f401f76c3d7edd",
+      "size_bytes": 1573460
+    },
+    {
+      "path": "results/processed/C1_basis_landscape_summary.json",
+      "sha256": "4e4e6d7a1a9f6d81c2ad569a6c178ad0c7b5be9f569f2ed64f151a44ca559359",
+      "size_bytes": 2707
+    },
+    {
+      "path": "results/processed/C2_graphs/diamond.graphml",
+      "sha256": "ee5dcea4bb15025e1417be46fe96c96a2b76cd89f6fbd8bfd98a0b1af8a9c7e3",
+      "size_bytes": 956
+    },
+    {
+      "path": "results/processed/C2_graphs/disconnected.graphml",
+      "sha256": "3e42892de9ea7da11721a3496aee2105249c89bc39ac387b3cd304ee8a1abd7d",
+      "size_bytes": 632
+    },
+    {
+      "path": "results/processed/C2_graphs/duplicate.graphml",
+      "sha256": "eb1cf0d119ade764e01a405f5e638636093f2f4c95311763837c537aff7c9e41",
+      "size_bytes": 670
+    },
+    {
+      "path": "results/processed/C2_graphs/erasure.graphml",
+      "sha256": "be1961f66d0be1f172883a09118c8173834b7e370baf95e40589c3f780d82175",
+      "size_bytes": 670
+    },
+    {
+      "path": "results/processed/C2_graphs/orientation_free.graphml",
+      "sha256": "724cbdc6690474b1e94c8258bb83a19f7e72836aa7031de842a072cc83938a7b",
+      "size_bytes": 665
+    },
+    {
+      "path": "results/processed/C2_graphs/thermometer.graphml",
+      "sha256": "7f209b1a83283c3bcf2de9db8a586846d79060ba1ed6f107c9ead371b622e46c",
+      "size_bytes": 1053
+    },
+    {
+      "path": "results/processed/C2_order_catalog.parquet",
+      "sha256": "17b88a9fcc63266f914bc43c581b46bde1ff4572c4036c0b6b3f96842fce2728",
+      "size_bytes": 9535
+    },
+    {
+      "path": "results/processed/C2_order_catalog_summary.json",
+      "sha256": "043a37c82ec4dc230cb9e5de1d272301630aa06525647392d60b0cd0f8fa4757",
+      "size_bytes": 2285
+    }
+  ]
+}

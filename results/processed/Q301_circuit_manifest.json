@@ -1,0 +1,127 @@
+{
+  "contains_tomography": false,
+  "endianness_fixture": {
+    "logical_order": [
+      "C",
+      "S",
+      "R1",
+      "R2"
+    ],
+    "parsed": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "qiskit_key": "0001"
+  },
+  "experiment_id": "Q301",
+  "logical_qubits": {
+    "C": 0,
+    "R1": 2,
+    "R2": 3,
+    "S": 1
+  },
+  "outputs": [
+    {
+      "path": "results/processed/Q301_untranspiled_circuits.qpy",
+      "sha256": "81127db6aa588b24ca1d32273605c955ee2f7fe4bbc68d1b06af1e027effa2ff",
+      "size_bytes": 5968
+    }
+  ],
+  "qpy_path": "results/processed/Q301_untranspiled_circuits.qpy",
+  "qpy_sha256": "81127db6aa588b24ca1d32273605c955ee2f7fe4bbc68d1b06af1e027effa2ff",
+  "readout_calibration_circuits": 8,
+  "science_circuits": [
+    {
+      "basis": "Z",
+      "classical_bit_count": 4,
+      "name": "ghz_plus_z",
+      "operation_counts": {
+        "cx": 3,
+        "h": 1,
+        "measure": 4
+      },
+      "phase": 1,
+      "qubit_count": 4
+    },
+    {
+      "basis": "X",
+      "classical_bit_count": 4,
+      "name": "ghz_plus_x",
+      "operation_counts": {
+        "cx": 3,
+        "h": 5,
+        "measure": 4
+      },
+      "phase": 1,
+      "qubit_count": 4
+    },
+    {
+      "basis": "Z",
+      "classical_bit_count": 4,
+      "name": "ghz_minus_z",
+      "operation_counts": {
+        "cx": 3,
+        "h": 1,
+        "measure": 4,
+        "z": 1
+      },
+      "phase": -1,
+      "qubit_count": 4
+    },
+    {
+      "basis": "X",
+      "classical_bit_count": 4,
+      "name": "ghz_minus_x",
+      "operation_counts": {
+        "cx": 3,
+        "h": 5,
+        "measure": 4,
+        "z": 1
+      },
+      "phase": -1,
+      "qubit_count": 4
+    }
+  ],
+  "shot_smoke_counts": {
+    "0000": 74,
+    "1111": 54
+  },
+  "statevector_expectations": {
+    "ghz_minus_x": {
+      "XXXX": -0.9999999999999992,
+      "XX_C_R1": 1.1338816837666706e-35,
+      "XX_C_R2": 1.1338816837666706e-35,
+      "ZZ_C_R1": 1.1338816837666706e-35,
+      "ZZ_C_R2": 1.1338816837666706e-35
+    },
+    "ghz_minus_z": {
+      "XXXX": 0.9999999999999998,
+      "XX_C_R1": 0.9999999999999998,
+      "XX_C_R2": 0.9999999999999998,
+      "ZZ_C_R1": 0.9999999999999998,
+      "ZZ_C_R2": 0.9999999999999998
+    },
+    "ghz_plus_x": {
+      "XXXX": 0.9999999999999992,
+      "XX_C_R1": 0.0,
+      "XX_C_R2": 0.0,
+      "ZZ_C_R1": 0.0,
+      "ZZ_C_R2": 0.0
+    },
+    "ghz_plus_z": {
+      "XXXX": 0.9999999999999998,
+      "XX_C_R1": 0.9999999999999998,
+      "XX_C_R2": 0.9999999999999998,
+      "ZZ_C_R1": 0.9999999999999998,
+      "ZZ_C_R2": 0.9999999999999998
+    }
+  },
+  "unmeasured_circuit_hashes": {
+    "ghz_minus_x": "ff3f4df3e7cdfcde8f4ad95254786f427099fc5670186b00df0c5e802371546b",
+    "ghz_minus_z": "e535ebc9689a1fce09fd9455f3509aa897de31f4bbb907fc8a458a43fa7f3407",
+    "ghz_plus_x": "b714c40fc7533566ee7430b7e88db5a1f576a865dde5b6427e8c5c86991f5cb9",
+    "ghz_plus_z": "064fdc64f5eda4f4768d75b187e684010b6f6280fdfbfd4962bf825c945f3ecf"
+  }
+}

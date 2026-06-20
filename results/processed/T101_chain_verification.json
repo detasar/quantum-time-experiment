@@ -1,0 +1,59 @@
+{
+  "codes_checked": 272,
+  "diamond": {
+    "forced_scalar_counterexamples": [
+      {
+        "linear_extension": [
+          "00",
+          "01",
+          "10",
+          "11"
+        ],
+        "record_loss_edges": [
+          {
+            "after": "10",
+            "after_bits": [
+              1,
+              0
+            ],
+            "before": "01",
+            "before_bits": [
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "linear_extension": [
+          "00",
+          "10",
+          "01",
+          "11"
+        ],
+        "record_loss_edges": [
+          {
+            "after": "01",
+            "after_bits": [
+              0,
+              1
+            ],
+            "before": "10",
+            "before_bits": [
+              1,
+              0
+            ]
+          }
+        ]
+      }
+    ],
+    "full_persistent_scalar_order_count": 0,
+    "linear_extension_count_scheduler_only": 2,
+    "maximal_persistent_chain_count": 2,
+    "scalar_time_identifiable": false
+  },
+  "mismatch_count": 0,
+  "mismatches": [],
+  "sequences_checked": 188158,
+  "task": "T101"
+}

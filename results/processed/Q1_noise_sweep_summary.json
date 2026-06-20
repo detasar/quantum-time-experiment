@@ -1,0 +1,41 @@
+{
+  "config_hash": "f31b3de7104bd1f567904cf05bcf8aa5d1edc2e50ecbb0e84cc92f8f58939f21",
+  "duration_seconds": 16.539505,
+  "environment": {
+    "git_commit": "UNKNOWN",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false,
+    "timestamp_utc": "2026-06-20T17:44:34.430971+00:00"
+  },
+  "experiment_id": "Q302",
+  "grid_cells_complete": true,
+  "outputs": [
+    {
+      "path": "figures/fig_q302_noise_readiness.pdf",
+      "sha256": "c028381b810971e903610cd9afb40b1f415d5533d62d09c55c87ebc5cef2ce06",
+      "size_bytes": 17295
+    },
+    {
+      "path": "results/processed/Q1_noise_sweep.parquet",
+      "sha256": "ec9ce966cb13997e53dd3ee34a8b56c12fb8ef3bd127e9199a178ebd9138dd39",
+      "size_bytes": 22511
+    }
+  ],
+  "passing_cells": 96,
+  "row_count": 100,
+  "thresholds": {
+    "delta_coh_lcb": 0.3,
+    "delta_obj_lcb": 0.4,
+    "min_z_correlation_lcb": 0.6
+  }
+}

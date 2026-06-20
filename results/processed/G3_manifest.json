@@ -1,0 +1,46 @@
+{
+  "algorithm": "sha256",
+  "created_utc": "2026-06-20T17:44:39.330396+00:00",
+  "files": [
+    {
+      "path": "figures/fig_q302_noise_readiness.pdf",
+      "sha256": "c028381b810971e903610cd9afb40b1f415d5533d62d09c55c87ebc5cef2ce06",
+      "size_bytes": 17295
+    },
+    {
+      "path": "results/processed/Q1_noise_sweep.parquet",
+      "sha256": "ec9ce966cb13997e53dd3ee34a8b56c12fb8ef3bd127e9199a178ebd9138dd39",
+      "size_bytes": 22511
+    },
+    {
+      "path": "results/processed/Q1_noise_sweep_summary.json",
+      "sha256": "a76c2f2829ee4451fdadd03d91609314ea0ccb20e7513a60dafc1c24c40810a2",
+      "size_bytes": 1160
+    },
+    {
+      "path": "results/processed/Q2_backend_twin.parquet",
+      "sha256": "9b4670ee2d98b11e571acfd6538064dc050fa7260c09e9568c7915a2608092c1",
+      "size_bytes": 4299
+    },
+    {
+      "path": "results/processed/Q2_backend_twin_summary.json",
+      "sha256": "2b4ac84f671ff5311a8dd070c8459ccd4b860e39f189c4e7f3af690c41275287",
+      "size_bytes": 318
+    },
+    {
+      "path": "results/processed/Q301_circuit_manifest.json",
+      "sha256": "f7cf02d1a232e882820b85608464ba694eb1f7402d96c4bbaee2bbed87c439de",
+      "size_bytes": 2956
+    },
+    {
+      "path": "results/processed/Q301_untranspiled_circuits.qpy",
+      "sha256": "81127db6aa588b24ca1d32273605c955ee2f7fe4bbc68d1b06af1e027effa2ff",
+      "size_bytes": 5968
+    },
+    {
+      "path": "results/processed/Q303_backend_candidates.json",
+      "sha256": "74e93ef91a29bb060430b84aaf0b90888f4bdf5c81e95d26332b9edd00775112",
+      "size_bytes": 3612
+    }
+  ]
+}

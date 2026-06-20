@@ -1,0 +1,213 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\title{Objective Clock Bases from Redundant Records\\Experiment Journal}
+\author{Davut Emre Ta\c{s}ar}
+\date{Started 20 June 2026}
+
+\begin{document}
+\maketitle
+
+\section{Scope Freeze}
+
+This project treats redundant records as a selector of an objective clock basis
+under a fixed physical partition. The novelty target is not basis uniqueness
+alone. The core distinction is between basis selection, label identification,
+temporal order and temporal orientation.
+
+The semantic freeze in ADR-000 is active. In particular, persistent trajectories
+are chains in the record-dominance poset. Linear extensions of a branching poset
+are scheduler totalizations and are not generally physical time trajectories.
+
+\section{G0 Repository Readiness}
+
+The repository was initialized on branch \texttt{implementation/g0-g1}. The
+environment uses Python 3.13.11 with the project installed in editable mode.
+Although the implementation contract targets Python 3.11/3.12, the package
+declares \texttt{requires-python >=3.11}; the current environment is therefore a
+valid but stricter compatibility check.
+
+G0 outputs:
+\begin{itemize}
+  \item \texttt{results/processed/G0_environment_manifest.json}
+  \item \texttt{results/processed/G0_file_manifest.json}
+  \item \texttt{requirements.lock}
+\end{itemize}
+
+\section{G1 Theory and Exact Primitives}
+
+\subsection{O1 Chain Characterization}
+
+The generated T101 artifact checks 272 small distinct record codes and 188,158
+candidate sequences. No mismatch was found between persistent sequences and
+directed chains.
+
+The diamond code has two maximal persistent chains and two linear extensions.
+Both linear extensions force a record-loss edge between incomparable middle
+snapshots, so the full persistent scalar-order count is zero.
+
+\subsection{O1.1 Scalar Timeline Criterion}
+
+The implementation emits a scalar timeline only when the quotient poset is total
+and the original signatures are nonduplicate. Thermometer codes pass. Diamond,
+duplicate and disconnected fixtures fail for the expected reasons.
+
+\subsection{O2/O3 Capacity}
+
+The binary capacity artifact confirms the exact bound
+\[
+N \le E + 1,
+\]
+with thermometer codes attaining equality. Boundary cases with
+\(E=N-2\) fail as expected.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.72\linewidth]{../figures/fig_03_capacity.pdf}
+\caption{Maximum strict-chain clock states for binary persistent records.}
+\end{figure}
+
+\subsection{O4 Noise Bound}
+
+The generated grid compares exact majority decoding error with the Hoeffding
+upper bound for odd \(q\) and \(p<1/2\). No bound violation was observed in the
+G1 grid.
+
+\subsection{No-Go Package}
+
+The counterexample catalog records smallest explicit examples for label
+permutation, orientation swap, unrestricted partition, single-fragment Bell
+ambiguity and diamond branching without scalar time.
+
+\section{Verification Log}
+
+Latest G0/G1 verification:
+\begin{verbatim}
+ruff check .
+pytest -q
+mypy src/objective_clocks
+\end{verbatim}
+
+Result: 30 tests passed; ruff passed; mypy passed.
+
+\section{Open Scientific Ambiguities Before G2}
+
+No ambiguity blocks G2 at the current semantic layer. The main operational risk
+for later stages is ensuring that classical experiment outputs continue to keep
+maximal chains, linear extensions and automorphisms as separate quantities.
+
+\section{G2 Batch 1: Classical Backbone}
+
+\subsection{C0 Theorem Verification}
+
+C0 was run from \texttt{configs/classical.yaml}. The output contains 42 grid
+cells and 188,692 rows, with exhaustive binary maps in the configured small
+state-space regime and frozen-seed random maps in larger cells. The theorem
+failure count is zero. The output keeps maximal-chain count, linear-extension
+count and automorphism count as separate columns.
+
+\subsection{C1 Basis-Objectivity Landscape}
+
+The Bell one-record control remains basis-ambiguous: the minimum and maximum
+qubit-grid objectivity score are both 1.0. GHZ two-record objectivity selects the
+Z basis with score 1.0, while the X-basis local objectivity score is 0.0. The
+landscape is stored as NetCDF and rendered in
+\texttt{figures/fig_02_basis_landscape.pdf}.
+
+\subsection{C2 Order Reconstruction}
+
+The order catalog includes thermometer, diamond, duplicate, disconnected,
+orientation-free and erasure fixtures. The diamond fixture remains a branching
+partial order, not a scalar timeline; no linear extension is marked as a physical
+trajectory. Hasse diagrams are exported as GraphML.
+
+\subsection{C3 Noise and Redundancy Sweep}
+
+C3 ran the configured grid for \(N\in\{4,8\}\), seven odd redundancy values,
+eight bit-flip probabilities and 10,000 trials per cell. All 112 grid cells are
+complete. The exact binomial majority error never exceeds the Hoeffding upper
+bound in the grid. The phase diagram is stored in
+\texttt{figures/fig_04_noise_phase.pdf}.
+
+\subsection{C4 Assumption Stress Tests}
+
+C4 records five controls: Bell single-fragment ambiguity, GHZ two-fragment
+positive control, dependent-fragment failure, degenerate-record failure and
+unrestricted-partition failure. Each failed assumption maps to the predicted
+failed conclusion.
+
+\subsection{C5 Exact GHZ and Dephased Control}
+
+C5 confirms that Z objectivity is identical for coherent GHZ and dephased
+control states, while the global \(XXXX\) coherence witness distinguishes them.
+The coherent GHZ value is numerically one and the dephased control value is zero.
+
+\section{G3 Local Quantum Readiness}
+
+\subsection{Q301 Circuit Family}
+
+The four science circuits are frozen as untranspiled QPY payloads:
+\texttt{ghz\_plus\_z}, \texttt{ghz\_plus\_x}, \texttt{ghz\_minus\_z} and
+\texttt{ghz\_minus\_x}. The readout-calibration family contains eight
+independent circuits. The circuit family contains no tomography. Qiskit
+endianness is fixed by parsing bitstrings into logical order
+\([C,S,R1,R2]\).
+
+\subsection{Q302 Generic Noise Sweep}
+
+The generic Aer sweep completes 100 grid cells over the configured one-qubit,
+two-qubit and readout-error grid. Ninety-six cells pass the configured local
+readiness thresholds. The results are stored in
+\texttt{results/processed/Q1\_noise\_sweep.parquet}.
+
+\subsection{Q303--Q304 Backend Selection and Stop}
+
+No IBM Runtime credential was found in the inspected environment files, so Q303
+uses a deterministic fixture backend snapshot to validate ranking and layout
+selection without provider calls. Q304 records a formal hardware-stage stop:
+there is no real backend snapshot for a backend-derived digital twin. G4 should
+not start until that external condition is resolved.
+
+\subsection{G3 Verification}
+
+The G3 pipeline was rerun after documentation and manifest updates. Verification
+passed with 43 tests, \texttt{ruff check .} clean and
+\texttt{mypy src/objective\_clocks} clean. No provider job was submitted.
+
+\section{A601 Claim Evidence Grading}
+
+A601 generates \texttt{results/claim\_evidence\_matrix.csv}. The matrix assigns
+evidence grades P, E, S, Q, I and N to every planned claim and records an
+artifact-backed check plus a caveat for each row. The current matrix contains ten
+claims: B0, O1, O2, O3, O4, N1, N2, N3, Q1 and Q2.
+
+Unsupported claim count is zero. Hardware observation claim count is also zero:
+Q1 and Q2 are exact/simulator illustrations only because Q304 stopped before a
+real backend-derived twin and before preregistration. This preserves the paper
+boundary that the classical/symbolic contribution survives without IBM hardware.
+
+After A601 was added to the reproduction chain, \texttt{scripts/reproduce\_all.py}
+completed successfully: pytest, G1, G2, G3, the G4 readiness audit, A601 and
+the exact GHZ CLI all reran without failure.
+
+\section{G4 Readiness Audit}
+
+The G4 readiness audit is intentionally not a preregistration freeze. It records
+which preconditions are currently satisfied and which block H401--H404. The
+audit scanned local \texttt{.env*} files without writing secret values to any
+artifact. It found no non-empty IBM/Qiskit token source.
+
+The current status is \texttt{blocked\_before\_g4}. Q302 generic local readiness
+passes with 96 of 100 grid cells, and the QPU execution gate remains disabled.
+Five checks block G4: Q303 used the deterministic fixture instead of a provider
+snapshot; Q304 stopped because no real backend snapshot was available; the
+preregistration template still contains mandatory TBD fields; no human approval
+is recorded; and the repository is not yet clean for a preregistration tag.
+
+The final verification pass for this audit had 46 tests passing, clean ruff and
+clean mypy results.
+
+\end{document}

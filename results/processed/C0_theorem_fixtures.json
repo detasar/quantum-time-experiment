@@ -1,0 +1,80 @@
+{
+  "fixtures": [
+    {
+      "automorphism_count": 1,
+      "failures": "",
+      "fixture": "thermometer_n5",
+      "has_duplicates": false,
+      "is_total": true,
+      "linear_extension_count_scheduler_only": 1,
+      "maximal_chain_count": 1,
+      "n_records": 4,
+      "n_states": 5,
+      "persistent_scalar_order_count": 1,
+      "scalar_time_identifiable": true,
+      "scalar_timeline": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "automorphism_count": 2,
+      "failures": "",
+      "fixture": "diamond",
+      "has_duplicates": false,
+      "is_total": false,
+      "linear_extension_count_scheduler_only": 2,
+      "maximal_chain_count": 2,
+      "n_records": 2,
+      "n_states": 4,
+      "persistent_scalar_order_count": 0,
+      "scalar_time_identifiable": false,
+      "scalar_timeline": []
+    },
+    {
+      "automorphism_count": 1,
+      "failures": "",
+      "fixture": "duplicate",
+      "has_duplicates": true,
+      "is_total": true,
+      "linear_extension_count_scheduler_only": 1,
+      "maximal_chain_count": 1,
+      "n_records": 2,
+      "n_states": 3,
+      "persistent_scalar_order_count": 2,
+      "scalar_time_identifiable": false,
+      "scalar_timeline": []
+    },
+    {
+      "automorphism_count": 2,
+      "failures": "",
+      "fixture": "disconnected",
+      "has_duplicates": false,
+      "is_total": false,
+      "linear_extension_count_scheduler_only": 2,
+      "maximal_chain_count": 2,
+      "n_records": 2,
+      "n_states": 2,
+      "persistent_scalar_order_count": 0,
+      "scalar_time_identifiable": false,
+      "scalar_timeline": []
+    },
+    {
+      "automorphism_count": 1,
+      "failures": "",
+      "fixture": "erasure",
+      "has_duplicates": true,
+      "is_total": true,
+      "linear_extension_count_scheduler_only": 1,
+      "maximal_chain_count": 1,
+      "n_records": 2,
+      "n_states": 3,
+      "persistent_scalar_order_count": 2,
+      "scalar_time_identifiable": false,
+      "scalar_timeline": []
+    }
+  ]
+}

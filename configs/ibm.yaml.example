@@ -1,0 +1,26 @@
+# Never commit account tokens. This file contains only non-secret rules.
+instance_plan: open
+region: us-east
+backend_filter:
+  operational: true
+  simulator: false
+  minimum_connected_qubits: 4
+transpilation:
+  optimization_level: 3
+  seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+layout_score:
+  mean_two_qubit_error_weight: 5.0
+  mean_readout_error_weight: 2.0
+  depth_weight: 0.01
+  two_qubit_count_weight: 0.005
+execution:
+  blocks: 4
+  shots_per_science_block: 1024
+  shots_per_calibration_circuit: 1024
+  randomization_seed: 20260622
+  mode: batch
+mitigation:
+  primary: raw
+  secondary: independent_readout_assignment
+  zne: false
+  pec: false

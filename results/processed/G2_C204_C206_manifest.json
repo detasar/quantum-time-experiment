@@ -1,0 +1,36 @@
+{
+  "algorithm": "sha256",
+  "created_utc": "2026-06-20T17:44:15.987462+00:00",
+  "files": [
+    {
+      "path": "figures/fig_04_noise_phase.pdf",
+      "sha256": "af2d8c24cff343b69fd17cd6dd4850d35c40a004037649effce470ae52c846e8",
+      "size_bytes": 19620
+    },
+    {
+      "path": "figures/fig_05_ghz_exact.pdf",
+      "sha256": "634ca3d9d68853fbf5463daf156c897e0e5952c4fbda24b62438ccfe5ad4219c",
+      "size_bytes": 13520
+    },
+    {
+      "path": "results/processed/C3_noise_phase_diagram.parquet",
+      "sha256": "8b682f1356d9afed88d785bdc0b2f75ae3579b55693c0f89873944719b41d1ee",
+      "size_bytes": 13903
+    },
+    {
+      "path": "results/processed/C3_noise_phase_summary.json",
+      "sha256": "00496feb439705c065a1a4e2ef5c6117cb1d7139ce35c7e0bd3479f4da80abb5",
+      "size_bytes": 1137
+    },
+    {
+      "path": "results/processed/C4_assumption_failures.json",
+      "sha256": "306805ab806e15c1a8ce245a5b1012e9103f6272d29727594fcd0af45e51e2c4",
+      "size_bytes": 2298
+    },
+    {
+      "path": "results/processed/C5_ghz_exact.json",
+      "sha256": "caecca4a5fe4600b92e646c2692eb37ffdb324d03099a38cca8cb7044157b7e1",
+      "size_bytes": 1266
+    }
+  ]
+}

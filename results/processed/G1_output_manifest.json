@@ -1,0 +1,51 @@
+{
+  "algorithm": "sha256",
+  "created_utc": "2026-06-20T17:45:06.339981+00:00",
+  "files": [
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "473b9aad1b3254be3b1fca97ac85372cebc8ef377762b1fbe2dee0df58710fd7",
+      "size_bytes": 8901
+    },
+    {
+      "path": "docs/proofs/B0_imported_basis_uniqueness.md",
+      "sha256": "a8c9ba9d7f0b505b73d2bf08943dd93a8ae9c27d64f3596bbbaf312f2dcc7327",
+      "size_bytes": 1417
+    },
+    {
+      "path": "docs/proofs/O1_unique_scalar_timeline.md",
+      "sha256": "55143e441ad23b98de5123086f5d933824ca10778edc73d09f9823d5ec47039b",
+      "size_bytes": 1434
+    },
+    {
+      "path": "figures/fig_03_capacity.pdf",
+      "sha256": "61afdc1605bf1daffedcc8bfec75e7f68d629ff93022d1aad107f404ea7304a9",
+      "size_bytes": 15212
+    },
+    {
+      "path": "reports/experiment_report.tex",
+      "sha256": "4b428311db7587fca6af0107bdb7c17826d2dfef5474ab2ef64f5046d34b600d",
+      "size_bytes": 8698
+    },
+    {
+      "path": "results/processed/T101_chain_verification.json",
+      "sha256": "ae36be78b02504dfa4cb14ab491ff79ebfc16adb7d3ecf9d098648d0ee969bc2",
+      "size_bytes": 1142
+    },
+    {
+      "path": "results/processed/T103_capacity.json",
+      "sha256": "a0b067b52e80928b7286ceca540df5095805d22ae164e99243aa6efd43d839f9",
+      "size_bytes": 2464
+    },
+    {
+      "path": "results/processed/T104_noise_bound_grid.json",
+      "sha256": "41df83d53e948da8212ad6c6a6319fb75de34c14eb4c88af5dd1946128525570",
+      "size_bytes": 5449
+    },
+    {
+      "path": "results/processed/counterexample_catalog.json",
+      "sha256": "6bad0646b1ac1eccc670fbdccfd2046e2a4afd46f9bd09bb74ae8286571878d7",
+      "size_bytes": 2042
+    }
+  ]
+}

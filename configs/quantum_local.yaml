@@ -1,0 +1,36 @@
+experiment_family: quantum_local
+master_seed: 20260620
+logical_qubits:
+  C: 0
+  S: 1
+  R1: 2
+  R2: 3
+
+science:
+  blocks: 4
+  shots_per_block: 1024
+  circuits:
+    - ghz_plus_z
+    - ghz_plus_x
+    - ghz_minus_z
+    - ghz_minus_x
+
+readout_calibration:
+  shots_per_circuit: 1024
+  independent_assignment: true
+
+noise_sweep:
+  one_qubit_depolarizing: [0.0, 0.001, 0.0025, 0.005]
+  two_qubit_depolarizing: [0.0, 0.005, 0.01, 0.02, 0.03]
+  readout_flip: [0.0, 0.01, 0.02, 0.05, 0.1]
+  shots_per_point: 20000
+
+statistics:
+  alpha: 0.05
+  bootstrap_replicates: 10000
+  bootstrap_seed: 20260621
+
+inclusion_thresholds:
+  delta_obj_lcb: 0.40
+  min_z_correlation_lcb: 0.60
+  delta_coh_lcb: 0.30

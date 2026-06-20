@@ -1,0 +1,16 @@
+{
+  "git_commit": "UNKNOWN",
+  "packages": {
+    "networkx": "3.6.1",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "qiskit": "2.4.2",
+    "qiskit-aer": "0.17.2",
+    "qiskit-ibm-runtime": "0.47.0",
+    "scipy": "1.18.0"
+  },
+  "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+  "python": "3.13.11",
+  "qpu_execution_enabled": false,
+  "timestamp_utc": "2026-06-20T17:45:02.755322+00:00"
+}

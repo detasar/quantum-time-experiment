@@ -1,0 +1,476 @@
+project:
+  id: objective-clocks
+  title: "Objective Clock Bases from Redundant Records: Why Temporal Order Requires More"
+  master_seed: 20260620
+  qpu_default_enabled: false
+  source_of_truth: docs/RESEARCH_SPEC_TR.md
+
+gates:
+  G0:
+    name: Repository ready
+    required_tasks: [R001, R002, R003]
+  G1:
+    name: Theory and exact primitives frozen
+    required_tasks: [T101, T102, T103, T104, T105, T106]
+  G2:
+    name: Classical experiments complete
+    required_tasks: [C201, C202, C203, C204, C205, C206]
+  G3:
+    name: Local quantum readiness
+    required_tasks: [Q301, Q302, Q303, Q304]
+  G4:
+    name: Hardware preregistration frozen
+    required_tasks: [H401, H402, H403, H404]
+  G5:
+    name: One IBM execution and locked analysis
+    required_tasks: [H501, H502, H503]
+  G6:
+    name: Scientific interpretation complete
+    required_tasks: [A601, A602, A603]
+
+tasks:
+  - id: R001
+    title: Bootstrap repository and environment
+    dependencies: []
+    definition_of_ready:
+      - Scientific scope is frozen in RESEARCH_SPEC_TR.md.
+      - Python 3.11+ is available.
+    actions:
+      - Install dev and quantum extras.
+      - Run formatting, type and test tools.
+      - Initialize git and pre-commit.
+    outputs:
+      - .venv or documented environment
+      - lockfile or frozen package manifest
+    definition_of_done:
+      - pytest exits zero.
+      - ruff exits zero.
+      - package imports from editable install.
+      - QPU execution is disabled by default.
+    commands:
+      - "pip install -e '.[dev,quantum]'"
+      - "pytest -q"
+
+  - id: R002
+    title: Implement immutable manifests and hashing
+    dependencies: [R001]
+    definition_of_ready:
+      - Output directories exist.
+    actions:
+      - Complete artifacts.py.
+      - Add atomic write and raw write-once tests.
+      - Capture git/package/config metadata.
+    outputs:
+      - environment manifest
+      - SHA-256 file manifest
+    definition_of_done:
+      - Same config produces same hash.
+      - Raw overwrite is rejected.
+      - Integration tests pass.
+
+  - id: R003
+    title: Freeze semantic ADR-000
+    dependencies: [R001]
+    definition_of_ready:
+      - All primary definitions have been reviewed.
+    actions:
+      - Record meanings of stationary, clock basis, objective record, persistence, orientation anchor.
+      - Record that linear extensions are not physical trajectories.
+    outputs:
+      - docs/adr/000-semantic-freeze.md
+    definition_of_done:
+      - No mandatory term remains ambiguous.
+      - Changes require a new ADR.
+
+  - id: T101
+    title: Verify chain characterization theorem O1
+    dependencies: [R001, R003]
+    definition_of_ready:
+      - RecordCode and dominance relation implemented.
+    actions:
+      - Implement maximal-chain enumeration.
+      - Exhaustively compare persistent sequences and chains for N<=7.
+      - Serialize smallest counterexamples to scalar-time forcing.
+    outputs:
+      - results/processed/T101_chain_verification.json
+    definition_of_done:
+      - Zero exhaustive mismatches.
+      - Diamond fixture has two maximal chains and zero full persistent scalar orders.
+      - Proof text and property tests agree.
+
+  - id: T102
+    title: Verify unique scalar timeline criterion
+    dependencies: [T101]
+    definition_of_ready:
+      - Chain enumeration is correct.
+    actions:
+      - Prove and test that all labels lie on one persistent trajectory iff the quotient poset is a chain.
+      - Add total, branching, duplicate and disconnected fixtures.
+    outputs:
+      - docs/proofs/O1_unique_scalar_timeline.md
+    definition_of_done:
+      - Necessary and sufficient directions are separately tested.
+      - No non-total fixture emits a scalar clock.
+
+  - id: T103
+    title: Verify binary and multilevel record-capacity bounds
+    dependencies: [R001]
+    definition_of_ready:
+      - Chain length utilities exist.
+    actions:
+      - Exhaustively enumerate small Boolean cubes.
+      - Verify maximum chain length E+1.
+      - Verify product-of-chains generalization.
+      - Generate thermometer tight construction.
+    outputs:
+      - results/processed/T103_capacity.json
+      - figures/fig_03_capacity.pdf
+    definition_of_done:
+      - Exhaustive checks pass for E<=8.
+      - Tight examples stored.
+      - Boundary E=N-2 fails as expected.
+
+  - id: T104
+    title: Verify noisy redundancy bound
+    dependencies: [R001]
+    definition_of_ready:
+      - Exact binomial and majority decoder implemented.
+    actions:
+      - Compare exact majority error to Hoeffding.
+      - Derive full-table union bound.
+      - Test monotonicity in q and p.
+    outputs:
+      - docs/proofs/O4_noise_bound.md
+    definition_of_done:
+      - Exact error never exceeds theoretical upper bound in tested grid.
+      - Formula unit tests pass.
+
+  - id: T105
+    title: Formalize basis/objectivity imported proposition
+    dependencies: [R003]
+    definition_of_ready:
+      - Fu and redundant-record assumptions have been summarized.
+    actions:
+      - Write Imported Proposition B0.
+      - Separate prior-art result from new claims.
+      - Add rename-test paragraph.
+    outputs:
+      - docs/proofs/B0_imported_basis_uniqueness.md
+    definition_of_done:
+      - No novelty claim is attached to B0 alone.
+      - Fixed-partition and nondegeneracy assumptions are explicit.
+
+  - id: T106
+    title: Formalize partition and orientation no-go results
+    dependencies: [R003]
+    definition_of_ready:
+      - Admissible partition and orientation anchor are defined.
+    actions:
+      - Write N1 label-permutation no-go.
+      - Write N2 orientation swap example.
+      - Write N3 unrestricted-partition no-go.
+      - Write N4 single-fragment Bell ambiguity.
+    outputs:
+      - docs/proofs/no_go_package.md
+      - results/processed/counterexample_catalog.json
+    definition_of_done:
+      - Each no-go has a smallest explicit example.
+      - Each failed assumption maps to a failed conclusion.
+
+  - id: C201
+    title: Run C0 exhaustive theorem verification
+    dependencies: [T101, T102, T103, T104]
+    definition_of_ready:
+      - All theorem property tests pass.
+      - configs/classical.yaml is frozen.
+    actions:
+      - Enumerate required finite grids.
+      - Record maximal chains, linear extensions and automorphisms separately.
+    outputs:
+      - results/processed/C0_theorem_verification.parquet
+    definition_of_done:
+      - No missing required grid cells.
+      - Zero theorem mismatches.
+      - Manifest and runtime report exist.
+
+  - id: C202
+    title: Run C1 basis-objectivity landscapes
+    dependencies: [T105]
+    definition_of_ready:
+      - Conditional fragment state and Holevo functions pass analytic tests.
+    actions:
+      - Scan Bell one-record and GHZ multi-record families.
+      - Run N=2 angle grid and N>2 Haar samples.
+      - Cluster maxima against permutation orbit.
+    outputs:
+      - results/processed/C1_basis_landscape.nc
+      - figures/fig_02_basis_landscape.pdf
+    definition_of_done:
+      - Bell control is basis-ambiguous.
+      - GHZ two-record Z basis scores one and X scores zero within tolerance.
+      - Landscape reproducible from config.
+
+  - id: C203
+    title: Run C2 order and branching catalog
+    dependencies: [T101, T102]
+    definition_of_ready:
+      - Maximal-chain and automorphism routines validated.
+    actions:
+      - Generate chain, diamond, duplicate, disconnected, erasure families.
+      - Export Hasse graphs and ambiguity metrics.
+    outputs:
+      - results/processed/C2_order_catalog.parquet
+      - results/processed/C2_graphs/*.graphml
+    definition_of_done:
+      - Correct scalar/branching/non-identifiable classification for every fixture.
+      - No linear extension is labeled as a physical trajectory.
+
+  - id: C204
+    title: Run C3 noise and redundancy sweep
+    dependencies: [T104]
+    definition_of_ready:
+      - Grid and master seed frozen.
+    actions:
+      - Run 10,000 trials per required configuration.
+      - Compute exact and theoretical error bounds.
+    outputs:
+      - results/processed/C3_noise_phase_diagram.parquet
+      - figures/fig_04_noise_phase.pdf
+    definition_of_done:
+      - All grid cells complete.
+      - Bound diagnostics pass.
+      - Rerun with same seed is identical.
+
+  - id: C205
+    title: Run C4 assumption stress tests
+    dependencies: [T106, C202]
+    definition_of_ready:
+      - Failure fixtures defined.
+    actions:
+      - Run partition, dependence, degeneracy and one-record controls.
+      - Produce assumption-to-failure matrix.
+    outputs:
+      - results/processed/C4_assumption_failures.json
+    definition_of_done:
+      - Every theorem assumption has at least one explicit violation example.
+      - Conclusions fail only where predicted.
+
+  - id: C206
+    title: Run C5 exact GHZ and dephased comparison
+    dependencies: [R001]
+    definition_of_ready:
+      - Pauli expectation tests pass.
+    actions:
+      - Compute exact density-matrix observables and information metrics.
+    outputs:
+      - results/processed/C5_ghz_exact.json
+      - figures/fig_05_ghz_exact.pdf
+    definition_of_done:
+      - All analytic expectations match to 1e-10.
+      - Z objectivity is equal in coherent and dephased states.
+      - X global parity differs as predicted.
+
+  - id: Q301
+    title: Freeze quantum circuit family and endianness
+    dependencies: [C206]
+    definition_of_ready:
+      - Four science circuits implemented.
+    actions:
+      - Add Qiskit statevector and shot tests.
+      - Verify logical-to-classical bit parser.
+      - Serialize canonical untranspiled circuits.
+    outputs:
+      - results/processed/Q301_circuit_manifest.json
+    definition_of_done:
+      - Statevector expectations exact.
+      - Endianness regression passes.
+      - Circuit family contains no tomography.
+
+  - id: Q302
+    title: Run generic quantum noise sweep
+    dependencies: [Q301]
+    definition_of_ready:
+      - configs/quantum_local.yaml frozen.
+    actions:
+      - Sweep 1Q, 2Q and readout errors.
+      - Estimate delta_obj and delta_coh distributions.
+    outputs:
+      - results/processed/Q1_noise_sweep.parquet
+    definition_of_done:
+      - Inclusion-threshold phase boundary documented.
+      - Required shots supported by simulation.
+
+  - id: Q303
+    title: Implement deterministic backend and layout selection
+    dependencies: [Q301]
+    definition_of_ready:
+      - IBM account can list backends without submission.
+    actions:
+      - Implement eligible backend filtering.
+      - Implement frozen layout score.
+      - Implement 20-seed transpilation selection.
+    outputs:
+      - results/processed/Q303_backend_candidates.json
+    definition_of_done:
+      - Same calibration snapshot yields same selection.
+      - Selection does not use hardware science results.
+
+  - id: Q304
+    title: Run backend-derived digital twin
+    dependencies: [Q302, Q303]
+    definition_of_ready:
+      - Backend selection algorithm complete.
+    actions:
+      - Build Aer noise model from selected backend snapshot.
+      - Run planned 24-circuit workload.
+      - Calculate expected confidence intervals.
+    outputs:
+      - results/processed/Q2_backend_twin.parquet
+    definition_of_done:
+      - At least one eligible backend model passes preregistered local readiness thresholds.
+      - Otherwise hardware stage is stopped and documented.
+
+  - id: H401
+    title: Freeze preregistration document
+    dependencies: [Q304]
+    definition_of_ready:
+      - Local readiness thresholds pass.
+    actions:
+      - Fill all mandatory fields.
+      - Remove every mandatory TBD.
+      - Record positive and null interpretation rules.
+    outputs:
+      - docs/PREREGISTRATION_FROZEN.md
+    definition_of_done:
+      - Human review approved.
+      - Status is FROZEN.
+
+  - id: H402
+    title: Freeze ISA circuits and hashes
+    dependencies: [H401, Q303]
+    definition_of_ready:
+      - Backend and layout selected.
+    actions:
+      - Transpile and serialize all circuits.
+      - Create exact execution order.
+      - Hash circuit manifest.
+    outputs:
+      - results/preregistered/circuits.qpy
+      - results/preregistered/circuit_manifest.json
+    definition_of_done:
+      - Manifest hash recorded in preregistration.
+      - Rebuild produces identical circuit hashes under frozen environment.
+
+  - id: H403
+    title: Dry-run QPU submission gate
+    dependencies: [H402]
+    definition_of_ready:
+      - QPU environment variable remains disabled.
+    actions:
+      - Validate all qpu_gate tests.
+      - Validate Open Plan instance and estimated usage.
+      - Execute no hardware calls.
+    outputs:
+      - results/preregistered/dry_run_report.json
+    definition_of_done:
+      - Submission would be accepted only after explicit human gate.
+      - No job was sent.
+
+  - id: H404
+    title: Tag preregistered repository state
+    dependencies: [H403]
+    definition_of_ready:
+      - Repository clean.
+    actions:
+      - Create git tag v0.3-qpu-preregistered.
+      - Archive environment and manifests.
+    outputs:
+      - reproducibility archive
+    definition_of_done:
+      - Archive hash stored.
+      - No uncommitted changes.
+
+  - id: H501
+    title: Execute one IBM batch
+    dependencies: [H404]
+    definition_of_ready:
+      - Human sets ALLOW_QPU_EXECUTION=YES.
+      - Open Plan time checked.
+    actions:
+      - Submit exact frozen workload using SamplerV2.
+      - Apply only provider-failure rerun policy.
+    outputs:
+      - immutable raw provider payload
+    definition_of_done:
+      - One accepted job or policy-compliant provider retry.
+      - Raw payload and metadata hashed.
+
+  - id: H502
+    title: Run locked raw analysis
+    dependencies: [H501]
+    definition_of_ready:
+      - Raw payload integrity verified.
+    actions:
+      - Compute primary correlations and intervals.
+      - Compute preregistered bootstrap contrasts.
+      - Classify hardware inclusion outcome.
+    outputs:
+      - results/processed/Q3_hardware_raw.json
+    definition_of_done:
+      - No analysis parameters changed.
+      - Positive/null decision recorded.
+
+  - id: H503
+    title: Run secondary readout-mitigated analysis
+    dependencies: [H502]
+    definition_of_ready:
+      - Raw primary analysis complete.
+    actions:
+      - Build tensor-product assignment correction.
+      - Report raw and corrected side by side.
+    outputs:
+      - results/processed/Q3_hardware_mitigated.json
+    definition_of_done:
+      - Mitigation never replaces raw primary result.
+      - Qualitative agreement/disagreement documented.
+
+  - id: A601
+    title: Evidence-grade all claims
+    dependencies: [C201, C202, C203, C204, C205, C206]
+    definition_of_ready:
+      - Required classical experiments complete.
+    actions:
+      - Label claims P/E/S/Q/I/N.
+      - Remove unsupported language.
+    outputs:
+      - results/claim_evidence_matrix.csv
+    definition_of_done:
+      - Every planned paper claim has evidence and caveat.
+
+  - id: A602
+    title: Apply scientific decision tree
+    dependencies: [A601]
+    definition_of_ready:
+      - Hardware result complete or formally skipped.
+    actions:
+      - Select full paper, short theory note, or abandon/pivot.
+      - Record positive and negative interpretations.
+    outputs:
+      - docs/FINAL_DECISION.md
+    definition_of_done:
+      - Decision follows preregistered criteria.
+      - Hardware null cannot kill valid theory result.
+
+  - id: A603
+    title: Produce reproducibility package
+    dependencies: [A602]
+    definition_of_ready:
+      - Final interpretation frozen.
+    actions:
+      - Run reproduce-all from clean environment.
+      - Archive code, configs, manifests and generated figures.
+    outputs:
+      - objective-clocks-reproducibility.tar.gz
+    definition_of_done:
+      - Clean reproduction succeeds.
+      - Archive SHA-256 published in FINAL_DECISION.md.

@@ -1,0 +1,83 @@
+{
+  "counterexamples": [
+    {
+      "failed_assumption": "ordered labels are externally anchored",
+      "failed_conclusion": "redundant objectivity alone fixes temporal order",
+      "id": "N1",
+      "name": "label_permutation",
+      "smallest_example": {
+        "labels": [
+          "0",
+          "1"
+        ],
+        "permutation": [
+          "1",
+          "0"
+        ]
+      }
+    },
+    {
+      "failed_assumption": "blank/present write asymmetry is physically anchored",
+      "failed_conclusion": "basis objectivity fixes earlier/later orientation",
+      "id": "N2",
+      "name": "orientation_swap",
+      "smallest_example": {
+        "state": "GHZ2 records |000>+|111>",
+        "swap": "0<->1"
+      }
+    },
+    {
+      "failed_assumption": "fixed admissible physical partition",
+      "failed_conclusion": "partition-independent unique clock basis",
+      "id": "N3",
+      "name": "unrestricted_partition",
+      "smallest_example": {
+        "effect": "clock factor and local fragments are not invariant",
+        "operation": "global Hilbert-space refactorization"
+      }
+    },
+    {
+      "failed_assumption": "at least two independently accessible fragments",
+      "failed_conclusion": "one record selects a preferred basis",
+      "id": "N4",
+      "name": "single_fragment_bell_ambiguity",
+      "smallest_example": {
+        "fragments": 1,
+        "state": "Bell pair |00>+|11>"
+      }
+    },
+    {
+      "failed_assumption": "all signatures form a chain",
+      "failed_conclusion": "one scalar trajectory visits every snapshot",
+      "id": "O1.2",
+      "name": "diamond_branching_no_scalar_time",
+      "smallest_example": {
+        "bits": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "labels": [
+          "00",
+          "10",
+          "01",
+          "11"
+        ]
+      }
+    }
+  ],
+  "task": "T106"
+}

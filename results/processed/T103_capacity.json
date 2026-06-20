@@ -1,0 +1,157 @@
+{
+  "binary_capacity": [
+    {
+      "max_chain_length": 1,
+      "record_coordinates": 0,
+      "tight_for_n_states": 1
+    },
+    {
+      "max_chain_length": 2,
+      "record_coordinates": 1,
+      "tight_for_n_states": 2
+    },
+    {
+      "max_chain_length": 3,
+      "record_coordinates": 2,
+      "tight_for_n_states": 3
+    },
+    {
+      "max_chain_length": 4,
+      "record_coordinates": 3,
+      "tight_for_n_states": 4
+    },
+    {
+      "max_chain_length": 5,
+      "record_coordinates": 4,
+      "tight_for_n_states": 5
+    },
+    {
+      "max_chain_length": 6,
+      "record_coordinates": 5,
+      "tight_for_n_states": 6
+    },
+    {
+      "max_chain_length": 7,
+      "record_coordinates": 6,
+      "tight_for_n_states": 7
+    },
+    {
+      "max_chain_length": 8,
+      "record_coordinates": 7,
+      "tight_for_n_states": 8
+    },
+    {
+      "max_chain_length": 9,
+      "record_coordinates": 8,
+      "tight_for_n_states": 9
+    }
+  ],
+  "boundary_e_equals_n_minus_2": [
+    {
+      "can_encode": false,
+      "capacity": 1,
+      "n_states": 2,
+      "records_available": 0
+    },
+    {
+      "can_encode": false,
+      "capacity": 2,
+      "n_states": 3,
+      "records_available": 1
+    },
+    {
+      "can_encode": false,
+      "capacity": 3,
+      "n_states": 4,
+      "records_available": 2
+    },
+    {
+      "can_encode": false,
+      "capacity": 4,
+      "n_states": 5,
+      "records_available": 3
+    },
+    {
+      "can_encode": false,
+      "capacity": 5,
+      "n_states": 6,
+      "records_available": 4
+    },
+    {
+      "can_encode": false,
+      "capacity": 6,
+      "n_states": 7,
+      "records_available": 5
+    },
+    {
+      "can_encode": false,
+      "capacity": 7,
+      "n_states": 8,
+      "records_available": 6
+    },
+    {
+      "can_encode": false,
+      "capacity": 8,
+      "n_states": 9,
+      "records_available": 7
+    }
+  ],
+  "multilevel_examples": [
+    {
+      "capacity": 4,
+      "levels": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "capacity": 6,
+      "levels": [
+        3,
+        4
+      ]
+    },
+    {
+      "capacity": 6,
+      "levels": [
+        1,
+        5,
+        2
+      ]
+    }
+  ],
+  "task": "T103",
+  "thermometer_n5": [
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1
+    ]
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "candidate_source": "deterministic_fixture",
+  "environment": {
+    "git_commit": "UNKNOWN",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false,
+    "timestamp_utc": "2026-06-20T17:44:38.948212+00:00"
+  },
+  "experiment_id": "Q303",
+  "provider_metadata": {
+    "env_key_presence": {},
+    "fallback_reason": "no_runtime_token_or_provider_listing_failed",
+    "provider_call_attempted": false,
+    "provider_error": null,
+    "token_available": false,
+    "token_source": null,
+    "token_sources": []
+  },
+  "ranked_candidates": [
+    {
+      "basis_gates": [
+        "rz",
+        "sx",
+        "x",
+        "cx",
+        "measure"
+      ],
+      "coupling_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "eligible": true,
+      "layout_score": 4.989999999999999,
+      "n_qubits": 7,
+      "name": "fixture_heavy_hex7",
+      "one_qubit_error": 0.0008,
+      "pending_jobs": 1,
+      "readout_error": 0.018,
+      "selected_layout": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "two_qubit_error": 0.008
+    },
+    {
+      "basis_gates": [
+        "rz",
+        "sx",
+        "x",
+        "cx",
+        "measure"
+      ],
+      "coupling_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "eligible": true,
+      "layout_score": 7.23,
+      "n_qubits": 5,
+      "name": "fixture_falcon_line4",
+      "one_qubit_error": 0.001,
+      "pending_jobs": 3,
+      "readout_error": 0.02,
+      "selected_layout": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "two_qubit_error": 0.01
+    },
+    {
+      "basis_gates": [
+        "rz",
+        "sx",
+        "x",
+        "cx",
+        "measure"
+      ],
+      "coupling_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "eligible": true,
+      "layout_score": 8.3,
+      "n_qubits": 5,
+      "name": "fixture_busy_backend",
+      "one_qubit_error": 0.001,
+      "pending_jobs": 80,
+      "readout_error": 0.03,
+      "selected_layout": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "two_qubit_error": 0.012
+    }
+  ],
+  "selected_backend": {
+    "basis_gates": [
+      "rz",
+      "sx",
+      "x",
+      "cx",
+      "measure"
+    ],
+    "coupling_edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "eligible": true,
+    "layout_score": 4.989999999999999,
+    "n_qubits": 7,
+    "name": "fixture_heavy_hex7",
+    "one_qubit_error": 0.0008,
+    "pending_jobs": 1,
+    "readout_error": 0.018,
+    "selected_layout": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "two_qubit_error": 0.008
+  },
+  "selection_uses_hardware_science_results": false,
+  "status": "selected"
+}

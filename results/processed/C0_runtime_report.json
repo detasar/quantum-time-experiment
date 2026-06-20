@@ -1,0 +1,212 @@
+{
+  "config_hash": "b086114bfec9fe61043c9bf62187cee670215d0fe758096d67ff065563143652",
+  "duration_seconds": 58.300292,
+  "environment": {
+    "git_commit": "UNKNOWN",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false,
+    "timestamp_utc": "2026-06-20T17:44:07.059847+00:00"
+  },
+  "experiment_id": "C0",
+  "failure_count": 0,
+  "fixture_count": 5,
+  "grid_cell_count": 42,
+  "modes": [
+    "exhaustive",
+    "seeded_random"
+  ],
+  "outputs": [
+    {
+      "path": "results/processed/C0_theorem_fixtures.json",
+      "sha256": "3cfb2e28e3b3157bdc175a726004b513d179e41128f1de9f1d6f561dec950c59",
+      "size_bytes": 2032
+    },
+    {
+      "path": "results/processed/C0_theorem_verification.parquet",
+      "sha256": "0c7d2732954c717ba1a37a86c1b595e035bc317dad2ee6ac200dbe813ffd5738",
+      "size_bytes": 832562
+    }
+  ],
+  "required_grid_cells": [
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      5
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      5
+    ],
+    [
+      3,
+      6
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      2
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      5,
+      4
+    ],
+    [
+      5,
+      5
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      5,
+      7
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      6,
+      2
+    ],
+    [
+      6,
+      3
+    ],
+    [
+      6,
+      4
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      6,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      1
+    ],
+    [
+      7,
+      2
+    ],
+    [
+      7,
+      3
+    ],
+    [
+      7,
+      4
+    ],
+    [
+      7,
+      5
+    ],
+    [
+      7,
+      6
+    ],
+    [
+      7,
+      7
+    ]
+  ],
+  "row_count": 188692,
+  "state_space_note": "Binary maps are exhaustive when 2^(N*E) is below the configured limit; larger cells use frozen-seed random maps plus theorem fixtures."
+}

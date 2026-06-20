@@ -1,0 +1,76 @@
+{
+  "all_predicted_failures_observed": true,
+  "controls": [
+    {
+      "conclusion_fails_as_predicted": true,
+      "control": "bell_single_fragment",
+      "expected_failure": "preferred_basis_not_unique",
+      "observed": {
+        "x_score": 1.0,
+        "z_score": 1.0
+      },
+      "violated_assumption": "q>=2 independently accessible fragments"
+    },
+    {
+      "conclusion_fails_as_predicted": true,
+      "control": "ghz_two_fragments",
+      "expected_failure": "none",
+      "observed": {
+        "x_score": 0.0,
+        "z_score": 1.0
+      },
+      "violated_assumption": "none"
+    },
+    {
+      "conclusion_fails_as_predicted": true,
+      "control": "dependent_fragments",
+      "expected_failure": "false_objectivity_risk_if_joint_record_is_counted_as_local",
+      "observed": {
+        "joint_score": 1.0,
+        "local_fragment_scores": [
+          0.0,
+          0.0
+        ],
+        "reason": "record information exists only in the joint accessible algebra"
+      },
+      "violated_assumption": "separate local accessibility / conditional independence"
+    },
+    {
+      "conclusion_fails_as_predicted": true,
+      "control": "degenerate_records",
+      "expected_failure": "label_identification_not_unique",
+      "observed": {
+        "has_duplicates": true,
+        "scalar_time_identifiable": false
+      },
+      "violated_assumption": "nondegenerate record signature map"
+    },
+    {
+      "conclusion_fails_as_predicted": true,
+      "control": "unrestricted_partition",
+      "expected_failure": "partition_independent_clock_uniqueness",
+      "observed": {
+        "locality_invariant_under_global_refactorization": false,
+        "objective_clock_statement_is_partition_relative": true
+      },
+      "violated_assumption": "fixed admissible physical partition"
+    }
+  ],
+  "environment": {
+    "git_commit": "UNKNOWN",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false,
+    "timestamp_utc": "2026-06-20T17:44:15.026456+00:00"
+  },
+  "experiment_id": "C4"
+}

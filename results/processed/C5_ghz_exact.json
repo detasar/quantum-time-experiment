@@ -1,0 +1,55 @@
+{
+  "coherence_witness": {
+    "absolute_difference": 0.9999999999999998,
+    "dephased_xxxx": 0.0,
+    "ghz_xxxx": 0.9999999999999998
+  },
+  "environment": {
+    "git_commit": "UNKNOWN",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false,
+    "timestamp_utc": "2026-06-20T17:44:15.875680+00:00"
+  },
+  "expectations": {
+    "XXXX": {
+      "dephased": 0.0,
+      "ghz": 0.9999999999999998
+    },
+    "XX_C_R1": {
+      "dephased": 0.0,
+      "ghz": 0.0
+    },
+    "XX_C_R2": {
+      "dephased": 0.0,
+      "ghz": 0.0
+    },
+    "ZZ_C_R1": {
+      "dephased": 1.0,
+      "ghz": 0.9999999999999998
+    },
+    "ZZ_C_R2": {
+      "dephased": 1.0,
+      "ghz": 0.9999999999999998
+    }
+  },
+  "experiment_id": "C5",
+  "figure": {
+    "path": "figures/fig_05_ghz_exact.pdf",
+    "sha256": "634ca3d9d68853fbf5463daf156c897e0e5952c4fbda24b62438ccfe5ad4219c"
+  },
+  "objectivity": {
+    "x_basis_local_fragment_score": 0.0,
+    "z_basis_dephased": 1.0,
+    "z_basis_ghz": 1.0
+  }
+}

@@ -1,0 +1,45 @@
+experiment_family: classical
+master_seed: 20260620
+
+C0:
+  exhaustive_n_max: 7
+  exhaustive_record_max: 7
+  random_cases: 5000
+
+C1:
+  n_values: [2, 3, 4]
+  n_records: [0, 1, 2, 3]
+  qubit_theta_points: 181
+  qubit_phi_points: 361
+  haar_samples: 2000
+  optimization_restarts: 20
+  objective_thresholds: [0.9, 0.95, 0.99]
+
+C2:
+  families:
+    - thermometer
+    - diamond
+    - duplicate
+    - disconnected
+    - orientation_free
+    - erasure
+
+C3:
+  n_states: [4, 8]
+  q_values: [1, 3, 5, 7, 9, 11, 15]
+  p_values: [0.0, 0.02, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3]
+  trials_per_cell: 10000
+  delta: 0.05
+
+C4:
+  controls:
+    - bell_single_fragment
+    - ghz_two_fragments
+    - dependent_fragments
+    - degenerate_records
+    - unrestricted_partition
+
+C5:
+  qubits: 4
+  logical_order: [C, S, R1, R2]
+  numerical_tolerance: 1.0e-10

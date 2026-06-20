@@ -1,0 +1,20 @@
+{
+  "claim_count": 10,
+  "claim_ids": [
+    "B0",
+    "O1",
+    "O2",
+    "O3",
+    "O4",
+    "N1",
+    "N2",
+    "N3",
+    "Q1",
+    "Q2"
+  ],
+  "hardware_observation_claimed": false,
+  "hardware_stage_status": "stopped_before_preregistration",
+  "q_grade_claim_count": 0,
+  "task": "A601",
+  "unsupported_claim_count": 0
+}
