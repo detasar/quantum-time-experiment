@@ -41,10 +41,11 @@ package.
 ## Reproducibility Archive
 
 - Archive path: `objective-clocks-reproducibility.tar.gz`
-- Archive SHA-256: `317a24695978641961e201da0c5f6ec869e69f9959dc22da1bb5be22e8653fcd`
+- Archive SHA-256: `3b4592c89f7a57c7a6f51334023a6f99a114b0bba43c96be2a1f999241514024`
 - Archived file count: `172`
 - Clean reproduction command: `/home/emre/quantum-time-experiment/.venv/bin/python scripts/reproduce_all.py`
 - Clean reproduction passed: `True`
+- Post-reproduction archive refresh: report-only public redaction; full clean reproduction was not rerun for this redaction-only commit. See `results/processed/A603_reproducibility_manifest.json`.
 
 ## Scope Boundary
 

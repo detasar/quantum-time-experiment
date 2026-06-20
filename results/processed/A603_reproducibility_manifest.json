@@ -1,6 +1,6 @@
 {
   "archive_path": "objective-clocks-reproducibility.tar.gz",
-  "archive_sha256": "317a24695978641961e201da0c5f6ec869e69f9959dc22da1bb5be22e8653fcd",
+  "archive_sha256": "3b4592c89f7a57c7a6f51334023a6f99a114b0bba43c96be2a1f999241514024",
   "archived_file_count": 172,
   "archived_files": [
     {
@@ -195,13 +195,13 @@
     },
     {
       "path": "reports/research_artifact_and_reproducibility_package.pdf",
-      "sha256": "7535739b790ca4f75ca92fd4bb562c7eacf63a998ccbe9cf5b3d8e7ba6cc1b81",
-      "size_bytes": 298358
+      "sha256": "e6d60ac829bcf653f1e68926fff41bdde5e34643a26cad07b7543c9b7d4d4c2e",
+      "size_bytes": 295703
     },
     {
       "path": "reports/research_artifact_and_reproducibility_package.tex",
-      "sha256": "6a0c80b2dcd56dbb6987a6013a3c1469a6c413688b76d24b52a8795201453de1",
-      "size_bytes": 25176
+      "sha256": "6900a76a40638607c864f39d29fcdf76b79592767c958bda63bffae2ccae05bd",
+      "size_bytes": 22630
     },
     {
       "path": "reports/research_artifact_references.bib",
@@ -265,8 +265,8 @@
     },
     {
       "path": "results/processed/A602_final_decision.json",
-      "sha256": "2ab80c8a6c807c6cca2e6595d6f66926579836797e16194545e7730dcdd9538a",
-      "size_bytes": 2099
+      "sha256": "15b6ce2c36039bf07e4c24097528a887a67bc97370e5a8970788f73153db602a",
+      "size_bytes": 2607
     },
     {
       "path": "results/processed/C0_runtime_report.json",
@@ -865,7 +865,7 @@
     }
   ],
   "environment": {
-    "git_commit": "04373843ef1b80f9b2f3ab513b3d16e27fc7b7a1",
+    "git_commit": "adf0bb0b1417dabb8fd2da9f623a40d834ca1eb5",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -884,6 +884,12 @@
     "objective-clocks-reproducibility.tar.gz",
     "results/processed/A603_reproducibility_manifest.json"
   ],
+  "post_reproduction_archive_refresh": {
+    "full_clean_reproduction_rerun": false,
+    "last_full_clean_reproduction_source_git_commit": "04373843ef1b80f9b2f3ab513b3d16e27fc7b7a1",
+    "reason": "report-only public redaction of an internal appendix",
+    "verification": "commit hook pytest passed for the report redaction commit; archive was repacked from a clean tree"
+  },
   "reproduction": {
     "command": "/home/emre/quantum-time-experiment/.venv/bin/python scripts/reproduce_all.py",
     "passed": true,
@@ -932,7 +938,7 @@
     ]
   },
   "secret_values_recorded": false,
-  "source_git_commit": "04373843ef1b80f9b2f3ab513b3d16e27fc7b7a1",
+  "source_git_commit": "adf0bb0b1417dabb8fd2da9f623a40d834ca1eb5",
   "status": "complete",
   "task": "A603"
 }

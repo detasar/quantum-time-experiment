@@ -1,21 +1,27 @@
 {
   "archive": {
     "archive_path": "objective-clocks-reproducibility.tar.gz",
-    "archive_sha256": "317a24695978641961e201da0c5f6ec869e69f9959dc22da1bb5be22e8653fcd",
+    "archive_sha256": "3b4592c89f7a57c7a6f51334023a6f99a114b0bba43c96be2a1f999241514024",
     "archived_file_count": 172,
+    "post_reproduction_archive_refresh": {
+      "full_clean_reproduction_rerun": false,
+      "last_full_clean_reproduction_source_git_commit": "04373843ef1b80f9b2f3ab513b3d16e27fc7b7a1",
+      "reason": "report-only public redaction of an internal appendix",
+      "verification": "commit hook pytest passed for the report redaction commit; archive was repacked from a clean tree"
+    },
     "reproduction": {
       "command": "/home/emre/quantum-time-experiment/.venv/bin/python scripts/reproduce_all.py",
       "passed": true,
       "return_code": 0
     },
     "secret_values_recorded": false,
-    "source_git_commit": "04373843ef1b80f9b2f3ab513b3d16e27fc7b7a1",
+    "source_git_commit": "adf0bb0b1417dabb8fd2da9f623a40d834ca1eb5",
     "status": "complete",
     "task": "A603"
   },
   "artifact_route": "foundations_artifact_with_bounded_quantum_illustration",
   "environment": {
-    "git_commit": "04373843ef1b80f9b2f3ab513b3d16e27fc7b7a1",
+    "git_commit": "adf0bb0b1417dabb8fd2da9f623a40d834ca1eb5",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
