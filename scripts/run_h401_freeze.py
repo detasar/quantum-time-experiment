@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import os
 from datetime import UTC, datetime
 from pathlib import Path
+
+import yaml
 
 from objective_clocks.artifacts import (
     file_manifest,
@@ -11,6 +14,14 @@ from objective_clocks.artifacts import (
 )
 
 APPROVAL_SOURCE = "Codex user message: onay veriyorum plana gore gidelim"
+
+
+def _backend_amendment() -> dict[str, object] | None:
+    path = Path("configs/backend_amendment.yaml")
+    if not path.exists():
+        return None
+    payload = yaml.safe_load(path.read_text(encoding="utf-8"))
+    return payload if isinstance(payload, dict) else None
 
 
 def _freeze_markdown(draft: str, *, approval_timestamp: str) -> str:
@@ -42,6 +53,11 @@ def main() -> None:
     draft = draft_path.read_text(encoding="utf-8")
     if "TBD_BLOCKED" in draft:
         raise SystemExit("Cannot freeze preregistration while mandatory fields are blocked")
+    amendment = _backend_amendment()
+    replacement = amendment.get("replacement", {}) if amendment else {}
+    preregistration_tag = (
+        replacement.get("preregistration_tag") if isinstance(replacement, dict) else None
+    ) or os.getenv("PREREGISTRATION_TAG", "v0.3-qpu-preregistered")
     approval_timestamp = datetime.now(UTC).isoformat()
     frozen_path = Path("docs/PREREGISTRATION_FROZEN.md")
     frozen_path.write_text(
@@ -57,6 +73,8 @@ def main() -> None:
         "approval_source": APPROVAL_SOURCE,
         "qpu_execution_allowed": False,
         "qpu_execution_allowed_requires": "H501 explicit gate and ALLOW_QPU_EXECUTION=YES",
+        "preregistration_tag": preregistration_tag,
+        "backend_amendment": amendment,
         "frozen_markdown_path": frozen_path.as_posix(),
         "frozen_markdown_sha256": sha256_file(frozen_path),
         "circuit_manifest_path": circuit_manifest_path.as_posix(),

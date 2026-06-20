@@ -1,10 +1,47 @@
 {
   "approval_source": "Codex user message: onay veriyorum plana gore gidelim",
-  "approval_timestamp_utc": "2026-06-20T19:07:43.760220+00:00",
+  "approval_timestamp_utc": "2026-06-20T20:15:40.911188+00:00",
+  "backend_amendment": {
+    "amendment_id": "H501A1-kingston-pre-result",
+    "candidate_backends": [
+      "ibm_kingston",
+      "ibm_fez",
+      "ibm_marrakesh"
+    ],
+    "created_utc": "2026-06-20T20:03:00Z",
+    "reason": [
+      "Original H501 job remained queued before any running timestamp or raw result.",
+      "User explicitly approved backend change as a protocol amendment.",
+      "Dependent backend diagnostics, local twin simulation, ISA packet and preregistration freeze must be regenerated for the replacement backend."
+    ],
+    "replacement": {
+      "backend": "ibm_kingston",
+      "preregistration_tag": "v0.4-qpu-preregistered-kingston"
+    },
+    "selection_rule": {
+      "requirements": [
+        "replacement backend must be operational on open-instance",
+        "replacement backend must pass the same Q304 backend-derived local twin gate",
+        "replacement backend requires regenerated H402 ISA QPY packet",
+        "replacement backend requires regenerated H401 frozen preregistration",
+        "replacement backend requires a new clean commit and tag before H501 execution"
+      ],
+      "selected_backend": "ibm_kingston",
+      "type": "fixed_pre_result_amendment_after_diagnostics"
+    },
+    "status": "pre_result_backend_amendment",
+    "supersedes": {
+      "backend": "ibm_marrakesh",
+      "final_status": "CANCELLED",
+      "job_id": "d8reasegbcrc73f4f4pg",
+      "quantum_seconds": 0,
+      "raw_result_downloaded": false
+    }
+  },
   "circuit_manifest_path": "results/preregistered/circuit_manifest.json",
-  "circuit_manifest_sha256": "4de3a887d268d68938b1a635926a582764e0598f68300d0753c8459686be1779",
+  "circuit_manifest_sha256": "43c387ed1c3fdc41fdf219e99e17112438e29924a13d3a11688ef6476ac3cb86",
   "environment": {
-    "git_commit": "4f1354999939747843b4c6e7b6355fe6147c709c",
+    "git_commit": "bd8ee36d1fd58ced4e9200543ff36968af38a328",
     "packages": {
       "networkx": "3.6.1",
       "numpy": "2.4.6",
@@ -19,31 +56,32 @@
     "qpu_execution_enabled": false
   },
   "environment_archive_manifest_path": "results/preregistered/environment_archive_manifest.json",
-  "environment_archive_manifest_sha256": "babf401853aaa574430d54fc3d59cdfc172185f084953085142268a0da6f5b36",
+  "environment_archive_manifest_sha256": "ee8066925f6479a673902831bb30e64ce051eeac92856c7b7b1314263e43db7a",
   "frozen_markdown_path": "docs/PREREGISTRATION_FROZEN.md",
-  "frozen_markdown_sha256": "f1905587d27f0caa0b7ca79ba83ad2192588a824319bce19f70f1ece1d8f3059",
+  "frozen_markdown_sha256": "58bbb13f0440845a5a43a42185b81c1025d135326e27d273c7cf477319d8ef01",
   "human_approval": true,
   "outputs": [
     {
       "path": "docs/PREREGISTRATION_FROZEN.md",
-      "sha256": "f1905587d27f0caa0b7ca79ba83ad2192588a824319bce19f70f1ece1d8f3059",
-      "size_bytes": 3895
+      "sha256": "58bbb13f0440845a5a43a42185b81c1025d135326e27d273c7cf477319d8ef01",
+      "size_bytes": 4266
     },
     {
       "path": "results/preregistered/circuit_manifest.json",
-      "sha256": "4de3a887d268d68938b1a635926a582764e0598f68300d0753c8459686be1779",
-      "size_bytes": 16837
+      "sha256": "43c387ed1c3fdc41fdf219e99e17112438e29924a13d3a11688ef6476ac3cb86",
+      "size_bytes": 16823
     },
     {
       "path": "results/preregistered/circuits.qpy",
-      "sha256": "de7ae498bdb43bd1d41cd27c8c98332cc39c757f6c790ca3f84ca3f3b48df4c9",
+      "sha256": "6cc768cbaf831bbbe5c3f0dffde8f8fb8c32b78a345e5c838f4871e57879cdce",
       "size_bytes": 155948
     }
   ],
+  "preregistration_tag": "v0.4-qpu-preregistered-kingston",
   "qpu_execution_allowed": false,
   "qpu_execution_allowed_requires": "H501 explicit gate and ALLOW_QPU_EXECUTION=YES",
   "qpy_path": "results/preregistered/circuits.qpy",
-  "qpy_sha256": "de7ae498bdb43bd1d41cd27c8c98332cc39c757f6c790ca3f84ca3f3b48df4c9",
+  "qpy_sha256": "6cc768cbaf831bbbe5c3f0dffde8f8fb8c32b78a345e5c838f4871e57879cdce",
   "status": "FROZEN",
   "task": "H401_preregistration_freeze"
 }

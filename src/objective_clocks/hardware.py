@@ -77,6 +77,10 @@ def _existing_h501_raw_files(raw_root: Path) -> list[Path]:
     return [Path(path) for path in sorted(glob.glob(str(raw_root / "H501_*")))]
 
 
+def _existing_h501_provider_payloads(raw_root: Path) -> list[Path]:
+    return [Path(path) for path in sorted(glob.glob(str(raw_root / "H501_provider_payload_*")))]
+
+
 def validate_h501_preconditions(
     inputs: H501Inputs | None = None,
     *,
@@ -96,6 +100,7 @@ def validate_h501_preconditions(
     provider_metadata = cast(dict[str, Any], q303.get("provider_metadata", {}))
     runtime_account = cast(dict[str, Any], provider_metadata.get("runtime_account", {}))
     existing_raw = _existing_h501_raw_files(inputs.raw_root)
+    existing_payloads = _existing_h501_provider_payloads(inputs.raw_root)
     open_instance = (
         runtime_account.get("instance_name") == "open-instance"
         and runtime_account.get("plan") == "open"
@@ -106,7 +111,8 @@ def validate_h501_preconditions(
     )
     g4_ready = g4.get("overall_status") == "ready_for_h501" and g4.get("blocked_check_count") == 0
     clean_repo = _git_clean() if require_clean_repo else True
-    tag_ready = _tag_points_at_head("v0.3-qpu-preregistered")
+    preregistration_tag = str(prereg.get("preregistration_tag", "v0.3-qpu-preregistered"))
+    tag_ready = _tag_points_at_head(preregistration_tag)
     all_shots = {int(item["shots"]) for item in circuit_manifest.get("execution_order", [])}
     env_enabled = os.getenv("ALLOW_QPU_EXECUTION") == "YES"
     checks = [
@@ -153,9 +159,12 @@ def validate_h501_preconditions(
             "evidence": f"unique_shot_counts={sorted(all_shots)}",
         },
         {
-            "id": "no_prior_h501_raw_payload",
-            "passed": len(existing_raw) == 0,
-            "evidence": f"existing_h501_raw_files={len(existing_raw)}",
+            "id": "no_prior_h501_provider_payload",
+            "passed": len(existing_payloads) == 0,
+            "evidence": (
+                f"existing_h501_provider_payloads={len(existing_payloads)}; "
+                f"existing_h501_raw_files={len(existing_raw)}"
+            ),
         },
         {
             "id": "repo_clean",
@@ -165,7 +174,7 @@ def validate_h501_preconditions(
         {
             "id": "preregistration_tag",
             "passed": tag_ready,
-            "evidence": "tag=v0.3-qpu-preregistered",
+            "evidence": f"tag={preregistration_tag}",
         },
     ]
     return {

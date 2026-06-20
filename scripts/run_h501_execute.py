@@ -67,7 +67,7 @@ def main() -> None:
             job=job,
             h501_approval_source=H501_APPROVAL_SOURCE,
         )
-        result = job.result()
+    result = job.result()
     payload = build_h501_payload(
         job=job,
         result=result,

@@ -115,6 +115,9 @@ selected layout's calibration snapshot; it is not a hardware observation.
 - `results/preregistered/circuit_manifest.json`
 - `results/preregistered/preregistration_manifest.json`
 - `results/preregistered/dry_run_report.json`
+- `results/processed/Q305_backend_amendment_diagnostics.json`
+- `results/raw/H501_submission_receipt_d8reasegbcrc73f4f4pg.json`
+- `results/raw/H501_cancellation_d8reasegbcrc73f4f4pg.json`
 - `results/processed/H401_preregistration_draft_summary.json`
 - `docs/PREREGISTRATION_DRAFT.md`
 - `docs/PREREGISTRATION_FROZEN.md`
@@ -124,7 +127,10 @@ Current status is `ready_for_h501`. The audit scans local env-like files, shell
 config files and known Qiskit account-file names without recording secret
 values. It confirms the saved account is bound to `open-instance` on the Open
 plan, freezes the H401 preregistration packet, freezes the H402 ISA circuit
-packet and passes the H403 no-submission dry-run. QPU execution remains disabled
+packet and passes the H403 no-submission dry-run. A pre-result backend amendment
+cancelled the original queued `ibm_marrakesh` job before any raw result or QPU
+usage, compared `ibm_kingston`, `ibm_fez` and `ibm_marrakesh`, and regenerated
+Q303/Q304/H402/H401/H403 for `ibm_kingston`. QPU execution remains disabled
 unless H501 is invoked with `ALLOW_QPU_EXECUTION=YES` after the repository is
 clean and tagged.
 
@@ -136,11 +142,10 @@ clean and tagged.
 - `src/objective_clocks/hardware.py`: raw payload extraction, integrity checks,
   raw inclusion decision and independent readout assignment correction.
 
-H501 has not yet submitted a hardware job in the committed preregistration
-snapshot. The execution path refuses to run without a frozen preregistration
-manifest, matching circuit-manifest hash, Open instance metadata, no prior H501
-raw payload, a clean repository, tag `v0.3-qpu-preregistered` at `HEAD` and
-`ALLOW_QPU_EXECUTION=YES`.
+The current amended H501 target is `ibm_kingston`. The execution path refuses to
+run without a frozen preregistration manifest, matching circuit-manifest hash,
+Open instance metadata, no prior H501 provider payload, a clean repository, tag
+`v0.4-qpu-preregistered-kingston` at `HEAD` and `ALLOW_QPU_EXECUTION=YES`.
 
 ## Current A601 Artifacts
 

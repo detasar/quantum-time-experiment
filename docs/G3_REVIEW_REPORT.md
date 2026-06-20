@@ -25,6 +25,7 @@ Branch: `implementation/g0-g1`
 - `results/processed/Q1_noise_sweep_summary.json`
 - `figures/fig_q302_noise_readiness.pdf`
 - `results/processed/Q303_backend_candidates.json`
+- `results/processed/Q305_backend_amendment_diagnostics.json`
 - `results/processed/Q2_backend_twin.parquet`
 - `results/processed/Q2_backend_twin_summary.json`
 - `results/processed/G3_manifest.json`
@@ -47,8 +48,12 @@ Branch: `implementation/g0-g1`
 
 - No provider job was submitted.
 - The saved Qiskit account is bound to `open-instance` on the IBM Open plan.
-- Deterministic provider-backed selection currently chooses `ibm_marrakesh`
-  with layout `[111, 98, 112, 110]`.
+- Deterministic provider-backed selection currently applies the pre-result
+  backend amendment and chooses `ibm_kingston` with layout
+  `[125, 117, 126, 124]`.
+- Q305 compares `ibm_kingston`, `ibm_fez` and `ibm_marrakesh`; all three pass
+  the local twin gate, and `ibm_kingston` is the replacement backend frozen for
+  H501A1.
 - The selected backend supports native `cz` entangling gates, which the ranking
   code treats as valid for the GHZ workload.
 - Selection is deterministic and does not use hardware science results.
@@ -60,8 +65,8 @@ Branch: `implementation/g0-g1`
   layout's calibration snapshot.
 - Current status: `backend_snapshot_ready`, reason
   `backend_derived_aggregate_noise_passed`.
-- Backend version: `1.0.21`; calibration timestamp:
-  `2026-06-20T20:46:56+03:00`.
+- Backend version: `1.0.0`; calibration timestamp:
+  `2026-06-20T22:25:00+03:00`.
 - This is still a local simulation proxy, not a QPU hardware observation.
 
 ## Stop Boundary

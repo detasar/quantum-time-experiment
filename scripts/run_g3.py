@@ -9,6 +9,7 @@ from objective_clocks.artifacts import write_sha256_manifest
 COMMANDS = [
     [sys.executable, "scripts/run_q301.py"],
     [sys.executable, "scripts/run_q302.py"],
+    [sys.executable, "scripts/run_q305_backend_amendment.py"],
     [sys.executable, "scripts/run_q303.py"],
     [sys.executable, "scripts/run_q304.py"],
 ]
@@ -25,6 +26,7 @@ def main() -> None:
         processed / "Q1_noise_sweep.parquet",
         processed / "Q1_noise_sweep_summary.json",
         Path("figures/fig_q302_noise_readiness.pdf"),
+        processed / "Q305_backend_amendment_diagnostics.json",
         processed / "Q303_backend_candidates.json",
         processed / "Q2_backend_twin.parquet",
         processed / "Q2_backend_twin_summary.json",

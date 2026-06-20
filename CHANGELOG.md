@@ -162,7 +162,33 @@ All notable changes to this research repository are documented here.
 ### Security
 - H501 refuses to run unless `ALLOW_QPU_EXECUTION=YES`, the preregistration
   manifest is frozen, the circuit-manifest hash matches, no previous H501 raw
-  payload exists, the repository is clean and tag `v0.3-qpu-preregistered`
+  payload exists, the repository is clean and the frozen preregistration tag
   points at `HEAD`.
 - H501 writes only secret-free receipt/result payloads under `results/raw/`
   using write-once artifact guards.
+
+## [0.7.1-h501a1-kingston-amendment] - 2026-06-20
+
+### Added
+- Added `configs/backend_amendment.yaml` for the H501A1 pre-result backend
+  amendment.
+- Added Q305 backend-amendment diagnostics comparing `ibm_kingston`, `ibm_fez`
+  and `ibm_marrakesh` with the same backend-derived local twin gate.
+- Added raw cancellation provenance for the original queued `ibm_marrakesh`
+  H501 job.
+- Added H501 retrieval script for accepted Runtime jobs.
+- Added G5 hardware notes for queue, maintenance and layered-error context.
+
+### Changed
+- Regenerated Q303/Q304/H402/H401/H403/G4 artifacts for amended backend
+  `ibm_kingston`.
+- Updated the frozen preregistration manifest to require tag
+  `v0.4-qpu-preregistered-kingston`.
+- H501 preconditions now block only prior H501 provider payloads; pre-result
+  receipts and cancellations remain provenance, not hardware results.
+
+### Security
+- The cancelled job reports no running timestamp, no raw result download and
+  zero quantum seconds.
+- Backend amendment does not record secret values and still requires
+  `ALLOW_QPU_EXECUTION=YES` before amended H501 execution.

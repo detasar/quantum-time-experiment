@@ -1,0 +1,22 @@
+{
+  "amendment_required": true,
+  "cancellation_reason": "User approved backend change before any H501 result was produced; original job remained queued for roughly one hour.",
+  "job": {
+    "job_id": "d8reasegbcrc73f4f4pg",
+    "status_after_cancel": "CANCELLED",
+    "status_before_cancel": "QUEUED",
+    "timestamps": {
+      "created": "2026-06-20T19:09:37.654094Z",
+      "finished": "2026-06-20T20:03:00.03944Z",
+      "running": null
+    },
+    "usage": {
+      "quantum_seconds": 0,
+      "seconds": 0
+    }
+  },
+  "raw_result_downloaded": false,
+  "secret_values_recorded": false,
+  "task": "H501_cancelled_pre_result",
+  "user_approval_source": "Codex user message: backendi degistir ... bilimsel protokol acisindan sapma olmamasi icin bagimli deneyleri de orada simule et"
+}

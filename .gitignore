@@ -9,6 +9,7 @@ __pycache__/
 *.token
 results/raw/*
 !results/raw/.gitkeep
+!results/raw/H501_*.json
 results/processed/*
 !results/processed/.gitkeep
 !results/processed/*.json

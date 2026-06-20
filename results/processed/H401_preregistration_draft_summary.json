@@ -1,4 +1,5 @@
 {
+  "backend_amendment_active": true,
   "backend_twin_status": "backend_snapshot_ready",
   "frozen": false,
   "g4_status": "ready_for_h501",

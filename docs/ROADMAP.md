@@ -64,7 +64,7 @@ No IBM submission.
 - Freeze ISA circuits.
 - Dry-run gate.
 - Reproduce all classical and local quantum outputs from clean environment.
-- Tag `v0.3-qpu-preregistered`.
+- Tag `v0.4-qpu-preregistered-kingston` for the H501A1 amended backend packet.
 
 **Exit gate:** G4.
 
@@ -94,4 +94,3 @@ No IBM submission.
 2. After G2: whether the classical package is paper-worthy.
 3. Before G4: whether IBM adds scientifically interpretable evidence.
 4. After G5: interpretation under preregistered rules.
-

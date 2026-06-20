@@ -1,4 +1,4 @@
-.PHONY: test theorem c0 c1 c2 g2-batch1 c3 c4 c5 g2-batch2 g2 q301 q302 q303 q304 g3 g4-readiness h401-archive h401-draft h401-freeze h402-isa h403-dry-run h501-dry-run h501-execute h502 h503 a601 ghz reproduce qpu-dry
+.PHONY: test theorem c0 c1 c2 g2-batch1 c3 c4 c5 g2-batch2 g2 q301 q302 q303 q304 q305 g3 g4-readiness h401-archive h401-draft h401-freeze h402-isa h403-dry-run h501-dry-run h501-execute h501-retrieve h502 h503 a601 ghz reproduce qpu-dry
 
 test:
 	PYTHONPATH=src pytest -q
@@ -45,6 +45,9 @@ q303:
 q304:
 	PYTHONPATH=src python scripts/run_q304.py
 
+q305:
+	PYTHONPATH=src python scripts/run_q305_backend_amendment.py
+
 g3:
 	PYTHONPATH=src python scripts/run_g3.py
 
@@ -71,6 +74,9 @@ h501-dry-run:
 
 h501-execute:
 	ALLOW_QPU_EXECUTION=YES PYTHONPATH=src python scripts/run_h501_execute.py --execute
+
+h501-retrieve:
+	PYTHONPATH=src python scripts/run_h501_retrieve.py --job-id $(JOB_ID)
 
 h502:
 	PYTHONPATH=src python scripts/run_h502_raw_analysis.py

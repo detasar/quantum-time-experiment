@@ -168,10 +168,11 @@ readiness thresholds. The results are stored in
 The IBM Runtime credential is stored outside the repository in the local Qiskit
 account file. The saved account is bound to the \texttt{open-instance} Open
 Plan instance. Q303 performs provider listing and backend-property reads only;
-it submits no workload. The current provider snapshot selects
-\texttt{ibm\_marrakesh} with physical layout \([111,98,112,110]\), native
+it submits no workload. After the pre-result backend amendment, the current
+provider snapshot selects
+\texttt{ibm\_kingston} with physical layout \([125,117,126,124]\), native
 \texttt{cz} entangling gates and calibration timestamp
-\texttt{2026-06-20T20:46:56+03:00}.
+\texttt{2026-06-20T22:25:00+03:00}.
 
 Q304 builds a selected-layout aggregate depolarizing/readout proxy from that
 snapshot and runs the planned local Aer workload. The local twin passes the
@@ -232,5 +233,20 @@ coherence contrast, GHZ-minus X-parity sign and no-single-block-dominance check.
 H503 applies only the secondary independent tensor-product readout assignment
 correction. The corrected result is reported beside the raw result and cannot
 replace it.
+
+\section{H501A1 Pre-Result Backend Amendment}
+
+The first H501 job was accepted on \texttt{ibm\_marrakesh} but remained queued.
+It was cancelled before any running timestamp, raw result download or QPU usage;
+the provider metrics report zero quantum seconds. This cancellation therefore
+does not constitute a hardware observation.
+
+The backend change is treated as a protocol amendment. Q305 compared
+\texttt{ibm\_kingston}, \texttt{ibm\_fez} and \texttt{ibm\_marrakesh} using
+read-only provider metadata plus the same backend-derived local twin simulation.
+All candidates passed the local twin gate. The replacement backend is
+\texttt{ibm\_kingston}; Q303/Q304, H402 ISA generation, H401 preregistration
+freeze, H403 dry-run and H404 tagging are regenerated for the replacement before
+any amended H501 execution.
 
 \end{document}

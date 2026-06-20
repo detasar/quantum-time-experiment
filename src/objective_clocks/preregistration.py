@@ -42,6 +42,7 @@ def build_h401_preregistration_draft(root: Path = Path(".")) -> PreregistrationD
     packages = cast(dict[str, str], current_environment.get("packages", {}))
     selected_backend = cast(dict[str, Any], q303.get("selected_backend") or {})
     provider_metadata = cast(dict[str, Any], q303.get("provider_metadata", {}))
+    backend_amendment = cast(dict[str, Any] | None, q303.get("backend_amendment"))
     runtime_account = cast(dict[str, Any], provider_metadata.get("runtime_account", {}))
     provider_source = str(q303.get("candidate_source", "missing"))
     provider_backed = provider_source == "provider"
@@ -172,6 +173,24 @@ Use the deterministic algorithm in `docs/RESEARCH_SPEC_TR.md`. No manual backend
 - Exact execution-order seed: `{h402_manifest.get("execution_order_seed", "TBD_BLOCKED")}`
 - Exact circuit instances: `{h402_manifest.get("total_circuit_instances", "TBD_BLOCKED")}`
 
+## 5A. Backend Amendment
+
+"""
+        + (
+            (
+                f"- Amendment id: `{backend_amendment.get('amendment_id')}`\n"
+                f"- Superseded backend: `{cast(dict[str, Any], backend_amendment.get('supersedes', {})).get('backend')}`\n"
+                f"- Superseded job id: `{cast(dict[str, Any], backend_amendment.get('supersedes', {})).get('job_id')}`\n"
+                f"- Superseded job final status: `{cast(dict[str, Any], backend_amendment.get('supersedes', {})).get('final_status')}`\n"
+                f"- Raw result downloaded before amendment: `{cast(dict[str, Any], backend_amendment.get('supersedes', {})).get('raw_result_downloaded')}`\n"
+                f"- Replacement backend: `{cast(dict[str, Any], backend_amendment.get('replacement', {})).get('backend')}`\n"
+                "- Dependent Q303/Q304/H402/H401/H403/H404 artifacts must be regenerated before H501.\n"
+            )
+            if backend_amendment
+            else "- No backend amendment is active.\n"
+        )
+        + f"""
+
 ## 6. Primary Endpoints
 
 \\[
@@ -239,6 +258,7 @@ Status may become `FROZEN` only after all G4 tasks pass.
         "unresolved_fields": unresolved,
         "mandatory_fields_complete": mandatory_fields_complete,
         "provider_source": provider_source,
+        "backend_amendment_active": backend_amendment is not None,
         "open_instance_confirmed": open_instance_confirmed,
         "backend_twin_status": q304.get("status"),
         "g4_status": g4.get("overall_status"),

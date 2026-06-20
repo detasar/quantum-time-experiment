@@ -1,0 +1,86 @@
+{
+  "amendment_id": "H501A1-kingston-pre-result",
+  "diagnostic_rows": [
+    {
+      "backend": "ibm_kingston",
+      "backend_version": "1.0.0",
+      "calibration_timestamp": "2026-06-20T22:25:00+03:00",
+      "delta_coh_lcb": 0.9151617332606208,
+      "delta_obj_lcb": 0.9049273254154142,
+      "eligible": true,
+      "layout_score": 3.223410995500638,
+      "min_z_correlation_lcb": 0.9504213805341328,
+      "one_qubit_depolarizing": 0.0003192199440035589,
+      "passes_local_twin": true,
+      "pending_jobs": 1,
+      "readout_flip": 0.00799560546875,
+      "selected_layout": [
+        125,
+        117,
+        126,
+        124
+      ],
+      "two_qubit_depolarizing": 0.0013345494081313802
+    },
+    {
+      "backend": "ibm_marrakesh",
+      "backend_version": "1.0.21",
+      "calibration_timestamp": "2026-06-20T22:16:15+03:00",
+      "delta_coh_lcb": 0.9202975586497365,
+      "delta_obj_lcb": 0.9050823924373768,
+      "eligible": true,
+      "layout_score": 3.229332324146747,
+      "min_z_correlation_lcb": 0.9520395560356987,
+      "one_qubit_depolarizing": 0.00026222288853645914,
+      "passes_local_twin": true,
+      "pending_jobs": 0,
+      "readout_flip": 0.00732421875,
+      "selected_layout": [
+        111,
+        98,
+        112,
+        110
+      ],
+      "two_qubit_depolarizing": 0.001560901366467471
+    },
+    {
+      "backend": "ibm_fez",
+      "backend_version": "1.3.37",
+      "calibration_timestamp": "2026-06-20T22:50:29+03:00",
+      "delta_coh_lcb": 0.8998049477740437,
+      "delta_obj_lcb": 0.8925645203856458,
+      "eligible": true,
+      "layout_score": 3.296795390220535,
+      "min_z_correlation_lcb": 0.9375708580788293,
+      "one_qubit_depolarizing": 0.00031779377548755495,
+      "passes_local_twin": true,
+      "pending_jobs": 0,
+      "readout_flip": 0.00933837890625,
+      "selected_layout": [
+        91,
+        90,
+        98,
+        92
+      ],
+      "two_qubit_depolarizing": 0.0020341160115803503
+    }
+  ],
+  "experiment_id": "Q305",
+  "inputs": [
+    {
+      "path": "configs/backend_amendment.yaml",
+      "sha256": "aa1b9099fb1b50ea5a0aa85428394f4b42ca126cfe8ac923c9e9ee09a1fc0ef0",
+      "size_bytes": 1212
+    },
+    {
+      "path": "configs/quantum_local.yaml",
+      "sha256": "a40a87d07353474a681486b5d2409a338acc6a410f5c925f9a2f0cd2a14f3055",
+      "size_bytes": 684
+    }
+  ],
+  "secret_values_recorded": false,
+  "selected_backend": "ibm_kingston",
+  "selected_backend_passes_local_twin": true,
+  "selection_uses_hardware_science_results": false,
+  "task": "backend_amendment_diagnostics"
+}

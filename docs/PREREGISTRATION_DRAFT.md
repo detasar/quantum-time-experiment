@@ -7,10 +7,10 @@
 
 ## 1. Mandatory Identifiers
 
-- Git commit: `4f1354999939747843b4c6e7b6355fe6147c709c`
+- Git commit: `bd8ee36d1fd58ced4e9200543ff36968af38a328`
 - Environment manifest SHA-256: `238e5e51b683bd0a8700f40f9c075a5215b543ff6296fb58278fb88df30ad709`
-- Environment archive SHA-256: `299bd95ebb44ad788b7071e467451e1874c7dd6e08e318590fdbc5915894f6b1`
-- Circuit manifest SHA-256: `4de3a887d268d68938b1a635926a582764e0598f68300d0753c8459686be1779`
+- Environment archive SHA-256: `f62cbe0bc5a1a81effbf832f1ec62de66a6e160e5d0a4a6c7b6a5f17d5aec476`
+- Circuit manifest SHA-256: `43c387ed1c3fdc41fdf219e99e17112438e29924a13d3a11688ef6476ac3cb86`
 - Qiskit version: `2.4.2`
 - qiskit-ibm-runtime version: `0.47.0`
 - Open Plan instance identifier/name: `open-instance`
@@ -43,15 +43,26 @@ Eight independent assignment circuits: each selected physical qubit prepared in 
 Use the deterministic algorithm in `docs/RESEARCH_SPEC_TR.md`. No manual backend substitution after science results are known.
 
 - Candidate source: `provider`
-- Selected backend: `ibm_marrakesh`
-- Selected physical layout: `[111, 98, 112, 110]`
+- Selected backend: `ibm_kingston`
+- Selected physical layout: `[125, 117, 126, 124]`
 - Backend twin status: `backend_snapshot_ready`
 - Backend twin reason: `backend_derived_aggregate_noise_passed`
-- Calibration snapshot timestamp: `2026-06-20T20:46:56+03:00`
+- Calibration snapshot timestamp: `2026-06-20T22:25:00+03:00`
 - Selected transpiler seed: `0`
-- ISA circuit QPY SHA-256: `de7ae498bdb43bd1d41cd27c8c98332cc39c757f6c790ca3f84ca3f3b48df4c9`
+- ISA circuit QPY SHA-256: `6cc768cbaf831bbbe5c3f0dffde8f8fb8c32b78a345e5c838f4871e57879cdce`
 - Exact execution-order seed: `20260621`
 - Exact circuit instances: `24`
+
+## 5A. Backend Amendment
+
+- Amendment id: `H501A1-kingston-pre-result`
+- Superseded backend: `ibm_marrakesh`
+- Superseded job id: `d8reasegbcrc73f4f4pg`
+- Superseded job final status: `CANCELLED`
+- Raw result downloaded before amendment: `False`
+- Replacement backend: `ibm_kingston`
+- Dependent Q303/Q304/H402/H401/H403/H404 artifacts must be regenerated before H501.
+
 
 ## 6. Primary Endpoints
 

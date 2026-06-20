@@ -60,6 +60,7 @@ flowchart TD
     QiskitAccount["~/.qiskit/qiskit-ibm.json (repo external)"] --> Q303Runner["scripts/run_q303.py"]
     OpenInstance["IBM open-instance metadata"] --> Q303Runner
     Q303Runner --> Q303Json["Q303_backend_candidates.json"]
+    Q305Runner["scripts/run_q305_backend_amendment.py"] --> Q305Json["Q305_backend_amendment_diagnostics.json"]
     Q304Runner["scripts/run_q304.py"] --> Q2Twin["Q2_backend_twin.parquet"]
     Q304Runner --> Q2Summary["Q2_backend_twin_summary.json"]
     G3Runner["scripts/run_g3.py"] --> G3Manifest["G3_manifest.json"]
@@ -69,6 +70,7 @@ flowchart TD
     Q1Summary --> G3Runner
     Q302Fig --> G3Runner
     Q303Json --> G3Runner
+    Q305Json --> G3Runner
     Q2Twin --> G3Runner
     Q2Summary --> G3Runner
     G4AuditRunner["scripts/run_g4_readiness.py"] --> G4Audit["G4_readiness_audit.json"]
@@ -153,7 +155,7 @@ flowchart TD
     H402ISA --> H401Draft["H401 draft packet: complete mandatory fields"]
     H401Draft --> H401Freeze["H401 freeze: human approval recorded, QPU still disabled"]
     H401Freeze --> H403Dry["H403 dry-run: no Sampler invocation"]
-    H403Dry --> H404Tag["H404 clean commit and v0.3-qpu-preregistered tag"]
+    H403Dry --> H404Tag["H404 clean commit and v0.4-qpu-preregistered-kingston tag"]
     H404Tag --> H501Gate["H501 explicit env gate: ALLOW_QPU_EXECUTION=YES"]
     H501Gate --> H501Submit["H501 one SamplerV2 job"]
     H501Submit --> H502Raw["H502 locked raw analysis"]
@@ -194,7 +196,9 @@ flowchart LR
     quantum --> run_q303["scripts/run_q303.py"]
     ibm["ibm.py"] --> run_q303
     run_q303 --> run_q304["scripts/run_q304.py"]
+    run_q303 --> run_q305["scripts/run_q305_backend_amendment.py"]
     quantum --> run_q304
+    quantum --> run_q305
     run_q301 --> run_g3["scripts/run_g3.py"]
     run_q302 --> run_g3
     run_q303 --> run_g3
@@ -250,6 +254,9 @@ flowchart TD
     RuntimeAccount["Qiskit saved account + open-instance"] --> EnvPresence["discover_ibm_env_keys()"]
     BackendRank["rank_backend_candidates(candidates)"] --> Q303Out["Q303 backend candidates"]
     EnvPresence["discover_ibm_env_keys()"] --> Q303Out
+    AmendmentDiag["run Q305 backend-amendment diagnostics"] --> Q305Out["Q305 diagnostics"]
+    BackendRank --> AmendmentDiag
+    BackendTwin --> AmendmentDiag
     BackendTwin["run_backend_derived_twin(candidate, layout, config)"] --> Q304Out["Q2 backend-twin parquet + summary"]
     Q303Out --> BackendTwin
     Q302Out --> BackendTwin

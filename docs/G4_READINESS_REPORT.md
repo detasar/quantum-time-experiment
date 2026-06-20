@@ -12,6 +12,8 @@ Branch: `implementation/g0-g1`
 - Added H401 preregistration freeze generation.
 - Added H403 no-submission dry-run.
 - Added H501-H503 locked hardware execution and analysis entry points.
+- Added Q305 backend-amendment diagnostics after the first accepted H501 job
+  remained queued and was cancelled before producing any raw result.
 
 ## Current Status
 
@@ -28,13 +30,16 @@ Passing checks:
 - Q304 backend-derived local twin: `backend_snapshot_ready`, reason
   `backend_derived_aggregate_noise_passed`.
 - H401 environment archive: present, hashed and secret-free.
-- H402 ISA packet: 24 circuit instances, 24,576 total shots, selected
-  transpiler seed 0.
+- H402 ISA packet: amended backend `ibm_kingston`, 24 circuit instances, 24,576
+  total shots, selected transpiler seed 0.
+- Q305 backend amendment: `ibm_kingston`, `ibm_fez` and `ibm_marrakesh` were
+  checked; the selected `ibm_kingston` backend passes the same backend-derived
+  local twin readiness gate.
 - H401 preregistration packet: frozen with explicit human approval.
 - H403 QPU gate: `ALLOW_QPU_EXECUTION` is not `YES`; Sampler was not invoked.
-- H404 repository snapshot: remote tracking branch exists. The final tag
-  `v0.3-qpu-preregistered` must point to the clean commit immediately before
-  H501 execution.
+- H404 repository snapshot: remote tracking branch exists. The amended final tag
+  `v0.4-qpu-preregistered-kingston` must point to the clean commit immediately
+  before H501 execution.
 
 ## Credential Audit
 
@@ -56,7 +61,7 @@ point. It refuses to submit unless all of the following hold:
 - runtime metadata identifies `open-instance` on the Open plan;
 - no previous H501 raw provider payload exists;
 - repository is clean;
-- tag `v0.3-qpu-preregistered` points at `HEAD`;
+- tag `v0.4-qpu-preregistered-kingston` points at `HEAD`;
 - `ALLOW_QPU_EXECUTION=YES`.
 
 ## Stop Boundary

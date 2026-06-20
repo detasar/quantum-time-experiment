@@ -1,0 +1,29 @@
+amendment_id: H501A1-kingston-pre-result
+status: pre_result_backend_amendment
+created_utc: "2026-06-20T20:03:00Z"
+supersedes:
+  backend: ibm_marrakesh
+  job_id: d8reasegbcrc73f4f4pg
+  final_status: CANCELLED
+  raw_result_downloaded: false
+  quantum_seconds: 0
+replacement:
+  backend: ibm_kingston
+  preregistration_tag: v0.4-qpu-preregistered-kingston
+reason:
+  - Original H501 job remained queued before any running timestamp or raw result.
+  - User explicitly approved backend change as a protocol amendment.
+  - Dependent backend diagnostics, local twin simulation, ISA packet and preregistration freeze must be regenerated for the replacement backend.
+candidate_backends:
+  - ibm_kingston
+  - ibm_fez
+  - ibm_marrakesh
+selection_rule:
+  type: fixed_pre_result_amendment_after_diagnostics
+  selected_backend: ibm_kingston
+  requirements:
+    - replacement backend must be operational on open-instance
+    - replacement backend must pass the same Q304 backend-derived local twin gate
+    - replacement backend requires regenerated H402 ISA QPY packet
+    - replacement backend requires regenerated H401 frozen preregistration
+    - replacement backend requires a new clean commit and tag before H501 execution
