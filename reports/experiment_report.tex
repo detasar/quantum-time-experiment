@@ -290,4 +290,25 @@ result. The corrected point estimates are \(\Delta_{\mathrm{obj}} =
 0.9687926905262139\). H503 cannot replace the raw H502 decision; the primary
 inclusion result remains raw.
 
+\section{G6 Interpretation and Reproducibility}
+
+A602 applies the preregistered decision tree to the claim matrix and the locked
+hardware analyses. The selected path is \texttt{full\_foundations\_paper}. The
+theory package is marked supported because the theorem, no-go and capacity
+claims have zero unsupported rows in A601. The hardware interpretation is
+\texttt{main\_text\_quantum\_illustration}: the raw H502 rule passes and H503
+agrees qualitatively with the raw result.
+
+The final decision preserves two negative constraints. First, fixed-partition
+basis uniqueness is not the novelty claim. Second, the IBM observation is not a
+proof of the basis--order--orientation theorem package. The proposed paper is
+therefore a theory/no-go contribution with a bounded four-qubit illustration.
+
+A603 records the reproducibility package as:
+\begin{itemize}
+  \item archive: \path{objective-clocks-reproducibility.tar.gz};
+  \item reproduction command: \path{scripts/reproduce_all.py};
+  \item SHA-256 publication: \path{docs/FINAL_DECISION.md}.
+\end{itemize}
+
 \end{document}

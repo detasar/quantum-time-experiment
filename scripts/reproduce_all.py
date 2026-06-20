@@ -14,6 +14,7 @@ COMMANDS = [
     [sys.executable, "scripts/run_h403_dry_run.py"],
     [sys.executable, "scripts/run_g4_readiness.py"],
     [sys.executable, "scripts/run_a601.py"],
+    [sys.executable, "scripts/run_a602.py"],
     [sys.executable, "-m", "objective_clocks.cli", "ghz-exact"],
     [sys.executable, "-m", "pytest", "-q"],
 ]

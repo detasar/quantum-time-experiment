@@ -171,3 +171,18 @@ A601 evidence-grades every planned claim as `P`, `E`, `S`, `Q`, `I` or `N`.
 The current matrix has two Q-grade rows, Q1 and Q2, both limited to the
 four-qubit IBM illustration. The theorem-level and no-go claims remain
 classical/symbolic and do not depend on the hardware observation.
+
+## Current G6 Interpretation Path
+
+- `scripts/run_a602.py`: applies the preregistered scientific decision tree.
+- `scripts/run_a603_reproducibility.py`: runs a clean-worktree reproduction and
+  writes the final reproducibility archive.
+- `docs/FINAL_DECISION.md`
+- `results/processed/A602_final_decision.json`
+- `results/processed/A603_reproducibility_manifest.json`
+- `objective-clocks-reproducibility.tar.gz`
+
+A602 selects `full_foundations_paper`: the theory/no-go contribution is
+supported independently, and the IBM result is included only as a bounded
+four-qubit main-text illustration. A603 publishes the archive SHA-256 in the
+final decision document.

@@ -215,3 +215,20 @@ All notable changes to this research repository are documented here.
 - Provider payload and derived artifacts record `secret_values_recorded=false`.
 - IBM credentials remain only in the local Qiskit account file outside the
   repository.
+
+## [0.9.0-g6-final-interpretation] - 2026-06-20
+
+### Added
+- Added A602 final scientific decision generation from the claim matrix and
+  H502/H503 hardware analyses.
+- Added A603 reproducibility packaging with a clean temporary worktree
+  `reproduce_all.py` run.
+- Added tests for the final decision tree and archive path exclusions.
+
+### Changed
+- Extended the reproduction chain to regenerate A602 after A601.
+- Updated architecture diagrams to include the final-decision and archive flow.
+
+### Security
+- The reproducibility archive excludes circular final-output files and records
+  `secret_values_recorded=false`.

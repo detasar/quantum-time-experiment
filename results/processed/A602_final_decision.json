@@ -1,0 +1,53 @@
+{
+  "archive": null,
+  "environment": {
+    "git_commit": "51b40b45925f332c5a1bfdd02edbdd8c20e5e11e",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.3",
+      "qiskit": "2.4.2",
+      "qiskit-aer": "0.17.2",
+      "qiskit-ibm-runtime": "0.47.0",
+      "scipy": "1.18.0"
+    },
+    "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.39",
+    "python": "3.13.11",
+    "qpu_execution_enabled": false
+  },
+  "evidence_artifacts": [
+    "results/claim_evidence_matrix.csv",
+    "results/processed/A601_claim_evidence_summary.json",
+    "results/processed/Q3_hardware_raw.json",
+    "results/processed/Q3_hardware_mitigated.json",
+    "docs/CLAIMS_REGISTER.md",
+    "docs/G5_HARDWARE_NOTES.md"
+  ],
+  "hardware_interpretation": "main_text_quantum_illustration",
+  "key_evidence": {
+    "mitigation_agrees": true,
+    "q_grade_claim_count": 2,
+    "raw_delta_coh_lcb": 0.877685546875,
+    "raw_delta_obj_lcb": 0.8876953125,
+    "raw_min_z_correlation_lcb": 0.9169542107266444,
+    "raw_primary_pass": true,
+    "unsupported_claim_count": 0
+  },
+  "negative_interpretations": [
+    "Do not claim fixed-partition basis uniqueness as the main novelty.",
+    "Do not claim that the IBM hardware observation proves the theorem package.",
+    "Do not infer temporal orientation from redundant records without an anchor.",
+    "Do not use H503 mitigation to replace or rescue the raw H502 result."
+  ],
+  "positive_interpretations": [
+    "The basis-order-orientation separation is supported by proofs and exact checks.",
+    "Record-capacity and no-go claims are supported independently of QPU data.",
+    "The IBM result supports including the four-qubit GHZ illustration in the main text."
+  ],
+  "preregistered_decision_rule": "Objectivity plus coherence pass includes the quantum illustration; hardware null cannot kill a valid theory result.",
+  "secret_values_recorded": false,
+  "selected_path": "full_foundations_paper",
+  "status": "final_interpretation_frozen",
+  "task": "A602",
+  "theory_decision": "supported"
+}

@@ -111,6 +111,11 @@ flowchart TD
     A601Runner --> A601Summary["A601_claim_evidence_summary.json"]
     ClaimCSV --> A601Manifest["A601_manifest.json"]
     A601Summary --> A601Manifest
+    A602Runner["scripts/run_a602.py"] --> FinalDecision["docs/FINAL_DECISION.md"]
+    A602Runner --> A602Json["A602_final_decision.json"]
+    A603Runner["scripts/run_a603_reproducibility.py"] --> ReproArchive["objective-clocks-reproducibility.tar.gz"]
+    A603Runner --> A603Manifest["A603_reproducibility_manifest.json"]
+    A603Manifest --> FinalDecision
     T101 --> A601Runner
     Capacity --> A601Runner
     Noise --> A601Runner
@@ -125,6 +130,11 @@ flowchart TD
     H501Raw --> A601Runner
     H502Raw --> A601Runner
     H503Mitigated --> A601Runner
+    A601Summary --> A602Runner
+    ClaimCSV --> A602Runner
+    H502Raw --> A602Runner
+    H503Mitigated --> A602Runner
+    A602Json --> A603Runner
 ```
 
 ## Control Flow Graph
@@ -165,6 +175,8 @@ flowchart TD
     H502Raw --> H503Mitigated["H503 secondary readout mitigation"]
     H503Mitigated --> A601["A601: evidence-grade claims with bounded Q1/Q2 hardware illustration"]
     G4Audit --> A601
+    A601 --> A602["A602: apply preregistered scientific decision tree"]
+    A602 --> A603["A603: clean reproduction archive"]
 ```
 
 ## Dependency Graph
@@ -223,7 +235,10 @@ flowchart LR
     quantum --> hardware
     statistics["statistics.py"] --> hardware
     claims["claims.py"] --> run_a601["scripts/run_a601.py"]
+    interpretation["interpretation.py"] --> run_a602["scripts/run_a602.py"]
+    interpretation --> run_a603["scripts/run_a603_reproducibility.py"]
     artifacts --> run_a601
+    artifacts --> interpretation
     run_g1 --> run_a601
     run_g2["scripts/run_g2_all.py"] --> run_a601
     run_g3 --> run_a601
@@ -285,4 +300,10 @@ flowchart TD
     ClaimsRows["build_claim_evidence_matrix(root)"] --> ClaimsCSV["claim_evidence_matrix.csv"]
     ClaimsRows --> ClaimsValidation["validate_claim_evidence_matrix(rows)"]
     ClaimsValidation --> A601Out["A601 summary + manifest"]
+    FinalDecisionRows["build_final_decision(root)"] --> FinalDecisionOut["FINAL_DECISION.md + A602 JSON"]
+    ClaimsCSV --> FinalDecisionRows
+    Q3RawOut --> FinalDecisionRows
+    Q3MitigatedOut --> FinalDecisionRows
+    ReproPackage["write_reproducibility_package()"] --> ReproOut["archive + A603 manifest"]
+    FinalDecisionOut --> ReproPackage
 ```

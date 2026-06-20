@@ -84,12 +84,16 @@ No IBM submission.
 ## Sprint 6 — Interpretation and paper decision
 
 - Evidence-grade claims.
-- Apply decision tree.
+- Apply decision tree: A602 selects `full_foundations_paper`.
 - Choose:
-  - full foundations paper;
-  - short theory/no-go note;
-  - abandon/pivot.
-- Do not begin polished paper writing until this decision is signed.
+  - full foundations paper: selected;
+  - short theory/no-go note: not selected;
+  - abandon/pivot: not selected.
+- Do not begin polished paper writing until this decision is signed: satisfied
+  by `docs/FINAL_DECISION.md`.
+- Produce reproducibility package: A603 writes
+  `objective-clocks-reproducibility.tar.gz` and publishes its SHA-256 in
+  `docs/FINAL_DECISION.md`.
 
 ## Human review checkpoints
 
